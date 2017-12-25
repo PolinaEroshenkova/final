@@ -3,44 +3,37 @@ package db;
 import entity.User;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
-public class UserDAO implements DAO<User> {
-    private Connection connection;
+public class UserDAO extends AbstractDAO<String, User> {
+    public static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
+
 
     public UserDAO(Connection connection) {
-        this.connection = connection;
+        super(connection);
     }
 
     @Override
-    public boolean create(User entity) {
-        boolean flag = false;
-        try (Statement statement = connection.createStatement()) {
-            String query = "INSERT INTO user VALUES('" + entity.getLogin() + "','" + entity.getPassword() + "','" +
-                    entity.getEmail() + "','user');";
-            statement.execute(query);
-            flag = true;
+    public User findEntityByKey(String enterLogin) {
+        User user = null;
+        Connection connection = super.getConnection();
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND_BY_KEY);
+            statement.setString(1, enterLogin);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            String login = resultSet.getString("login");
+            String password = resultSet.getString("password");
+            String email = resultSet.getString("email");
+            String type = resultSet.getString("type");
+            user = new User(login, password, email, type);
         } catch (SQLException e) {
             //LOGGER
         }
-        return flag;
-    }
-
-    @Override
-    public ArrayList<User> find() {
-
-        return null;
-    }
-
-    @Override
-    public boolean delete() {
-        return false;
-    }
-
-    @Override
-    public boolean update() {
-        return false;
+        super.closeStatement(statement);
+        return user;
     }
 }

@@ -7,12 +7,3 @@
         <jsp:forward page="login.jsp"/>
     </body>
 </html>
-
-
-    <servlet>
-    <servlet-name>Controller</servlet-name>
-</servlet>
-    <servlet-mapping>
-    <servlet-name>Controller</servlet-name>
-    <url-pattern>/controller</url-pattern>
-</servlet-mapping>

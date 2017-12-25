@@ -1,14 +1,16 @@
 package entity;
 
-public class User {
+public class User implements Entity<String> {
     private String login;
     private String password;
     private String email;
+    private String type;
 
-    public User(String login, String password, String email) {
+    public User(String login, String password, String email, String type) {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.type = type;
     }
 
     public String getLogin() {
@@ -35,6 +37,14 @@ public class User {
         this.email = email;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,7 +54,8 @@ public class User {
 
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        return email != null ? email.equals(user.email) : user.email == null;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        return type != null ? type.equals(user.type) : user.type == null;
     }
 
     @Override
@@ -52,6 +63,7 @@ public class User {
         int result = login != null ? login.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 
@@ -61,6 +73,12 @@ public class User {
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public String getParameter() {
+        return password;
     }
 }
