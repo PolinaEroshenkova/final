@@ -1,5 +1,5 @@
 package entity;
 
-public interface Entity<K> {
-    K getParameter();
+public interface Entity {
+
 }

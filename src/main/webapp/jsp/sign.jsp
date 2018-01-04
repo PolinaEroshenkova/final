@@ -14,7 +14,8 @@
 
                 <div class="tab-pane active" id="signin" role="tabpanel">
                     <div class="control-group">
-                        <form class="form-horizontal" role="form">
+                        <form name="LoginForm" class="form-horizontal" action="controller" method="post">
+                            <input type="hidden" name="command" value="Login"/>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="login">Логин</label>
@@ -47,7 +48,8 @@
                 </div>
 
                 <div class="tab-pane" id="signup" role="tabpanel">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="controller">
+                        <input type="hidden" name="command" value="Register"/>
 
                         <div class="form-group">
                             <label class="col-md-10 control-label" for="reglogin">Логин</label>
@@ -113,26 +115,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-10 control-label" for="company">Компания</label>
                             <div class="col-md-10">
-                                <input id="company" name="company" type="text" placeholder="Компания"
-                                       class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-10 control-label" for="position">Должность</label>
-                            <div class="col-md-10">
-                                <input id="position" name="position" type="text" placeholder="Должность"
-                                       class="form-control input-md">
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <button id="signupbutton" name="signin" class="btn btn-block btn-primary btn-primary">
+                                <button id="signupbutton" type="submit" name="signin"
+                                        class="btn btn-block btn-primary btn-primary">
                                     Зарегистрироваться
                                 </button>
                             </div>

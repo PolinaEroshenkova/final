@@ -1,10 +1,16 @@
 package entity;
 
-public class User implements Entity<String> {
+public class User implements Entity {
     private String login;
     private String password;
     private String email;
     private String type;
+
+    public User(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
 
     public User(String login, String password, String email, String type) {
         this.login = login;
@@ -77,8 +83,5 @@ public class User implements Entity<String> {
                 '}';
     }
 
-    @Override
-    public String getParameter() {
-        return password;
-    }
+
 }

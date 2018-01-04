@@ -94,249 +94,223 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="30" parent="14" name="id_participant">
+    <column id="30" parent="14" name="login">
       <Position>2</Position>
-      <Comment>внешний ключ таблицы participant</Comment>
-      <DataType>int(10) unsigned|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="31" parent="14" name="login">
-      <Position>3</Position>
       <Comment>Внешний ключ</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="32" parent="14" name="status">
-      <Position>4</Position>
+    <column id="31" parent="14" name="status">
+      <Position>3</Position>
       <Comment>Текущий статус заявки. Если заявка подана, но не проверена администратором, то &quot;Ожидает&quot;. Так же может быть &quot;Отклонена&quot; в случае отказа от участия или несоответствия тематике конференции сферы деятельности участника.  &quot;Одобрена&quot;, если заявка прошла проверку администратором успешно.</Comment>
       <DataType>char(10)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;Ожидает&apos;</DefaultExpression>
     </column>
-    <index id="33" parent="14" name="fk_entry_participant">
-      <ColNames>id_participant
-login</ColNames>
+    <index id="32" parent="14" name="fk_entry_participant">
+      <ColNames>login</ColNames>
     </index>
-    <index id="34" parent="14" name="status">
+    <index id="33" parent="14" name="status">
       <ColNames>status</ColNames>
     </index>
-    <key id="35" parent="14" name="PRIMARY">
+    <key id="34" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_entry</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="36" parent="14" name="fk_entry_participant1">
-      <ColNames>id_participant
-login</ColNames>
+    <foreign-key id="35" parent="14" name="fk_entry_participant1">
+      <ColNames>login</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>participant</RefTableName>
-      <RefColNames>id_participant
-login</RefColNames>
+      <RefColNames>login</RefColNames>
     </foreign-key>
-    <column id="37" parent="15" name="id_participant">
+    <column id="36" parent="15" name="login">
       <Position>1</Position>
-      <Comment>Уникальный идентификатор участника конференции. 
-Классически-первичный ключ с типом данных INT.</Comment>
-      <DataType>int(10) unsigned|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="38" parent="15" name="login">
-      <Position>2</Position>
       <Comment>Поле из таблицы user</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="15" name="surname">
-      <Position>3</Position>
+    <column id="37" parent="15" name="surname">
+      <Position>2</Position>
       <Comment>Фамилия участника конференции. </Comment>
       <DataType>varchar(35)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="40" parent="15" name="name">
-      <Position>4</Position>
+    <column id="38" parent="15" name="name">
+      <Position>3</Position>
       <Comment>Имя участника конференции.</Comment>
       <DataType>varchar(35)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="15" name="scope">
-      <Position>5</Position>
+    <column id="39" parent="15" name="scope">
+      <Position>4</Position>
       <Comment>Сфера деятельности участника конференции. Поле необходимо для администратора, в чьи обязанности входит проверка заявки на участие. Т.е. если сфера деятельности возможного участника конференции не совпадает с ее тематикой, то заявка будет отклонена.</Comment>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="42" parent="15" name="position">
-      <Position>6</Position>
+    <column id="40" parent="15" name="position">
+      <Position>5</Position>
       <Comment>Должность, которую занимает в жизни участник конференции.</Comment>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="43" parent="15" name="company">
-      <Position>7</Position>
+    <column id="41" parent="15" name="company">
+      <Position>6</Position>
       <Comment>Компания, в которой работает участник конференции.</Comment>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <index id="44" parent="15" name="fk_participant_user">
+    <index id="42" parent="15" name="fk_participant_user">
       <ColNames>login</ColNames>
     </index>
-    <index id="45" parent="15" name="login_UNIQUE">
-      <ColNames>login</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="46" parent="15" name="scope">
+    <index id="43" parent="15" name="scope">
       <ColNames>scope</ColNames>
     </index>
-    <key id="47" parent="15" name="PRIMARY">
+    <key id="44" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_participant
-login</ColNames>
+      <ColNames>login</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="48" parent="15" name="login_UNIQUE">
-      <ColNames>login</ColNames>
-      <UnderlyingIndexName>login_UNIQUE</UnderlyingIndexName>
-    </key>
-    <foreign-key id="49" parent="15" name="fk_participant_user1">
+    <foreign-key id="45" parent="15" name="fk_participant_user1">
       <ColNames>login</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>login</RefColNames>
     </foreign-key>
-    <column id="50" parent="16" name="id_question">
+    <column id="46" parent="16" name="id_question">
       <Position>1</Position>
       <Comment>Каждый вопрос обладает уникальным идентификатором, который является первичным ключом. Классически тип INT.</Comment>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="51" parent="16" name="login">
+    <column id="47" parent="16" name="login">
       <Position>2</Position>
       <Comment>Внешний ключ из таблицы user. </Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="52" parent="16" name="question">
+    <column id="48" parent="16" name="question">
       <Position>3</Position>
       <Comment>Поле &quot;вопрос&quot;. Здесь хранится вопрос, который пользователь может задать администратору. Максимальное количество символов-255.</Comment>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="53" parent="16" name="fk_question_user">
+    <index id="49" parent="16" name="fk_question_user">
       <ColNames>login</ColNames>
     </index>
-    <key id="54" parent="16" name="PRIMARY">
+    <key id="50" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_question</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="55" parent="16" name="fk_question_user">
+    <foreign-key id="51" parent="16" name="fk_question_user">
       <ColNames>login</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>login</RefColNames>
     </foreign-key>
-    <column id="56" parent="17" name="id_section">
+    <column id="52" parent="17" name="id_section">
       <Position>1</Position>
       <Comment>Уникальный идентификатор секции. Классически первичный ключ с типом данных INT.</Comment>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="57" parent="17" name="id_conference">
+    <column id="53" parent="17" name="id_conference">
       <Position>2</Position>
       <Comment>Поле из таблицы conference</Comment>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="58" parent="17" name="title">
+    <column id="54" parent="17" name="title">
       <Position>3</Position>
       <Comment>Название секции. Например, «Математическое моделирование и компьютерная графика». Обязательное поле.</Comment>
       <DataType>varchar(200)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="59" parent="17" name="fk_section_conference">
+    <index id="55" parent="17" name="fk_section_conference">
       <ColNames>id_conference</ColNames>
     </index>
-    <key id="60" parent="17" name="PRIMARY">
+    <key id="56" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_section</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="61" parent="17" name="fk_section_conference1">
+    <foreign-key id="57" parent="17" name="fk_section_conference1">
       <ColNames>id_conference</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>conference</RefTableName>
       <RefColNames>id_conference</RefColNames>
     </foreign-key>
-    <column id="62" parent="18" name="id_section">
+    <column id="58" parent="18" name="id_section">
       <Position>1</Position>
       <Comment>Поле из таблицы section</Comment>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="63" parent="18" name="id_entry">
+    <column id="59" parent="18" name="id_entry">
       <Position>2</Position>
       <DataType>int(10) unsigned|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="64" parent="18" name="fk_sectionentry_entry">
+    <index id="60" parent="18" name="fk_sectionentry_entry">
       <ColNames>id_entry</ColNames>
     </index>
-    <index id="65" parent="18" name="fk_sectionentry_section">
+    <index id="61" parent="18" name="fk_sectionentry_section">
       <ColNames>id_section</ColNames>
     </index>
-    <key id="66" parent="18" name="PRIMARY">
+    <key id="62" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_section
 id_entry</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="67" parent="18" name="fk_sectionentry_section">
+    <foreign-key id="63" parent="18" name="fk_sectionentry_section">
       <ColNames>id_section</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>section</RefTableName>
       <RefColNames>id_section</RefColNames>
     </foreign-key>
-    <foreign-key id="68" parent="18" name="fk_sectionentry_entry">
+    <foreign-key id="64" parent="18" name="fk_sectionentry_entry">
       <ColNames>id_entry</ColNames>
       <RefSchemaName>conference</RefSchemaName>
       <RefTableName>entry</RefTableName>
       <RefColNames>id_entry</RefColNames>
     </foreign-key>
-    <column id="69" parent="19" name="login">
+    <column id="65" parent="19" name="login">
       <Position>1</Position>
       <Comment>Логин-первичный ключ-уникальный идентификатор пользователя.</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="70" parent="19" name="password">
+    <column id="66" parent="19" name="password">
       <Position>2</Position>
       <Comment>Пароль пользователя для входа в систему. Обязательное для заполнения поле.</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="71" parent="19" name="email">
+    <column id="67" parent="19" name="email">
       <Position>3</Position>
       <Comment>Email- еще один уникальный идентификатор пользователя. Обязательное поле, т.к. по нему система сможет проводить операции по восстановлению пароля, отсылке рекламы и проч.</Comment>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="72" parent="19" name="type">
+    <column id="68" parent="19" name="type">
       <Position>4</Position>
       <Comment>Тип аккаунта-может быть &apos;user&apos; или &apos;admin&apos;. Необходимо для разграничения прав пользования системой.</Comment>
       <DataType>char(5)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;user&apos;</DefaultExpression>
     </column>
-    <index id="73" parent="19" name="email_UNIQUE">
+    <index id="69" parent="19" name="email_UNIQUE">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="74" parent="19" name="PRIMARY">
+    <key id="70" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>login</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="75" parent="19" name="email_UNIQUE">
+    <key id="71" parent="19" name="email_UNIQUE">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>email_UNIQUE</UnderlyingIndexName>
     </key>

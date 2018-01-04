@@ -3,7 +3,7 @@ package command;
 import db.AbstractDAO;
 import db.ConnectionPool;
 import db.UserDAO;
-import entity.Entity;
+import entity.User;
 import resource.ConfigurationManager;
 import resource.MessageManager;
 
@@ -26,14 +26,15 @@ public class LoginCommand implements ActionCommand {
         try {
             connection = pool.getConnection();
             AbstractDAO dao = new UserDAO(connection);
-            Entity user = dao.findEntityByKey(login);
-            if (user != null && user.getParameter().equals(password)) {
+            User user = (User) dao.findEntityByKey(login);
+            if (user != null && user.getPassword().equals(password)) {
                 request.setAttribute("user", login);
                 page = ConfigurationManager.getProperty("path.page.main");
             } else {
                 request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
                 page = ConfigurationManager.getProperty("path.page.login");
             }
+            pool.returnConnection(connection);
         } catch (SQLException e) {
             //LOGGER
         }

@@ -10,18 +10,12 @@
 <html>
 
 <head>
-
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
     <title>Главная</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap/bootstrap.css" rel="stylesheet"/>
-
-    <!-- Custom styles for this template -->
     <link href="../css/half-slider.css" rel="stylesheet"/>
     <link href="../css/sign.css" rel="stylesheet"/>
 
