@@ -5,6 +5,6 @@
 </head>
 <body>
 ${user},hello!
-<a href="controller?command=Logout">Log out</a>
+<a href="controller?command=Logout">Log out</a> //неплохо
 </body>
 </html>

@@ -15,6 +15,15 @@ public class Participant implements Entity {
         this.scope = scope;
     }
 
+    public Participant(String login, String surname, String name, String scope, String position, String company) {
+        this.login = login;
+        this.surname = surname;
+        this.name = name;
+        this.scope = scope;
+        this.position = position;
+        this.company = company;
+    }
+
     public String getLogin() {
         return login;
     }

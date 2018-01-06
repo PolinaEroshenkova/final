@@ -5,7 +5,7 @@
 </head>
 <body>
 <form name="LoginForm" method="post" action="controller">
-    <input type="hidden" name="command" value="Login"/>
+    <input type="hidden" name="command" value="qq"/>
     Login:<br/>
     <input type="text" name="login" value=""/>
     <br/>Password:<br/>

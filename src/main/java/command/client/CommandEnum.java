@@ -1,9 +1,6 @@
 package command.client;
 
-import command.ActionCommand;
-import command.LoginCommand;
-import command.LogoutCommand;
-import command.RegisterCommand;
+import command.*;
 
 public enum CommandEnum {
     LOGOUT {
@@ -14,6 +11,11 @@ public enum CommandEnum {
     LOGIN {
         {
             this.command = new LoginCommand();
+        }
+    },
+    PROFILEGENERATION {
+        {
+            this.command = new ProfileCommand();
         }
     },
     REGISTER {

@@ -4,6 +4,7 @@ import entity.Participant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ParticipantDAO extends AbstractDAO<String, Participant> {
@@ -17,7 +18,27 @@ public class ParticipantDAO extends AbstractDAO<String, Participant> {
 
     @Override
     public Participant findEntityByKey(String key) {
-        return null;
+        Participant participant = null;
+        Connection connection = super.getConnection();
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND_BY_KEY);
+            statement.setString(1, key);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            String login = resultSet.getString("login");
+            String surname = resultSet.getString("surname");
+            String name = resultSet.getString("name");
+            String scope = resultSet.getString("scope");
+            String position = resultSet.getString("position");
+            String company = resultSet.getString("company");
+            participant = new Participant(login, surname, name, scope, position, company);
+        } catch (SQLException e) {
+            //LOGGER
+        } finally {
+            super.closeStatement(statement);
+        }
+        return participant;
     }
 
     @Override

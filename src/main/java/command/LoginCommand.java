@@ -8,6 +8,7 @@ import resource.ConfigurationManager;
 import resource.MessageManager;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -25,11 +26,12 @@ public class LoginCommand implements ActionCommand {
         Connection connection = null;
         try {
             connection = pool.getConnection();
-            AbstractDAO dao = new UserDAO(connection);
-            User user = (User) dao.findEntityByKey(login);
+            AbstractDAO<String, User> dao = new UserDAO(connection);
+            User user = dao.findEntityByKey(login);
             if (user != null && user.getPassword().equals(password)) {
-                request.setAttribute("user", login);
-                page = ConfigurationManager.getProperty("path.page.main");
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", user.getLogin());
+                page = ConfigurationManager.getProperty("path.page.index");
             } else {
                 request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
                 page = ConfigurationManager.getProperty("path.page.login");
