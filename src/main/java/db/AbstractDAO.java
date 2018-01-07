@@ -28,6 +28,5 @@ public abstract class AbstractDAO<K, T extends Entity> {
     }
 
     public abstract T findEntityByKey(K key);
-
     public abstract boolean create(T entity);
 }

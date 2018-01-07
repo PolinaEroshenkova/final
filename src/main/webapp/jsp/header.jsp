@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Конференции</a>
+                    <a class="nav-link" href="controller?command=ShowConferences">Конференции</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Services</a>

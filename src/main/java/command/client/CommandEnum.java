@@ -18,6 +18,11 @@ public enum CommandEnum {
             this.command = new ProfileCommand();
         }
     },
+    SHOWCONFERENCES {
+        {
+            this.command = new ConferenceCommand();
+        }
+    },
     REGISTER {
         {
             this.command = new RegisterCommand();

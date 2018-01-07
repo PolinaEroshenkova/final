@@ -39,11 +39,11 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td>login:</td>
+                                        <td>Логин:</td>
                                         <td>${user.login}</td>
                                     </tr>
                                     <tr>
-                                        <td>password:</td>
+                                        <td>Пароль:</td>
                                         <td>${user.password}</td>
                                     </tr>
                                     <tr>
@@ -52,12 +52,11 @@
                                     </tr>
 
                                     <tr>
-                                    <tr>
-                                        <td>scope:</td>
+                                        <td>Сфера деятельности:</td>
                                         <td>${participant.scope}</td>
                                     </tr>
                                     <tr>
-                                        <td>position:</td>
+                                        <td>Должность:</td>
                                         <td>
                                             <c:if test="${empty participant.position}">
                                                 <c:out value="Не указано"/>
@@ -68,7 +67,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>company:</td>
+                                        <td>Компания:</td>
                                         <td>
                                             <c:if test="${empty participant.company}">
                                                 <c:out value="Не указано"/>
@@ -78,7 +77,6 @@
                                             </c:if>
                                         </td>
                                     </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -91,15 +89,36 @@
         <br/>
         <h3>Ваши конференции: </h3>
         <table class="table">
-            <tbody>
-            <tr>
-                <td>15 декабря</td>
-                <td>Обучение английскому
-                    <br/>15декабря-15января
-                </td>
-                <td>Бизнес-центр Цельсий</td>
-                <td><a href="">Отменить заявку</a></td>
+            <thead>
+            <tr bgcolor="#87cefa">
+                <td>Дедлайн подачи заявки</td>
+                <td>Название конференции</td>
+                <td>Секции</td>
+                <td>Статус</td>
             </tr>
+            </thead>
+            <tbody>
+            <%--<c:forEach items="${entries}" var="current">--%>
+            <%--<tr>--%>
+            <%--<td><c:out value="${current.deadline}"/></td>--%>
+            <%--<td><c:out value="${current.conference.topic}"/><br/>--%>
+            <%--<c:out value="${current.conference.start}"/> - <c:out value="${current.conference.end}"/>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+            <%--<c:forEach items="${current.conference.sections}" var="section">--%>
+            <%--<c:out value="${section.title}"/><br/>--%>
+            <%--</c:forEach>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+            <%--<c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">--%>
+            <%--<c:out value="Отменить заявку"/>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${current.status eq 'Отклонено'}">--%>
+            <%--<c:out value="${current.status}"/>--%>
+            <%--</c:if>--%>
+            <%--</td>--%>
+            <%--</tr>--%>
+            <%--</c:forEach>--%>
             </tbody>
         </table>
     </div>
