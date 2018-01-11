@@ -1,6 +1,10 @@
 package command;
 
-import db.*;
+import db.AbstractDAO;
+import db.ConnectionPool;
+import db.dao.EntryDAO;
+import db.dao.ParticipantDAO;
+import db.dao.UserDAO;
 import entity.Participant;
 import entity.User;
 import resource.ConfigurationManager;

@@ -1,5 +1,6 @@
-package db;
+package db.dao;
 
+import db.AbstractDAO;
 import entity.Participant;
 
 import java.sql.Connection;

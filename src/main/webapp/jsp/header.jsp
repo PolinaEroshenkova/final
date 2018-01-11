@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Конференции</a>
+        <a class="navbar-brand" href="/">Конференции</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,19 +13,29 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Главная
+                    <a class="nav-link" href="/">Главная
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="controller?command=ShowConferences">Конференции</a>
+                    <a class="nav-link" href="/showConferences">
+                        <input type="hidden" name="command" value="ShowcConferences"/>
+                        Конференции</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary btn-info" href="" id="signbutton" data-toggle="modal"
-                       data-target="#sign">Войти</a>
+                    <c:choose>
+                        <c:when test="${empty sessionScope.user}">
+                            <a class="btn btn-primary btn-info" href="" id="signbutton" data-toggle="modal"
+                               data-target="#sign">Войти</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="btn btn-primary btn-info" href="\profileGeneration" id="signbutton">Личный
+                                кабинет</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
             </ul>
         </div>

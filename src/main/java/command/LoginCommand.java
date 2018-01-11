@@ -2,7 +2,7 @@ package command;
 
 import db.AbstractDAO;
 import db.ConnectionPool;
-import db.UserDAO;
+import db.dao.UserDAO;
 import entity.User;
 import resource.ConfigurationManager;
 import resource.MessageManager;

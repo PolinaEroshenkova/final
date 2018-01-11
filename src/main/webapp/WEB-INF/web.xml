@@ -6,18 +6,28 @@
          version="3.0">
   <display-name>FirstJspServletJsp</display-name>
 
+    <filter>
+        <filter-name>StaticFilter</filter-name>
+        <filter-class>filter.StaticFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>StaticFilter</filter-name>
+        <url-pattern>/static/*</url-pattern>
+    </filter-mapping>
+
   <servlet>
     <servlet-name>Controller</servlet-name>
     <servlet-class>servlet.Controller</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
-    <url-pattern>/controller</url-pattern>
+      <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-  <welcome-file-list>
-      <welcome-file>/jsp/index.jsp</welcome-file>
-  </welcome-file-list>
+    <!--<welcome-file-list>-->
+    <!--<welcome-file>/jsp/index.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
   <error-page>
     <error-code>404</error-code>
       <location>/jsp/error/error.jsp</location>

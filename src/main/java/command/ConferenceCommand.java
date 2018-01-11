@@ -1,7 +1,7 @@
 package command;
 
-import db.ConferenceDAO;
 import db.ConnectionPool;
+import db.dao.ConferenceDAO;
 import entity.Conference;
 import resource.ConfigurationManager;
 

@@ -9,8 +9,8 @@
     <meta name="author" content="">
     <title>Профиль</title>
 
-    <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -126,8 +126,8 @@
 
 <jsp:include page="footer.jsp"/>
 
-<script src="../javascript/lib/jquery.js"></script>
-<script src="../javascript/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="../static/javascript/lib/jquery.js"></script>
+<script src="../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>
 
 </body>
 

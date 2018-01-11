@@ -2,8 +2,8 @@ package command;
 
 import db.AbstractDAO;
 import db.ConnectionPool;
-import db.ParticipantDAO;
-import db.UserDAO;
+import db.dao.ParticipantDAO;
+import db.dao.UserDAO;
 import entity.Entity;
 import entity.Participant;
 import entity.User;

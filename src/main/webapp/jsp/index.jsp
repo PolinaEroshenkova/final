@@ -1,13 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>Index</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<jsp:forward page="login.jsp"/>--%>
-<%--</body>--%>
-<%--</html>--%>
 <html>
 
 <head>
@@ -16,17 +8,15 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Главная</title>
-    <link href="../css/bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../css/half-slider.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../static/css/half-slider.css" rel="stylesheet"/>
+    <link href="../static/css/style.css" rel="stylesheet"/>
 
 </head>
 
 <body>
 
 <jsp:include page="header.jsp"/>
-
-<input type="hidden" id="state" name="state" value="${sessionScope.user}"/>
 
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -36,15 +26,16 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active" style="background-image: url('../resources/pictures/index/event1.jpg')">
+            <div class="carousel-item active"
+                 style="background-image: url('../static/resources/pictures/index/event1.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
-            <div class="carousel-item" style="background-image: url('../resources/pictures/index/event1.jpg')">
+            <div class="carousel-item" style="background-image: url('../static/resources/pictures/index/event1.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
-            <div class="carousel-item" style="background-image: url('../resources/pictures/index/event3.jpg')">
+            <div class="carousel-item" style="background-image: url('../static/resources/pictures/index/event3.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
@@ -73,9 +64,8 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
-<script src="../javascript/lib/jquery.js"></script>
-<script src="../javascript/bootstrap/bootstrap.bundle.js"></script>
-<script src="../javascript/sign.js"></script>
+<script src="../static/javascript/lib/jquery.js"></script>
+<script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 
 </body>
 </html>

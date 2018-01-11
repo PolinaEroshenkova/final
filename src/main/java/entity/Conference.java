@@ -1,25 +1,15 @@
 package entity;
 
-import java.util.Date;
-
 public class Conference implements Entity {
     private long idconference;
     private String topic;
     private int participantsnumber;
     private String place;
-    private Date begin;
-    private Date end;
-    private Date deadline;
+    private String begin;
+    private String end;
+    private String deadline;
 
-    public Conference(long idconference, String topic, Date begin, Date end, Date deadline) {
-        this.idconference = idconference;
-        this.topic = topic;
-        this.begin = begin;
-        this.end = end;
-        this.deadline = deadline;
-    }
-
-    public Conference(long idconference, String topic, int participantsnumber, String place, Date begin, Date end, Date deadline) {
+    public Conference(long idconference, String topic, int participantsnumber, String place, String begin, String end, String deadline) {
         this.idconference = idconference;
         this.topic = topic;
         this.participantsnumber = participantsnumber;
@@ -29,8 +19,19 @@ public class Conference implements Entity {
         this.deadline = deadline;
     }
 
-    public long getIdConference() {
+    public Conference(long idconference, String topic, int participantsnumber, String place) {
+        this.idconference = idconference;
+        this.topic = topic;
+        this.participantsnumber = participantsnumber;
+        this.place = place;
+    }
+
+    public long getIdconference() {
         return idconference;
+    }
+
+    public void setIdconference(long idconference) {
+        this.idconference = idconference;
     }
 
     public String getTopic() {
@@ -57,29 +58,30 @@ public class Conference implements Entity {
         this.place = place;
     }
 
-    public Date getBegin() {
+    public String getBegin() {
         return begin;
     }
 
-    public void setBegin(Date begin) {
+    public void setBegin(String begin) {
         this.begin = begin;
     }
 
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -116,9 +118,9 @@ public class Conference implements Entity {
                 ", topic='" + topic + '\'' +
                 ", participantsnumber=" + participantsnumber +
                 ", place='" + place + '\'' +
-                ", begin=" + begin +
-                ", end=" + end +
-                ", deadline=" + deadline +
+                ", begin='" + begin + '\'' +
+                ", end='" + end + '\'' +
+                ", deadline='" + deadline + '\'' +
                 '}';
     }
 }

@@ -4,11 +4,10 @@ import resource.ConfigurationManager;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class EmptyCommand implements ActionCommand {
+public class IndexCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = ConfigurationManager.getProperty("path.page.index");
-        return page;
+        return ConfigurationManager.getProperty("path.page.index");
     }
 }
