@@ -1,5 +1,7 @@
 package db;
 
+import com.mysql.cj.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +20,7 @@ public class ConnectionPool {
     private ConnectionPool() {
         connections = new ArrayBlockingQueue<>(config.getPoolsize());
         try {
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            DriverManager.registerDriver(new Driver());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

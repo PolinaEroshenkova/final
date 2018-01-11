@@ -1,7 +1,6 @@
 package command;
 
 import db.AbstractDAO;
-import db.ConnectionPool;
 import db.dao.ParticipantDAO;
 import db.dao.UserDAO;
 import entity.Entity;
@@ -11,8 +10,6 @@ import resource.ConfigurationManager;
 import resource.MessageManager;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class RegisterCommand implements ActionCommand {
     private final static String PARAM_NAME_LOGIN = "login";
@@ -29,22 +26,14 @@ public class RegisterCommand implements ActionCommand {
         String page = null;
         User user = (User) formUserObject(request);
         Participant participant = (Participant) formParticipantObject(request);
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = null;
-        try {
-            connection = pool.getConnection();
-            AbstractDAO<String, User> userDAO = new UserDAO(connection);
-            AbstractDAO<String, Participant> participantDAO = new ParticipantDAO(connection);
-            if (userDAO.create(user) && participantDAO.create(participant)) {
-                request.setAttribute("state", "success");
-                page = ConfigurationManager.getProperty("path.page.login");
-            } else {
-                request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
-                page = ConfigurationManager.getProperty("path.page.login");
-            }
-            pool.returnConnection(connection);
-        } catch (SQLException e) {
-            //LOGGER
+        AbstractDAO<String, User> userDAO = new UserDAO();
+        AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
+        if (userDAO.create(user) && participantDAO.create(participant)) {
+            request.setAttribute("state", "success");
+            page = ConfigurationManager.getProperty("path.page.login");
+        } else {
+            request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
+            page = ConfigurationManager.getProperty("path.page.login");
         }
         return page;
     }
