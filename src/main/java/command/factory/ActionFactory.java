@@ -14,7 +14,8 @@ public class ActionFactory {
         ActionCommand current = new EmptyCommand();
         String action = request.getParameter("command");
         if (action == null || action.isEmpty()) {
-            String path = request.getServletPath();
+            //String path = request.getServletPath();
+            String path = request.getRequestURI();
             action = path.toUpperCase().substring(1);
         }
         try {

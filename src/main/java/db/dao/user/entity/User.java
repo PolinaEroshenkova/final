@@ -1,6 +1,6 @@
-package entity;
+package db.dao.user.entity;
 
-public class User implements Entity {
+public class User {
     private String login;
     private String password;
     private String email;

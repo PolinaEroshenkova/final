@@ -1,7 +1,8 @@
-package db.dao;
+package db.dao.conference.impl;
 
-import db.AbstractDAO;
-import entity.Conference;
+import db.dao.AbstractDAO;
+import db.dao.conference.IConferenceDAO;
+import db.dao.conference.entity.Conference;
 import locale.DateWorker;
 
 import java.sql.Connection;
@@ -9,13 +10,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
-public class ConferenceDAO extends AbstractDAO<Integer, Conference> {
+public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements IConferenceDAO {
     private final static String SQL_FIND_BY_KEY = "SELECT * FROM conference WHERE id_conference=?";
     private final static String SQL_INSERT = "INSERT INTO conference" +
             "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
 
     private final static String SQL_FIND_BY_DATE = "SELECT * FROM conference WHERE deadline>=?";
+
+
+    @Override
+    public List<Conference> findByDate() {
+        Connection connection = super.receiveConnection();
+        PreparedStatement statement = null;
+        List<Conference> conferences = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND_BY_DATE);
+            DateWorker worker = new DateWorker();
+            String deadline = worker.receiveDBformatDate();
+            statement.setString(1, deadline);
+            conferences = super.receiveChildSelect(statement);
+        } catch (SQLException e) {
+            //LOGGER
+        } finally {
+            super.returnConnection(connection);
+        }
+        return conferences;
+    }
 
     @Override
     public Conference parseResultset(ResultSet resultSet) throws SQLException {

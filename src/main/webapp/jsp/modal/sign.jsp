@@ -14,7 +14,8 @@
 
                 <div class="tab-pane active" id="signin" role="tabpanel">
                     <div class="control-group">
-                        <form name="LoginForm" class="form-horizontal" action="controller" method="post">
+                        <form name="LoginForm" class="form-horizontal" action="${sessionScope.request.requestURL}"
+                              method="post">
                             <input type="hidden" name="command" value="Login"/>
 
                             <div class="form-group">

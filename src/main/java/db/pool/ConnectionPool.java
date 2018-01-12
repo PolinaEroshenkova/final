@@ -1,4 +1,4 @@
-package db;
+package db.pool;
 
 import com.mysql.cj.jdbc.Driver;
 

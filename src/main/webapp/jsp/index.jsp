@@ -60,7 +60,7 @@
 <jsp:include page="footer.jsp"/>
 
 <div id="modal">
-    <jsp:include page="sign.jsp"/>
+    <jsp:include page="modal/sign.jsp"/>
 </div>
 
 <!-- Bootstrap core JavaScript -->

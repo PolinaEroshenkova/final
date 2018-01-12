@@ -1,11 +1,10 @@
 package command;
 
-import db.AbstractDAO;
-import db.dao.EntryDAO;
-import db.dao.ParticipantDAO;
-import db.dao.UserDAO;
-import entity.Participant;
-import entity.User;
+import db.dao.AbstractDAO;
+import db.dao.participant.entity.Participant;
+import db.dao.participant.impl.ParticipantDAO;
+import db.dao.user.entity.User;
+import db.dao.user.impl.UserDAO;
 import resource.ConfigurationManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +21,6 @@ public class ProfileCommand implements ActionCommand {
         User user = userDAO.findByKey(login);
         AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
         Participant participant = participantDAO.findByKey(login);
-        EntryDAO entryDAO = new EntryDAO();
-        //List<Entry> entries=entryDAO.findByLogin(login);
-
         request.setAttribute("user", user);
         request.setAttribute("participant", participant);
         page = ConfigurationManager.getProperty("path.page.profile");

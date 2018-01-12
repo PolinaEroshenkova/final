@@ -1,6 +1,6 @@
-package entity;
+package db.dao.participant.entity;
 
-public class Participant implements Entity {
+public class Participant {
     private String login;
     private String surname;
     private String name;

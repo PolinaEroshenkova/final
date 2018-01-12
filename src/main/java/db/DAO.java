@@ -1,8 +1,6 @@
 package db;
 
-import entity.Entity;
-
-public interface DAO<K, T extends Entity> {
+public interface DAO<K, T> {
     boolean create(T entity);
 
     T findByKey(K key);

@@ -1,7 +1,7 @@
-package db.dao;
+package db.dao.participant.impl;
 
-import db.AbstractDAO;
-import entity.Participant;
+import db.dao.AbstractDAO;
+import db.dao.participant.entity.Participant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

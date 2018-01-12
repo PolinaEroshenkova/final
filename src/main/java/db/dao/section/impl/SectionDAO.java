@@ -1,7 +1,7 @@
-package db.dao;
+package db.dao.section.impl;
 
-import db.AbstractDAO;
-import entity.Section;
+import db.dao.AbstractDAO;
+import db.dao.section.entity.Section;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

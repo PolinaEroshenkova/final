@@ -1,8 +1,8 @@
 package command;
 
-import db.AbstractDAO;
-import db.dao.UserDAO;
-import entity.User;
+import db.dao.AbstractDAO;
+import db.dao.user.entity.User;
+import db.dao.user.impl.UserDAO;
 import resource.ConfigurationManager;
 import resource.MessageManager;
 
@@ -24,7 +24,9 @@ public class LoginCommand implements ActionCommand {
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user.getLogin());
-            page = ConfigurationManager.getProperty("path.page.index");
+            String uri = request.getRequestURI().substring(1).toLowerCase();
+            String address = "path.page." + uri;
+            page = ConfigurationManager.getProperty(address);
         } else {
             request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
             page = ConfigurationManager.getProperty("path.page.login");

@@ -1,6 +1,6 @@
-package entity;
+package db.dao.entry.entity;
 
-public class Entry implements Entity {
+public class Entry {
     private long identry;
     private String login;
     private String status;

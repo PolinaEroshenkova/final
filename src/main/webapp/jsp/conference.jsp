@@ -53,8 +53,21 @@
 
 <jsp:include page="footer.jsp"/>
 
+<c:choose>
+    <c:when test="${empty sessionScope.user}">
+        <div id="modal">
+            <jsp:include page="modal/notsign.jsp"/>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div id="modal">
+            <jsp:include page="modal/entry.jsp"/>
+        </div>
+    </c:otherwise>
+</c:choose>
+
 <div id="modal">
-    <jsp:include page="entry.jsp"/>
+    <jsp:include page="modal/sign.jsp"/>
 </div>
 
 <script src="../static/javascript/lib/jquery.js"></script>

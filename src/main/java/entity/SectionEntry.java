@@ -1,6 +1,6 @@
 package entity;
 
-public class SectionEntry implements Entity {
+public class SectionEntry {
     private long idsection;
     private long identry;
 

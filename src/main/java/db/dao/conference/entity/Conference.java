@@ -1,6 +1,10 @@
-package entity;
+package db.dao.conference.entity;
 
-public class Conference implements Entity {
+import db.dao.section.entity.Section;
+
+import java.util.List;
+
+public class Conference {
     private long idconference;
     private String topic;
     private int participantsnumber;
@@ -8,6 +12,7 @@ public class Conference implements Entity {
     private String begin;
     private String end;
     private String deadline;
+    private List<Section> sections;
 
     public Conference(long idconference, String topic, int participantsnumber, String place, String begin, String end, String deadline) {
         this.idconference = idconference;
@@ -82,6 +87,13 @@ public class Conference implements Entity {
         this.deadline = deadline;
     }
 
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
 
     @Override
     public boolean equals(Object o) {

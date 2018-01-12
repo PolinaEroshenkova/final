@@ -1,6 +1,6 @@
-package entity;
+package db.dao.section.entity;
 
-public class Section implements Entity {
+public class Section {
     private long idsection;
     private long idconference;
     private String title;

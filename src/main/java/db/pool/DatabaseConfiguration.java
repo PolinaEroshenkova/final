@@ -1,4 +1,4 @@
-package db;
+package db.pool;
 
 
 import resource.DBConfigurationManager;

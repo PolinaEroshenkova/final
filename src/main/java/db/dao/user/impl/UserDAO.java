@@ -1,7 +1,7 @@
-package db.dao;
+package db.dao.user.impl;
 
-import db.AbstractDAO;
-import entity.User;
+import db.dao.AbstractDAO;
+import db.dao.user.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,6 @@ public class UserDAO extends AbstractDAO<String, User> {
 
     @Override
     public User parseResultset(ResultSet resultSet) throws SQLException {
-        resultSet.next();
         String login = resultSet.getString("login");
         String password = resultSet.getString("password");
         String email = resultSet.getString("email");
