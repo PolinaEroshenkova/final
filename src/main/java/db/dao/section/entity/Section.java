@@ -11,7 +11,11 @@ public class Section {
         this.title = title;
     }
 
-    public long getIdSection() {
+    public Section(long idsection) {
+        this.idsection = idsection;
+    }
+
+    public long getIdsection() {
         return idsection;
     }
 

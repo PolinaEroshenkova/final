@@ -12,6 +12,10 @@ import javax.servlet.http.HttpSession;
 public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_LOGIN = "login";
     private static final String PARAM_NAME_PASSWORD = "password";
+    private static final String SESSION_ATTRIBUTE_USER = "user";
+    private static final String ATTRIBUTE_ERROR_LOGIN = "errorLoginPassMessage";
+    private static final String MESSAGE_LOGIN_ERROR = "message.loginerror";
+    private static final String NEXT_PAGE = "path.page.login";
 
 
     @Override
@@ -23,13 +27,12 @@ public class LoginCommand implements ActionCommand {
         User user = dao.findByKey(login);
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("user", user.getLogin());
-            String uri = request.getRequestURI().substring(1).toLowerCase();
-            String address = "path.page." + uri;
-            page = ConfigurationManager.getProperty(address);
+            session.setAttribute(SESSION_ATTRIBUTE_USER, user.getLogin());
+            ActionCommand command = new ProfileCommand(); //TODO forward on the same page
+            page = command.execute(request);
         } else {
-            request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
-            page = ConfigurationManager.getProperty("path.page.login");
+            request.setAttribute(ATTRIBUTE_ERROR_LOGIN, MessageManager.getProperty(MESSAGE_LOGIN_ERROR));
+            page = ConfigurationManager.getProperty(NEXT_PAGE);
         }
         return page;
     }

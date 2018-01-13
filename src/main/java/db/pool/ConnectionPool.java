@@ -1,6 +1,9 @@
 package db.pool;
 
 import com.mysql.cj.jdbc.Driver;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,17 +14,20 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
+
+    private static final DatabaseConfiguration config = new DatabaseConfiguration();
     private static ConnectionPool instance;
-    private BlockingQueue<Connection> connections;
     private static AtomicBoolean instanceexist = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
-    private static final DatabaseConfiguration config = new DatabaseConfiguration();
+    private BlockingQueue<Connection> connections;
 
     private ConnectionPool() {
         connections = new ArrayBlockingQueue<>(config.getPoolsize());
         try {
             DriverManager.registerDriver(new Driver());
         } catch (SQLException e) {
+            LOGGER.log(Level.FATAL, "Can't register driver");
             throw new RuntimeException(e);
         }
         for (int i = 0; i < config.getPoolsize(); i++) {
@@ -50,7 +56,7 @@ public class ConnectionPool {
                     config.getPassword());
             connections.put(connection);
         } catch (SQLException | InterruptedException e) {
-            //LOGGER
+            LOGGER.log(Level.ERROR, "Can't get connection from database");
         }
     }
 
@@ -59,7 +65,7 @@ public class ConnectionPool {
         try {
             connection = connections.take();
         } catch (InterruptedException e) {
-            //LOGGER
+            LOGGER.log(Level.ERROR, "Can't get connection from connection pool");
         }
         return connection;
     }
@@ -68,7 +74,7 @@ public class ConnectionPool {
         try {
             connections.put(connection);
         } catch (InterruptedException e) {
-
+            LOGGER.log(Level.ERROR, "Returning connection to pool is failed");
         }
     }
 
@@ -78,54 +84,8 @@ public class ConnectionPool {
                 connections.take().close();
             }
         } catch (SQLException | InterruptedException e) {
-
+            LOGGER.log(Level.ERROR, "Can't close pool");
         }
     }
-
-
-//    private static ConnectionPool pool;
-//    private static final String DATASOURCE_NAME = "jdbc/conference";
-//    private static DataSource datasource;
-//    private static ReentrantLock lock = new ReentrantLock();
-//
-//    static {
-//        try {
-//            Context initcontext = new InitialContext();
-//            Context envcontext = (Context) initcontext.lookup("java:/comp/env");
-//            datasource = (DataSource) envcontext.lookup(DATASOURCE_NAME);
-//        } catch (NamingException e) {
-//            //LOGGER
-//        }
-//    }
-//
-//    private ConnectionPool() {
-//    }
-//
-//    public static ConnectionPool getInstance() {
-//        try {
-//            lock.lock();
-//            if (pool == null) {
-//                pool = new ConnectionPool();
-//            }
-//        } finally {
-//            lock.unlock();
-//        }
-//        return pool;
-//    }
-//
-//    public Connection getConnection() throws SQLException {
-//        Connection connection = null;
-//        try {
-//            lock.lock();
-//            connection = datasource.getConnection();
-//        } finally {
-//            lock.unlock();
-//        }
-//        return connection;
-//    }
-//
-//    public void returnConnection(Connection connection) throws SQLException {
-//        connection.close();
-//    }
 
 }

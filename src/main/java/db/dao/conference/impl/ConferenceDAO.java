@@ -4,6 +4,9 @@ import db.dao.AbstractDAO;
 import db.dao.conference.IConferenceDAO;
 import db.dao.conference.entity.Conference;
 import locale.DateWorker;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements IConferenceDAO {
+    private static final Logger LOGGER = LogManager.getLogger(ConferenceDAO.class);
+
     private final static String SQL_FIND_BY_KEY = "SELECT * FROM conference WHERE id_conference=?";
     private final static String SQL_INSERT = "INSERT INTO conference" +
             "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
@@ -32,7 +37,7 @@ public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements I
             statement.setString(1, deadline);
             conferences = super.receiveChildSelect(statement);
         } catch (SQLException e) {
-            //LOGGER
+            LOGGER.log(Level.ERROR, "Statement preparation error");
         } finally {
             super.returnConnection(connection);
         }

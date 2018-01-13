@@ -2,6 +2,9 @@ package db.dao;
 
 import db.DAO;
 import db.pool.ConnectionPool;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractDAO<K, T> implements DAO<K, T> {
+    private static final Logger LOGGER = LogManager.getLogger(AbstractDAO.class);
 
-    public Connection receiveConnection() {
+    protected Connection receiveConnection() {
         ConnectionPool pool = ConnectionPool.getInstance();
         return pool.getConnection();
     }
 
-    public void returnConnection(Connection connection) {
+    protected void returnConnection(Connection connection) {
         ConnectionPool pool = ConnectionPool.getInstance();
         pool.closeConnection(connection);
     }
@@ -28,7 +32,7 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         try (PreparedStatement statement = receiveCreateStatement(connection, entity)) {
             flag = statement.execute();
         } catch (SQLException e) {
-            //LOGGER
+            LOGGER.log(Level.ERROR, "Statement preparation error while inserting data");
         } finally {
             returnConnection(connection);
         }
@@ -43,14 +47,14 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
             resultSet.next();
             entity = parseResultset(resultSet);
         } catch (SQLException e) {
-            //LOGGER
+            LOGGER.log(Level.ERROR, "Statement preparation error while selection by key");
         } finally {
             returnConnection(connection);
         }
         return entity;
     }
 
-    public List<T> receiveChildSelect(PreparedStatement statement) throws SQLException {
+    protected List<T> receiveChildSelect(PreparedStatement statement) throws SQLException {
         List<T> entities = null;
         ResultSet resultSet = statement.executeQuery();
         entities = new ArrayList<>();

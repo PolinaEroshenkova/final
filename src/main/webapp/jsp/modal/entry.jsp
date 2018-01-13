@@ -8,17 +8,47 @@
                 <form class="form-horizontal">
                     <fieldset>
 
-                        <legend>Заявка на конференцию</legend>
+                        <!-- Form Name -->
+                        <legend>Регистрация на конференцию</legend>
 
+                        <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="conference">Название конференции</label>
+                            <label class="col-md-4 control-label" for="conference">Конференция</label>
                             <div class="col-md-8">
                                 <input id="conference" name="conference" type="text" placeholder=""
-                                       class="form-control input-md" required="">
+                                       class="form-control input-md">
 
                             </div>
                         </div>
 
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="place">Место проведения</label>
+                            <div class="col-md-8">
+                                <input id="place" name="place" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="date">Дата начала-дата окончания</label>
+                            <div class="col-md-8">
+                                <input id="date" name="date" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="">Дедлайн подачи заявок</label>
+                            <div class="col-md-8">
+                                <input id="" name="" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Multiple -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="sections">Выберите секции</label>
                             <div class="col-md-8">
@@ -27,15 +57,25 @@
                             </div>
                         </div>
 
+                        <!-- Button -->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="register"></label>
+                            <label class="col-md-4 control-label" for="close"></label>
                             <div class="col-md-4">
-                                <button id="register" name="register" class="btn btn-primary">Оставить заявку</button>
+                                <button id="close" name="close" class="btn btn-inverse">Назад</button>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <button id="submit" name="submit" class="btn btn-primary">Оставить заявку</button>
                             </div>
                         </div>
 
                     </fieldset>
                 </form>
+
             </div>
         </div>
     </div>

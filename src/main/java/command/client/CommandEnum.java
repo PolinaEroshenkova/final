@@ -27,6 +27,16 @@ public enum CommandEnum {
         {
             this.command = new RegisterCommand();
         }
+    },
+    SIGNUP {
+        {
+            this.command = new SignUpCommand();
+        }
+    },
+    ENTRYPROCESSING {
+        {
+            this.command = new EntryCommand();
+        }
     };
 
     ActionCommand command;

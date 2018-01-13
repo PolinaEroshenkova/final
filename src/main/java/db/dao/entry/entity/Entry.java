@@ -11,6 +11,10 @@ public class Entry {
         this.status = status;
     }
 
+    public Entry(String login) {
+        this.login = login;
+    }
+
     public long getIdentry() {
         return identry;
     }

@@ -11,12 +11,15 @@ import resource.MessageManager;
 import javax.servlet.http.HttpServletRequest;
 
 public class RegisterCommand implements ActionCommand {
-    private final static String PARAM_NAME_SURNAME = "surname";
-    private final static String PARAM_NAME_NAME = "name";
-    private final static String PARAM_NAME_SCOPE = "scope";
-    private final static String PARAM_NAME_EMAIL = "email";
-    private final static String PARAM_NAME_REGISTRATION_LOGIN = "reglogin";
-    private final static String PARAM_NAME_REGISTRATION_PASSWORD = "regpassword";
+    private static final String PARAM_NAME_SURNAME = "surname";
+    private static final String PARAM_NAME_NAME = "name";
+    private static final String PARAM_NAME_SCOPE = "scope";
+    private static final String PARAM_NAME_EMAIL = "email";
+    private static final String PARAM_NAME_REGISTRATION_LOGIN = "reglogin";
+    private static final String PARAM_NAME_REGISTRATION_PASSWORD = "regpassword";
+    private static final String NEXT_PAGE = "path.page.login";
+    private static final String ERROR_LOGIN = "errorLoginPassMessage";
+    private static final String MESSAGE_ERROR_LOGIN = "message.loginerror";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -26,11 +29,10 @@ public class RegisterCommand implements ActionCommand {
         AbstractDAO<String, User> userDAO = new UserDAO();
         AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
         if (userDAO.create(user) && participantDAO.create(participant)) {
-            request.setAttribute("state", "success");
-            page = ConfigurationManager.getProperty("path.page.login");
+            page = ConfigurationManager.getProperty(NEXT_PAGE);
         } else {
-            request.setAttribute("errorLoginPassMessage", MessageManager.getProperty("message.loginerror"));
-            page = ConfigurationManager.getProperty("path.page.login");
+            request.setAttribute(ERROR_LOGIN, MessageManager.getProperty(MESSAGE_ERROR_LOGIN));
+            page = ConfigurationManager.getProperty(NEXT_PAGE);
         }
         return page;
     }

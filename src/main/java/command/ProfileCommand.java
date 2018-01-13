@@ -11,19 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class ProfileCommand implements ActionCommand {
+    private static final String SESSION_ATTRIBUTE_USER = "user";
+    private static final String ATTRIBUTE_PARTICIPANT = "participant";
+    private static final String NEXT_PAGE = "path.page.profile";
 
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
         HttpSession session = request.getSession(true);
-        String login = (String) session.getAttribute("user");
+        String login = (String) session.getAttribute(SESSION_ATTRIBUTE_USER);
         AbstractDAO<String, User> userDAO = new UserDAO();
         User user = userDAO.findByKey(login);
         AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
         Participant participant = participantDAO.findByKey(login);
-        request.setAttribute("user", user);
-        request.setAttribute("participant", participant);
-        page = ConfigurationManager.getProperty("path.page.profile");
+        request.setAttribute(SESSION_ATTRIBUTE_USER, user);
+        request.setAttribute(ATTRIBUTE_PARTICIPANT, participant);
+        page = ConfigurationManager.getProperty(NEXT_PAGE);
         return page;
     }
 }

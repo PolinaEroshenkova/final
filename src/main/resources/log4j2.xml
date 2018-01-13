@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+        <File name="LogFile" fileName="log/logoutput.log">
+            <PatternLayout>
+                <Pattern>%d{dd-MM-YYYY HH:mm:ss.SSS} %p %c [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Async name="Async">
+            <AppenderRef ref="LogFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Async"/>
+        </Root>
+    </Loggers>
+</Configuration>

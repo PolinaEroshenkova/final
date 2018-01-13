@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Главная</title>
+    <title>Конференции</title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/half-slider.css" rel="stylesheet"/>
     <link href="../static/css/style.css" rel="stylesheet"/>
@@ -29,7 +29,9 @@
                     <th>Название конференции</th>
                     <th>Даты проведения</th>
                     <th>Место проведения</th>
-                    <th>Статус</th>
+                    <c:if test="${not empty sessionScope.user}">
+                        <th>Статус</th>
+                    </c:if>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,8 +43,12 @@
                         <td><c:out value="${current.begin}"/><br/>
                             <c:out value="${current.end}"/></td>
                         <td><c:out value="${current.place}"/></td>
-                        <td><a href="" class="btn btn-primary" data-toggle="modal" data-target="#entry">Оставить
-                            заявку</a></td>
+                        <c:if test="${not empty sessionScope.user}">
+                            <td>
+                                <a href="\signUp?id=${current.idconference}" class="btn btn-primary entry">Оставить
+                                    заявку</a>
+                            </td>
+                        </c:if>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -52,19 +58,6 @@
 </section>
 
 <jsp:include page="footer.jsp"/>
-
-<c:choose>
-    <c:when test="${empty sessionScope.user}">
-        <div id="modal">
-            <jsp:include page="modal/notsign.jsp"/>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div id="modal">
-            <jsp:include page="modal/entry.jsp"/>
-        </div>
-    </c:otherwise>
-</c:choose>
 
 <div id="modal">
     <jsp:include page="modal/sign.jsp"/>

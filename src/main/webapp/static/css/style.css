@@ -1,3 +1,10 @@
+body {
+    background-color: cornsilk;
+}
+
+.label {
+    font-weight: bold !important;
+}
 
 .tab {
     border: thin solid #868e96;
