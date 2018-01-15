@@ -18,13 +18,12 @@ public class Controller extends HttpServlet {
         processRequest(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
-    }
-
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = null;
+        String a = request.getServletPath();
+        String b = request.getPathInfo();
+        String c = request.getPathTranslated();
+        String d = request.getContextPath();
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);

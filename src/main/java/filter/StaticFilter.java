@@ -1,19 +1,32 @@
 package filter;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class StaticFilter implements Filter {
-    private RequestDispatcher dispatcher;
+//    private RequestDispatcher dispatcher;
+//
+//    @Override
+//    public void init(FilterConfig filterConfig) throws ServletException {
+//        dispatcher = filterConfig.getServletContext().getNamedDispatcher("default");
+//    }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        dispatcher = filterConfig.getServletContext().getNamedDispatcher("default");
+
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        dispatcher.forward(servletRequest, servletResponse);
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
+        String path = req.getRequestURI().substring(req.getContextPath().length());
+
+        if (path.startsWith("/static")) {
+            filterChain.doFilter(servletRequest, servletResponse);
+        } else {
+            servletRequest.getRequestDispatcher("/pages" + path).forward(servletRequest, servletResponse); // Goes to controller servlet.
+        }
     }
 
     @Override

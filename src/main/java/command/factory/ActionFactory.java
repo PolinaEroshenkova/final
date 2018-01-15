@@ -22,7 +22,7 @@ public class ActionFactory {
         ActionCommand current = new EmptyCommand();
         String action = request.getParameter(PARAM_COMMAND);
         if (action == null || action.isEmpty()) {
-            String path = request.getRequestURI();
+            String path = request.getPathInfo();
             action = path.toUpperCase().substring(1);
         }
         try {

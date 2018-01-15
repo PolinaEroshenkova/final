@@ -27,7 +27,7 @@
                                data-target="#sign">Войти</a>
                         </c:when>
                         <c:otherwise>
-                            <a class="btn btn-primary btn-info" href="\profileGeneration" id="signbutton">Личный
+                            <a class="btn btn-primary btn-info" href="/profileGeneration" id="signbutton">Личный
                                 кабинет</a>
                         </c:otherwise>
                     </c:choose>
