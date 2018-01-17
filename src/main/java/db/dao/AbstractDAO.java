@@ -55,9 +55,8 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
     }
 
     protected List<T> receiveChildSelect(PreparedStatement statement) throws SQLException {
-        List<T> entities = null;
+        List<T> entities = new ArrayList<>();
         ResultSet resultSet = statement.executeQuery();
-        entities = new ArrayList<>();
         while (resultSet.next()) {
             T entity = parseResultset(resultSet);
             entities.add(entity);

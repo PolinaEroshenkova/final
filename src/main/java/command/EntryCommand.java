@@ -14,7 +14,9 @@ import java.util.List;
 public class EntryCommand implements ActionCommand {
     private static final String SESSION_ATTRIBUTE_USER = "user";
     private static final String PARAMETER_VALUE = "sections";
-    private static final String NEXT_PAGE = "path.page.index";
+    private static final String NEXT_PAGE = "path.page.conference";
+    private static final String REQUEST_STATE = "state";
+    private static final String REQUEST_STATE_SUCCESS = "success";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -34,7 +36,9 @@ public class EntryCommand implements ActionCommand {
             sections.add(section);
         }
         IEntryDAO entryDAO = new EntryDAO();
-        entryDAO.create(entry, sections);
+        if (entryDAO.create(entry, sections)) {
+            request.setAttribute(REQUEST_STATE, REQUEST_STATE_SUCCESS);
+        }
         page = ConfigurationManager.getProperty(NEXT_PAGE);
         return page;
     }

@@ -85,40 +85,44 @@
                 </div>
             </div>
         </div>
-
         <br/>
-        <h3>Ваши конференции: </h3>
-        <table class="table">
+    </div>
+
+    <h3>Ваши конференции: </h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
             <thead>
-            <tr bgcolor="#87cefa">
-                <td>Дедлайн подачи заявки</td>
+            <tr bgcolor="#87cefa" align="center">
+                <td>Дата проведения</td>
                 <td>Название конференции</td>
                 <td>Секции</td>
                 <td>Статус</td>
             </tr>
             </thead>
             <tbody>
-            <%--<c:forEach items="${entries}" var="current">--%>
-            <%--<tr>--%>
-            <%--<td><c:out value="${current.deadline}"/></td>--%>
-            <%--<td><c:out value="${current.conference.topic}"/><br/>--%>
-            <%--<c:out value="${current.conference.start}"/> - <c:out value="${current.conference.end}"/>--%>
-            <%--</td>--%>
-            <%--<td>--%>
-            <%--<c:forEach items="${current.conference.sections}" var="section">--%>
-            <%--<c:out value="${section.title}"/><br/>--%>
-            <%--</c:forEach>--%>
-            <%--</td>--%>
-            <%--<td>--%>
-            <%--<c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">--%>
-            <%--<c:out value="Отменить заявку"/>--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${current.status eq 'Отклонено'}">--%>
-            <%--<c:out value="${current.status}"/>--%>
-            <%--</c:if>--%>
-            <%--</td>--%>
-            <%--</tr>--%>
-            <%--</c:forEach>--%>
+            <c:forEach items="${entries}" var="current">
+                <tr>
+                    <td><c:out value="${current.conference.begin}"/><br/>
+                        <c:out value="${current.conference.end}"/>
+                    </td>
+                    <td><c:out value="${current.conference.topic}"/></td>
+                    <td>
+                        <ul type="circle">
+                            <c:forEach items="${current.conference.sections}" var="section">
+                                <li><c:out value="${section.title}"/></li>
+                            </c:forEach>
+                        </ul>
+                    </td>
+                    <td>
+                        <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
+                            <c:out value="Отменить заявку"/>
+                        </c:if>
+                        <c:if test="${current.status eq 'Отклонено'}">
+                            <c:out value="${current.status}"/>
+                        </c:if>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

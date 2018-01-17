@@ -5,12 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class StaticFilter implements Filter {
-//    private RequestDispatcher dispatcher;
-//
-//    @Override
-//    public void init(FilterConfig filterConfig) throws ServletException {
-//        dispatcher = filterConfig.getServletContext().getNamedDispatcher("default");
-//    }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,7 +19,7 @@ public class StaticFilter implements Filter {
         if (path.startsWith("/static")) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            servletRequest.getRequestDispatcher("/pages" + path).forward(servletRequest, servletResponse); // Goes to controller servlet.
+            servletRequest.getRequestDispatcher("/pages" + path).forward(servletRequest, servletResponse);
         }
     }
 

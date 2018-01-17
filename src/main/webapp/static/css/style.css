@@ -1,5 +1,9 @@
 body {
-    background-color: cornsilk;
+    background-color: #b3d7ff;
+}
+
+tr {
+    font-weight: bold;
 }
 
 .label {

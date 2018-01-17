@@ -20,9 +20,9 @@ public class SignUpCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
-        AbstractDAO<Integer, Conference> conferenceDao = new ConferenceDAO();
+        AbstractDAO<Long, Conference> conferenceDao = new ConferenceDAO();
         String stringId = request.getParameter(PARAM_ID);
-        int id = Integer.parseInt(stringId);
+        long id = Long.parseLong(stringId);
         Conference conference = conferenceDao.findByKey(id);
         request.setAttribute(ATTRIBUTE_CONFERENCE, conference);
         ISectionDAO sectionDao = new SectionDAO();

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements IConferenceDAO {
+public class ConferenceDAO extends AbstractDAO<Long, Conference> implements IConferenceDAO {
     private static final Logger LOGGER = LogManager.getLogger(ConferenceDAO.class);
 
     private final static String SQL_FIND_BY_KEY = "SELECT * FROM conference WHERE id_conference=?";
@@ -23,15 +23,14 @@ public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements I
             "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
 
     private final static String SQL_FIND_BY_DATE = "SELECT * FROM conference WHERE deadline>=?";
+    private final static String SQL_FIND_BY_LOGIN = "SELECT * FROM conference";
 
 
     @Override
     public List<Conference> findByDate() {
         Connection connection = super.receiveConnection();
-        PreparedStatement statement = null;
         List<Conference> conferences = null;
-        try {
-            statement = connection.prepareStatement(SQL_FIND_BY_DATE);
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_DATE)) {
             DateWorker worker = new DateWorker();
             String deadline = worker.receiveDBformatDate();
             statement.setString(1, deadline);
@@ -42,6 +41,11 @@ public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements I
             super.returnConnection(connection);
         }
         return conferences;
+    }
+
+    @Override
+    public List<Conference> findByLogin() {
+        return null;
     }
 
     @Override
@@ -62,9 +66,9 @@ public class ConferenceDAO extends AbstractDAO<Integer, Conference> implements I
     }
 
     @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, Integer key) throws SQLException {
+    public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_KEY);
-        statement.setInt(1, key);
+        statement.setLong(1, key);
         return statement;
     }
 

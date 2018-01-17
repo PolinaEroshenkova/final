@@ -1,9 +1,12 @@
 package db.dao.entry.entity;
 
+import db.dao.conference.entity.Conference;
+
 public class Entry {
     private long identry;
     private String login;
     private String status;
+    private Conference conference;
 
     public Entry(long identry, String login, String status) {
         this.identry = identry;
@@ -37,6 +40,14 @@ public class Entry {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Conference getConference() {
+        return conference;
+    }
+
+    public void setConference(Conference conference) {
+        this.conference = conference;
     }
 
     @Override

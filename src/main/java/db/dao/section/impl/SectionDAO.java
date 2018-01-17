@@ -19,22 +19,18 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM section WHERE id_section=?";
     private static final String SQL_INSERT = "INSERT INTO section(id_conference, title) VALUES(?,?)";
     private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
+    private static final String SQL_FIND_BY_ENTRY_ID = "SELECT * FROM section " +
+            "JOIN sectionentry ON sectionentry.id_section=section.id_section " +
+            "WHERE sectionentry.id_entry=?";
 
     @Override
     public List<Section> findByConferenceId(long id) {
-        Connection connection = super.receiveConnection();
-        PreparedStatement statement = null;
-        List<Section> sections = null;
-        try {
-            statement = connection.prepareStatement(SQL_FIND_BY_CONFERENCE_ID);
-            statement.setLong(1, id);
-            sections = super.receiveChildSelect(statement);
-        } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Statement preparation error");
-        } finally {
-            super.returnConnection(connection);
-        }
-        return sections;
+        return findById(id, SQL_FIND_BY_CONFERENCE_ID);
+    }
+
+    @Override
+    public List<Section> findByEntryId(long id) {
+        return findById(id, SQL_FIND_BY_ENTRY_ID);
     }
 
     @Override
@@ -58,5 +54,21 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
         statement.setLong(1, entity.getIdConference());
         statement.setString(2, entity.getTitle());
         return statement;
+    }
+
+    private List<Section> findById(long id, String query) {
+        Connection connection = super.receiveConnection();
+        PreparedStatement statement = null;
+        List<Section> sections = null;
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setLong(1, id);
+            sections = super.receiveChildSelect(statement);
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Statement preparation error");
+        } finally {
+            super.returnConnection(connection);
+        }
+        return sections;
     }
 }

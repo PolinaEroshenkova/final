@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IEntryDAO {
     boolean create(Entry entry, List<Section> sections);
+
+    List<Entry> findByLogin(String login);
 }
