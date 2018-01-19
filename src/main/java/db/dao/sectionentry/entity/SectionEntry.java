@@ -1,23 +1,19 @@
 package db.dao.sectionentry.entity;
 
 public class SectionEntry {
-    private long idsection;
-    private long identry;
+    private Long idsection;
+    private Long identry;
 
-    public SectionEntry(long identry, long idsection) {
+    public SectionEntry(Long identry, Long idsection) {
         this.identry = identry;
         this.idsection = idsection;
     }
 
-    public SectionEntry(long idsection) {
-        this.idsection = idsection;
-    }
-
-    public long getIdsection() {
+    public Long getIdsection() {
         return idsection;
     }
 
-    public void setIdsection(long idsection) {
+    public void setIdsection(Long idsection) {
         this.idsection = idsection;
     }
 
@@ -25,7 +21,7 @@ public class SectionEntry {
         return identry;
     }
 
-    public void setIdentry(long identry) {
+    public void setIdentry(Long identry) {
         this.identry = identry;
     }
 
@@ -36,14 +32,14 @@ public class SectionEntry {
 
         SectionEntry that = (SectionEntry) o;
 
-        if (idsection != that.idsection) return false;
-        return identry == that.identry;
+        if (idsection != null ? !idsection.equals(that.idsection) : that.idsection != null) return false;
+        return identry != null ? identry.equals(that.identry) : that.identry == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (idsection ^ (idsection >>> 32));
-        result = 31 * result + (int) (identry ^ (identry >>> 32));
+        int result = idsection != null ? idsection.hashCode() : 0;
+        result = 31 * result + (identry != null ? identry.hashCode() : 0);
         return result;
     }
 

@@ -1,6 +1,8 @@
-package command;
+package command.impl.user;
 
-import db.dao.AbstractDAO;
+import command.ActionCommand;
+import db.DAO;
+import db.dao.DAOCommandEnum;
 import db.dao.participant.entity.Participant;
 import db.dao.participant.impl.ParticipantDAO;
 import db.dao.user.entity.User;
@@ -26,9 +28,9 @@ public class RegisterCommand implements ActionCommand {
         String page = null;
         User user = (User) formUserObject(request);
         Participant participant = (Participant) formParticipantObject(request);
-        AbstractDAO<String, User> userDAO = new UserDAO();
-        AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
-        if (userDAO.create(user) && participantDAO.create(participant)) {
+        DAO<String, User> userDAO = new UserDAO();
+        DAO<String, Participant> participantDAO = new ParticipantDAO();
+        if (userDAO.execute(DAOCommandEnum.CREATE, user) && participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
             page = ConfigurationManager.getProperty(NEXT_PAGE);
         } else {
             request.setAttribute(ERROR_LOGIN, MessageManager.getProperty(MESSAGE_ERROR_LOGIN));

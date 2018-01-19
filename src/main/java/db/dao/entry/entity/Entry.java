@@ -14,6 +14,10 @@ public class Entry {
         this.status = status;
     }
 
+    public Entry(long identry) {
+        this.identry = identry;
+    }
+
     public Entry(String login) {
         this.login = login;
     }

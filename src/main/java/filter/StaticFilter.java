@@ -16,7 +16,7 @@ public class StaticFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         String path = req.getRequestURI().substring(req.getContextPath().length());
 
-        if (path.startsWith("/static")) {
+        if (path.startsWith("/static") || path.endsWith("ico")) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             servletRequest.getRequestDispatcher("/pages" + path).forward(servletRequest, servletResponse);

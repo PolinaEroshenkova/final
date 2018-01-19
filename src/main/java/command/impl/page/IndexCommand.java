@@ -1,5 +1,6 @@
-package command;
+package command.impl.page;
 
+import command.ActionCommand;
 import resource.ConfigurationManager;
 
 import javax.servlet.http.HttpServletRequest;

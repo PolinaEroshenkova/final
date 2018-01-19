@@ -1,5 +1,6 @@
-package command;
+package command.impl.page;
 
+import command.ActionCommand;
 import db.dao.entry.IEntryDAO;
 import db.dao.entry.entity.Entry;
 import db.dao.entry.impl.EntryDAO;

@@ -1,5 +1,7 @@
-package command;
+package command.impl.page;
 
+import command.ActionCommand;
+import db.DAO;
 import db.dao.AbstractDAO;
 import db.dao.conference.entity.Conference;
 import db.dao.conference.impl.ConferenceDAO;
@@ -29,9 +31,9 @@ public class ProfileCommand implements ActionCommand {
         String page = null;
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute(SESSION_ATTRIBUTE_USER);
-        AbstractDAO<String, User> userDAO = new UserDAO();
+        DAO<String, User> userDAO = new UserDAO();
         User user = userDAO.findByKey(login);
-        AbstractDAO<String, Participant> participantDAO = new ParticipantDAO();
+        DAO<String, Participant> participantDAO = new ParticipantDAO();
         Participant participant = participantDAO.findByKey(login);
         request.setAttribute(SESSION_ATTRIBUTE_USER, user);
         request.setAttribute(ATTRIBUTE_PARTICIPANT, participant);
@@ -39,7 +41,7 @@ public class ProfileCommand implements ActionCommand {
         List<Entry> entries = entryDao.findByLogin(login);
         ISectionDAO sectionDao = new SectionDAO();
         AbstractDAO<Long, Conference> conferenceDao = new ConferenceDAO();
-        for (Entry entry : entries) {
+        for (Entry entry : entries) {  //TODO cортировка по дате
             long id = entry.getIdentry();
             List<Section> sections = sectionDao.findByEntryId(id);
             long idconference = sections.get(0).getIdConference();

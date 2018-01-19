@@ -12,7 +12,7 @@ public class UserDAO extends AbstractDAO<String, User> {
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
     private static final String SQL_INSERT = "INSERT INTO user(login,password,email) VALUES(?,?,?)";
     private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=?, type=? WHERE login=?";
-    private static final String SQL_DELETE = "DELETE * FROM user WHERE login=?";
+    private static final String SQL_DELETE = "DELETE FROM user WHERE login=?";
 
     @Override
     public User parseResultset(ResultSet resultSet) throws SQLException {

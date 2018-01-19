@@ -1,5 +1,6 @@
-package command;
+package command.impl.page;
 
+import command.ActionCommand;
 import db.dao.conference.IConferenceDAO;
 import db.dao.conference.entity.Conference;
 import db.dao.conference.impl.ConferenceDAO;

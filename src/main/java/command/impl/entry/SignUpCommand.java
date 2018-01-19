@@ -1,6 +1,7 @@
-package command;
+package command.impl.entry;
 
-import db.dao.AbstractDAO;
+import command.ActionCommand;
+import db.DAO;
 import db.dao.conference.entity.Conference;
 import db.dao.conference.impl.ConferenceDAO;
 import db.dao.section.ISectionDAO;
@@ -20,7 +21,7 @@ public class SignUpCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
-        AbstractDAO<Long, Conference> conferenceDao = new ConferenceDAO();
+        DAO<Long, Conference> conferenceDao = new ConferenceDAO();
         String stringId = request.getParameter(PARAM_ID);
         long id = Long.parseLong(stringId);
         Conference conference = conferenceDao.findByKey(id);

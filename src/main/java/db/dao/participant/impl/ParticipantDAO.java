@@ -13,7 +13,7 @@ public class ParticipantDAO extends AbstractDAO<String, Participant> {
     private static final String SQL_INSERT = "INSERT INTO participant(login,surname,name,scope) VALUES(?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE participant SET login=?, surname=?, name=?, " +
             "scope=?, position=?, company=? WHERE login=?";
-    private static final String SQL_DELETE = "DELETE * FROM participant WHERE login=?";
+    private static final String SQL_DELETE = "DELETE FROM participant WHERE login=?";
 
     @Override
     public Participant parseResultset(ResultSet resultSet) throws SQLException {

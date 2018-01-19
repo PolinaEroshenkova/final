@@ -115,7 +115,8 @@
                     </td>
                     <td>
                         <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
-                            <c:out value="Отменить заявку"/>
+                            <a href="/profile?command=cancelEntry&id=${current.identry}" class="btn btn-primary"><c:out
+                                    value="Отменить заявку"/></a>
                         </c:if>
                         <c:if test="${current.status eq 'Отклонено'}">
                             <c:out value="${current.status}"/>

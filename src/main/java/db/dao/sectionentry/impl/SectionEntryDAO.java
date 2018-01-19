@@ -9,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SectionEntryDAO extends AbstractDAO<List<Integer>, SectionEntry> {
+public class SectionEntryDAO extends AbstractDAO<List<Long>, SectionEntry> {
     private static final String SQL_SET_VARIABLE = "SET @identry=LAST_INSERT_ID()";
     private static final String SQL_CREATE = "INSERT INTO sectionentry VALUES(?,@identry)";
+    private static final String SQL_DELETE = "DELETE FROM sectionentry WHERE id_entry=?";
 
 
     @Override
@@ -22,7 +23,7 @@ public class SectionEntryDAO extends AbstractDAO<List<Integer>, SectionEntry> {
     }
 
     @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, List<Integer> key) throws UnsupportedOperationException {
+    public PreparedStatement receiveFindByKeyStatement(Connection connection, List<Long> key) throws UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
 
@@ -36,13 +37,15 @@ public class SectionEntryDAO extends AbstractDAO<List<Integer>, SectionEntry> {
     }
 
     @Override
-    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, List<Integer> key) throws SQLException {
+    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, List<Long> key) throws SQLException {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public PreparedStatement receiveDeleteStatement(Connection connection, SectionEntry entity) throws SQLException {
-        throw new UnsupportedOperationException();
+        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        statement.setLong(1, entity.getIdentry());
+        return statement;
     }
 
 

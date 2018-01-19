@@ -19,10 +19,11 @@
 <jsp:include page="header.jsp"/>
 <section class="py-5">
     <div class="container toppad">
-        <form class="form-horizontal" action="/entryProcessing" method="post">
+        <form class="form-horizontal" action="/showConferences" method="post">
             <fieldset>
 
                 <legend>Регистрация на конференцию</legend>
+                <input type="hidden" name="command" value="entryProcessing">
 
                 <div class="form-group">
                     <label class="col-md-4 label control-label" for="conference">Конференция</label>

@@ -23,7 +23,7 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
             "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
     private final static String SQL_UPDATE = "UPDATE conference SET id_conference=?, topic=?, " +
             "number_of_participants=?, place=?, date_start=?, date_end=?, deadline=? WHERE id_conference=?";
-    private final static String SQL_DELETE = "DELETE * FROM conference WHERE id_conference=?";
+    private final static String SQL_DELETE = "DELETE FROM conference WHERE id_conference=?";
 
     private final static String SQL_FIND_BY_DATE = "SELECT * FROM conference WHERE deadline>=?";
     private final static String SQL_FIND_BY_LOGIN = "SELECT * FROM conference";

@@ -1,4 +1,6 @@
-package command;
+package command.impl.user;
+
+import command.ActionCommand;
 
 import javax.servlet.http.HttpServletRequest;
 

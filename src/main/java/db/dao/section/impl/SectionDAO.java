@@ -20,7 +20,7 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
     private static final String SQL_INSERT = "INSERT INTO section(id_conference, title) VALUES(?,?)";
     private static final String SQL_UPDATE = "UPDATE section SET id_section=?, id_conference=?, title=? " +
             "WHERE id_section=?";
-    private static final String SQL_DELETE = "DELETE * FROM section WHERE id_section=?";
+    private static final String SQL_DELETE = "DELETE FROM section WHERE id_section=?";
     private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
     private static final String SQL_FIND_BY_ENTRY_ID = "SELECT * FROM section " +
             "JOIN sectionentry ON sectionentry.id_section=section.id_section " +

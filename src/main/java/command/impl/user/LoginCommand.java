@@ -1,6 +1,8 @@
-package command;
+package command.impl.user;
 
-import db.dao.AbstractDAO;
+import command.ActionCommand;
+import command.impl.page.ProfileCommand;
+import db.DAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
 import resource.ConfigurationManager;
@@ -23,7 +25,7 @@ public class LoginCommand implements ActionCommand {
         String page = null;
         String login = request.getParameter(PARAM_NAME_LOGIN);
         String password = request.getParameter(PARAM_NAME_PASSWORD);
-        AbstractDAO<String, User> dao = new UserDAO();
+        DAO<String, User> dao = new UserDAO();
         User user = dao.findByKey(login);
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);

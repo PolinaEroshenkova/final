@@ -1,9 +1,9 @@
 package command.factory;
 
 import command.ActionCommand;
-import command.EmptyCommand;
-import command.IndexCommand;
 import command.client.CommandEnum;
+import command.impl.EmptyCommand;
+import command.impl.page.IndexCommand;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -16,14 +16,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
+public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
     private static final Logger LOGGER = LogManager.getLogger(EntryDAO.class);
 
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM entry WHERE id_entry=?";
     private static final String SQL_INSERT = "INSERT INTO entry(login) VALUES(?)";
     private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
-    private static final String SQL_DELETE = "DELETE * FROM entry WHERE id_entry=?";
+    private static final String SQL_DELETE = "DELETE FROM entry WHERE id_entry=?";
 
     @Override
     public boolean create(Entry entry, List<Section> sections) {
@@ -34,9 +34,9 @@ public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
             PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
             statement.setString(1, entry.getLogin());
             statement.execute();
-            AbstractDAO<List<Integer>, SectionEntry> dao = new SectionEntryDAO();
+            AbstractDAO<List<Long>, SectionEntry> dao = new SectionEntryDAO();
             for (Section section : sections) {
-                SectionEntry sectionEntry = new SectionEntry(section.getIdsection());
+                SectionEntry sectionEntry = new SectionEntry(null, section.getIdsection());
                 statement = dao.receiveCreateStatement(connection, sectionEntry);
                 statement.execute();
             }
@@ -74,9 +74,9 @@ public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
     }
 
     @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, Integer key) throws SQLException {
+    public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_KEY);
-        statement.setInt(1, key);
+        statement.setLong(1, key);
         return statement;
     }
 
@@ -88,7 +88,7 @@ public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
     }
 
     @Override
-    public PreparedStatement receiveUpdateStatement(Connection connection, Entry entity, Integer key) throws SQLException {
+    public PreparedStatement receiveUpdateStatement(Connection connection, Entry entity, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
         statement.setLong(1, entity.getIdentry());
         statement.setString(2, entity.getLogin());
