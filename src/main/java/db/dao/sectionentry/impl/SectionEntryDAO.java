@@ -35,5 +35,15 @@ public class SectionEntryDAO extends AbstractDAO<List<Integer>, SectionEntry> {
         return statement;
     }
 
+    @Override
+    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, List<Integer> key) throws SQLException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public PreparedStatement receiveDeleteStatement(Connection connection, SectionEntry entity) throws SQLException {
+        throw new UnsupportedOperationException();
+    }
+
 
 }

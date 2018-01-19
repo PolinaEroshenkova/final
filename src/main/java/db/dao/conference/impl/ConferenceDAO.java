@@ -21,6 +21,9 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
     private final static String SQL_FIND_BY_KEY = "SELECT * FROM conference WHERE id_conference=?";
     private final static String SQL_INSERT = "INSERT INTO conference" +
             "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
+    private final static String SQL_UPDATE = "UPDATE conference SET id_conference=?, topic=?, " +
+            "number_of_participants=?, place=?, date_start=?, date_end=?, deadline=? WHERE id_conference=?";
+    private final static String SQL_DELETE = "DELETE * FROM conference WHERE id_conference=?";
 
     private final static String SQL_FIND_BY_DATE = "SELECT * FROM conference WHERE deadline>=?";
     private final static String SQL_FIND_BY_LOGIN = "SELECT * FROM conference";
@@ -81,6 +84,31 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
         statement.setString(4, entity.getBegin());
         statement.setString(5, entity.getEnd());
         statement.setString(6, entity.getDeadline());
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveUpdateStatement(Connection connection, Conference entity, Long key) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
+        statement.setLong(1, entity.getIdconference());
+        statement.setString(2, entity.getTopic());
+        statement.setInt(3, entity.getParticipantsnumber());
+        statement.setString(4, entity.getPlace());
+        statement.setString(5, entity.getBegin()); //TODO проверить корректность даты
+        statement.setString(6, entity.getEnd());
+        statement.setString(7, entity.getDeadline());
+        if (key == null) {
+            statement.setLong(8, entity.getIdconference());
+        } else {
+            statement.setLong(8, key);
+        }
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveDeleteStatement(Connection connection, Conference entity) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        statement.setLong(1, entity.getIdconference());
         return statement;
     }
 }

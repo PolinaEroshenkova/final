@@ -18,6 +18,9 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
 
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM section WHERE id_section=?";
     private static final String SQL_INSERT = "INSERT INTO section(id_conference, title) VALUES(?,?)";
+    private static final String SQL_UPDATE = "UPDATE section SET id_section=?, id_conference=?, title=? " +
+            "WHERE id_section=?";
+    private static final String SQL_DELETE = "DELETE * FROM section WHERE id_section=?";
     private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
     private static final String SQL_FIND_BY_ENTRY_ID = "SELECT * FROM section " +
             "JOIN sectionentry ON sectionentry.id_section=section.id_section " +
@@ -53,6 +56,27 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
         PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
         statement.setLong(1, entity.getIdConference());
         statement.setString(2, entity.getTitle());
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveUpdateStatement(Connection connection, Section entity, Integer key) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
+        statement.setLong(1, entity.getIdsection());
+        statement.setLong(2, entity.getIdConference());
+        statement.setString(3, entity.getTitle());
+        if (key == null) {
+            statement.setLong(4, entity.getIdsection());
+        } else {
+            statement.setLong(4, key);
+        }
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveDeleteStatement(Connection connection, Section entity) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        statement.setLong(1, entity.getIdsection());
         return statement;
     }
 

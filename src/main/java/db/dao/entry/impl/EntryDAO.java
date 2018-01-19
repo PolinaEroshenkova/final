@@ -21,7 +21,9 @@ public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
 
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM entry WHERE id_entry=?";
     private static final String SQL_INSERT = "INSERT INTO entry(login) VALUES(?)";
+    private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
+    private static final String SQL_DELETE = "DELETE * FROM entry WHERE id_entry=?";
 
     @Override
     public boolean create(Entry entry, List<Section> sections) {
@@ -82,6 +84,27 @@ public class EntryDAO extends AbstractDAO<Integer, Entry> implements IEntryDAO {
     public PreparedStatement receiveCreateStatement(Connection connection, Entry entity) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
         statement.setString(1, entity.getLogin());
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveUpdateStatement(Connection connection, Entry entity, Integer key) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
+        statement.setLong(1, entity.getIdentry());
+        statement.setString(2, entity.getLogin());
+        statement.setString(3, entity.getStatus());
+        if (key == null) {
+            statement.setLong(4, entity.getIdentry());
+        } else {
+            statement.setLong(4, key);
+        }
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveDeleteStatement(Connection connection, Entry entity) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        statement.setLong(1, entity.getIdentry());
         return statement;
     }
 }

@@ -1,9 +1,13 @@
-body {
-    background-color: #b3d7ff;
+thead {
+    font-weight: bold;
 }
 
-tr {
-    font-weight: bold;
+body {
+    background-color: #e7e8ea;
+}
+
+.profile-h3 {
+    margin-left: 40px;
 }
 
 .label {

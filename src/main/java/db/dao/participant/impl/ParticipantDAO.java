@@ -11,6 +11,9 @@ import java.sql.SQLException;
 public class ParticipantDAO extends AbstractDAO<String, Participant> {
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM participant WHERE login=?";
     private static final String SQL_INSERT = "INSERT INTO participant(login,surname,name,scope) VALUES(?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE participant SET login=?, surname=?, name=?, " +
+            "scope=?, position=?, company=? WHERE login=?";
+    private static final String SQL_DELETE = "DELETE * FROM participant WHERE login=?";
 
     @Override
     public Participant parseResultset(ResultSet resultSet) throws SQLException {
@@ -37,6 +40,30 @@ public class ParticipantDAO extends AbstractDAO<String, Participant> {
         statement.setString(2, entity.getSurname());
         statement.setString(3, entity.getName());
         statement.setString(4, entity.getScope());
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveUpdateStatement(Connection connection, Participant entity, String key) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
+        statement.setString(1, entity.getLogin());
+        statement.setString(2, entity.getSurname());
+        statement.setString(3, entity.getName());
+        statement.setString(4, entity.getScope());
+        statement.setString(5, entity.getPosition());
+        statement.setString(6, entity.getCompany());
+        if (key == null) {
+            statement.setString(7, entity.getLogin());
+        } else {
+            statement.setString(7, key);
+        }
+        return statement;
+    }
+
+    @Override
+    public PreparedStatement receiveDeleteStatement(Connection connection, Participant entity) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        statement.setString(1, entity.getLogin());
         return statement;
     }
 }

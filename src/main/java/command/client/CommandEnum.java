@@ -37,6 +37,11 @@ public enum CommandEnum {
         {
             this.command = new EntryCommand();
         }
+    },
+    UPDATEUSERINFO {
+        {
+            this.command = new UpdateUserCommand();
+        }
     };
 
     ActionCommand command;

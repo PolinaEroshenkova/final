@@ -26,17 +26,41 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         pool.closeConnection(connection);
     }
 
-    public boolean create(T entity) {
+    public boolean execute(DAOCommandEnum command, T entity, K key) {
         Connection connection = receiveConnection();
         boolean flag = false;
-        try (PreparedStatement statement = receiveCreateStatement(connection, entity)) {
+        PreparedStatement statement = null;
+        try {
+            switch (command) {
+                case CREATE:
+                    statement = receiveCreateStatement(connection, entity);
+                    break;
+                case UPDATE:
+                    statement = receiveUpdateStatement(connection, entity, key);
+                    break;
+                case DELETE:
+                    statement = receiveDeleteStatement(connection, entity);
+                    break;
+                default: //EXCEPTION
+            }
             flag = statement.execute();
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Statement preparation error while inserting data");
+            LOGGER.log(Level.ERROR, "Statement preparation error");
         } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.log(Level.ERROR, "Statement close error");
+            }
             returnConnection(connection);
         }
         return flag;
+    }
+
+    public boolean execute(DAOCommandEnum command, T entity) {
+        return execute(command, entity, null);
     }
 
     public T findByKey(K key) {
@@ -69,4 +93,8 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
     public abstract PreparedStatement receiveFindByKeyStatement(Connection connection, K key) throws SQLException;
 
     public abstract PreparedStatement receiveCreateStatement(Connection connection, T entity) throws SQLException;
+
+    public abstract PreparedStatement receiveUpdateStatement(Connection connection, T entity, K key) throws SQLException;
+
+    public abstract PreparedStatement receiveDeleteStatement(Connection connection, T entity) throws SQLException;
 }

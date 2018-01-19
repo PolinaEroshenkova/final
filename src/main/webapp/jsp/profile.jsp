@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 toppad pull-right col-md-offset-3">
-                <a href="" class="btn btn-primary btn-profile">Редактировать</a>
+                <a href="/updateUserInfo" class="btn btn-primary btn-profile">Редактировать</a>
                 <br/>
                 <a href="controller?command=Logout" class="btn btn-primary btn-profile">Выйти</a>
             </div>
@@ -39,24 +39,24 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td>Логин:</td>
+                                        <td class="label">Логин:</td>
                                         <td>${user.login}</td>
                                     </tr>
                                     <tr>
-                                        <td>Пароль:</td>
+                                        <td class="label">Пароль:</td>
                                         <td>${user.password}</td>
                                     </tr>
                                     <tr>
-                                        <td>email:</td>
+                                        <td class="label">email:</td>
                                         <td>${user.email}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>Сфера деятельности:</td>
+                                        <td class="label">Сфера деятельности:</td>
                                         <td>${participant.scope}</td>
                                     </tr>
                                     <tr>
-                                        <td>Должность:</td>
+                                        <td class="label">Должность:</td>
                                         <td>
                                             <c:if test="${empty participant.position}">
                                                 <c:out value="Не указано"/>
@@ -67,7 +67,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Компания:</td>
+                                        <td class="label">Компания:</td>
                                         <td>
                                             <c:if test="${empty participant.company}">
                                                 <c:out value="Не указано"/>
@@ -88,7 +88,7 @@
         <br/>
     </div>
 
-    <h3>Ваши конференции: </h3>
+    <h3 class="profile-h3">Ваши конференции: </h3>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
