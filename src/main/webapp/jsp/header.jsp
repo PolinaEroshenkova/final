@@ -24,7 +24,7 @@
                     <c:choose>
                         <c:when test="${empty sessionScope.user}">
                             <a class="btn btn-primary btn-info" href="" id="signbutton" data-toggle="modal"
-                               data-target="#sign">Войти</a>
+                               data-target="#signModal">Войти</a>
                         </c:when>
                         <c:otherwise>
                             <a class="btn btn-primary btn-info" href="/profile" id="signbutton">Личный

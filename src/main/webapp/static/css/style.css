@@ -51,11 +51,14 @@ body {
     border-top: 0;
 }
 
-.toppad {
-    margin-top: 20px;
-}
-
 .btn-profile {
     width: 200px;
     margin: 10px;
+}
+
+.error {
+    color: #fd7e14;
+    margin-left: 5px;
+    font-weight: bold;
+    background-color: black;
 }

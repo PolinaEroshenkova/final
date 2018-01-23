@@ -4,7 +4,6 @@ import command.ActionCommand;
 import db.DAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
-import resource.MessageManager;
 import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_LOGIN = "login";
     private static final String PARAM_NAME_PASSWORD = "password";
     private static final String SESSION_ATTRIBUTE_USER = "user";
-    private static final String ATTRIBUTE_ERROR_LOGIN = "errorLoginPassMessage";
+    private static final String ATTRIBUTE_ERROR_LOGIN = "loginError";
     private static final String MESSAGE_LOGIN_ERROR = "message.loginerror";
     private static final String NEXT_PAGE = "url.page.profile";
 
@@ -31,8 +30,8 @@ public class LoginCommand implements ActionCommand {
             session.setAttribute(SESSION_ATTRIBUTE_USER, user.getLogin());
             page = UrlManager.getProperty(NEXT_PAGE);
         } else {
-            request.setAttribute(ATTRIBUTE_ERROR_LOGIN, MessageManager.getProperty(MESSAGE_LOGIN_ERROR));
-            page = UrlManager.getProperty(NEXT_PAGE);
+            request.setAttribute(ATTRIBUTE_ERROR_LOGIN, "Неверный ввод логина или пароля");
+            page = "/jsp/index.jsp";
         }
         return page;
     }

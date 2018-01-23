@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="modal fade" id="sign" tabindex="-1" role="dialog">
+<div class="modal fade" id="signModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -14,7 +15,7 @@
 
                 <div class="tab-pane active" id="signin" role="tabpanel">
                     <div class="control-group">
-                        <form name="LoginForm" class="form-horizontal" action="\profile"
+                        <form name="LoginForm" class="form-horizontal" action="Controller"
                               method="post">
                             <input type="hidden" name="command" value="Login"/>
 
@@ -34,6 +35,10 @@
                                            class="form-control input-md" required="">
 
                                 </div>
+                            </div>
+
+                            <div class="error">
+                                ${loginError}
                             </div>
 
                             <div class="form-group">
