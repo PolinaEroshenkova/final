@@ -1,46 +1,35 @@
 package command.impl.page;
 
 import command.ActionCommand;
-import db.dao.entry.IEntryDAO;
-import db.dao.entry.entity.Entry;
-import db.dao.entry.impl.EntryDAO;
+import db.DAO;
+import db.dao.conference.entity.Conference;
+import db.dao.conference.impl.ConferenceDAO;
+import db.dao.section.ISectionDAO;
 import db.dao.section.entity.Section;
-import resource.ConfigurationManager;
+import db.dao.section.impl.SectionDAO;
+import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EntryCommand implements ActionCommand {
-    private static final String SESSION_ATTRIBUTE_USER = "user";
-    private static final String PARAMETER_VALUE = "sections";
-    private static final String NEXT_PAGE = "path.page.conference";
-    private static final String REQUEST_STATE = "state";
-    private static final String REQUEST_STATE_SUCCESS = "success";
+    private static final String PARAM_ID = "id";
+    private static final String ATTRIBUTE_CONFERENCE = "conference";
+    private static final String ATTRIBUTE_SECTIONS = "sections";
+    private static final String NEXT_PAGE = "path.page.entry";
 
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
-        HttpSession session = request.getSession(true);
-        String login = (String) session.getAttribute(SESSION_ATTRIBUTE_USER);
-        Entry entry = new Entry(login);
-        String[] ids = request.getParameterValues(PARAMETER_VALUE);
-        List<Long> longid = new ArrayList<>();
-        for (String id : ids) {
-            long longId = Long.parseLong(id);
-            longid.add(longId);
-        }
-        List<Section> sections = new ArrayList<>();
-        for (Long id : longid) {
-            Section section = new Section(id);
-            sections.add(section);
-        }
-        IEntryDAO entryDAO = new EntryDAO();
-        if (entryDAO.create(entry, sections)) {
-            request.setAttribute(REQUEST_STATE, REQUEST_STATE_SUCCESS);
-        }
-        page = ConfigurationManager.getProperty(NEXT_PAGE);
+        DAO<Long, Conference> conferenceDao = new ConferenceDAO();
+        String stringId = request.getParameter(PARAM_ID);
+        long id = Long.parseLong(stringId);
+        Conference conference = conferenceDao.findByKey(id);
+        request.setAttribute(ATTRIBUTE_CONFERENCE, conference);
+        ISectionDAO sectionDao = new SectionDAO();
+        List<Section> sections = sectionDao.findByConferenceId(id);
+        request.setAttribute(ATTRIBUTE_SECTIONS, sections);
+        page = JspRoutesManager.getProperty(NEXT_PAGE);
         return page;
     }
 }

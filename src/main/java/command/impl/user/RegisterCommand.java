@@ -7,8 +7,9 @@ import db.dao.participant.entity.Participant;
 import db.dao.participant.impl.ParticipantDAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
-import resource.ConfigurationManager;
+import resource.JspRoutesManager;
 import resource.MessageManager;
+import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,10 +32,10 @@ public class RegisterCommand implements ActionCommand {
         DAO<String, User> userDAO = new UserDAO();
         DAO<String, Participant> participantDAO = new ParticipantDAO();
         if (userDAO.execute(DAOCommandEnum.CREATE, user) && participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
-            page = ConfigurationManager.getProperty(NEXT_PAGE);
+            page = JspRoutesManager.getProperty(NEXT_PAGE);
         } else {
             request.setAttribute(ERROR_LOGIN, MessageManager.getProperty(MESSAGE_ERROR_LOGIN));
-            page = ConfigurationManager.getProperty(NEXT_PAGE);
+            page = UrlManager.getProperty(NEXT_PAGE);
         }
         return page;
     }

@@ -14,7 +14,7 @@
 
                 <div class="tab-pane active" id="signin" role="tabpanel">
                     <div class="control-group">
-                        <form name="LoginForm" class="form-horizontal" action="${sessionScope.request.requestURL}"
+                        <form name="LoginForm" class="form-horizontal" action="\profile"
                               method="post">
                             <input type="hidden" name="command" value="Login"/>
 
@@ -40,7 +40,7 @@
                                 <label class="col-md-4 control-label" for="signin"></label>
                                 <div class="col-md-6">
                                     <button id="signinbutton" name="signin"
-                                            class="btn btn-block btn-primary btn-primary">Войти
+                                            class="btn btn-block btn-primary">Войти
                                     </button>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="tab-pane" id="signup" role="tabpanel">
-                    <form class="form-horizontal" method="post" action="controller">
+                    <form class="form-horizontal" method="post" action="${sessionScope.request.requestURL}">
                         <input type="hidden" name="command" value="Register"/>
 
                         <div class="form-group">

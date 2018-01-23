@@ -15,7 +15,7 @@ import db.dao.section.entity.Section;
 import db.dao.section.impl.SectionDAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
-import resource.ConfigurationManager;
+import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,7 +50,7 @@ public class ProfileCommand implements ActionCommand {
             entry.setConference(conference);
         }
         request.setAttribute("entries", entries);
-        page = ConfigurationManager.getProperty(NEXT_PAGE);
+        page = JspRoutesManager.getProperty(NEXT_PAGE);
         return page;
     }
 }

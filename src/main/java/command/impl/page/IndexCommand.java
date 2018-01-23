@@ -1,7 +1,7 @@
 package command.impl.page;
 
 import command.ActionCommand;
-import resource.ConfigurationManager;
+import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +10,6 @@ public class IndexCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        return ConfigurationManager.getProperty(NEXT_PAGE);
+        return JspRoutesManager.getProperty(NEXT_PAGE);
     }
 }

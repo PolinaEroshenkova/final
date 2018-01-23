@@ -1,7 +1,7 @@
 package command.impl;
 
 import command.ActionCommand;
-import resource.ConfigurationManager;
+import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ public class EmptyCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = ConfigurationManager.getProperty(NEXT_PAGE);
+        String page = JspRoutesManager.getProperty(NEXT_PAGE);
         return page;
     }
 }

@@ -2,8 +2,6 @@ package servlet;
 
 import command.ActionCommand;
 import command.factory.ActionFactory;
-import resource.ConfigurationManager;
-import resource.MessageManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,13 +26,11 @@ public class Controller extends HttpServlet {
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);
-        if (page != null) {
+        if (page.endsWith(".jsp")) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request, response);
         } else {
-            page = ConfigurationManager.getProperty("path.page.error");
-            request.getSession().setAttribute("nullPage", MessageManager.getProperty("message.nullpage"));
-            response.sendRedirect(request.getContextPath() + page);
+            response.sendRedirect(page);
         }
     }
 }

@@ -1,12 +1,11 @@
 package command.impl.user;
 
 import command.ActionCommand;
-import command.impl.page.ProfileCommand;
 import db.DAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
-import resource.ConfigurationManager;
 import resource.MessageManager;
+import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,7 +16,7 @@ public class LoginCommand implements ActionCommand {
     private static final String SESSION_ATTRIBUTE_USER = "user";
     private static final String ATTRIBUTE_ERROR_LOGIN = "errorLoginPassMessage";
     private static final String MESSAGE_LOGIN_ERROR = "message.loginerror";
-    private static final String NEXT_PAGE = "path.page.login";
+    private static final String NEXT_PAGE = "url.page.profile";
 
 
     @Override
@@ -30,11 +29,10 @@ public class LoginCommand implements ActionCommand {
         if (user != null && user.getPassword().equals(password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute(SESSION_ATTRIBUTE_USER, user.getLogin());
-            ActionCommand command = new ProfileCommand(); //TODO forward on the same page
-            page = command.execute(request);
+            page = UrlManager.getProperty(NEXT_PAGE);
         } else {
             request.setAttribute(ATTRIBUTE_ERROR_LOGIN, MessageManager.getProperty(MESSAGE_LOGIN_ERROR));
-            page = ConfigurationManager.getProperty(NEXT_PAGE);
+            page = UrlManager.getProperty(NEXT_PAGE);
         }
         return page;
     }

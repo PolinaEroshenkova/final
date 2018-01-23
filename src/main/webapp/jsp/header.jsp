@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/showConferences">Конференции</a>
+                    <a class="nav-link" href="/conferences">Конференции</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">FAQ</a>
@@ -27,7 +27,7 @@
                                data-target="#sign">Войти</a>
                         </c:when>
                         <c:otherwise>
-                            <a class="btn btn-primary btn-info" href="/profileGeneration" id="signbutton">Личный
+                            <a class="btn btn-primary btn-info" href="/profile" id="signbutton">Личный
                                 кабинет</a>
                         </c:otherwise>
                     </c:choose>

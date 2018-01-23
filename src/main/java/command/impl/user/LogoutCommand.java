@@ -1,7 +1,7 @@
 package command.impl.user;
 
 import command.ActionCommand;
-import resource.ConfigurationManager;
+import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ public class LogoutCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = ConfigurationManager.getProperty(NEXT_PAGE);
+        String page = UrlManager.getProperty(NEXT_PAGE);
         request.getSession().invalidate();
         return page;
     }

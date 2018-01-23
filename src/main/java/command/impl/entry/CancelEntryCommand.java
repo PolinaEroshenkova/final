@@ -5,12 +5,12 @@ import db.DAO;
 import db.dao.DAOCommandEnum;
 import db.dao.entry.entity.Entry;
 import db.dao.entry.impl.EntryDAO;
-import resource.ConfigurationManager;
+import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class CancelEntryCommand implements ActionCommand {
-    private static final String NEXT_PAGE = "path.page.profile";
+    private static final String NEXT_PAGE = "url.page.profile";
     private static final String REQUEST_PARAMETER = "id";
 
     @Override
@@ -21,7 +21,7 @@ public class CancelEntryCommand implements ActionCommand {
         Entry entry = new Entry(idEntry);
         DAO<Long, Entry> entryDAO = new EntryDAO();
         entryDAO.execute(DAOCommandEnum.DELETE, entry);
-        page = ConfigurationManager.getProperty(NEXT_PAGE);
+        page = UrlManager.getProperty(NEXT_PAGE);
         return page;
     }
 }

@@ -3,7 +3,6 @@ package command.factory;
 import command.ActionCommand;
 import command.client.CommandEnum;
 import command.impl.EmptyCommand;
-import command.impl.page.IndexCommand;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +16,7 @@ public class ActionFactory {
     private static final String PARAM_COMMAND = "command";
     private static final String ATTRIBUTE_WRONG_ACTION = "wrongAction";
     private static final String MESSAGE_WRONG_ACTION = "message.wrongaction";
+    private static final String ACTION_INDEX = "INDEX";
 
     public ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new EmptyCommand();
@@ -24,11 +24,11 @@ public class ActionFactory {
         if (action == null || action.isEmpty()) {
             String path = request.getPathInfo();
             action = path.toUpperCase().substring(1);
+            if (action.isEmpty()) {
+                action = ACTION_INDEX;
+            }
         }
         try {
-            if (action.isEmpty()) {
-                return new IndexCommand();
-            }
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();
         } catch (IllegalArgumentException e) {

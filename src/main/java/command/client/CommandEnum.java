@@ -5,6 +5,7 @@ import command.impl.entry.CancelEntryCommand;
 import command.impl.entry.SignUpCommand;
 import command.impl.page.ConferenceCommand;
 import command.impl.page.EntryCommand;
+import command.impl.page.IndexCommand;
 import command.impl.page.ProfileCommand;
 import command.impl.user.LoginCommand;
 import command.impl.user.LogoutCommand;
@@ -12,6 +13,11 @@ import command.impl.user.RegisterCommand;
 import command.impl.user.UpdateUserCommand;
 
 public enum CommandEnum {
+    INDEX {
+        {
+            this.command = new IndexCommand();
+        }
+    },
     LOGOUT {
         {
             this.command = new LogoutCommand();
@@ -22,12 +28,12 @@ public enum CommandEnum {
             this.command = new LoginCommand();
         }
     },
-    PROFILEGENERATION {
+    PROFILE {
         {
             this.command = new ProfileCommand();
         }
     },
-    SHOWCONFERENCES {
+    CONFERENCES {
         {
             this.command = new ConferenceCommand();
         }
@@ -39,12 +45,12 @@ public enum CommandEnum {
     },
     SIGNUP {
         {
-            this.command = new SignUpCommand();
+            this.command = new EntryCommand();
         }
     },
     ENTRYPROCESSING {
         {
-            this.command = new EntryCommand();
+            this.command = new SignUpCommand();
         }
     },
     UPDATEUSERINFO {
