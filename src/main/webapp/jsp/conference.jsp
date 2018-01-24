@@ -8,14 +8,14 @@
     <meta name="author" content=""/>
     <title>Конференции</title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../static/css/half-slider.css" rel="stylesheet"/>
-    <link href="../static/css/style.css" rel="stylesheet"/>
+    <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
+    <link href="../static/css/custom/style.css" rel="stylesheet"/>
 
 </head>
 
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="part/header.jsp"/>
 
 <section class="py-5">
     <div class="toppad">
@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="part/footer.jsp"/>
 
 <div id="modal">
     <jsp:include page="modal/sign.jsp"/>

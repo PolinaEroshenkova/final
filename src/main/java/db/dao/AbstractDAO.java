@@ -43,7 +43,8 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
                     break;
                 default: //EXCEPTION
             }
-            flag = statement.execute();
+            statement.execute();
+            flag = true;
         } catch (SQLException e) {
             LOGGER.log(Level.ERROR, "Statement preparation error");
         } finally {

@@ -1,10 +1,3 @@
-thead {
-    font-weight: bold;
-}
-
-body {
-    background-color: #e7e8ea;
-}
 
 .profile-h3 {
     margin-left: 40px;
@@ -54,11 +47,4 @@ body {
 .btn-profile {
     width: 200px;
     margin: 10px;
-}
-
-.error {
-    color: #fd7e14;
-    margin-left: 5px;
-    font-weight: bold;
-    background-color: black;
 }

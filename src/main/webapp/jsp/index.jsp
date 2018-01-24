@@ -9,14 +9,14 @@
     <meta name="author" content=""/>
     <title>Главная</title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../static/css/half-slider.css" rel="stylesheet"/>
-    <link href="../static/css/style.css" rel="stylesheet"/>
+    <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
+    <link href="../static/css/custom/style.css" rel="stylesheet"/>
 
 </head>
 
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="part/header.jsp"/>
 
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -27,7 +27,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active"
-                 style="background-image: url('../static/resources/pictures/index/event1.jpg')">
+                 style="background-image: url('../static/resources/pictures/index/event2.jpg')">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="part/footer.jsp"/>
 
 <div id="modal">
     <jsp:include page="modal/sign.jsp"/>
@@ -66,6 +66,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
+<script src="../static/javascript/custom/modal.js"></script>
 
 </body>
 </html>

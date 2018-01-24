@@ -10,13 +10,14 @@
     <title>Профиль</title>
 
     <link href="../static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/custom/profile.css" rel="stylesheet">
+    <link href="../static/css/custom/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="part/header.jsp"/>
 
 <section class="py-5">
     <div class="container">
@@ -129,7 +130,7 @@
     </div>
 </section>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="part/footer.jsp"/>
 
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>

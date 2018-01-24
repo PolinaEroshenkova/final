@@ -3,10 +3,7 @@ package command.client;
 import command.ActionCommand;
 import command.impl.entry.CancelEntryCommand;
 import command.impl.entry.SignUpCommand;
-import command.impl.page.ConferenceCommand;
-import command.impl.page.EntryCommand;
-import command.impl.page.IndexCommand;
-import command.impl.page.ProfileCommand;
+import command.impl.page.*;
 import command.impl.user.LoginCommand;
 import command.impl.user.LogoutCommand;
 import command.impl.user.RegisterCommand;
@@ -41,6 +38,11 @@ public enum CommandEnum {
     REGISTER {
         {
             this.command = new RegisterCommand();
+        }
+    },
+    REGISTRATION {
+        {
+            this.command = new RegistrationFormCommand();
         }
     },
     SIGNUP {
