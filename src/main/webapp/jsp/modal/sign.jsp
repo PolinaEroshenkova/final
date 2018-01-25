@@ -27,7 +27,7 @@
 
                 <c:if test="${not empty loginError}">
                     <div class="alert alert-danger" id="loginErrorAlert">
-                        <strong id="loginEror">${loginError}</strong>
+                        <strong id="loginError">${loginError}</strong>
                     </div>
                 </c:if>
 

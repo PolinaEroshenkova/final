@@ -5,7 +5,7 @@ import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class RegistrationFormCommand implements ActionCommand {
+public class RegistrationCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         return JspRoutesManager.getProperty("path.page.registration");

@@ -5,23 +5,24 @@ import db.DAO;
 import db.dao.DAOCommandEnum;
 import db.dao.participant.entity.Participant;
 import db.dao.participant.impl.ParticipantDAO;
+import db.dao.user.IUserDAO;
 import db.dao.user.entity.User;
 import db.dao.user.impl.UserDAO;
 import resource.JspRoutesManager;
-import resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class RegisterCommand implements ActionCommand {
+public class CreateProfileCommand implements ActionCommand {
     private static final String PARAM_NAME_SURNAME = "surname";
     private static final String PARAM_NAME_NAME = "name";
     private static final String PARAM_NAME_SCOPE = "scope";
     private static final String PARAM_NAME_EMAIL = "email";
     private static final String PARAM_NAME_REGISTRATION_LOGIN = "reglogin";
     private static final String PARAM_NAME_REGISTRATION_PASSWORD = "regpassword";
-    private static final String NEXT_PAGE = "url.page.index";
-    private static final String NEXT_ERROR_PAGE = "path.page.registration";
+    private static final String NEXT_PAGE = "path.page.registration";
     private static final String ERROR_LOGIN = "loginError";
+    private static final String ERROR_EMAIL = "emailError";
+    private static final String ATTRIBUTE_STATE = "state";
     private static final String MESSAGE_ERROR_LOGIN = "message.loginerror";
 
     @Override
@@ -31,12 +32,15 @@ public class RegisterCommand implements ActionCommand {
         Participant participant = formParticipantObject(request);
         DAO<String, User> userDAO = new UserDAO();
         DAO<String, Participant> participantDAO = new ParticipantDAO();
-        if (userDAO.execute(DAOCommandEnum.CREATE, user) && participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
-            page = UrlManager.getProperty(NEXT_PAGE);
-        } else {
+        IUserDAO iUserDAO = new UserDAO();
+        if (iUserDAO.findByEmail(user.getEmail()) != null) {
+            request.setAttribute(ERROR_EMAIL, "e-mail зарегистрирован в системе");
+        } else if (!userDAO.execute(DAOCommandEnum.CREATE, user) && !participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
             request.setAttribute(ERROR_LOGIN, "Логин занят");
-            page = JspRoutesManager.getProperty(NEXT_ERROR_PAGE);
+        } else {
+            request.setAttribute(ATTRIBUTE_STATE, "success");
         }
+        page = JspRoutesManager.getProperty(NEXT_PAGE);
         return page;
     }
 

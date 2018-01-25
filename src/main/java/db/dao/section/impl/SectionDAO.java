@@ -82,10 +82,8 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
 
     private List<Section> findById(long id, String query) {
         Connection connection = super.receiveConnection();
-        PreparedStatement statement = null;
         List<Section> sections = null;
-        try {
-            statement = connection.prepareStatement(query);
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setLong(1, id);
             sections = super.receiveChildSelect(statement);
         } catch (SQLException e) {

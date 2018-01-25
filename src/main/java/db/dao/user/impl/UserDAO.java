@@ -1,18 +1,42 @@
 package db.dao.user.impl;
 
 import db.dao.AbstractDAO;
+import db.dao.user.IUserDAO;
 import db.dao.user.entity.User;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class UserDAO extends AbstractDAO<String, User> {
+public class UserDAO extends AbstractDAO<String, User> implements IUserDAO {
+    private static final Logger LOGGER = LogManager.getLogger(UserDAO.class);
+
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
+    private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM user WHERE email=?";
     private static final String SQL_INSERT = "INSERT INTO user(login,password,email) VALUES(?,?,?)";
     private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=?, type=? WHERE login=?";
     private static final String SQL_DELETE = "DELETE FROM user WHERE login=?";
+
+    @Override
+    public User findByEmail(String email) {
+        Connection connection = receiveConnection();
+        User user = null;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_EMAIL)) {
+            statement.setString(1, email);
+            List<User> users = receiveChildSelect(statement);
+            if (users != null && !users.isEmpty()) {
+                user = users.get(0);
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Statement error");
+        }
+        return user;
+    }
 
     @Override
     public User parseResultset(ResultSet resultSet) throws SQLException {
@@ -60,5 +84,4 @@ public class UserDAO extends AbstractDAO<String, User> {
         statement.setString(1, entity.getLogin());
         return statement;
     }
-
 }

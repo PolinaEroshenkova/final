@@ -16,7 +16,7 @@
         <div class="col-6">
             <h2 class="text-center">Форма регистрации</h2>
             <form role="form" method="post" action="Controller">
-                <input type="hidden" name="command" value="Register"/>
+                <input type="hidden" name="command" value="CreateProfile"/>
 
                 <div class="form-group mx-auto">
                     <input id="reglogin" name="reglogin" type="text" placeholder="Логин*"
@@ -24,7 +24,7 @@
                 </div>
 
                 <c:if test="${not empty loginError}">
-                    <div class="alert alert-danger" id="loginErrorAlert">
+                    <div class="alert alert-danger" id="ErrorAlert">
                         <strong id="loginRegisterError">${loginError}</strong>
                     </div>
                 </c:if>
@@ -46,6 +46,12 @@
                            class="form-control input-md" required="">
 
                 </div>
+
+                <c:if test="${not empty emailError}">
+                    <div class="alert alert-danger" id="ErrorAlert">
+                        <strong>${emailError}</strong>
+                    </div>
+                </c:if>
 
                 <div class="form-row justify-content-center">
                     <div class="form-group col-6">
@@ -86,11 +92,16 @@
     </div>
 </div>
 
+<div hidden>
+    <p id="state">${state}</p>
+</div>
+
 
 <jsp:include page="part/footer.jsp"/>
 
 <div id="modal">
     <jsp:include page="modal/sign.jsp"/>
+    <jsp:include page="modal/success.jsp"/>
 </div>
 
 <script src="../static/javascript/lib/jquery.js"></script>

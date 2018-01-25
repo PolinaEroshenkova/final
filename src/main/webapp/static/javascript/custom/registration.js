@@ -7,7 +7,13 @@ $(document).ready(function () {
     $('#company').val(localStorage.getItem("company"));
     $('#position').val(localStorage.getItem("position"));
 
-    $(window).on('unload', function () {
+    var state = $('#state').text();
+    if (state) {
+        $('#success-register').modal('show');
+    }
+
+    $('#signupbutton').click(function () {
+        $('#ErrorAlert').hide();
         localStorage.setItem("login", $('#reglogin').val());
         localStorage.setItem("email", $('#email').val());
         localStorage.setItem("surname", $('#surname').val());
@@ -15,5 +21,9 @@ $(document).ready(function () {
         localStorage.setItem("scope", $('#scope').val());
         localStorage.setItem("company", $('#company').val());
         localStorage.setItem("position", $('#position').val());
+    });
+
+    $('#close-register').click(function () {
+        localStorage.clear();
     });
 });

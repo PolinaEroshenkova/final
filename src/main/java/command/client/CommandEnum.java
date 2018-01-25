@@ -4,9 +4,9 @@ import command.ActionCommand;
 import command.impl.entry.CancelEntryCommand;
 import command.impl.entry.SignUpCommand;
 import command.impl.page.*;
+import command.impl.user.CreateProfileCommand;
 import command.impl.user.LoginCommand;
 import command.impl.user.LogoutCommand;
-import command.impl.user.RegisterCommand;
 import command.impl.user.UpdateUserCommand;
 
 public enum CommandEnum {
@@ -35,14 +35,14 @@ public enum CommandEnum {
             this.command = new ConferenceCommand();
         }
     },
-    REGISTER {
+    CREATEPROFILE {
         {
-            this.command = new RegisterCommand();
+            this.command = new CreateProfileCommand();
         }
     },
     REGISTRATION {
         {
-            this.command = new RegistrationFormCommand();
+            this.command = new RegistrationCommand();
         }
     },
     SIGNUP {
