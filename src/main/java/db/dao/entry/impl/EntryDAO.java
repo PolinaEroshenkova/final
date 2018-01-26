@@ -29,18 +29,16 @@ public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
     public boolean create(Entry entry, List<Section> sections) {
         Connection connection = super.receiveConnection();
         boolean flag = false;
-        try {
+        try (PreparedStatement statement = connection.prepareStatement(SQL_INSERT)) {
             connection.setAutoCommit(true);
-            PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
             statement.setString(1, entry.getLogin());
             statement.execute();
             AbstractDAO<List<Long>, SectionEntry> dao = new SectionEntryDAO();
             for (Section section : sections) {
                 SectionEntry sectionEntry = new SectionEntry(null, section.getIdsection());
-                statement = dao.receiveCreateStatement(connection, sectionEntry);
-                statement.execute();
+                PreparedStatement sectionStatement = dao.receiveCreateStatement(connection, sectionEntry);
+                sectionStatement.execute();
             }
-            connection.commit();
             flag = true;
         } catch (SQLException e) {
             LOGGER.log(Level.ERROR, "Transaction failed");

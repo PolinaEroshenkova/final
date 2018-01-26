@@ -75,11 +75,20 @@
     </div>
 </section>
 
+<div hidden>
+    <p id="state">${state}</p>
+</div>
+
 <jsp:include page="part/footer.jsp"/>
 
 <div id="modal">
     <jsp:include page="modal/sign.jsp"/>
+    <jsp:include page="modal/success.jsp"/>
 </div>
+
+<script src="../static/javascript/lib/jquery.js"></script>
+<script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
+<script src="../static/javascript/custom/showdialog.js"></script>
 
 </body>
 </html>

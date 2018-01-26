@@ -65,7 +65,7 @@
 
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
-<script src="../static/javascript/custom/modal.js"></script>
+<script src="../static/javascript/custom/login.js"></script>
 
 </body>
 </html>

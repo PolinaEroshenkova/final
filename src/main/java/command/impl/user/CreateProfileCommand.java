@@ -23,7 +23,9 @@ public class CreateProfileCommand implements ActionCommand {
     private static final String ERROR_LOGIN = "loginError";
     private static final String ERROR_EMAIL = "emailError";
     private static final String ATTRIBUTE_STATE = "state";
-    private static final String MESSAGE_ERROR_LOGIN = "message.loginerror";
+    private static final String MESSAGE = "message";
+    private static final String SUCCESS_MESSAGE = "Вы успешно зарегистрировались. Войдите, чтобы продолжить";
+    private static final String HREF = "href";
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -39,6 +41,8 @@ public class CreateProfileCommand implements ActionCommand {
             request.setAttribute(ERROR_LOGIN, "Логин занят");
         } else {
             request.setAttribute(ATTRIBUTE_STATE, "success");
+            request.setAttribute(MESSAGE, SUCCESS_MESSAGE);
+            request.setAttribute(HREF, "/");
         }
         page = JspRoutesManager.getProperty(NEXT_PAGE);
         return page;

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="modal" tabindex="-1" role="dialog" id="success-register">
+<div class="modal" tabindex="-1" role="dialog" id="success">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,10 +10,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Вы успешно зарегистрировались. Войдите, чтобы продолжить</p>
+                <p>${message}</p>
             </div>
             <div class="modal-footer">
-                <a href="/" class="btn btn-primary" id="close-register">Закрыть</a>
+                <a href="${href}" class="btn btn-primary" id="close">Закрыть</a>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var error = $('#loginEror').text();
+    var error = $('#loginError').text();
     if (error) {
         $('#signModal').modal('show');
     }

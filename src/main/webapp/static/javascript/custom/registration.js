@@ -7,11 +7,6 @@ $(document).ready(function () {
     $('#company').val(localStorage.getItem("company"));
     $('#position').val(localStorage.getItem("position"));
 
-    var state = $('#state').text();
-    if (state) {
-        $('#success-register').modal('show');
-    }
-
     $('#signupbutton').click(function () {
         $('#ErrorAlert').hide();
         localStorage.setItem("login", $('#reglogin').val());
@@ -23,7 +18,7 @@ $(document).ready(function () {
         localStorage.setItem("position", $('#position').val());
     });
 
-    $('#close-register').click(function () {
+    $('#close').click(function () {
         localStorage.clear();
     });
 });
