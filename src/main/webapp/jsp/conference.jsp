@@ -4,11 +4,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
     <title>Конференции</title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
 
 </head>
@@ -18,7 +15,10 @@
 <jsp:include page="part/header.jsp"/>
 
 <section class="py-5">
-    <div class="toppad">
+    <div class="mt-4">
+        <c:if test="${sessionScope.type eq 'admin'}">
+            <a class="btn btn-primary" href="/newConference">Добавить новую конференцию</a>
+        </c:if>
         <h3 align="center">Ближайшие конференции</h3>
         <div class="table-responsive">
             <table class="table table-hover">

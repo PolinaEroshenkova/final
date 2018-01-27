@@ -15,16 +15,6 @@ public enum CommandEnum {
             this.command = new IndexCommand();
         }
     },
-    LOGOUT {
-        {
-            this.command = new LogoutCommand();
-        }
-    },
-    LOGIN {
-        {
-            this.command = new LoginCommand();
-        }
-    },
     PROFILE {
         {
             this.command = new ProfileCommand();
@@ -35,14 +25,34 @@ public enum CommandEnum {
             this.command = new ConferenceCommand();
         }
     },
-    CREATEPROFILE {
-        {
-            this.command = new CreateProfileCommand();
-        }
-    },
     REGISTRATION {
         {
             this.command = new RegistrationCommand();
+        }
+    },
+    MANAGEMENT {
+        {
+            this.command = new ManagementCommand();
+        }
+    },
+    NEWCONFERENCE {
+        {
+            this.command = new NewConferenceCommand();
+        }
+    },
+    LOGOUT {
+        {
+            this.command = new LogoutCommand();
+        }
+    },
+    LOGIN {
+        {
+            this.command = new LoginCommand();
+        }
+    },
+    CREATEPROFILE {
+        {
+            this.command = new CreateProfileCommand();
         }
     },
     SIGNUP {

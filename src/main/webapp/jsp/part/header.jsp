@@ -26,6 +26,9 @@
                             <a class="btn btn-primary btn-info" href="" id="signbutton" data-toggle="modal"
                                data-target="#signModal">Войти</a>
                         </c:when>
+                        <c:when test="${sessionScope.type eq 'admin'}">
+                            <a class="nav-link" href="/management" id="signbutton">Управление</a>
+                        </c:when>
                         <c:otherwise>
                             <a class="btn btn-primary btn-info" href="/profile" id="signbutton">Личный
                                 кабинет</a>
