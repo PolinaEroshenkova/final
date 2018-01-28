@@ -6,9 +6,10 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Новая конференция</title>
-    <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../static/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../static/css/bootstrap/bootstrap-datetimepicker-standalone.css" rel="stylesheet"/>
+    <link href="../static/css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
-    <link href="../static/css/bootstrap/bootstrap-datetimepicker.min.css"/>
 
 </head>
 <body>
@@ -40,17 +41,35 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group mx-auto col-4">
+
+                    <div class="form-group mx-auto col-2" id="date-picker-start">
                         <label class="col-md-12 control-label label" for="date-start">Дата начала</label>
-                        <input id="date-start" name="date-start" type="text" class="form-control" required="">
+                        <div class="input-group date">
+                            <input id="date-start" name="date-start" type="text" class="form-control" required="">
+                        </div>
                     </div>
 
-                    <div class="form-group mx-auto col-4">
+                    <div class="form-group mx-auto col-2" id="time-picker-start">
+                        <label class="col-md-12 control-label label" for="time-start">Время начала</label>
+                        <div class="input-group date">
+                            <input id="time-start" name="date-start" type="text" class="form-control" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group mx-auto col-2" id="date-picker-end">
                         <label class="col-md-12 control-label label" for="date-end">Дата окончания</label>
                         <input id="date-end" name="date end" type="text" class="form-control" required="">
                     </div>
 
-                    <div class="form-group mx-auto col-4">
+                    <div class="form-group mx-auto col-2" id="time-picker-end">
+                        <label class="col-md-12 control-label label" for="time-end">Время окончания</label>
+                        <div class="input-group date">
+                            <input id="time-end" name="date-start" type="text" class="form-control" required="">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group mx-auto col-3" id="date-picker-deadline">
                         <label class="col-md-12 control-label label" for="deadline">Дедлайн подачи заявок</label>
                         <input id="deadline" name="deadline" type="text" class="form-control" required="">
                     </div>
@@ -64,7 +83,9 @@
                     </div>
 
                     <div class="form-group mx-auto col-2">
-                        <button type="button" name="add-section" class="btn btn-primary">Добавить секцию</button>
+                        <button type="button" name="add-section" class="btn btn-primary" id="add-section">Добавить
+                            секцию
+                        </button>
                     </div>
                 </div>
 
@@ -88,13 +109,11 @@
     <jsp:include page="modal/sign.jsp"/>
 </div>
 
-
-<script src="../static/javascript/lib/jquery.js"></script>
-<script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
-<script src="../static/javascript/bootstrap/bootstrap-datetimepicker.min.js"></script>
 <script src="../static/javascript/lib/moment.min.js"></script>
-<script src="../static/javascript/lang/ru.js"></script>
-<script src="../static/javascript/custom/calendar.js"></script>
+<script src="../static/javascript/lib/jquery.js"></script>
+<script src="../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="../static/javascript/bootstrap/bootstrap-datetimepicker.js"></script>
+<script src="../static/javascript/custom/newconference.js"></script>
 <script src="../static/javascript/custom/login.js"></script>
 </body>
 </html>
