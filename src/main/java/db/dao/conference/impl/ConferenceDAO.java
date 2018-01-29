@@ -8,11 +8,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Date;
+import java.sql.*;
 import java.util.List;
 
 public class ConferenceDAO extends AbstractDAO<Long, Conference> implements IConferenceDAO {
@@ -47,11 +43,6 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
     }
 
     @Override
-    public List<Conference> findByLogin() {
-        return null;
-    }
-
-    @Override
     public Conference parseResultset(ResultSet resultSet) throws SQLException {
         long idconf = resultSet.getLong("id_conference");
         String topic = resultSet.getString("topic");
@@ -60,12 +51,7 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
         Date start = resultSet.getDate("date_start");
         Date end = resultSet.getDate("date_end");
         Date deadline = resultSet.getDate("deadline");
-        Conference conference = new Conference(idconf, topic, numberOfParticipants, place);
-        DateWorker dateWorker = new DateWorker();
-        conference.setBegin(dateWorker.receiveFormatDateByLocale(start));
-        conference.setEnd(dateWorker.receiveFormatDateByLocale(end));
-        conference.setDeadline(dateWorker.receiveFormatDateByLocale(deadline));
-        return conference;
+        return new Conference(idconf, topic, numberOfParticipants, place, start, end, deadline);
     }
 
     @Override
@@ -81,22 +67,22 @@ public class ConferenceDAO extends AbstractDAO<Long, Conference> implements ICon
         statement.setString(1, entity.getTopic());
         statement.setInt(2, entity.getParticipantsnumber());
         statement.setString(3, entity.getPlace());
-        statement.setString(4, entity.getBegin());
-        statement.setString(5, entity.getEnd());
-        statement.setString(6, entity.getDeadline());
+        statement.setDate(4, new Date(entity.getBegin().getTime()));
+        statement.setDate(5, new Date(entity.getEnd().getTime()));
+        statement.setDate(6, new Date(entity.getDeadline().getTime()));
         return statement;
     }
 
     @Override
     public PreparedStatement receiveUpdateStatement(Connection connection, Conference entity, Long key) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
+        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE, Statement.RETURN_GENERATED_KEYS);
         statement.setLong(1, entity.getIdconference());
         statement.setString(2, entity.getTopic());
         statement.setInt(3, entity.getParticipantsnumber());
         statement.setString(4, entity.getPlace());
-        statement.setString(5, entity.getBegin()); //TODO проверить корректность даты
-        statement.setString(6, entity.getEnd());
-        statement.setString(7, entity.getDeadline());
+        statement.setDate(5, new Date(entity.getBegin().getTime())); //TODO проверить корректность даты
+        statement.setDate(6, new Date(entity.getEnd().getTime()));
+        statement.setDate(7, new Date(entity.getDeadline().getTime()));
         if (key == null) {
             statement.setLong(8, entity.getIdconference());
         } else {

@@ -3,15 +3,11 @@ package db.dao.sectionentry.impl;
 import db.dao.AbstractDAO;
 import db.dao.sectionentry.entity.SectionEntry;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class SectionEntryDAO extends AbstractDAO<List<Long>, SectionEntry> {
-    private static final String SQL_SET_VARIABLE = "SET @identry=LAST_INSERT_ID()";
-    private static final String SQL_CREATE = "INSERT INTO sectionentry VALUES(?,@identry)";
+    private static final String SQL_CREATE = "INSERT INTO sectionentry VALUES(?,?)";
     private static final String SQL_DELETE = "DELETE FROM sectionentry WHERE id_entry=?";
 
 
@@ -29,10 +25,9 @@ public class SectionEntryDAO extends AbstractDAO<List<Long>, SectionEntry> {
 
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, SectionEntry entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_SET_VARIABLE);
-        statement.execute();
-        statement = connection.prepareStatement(SQL_CREATE);
+        PreparedStatement statement = connection.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS);
         statement.setLong(1, entity.getIdsection());
+        statement.setLong(2, entity.getIdentry());
         return statement;
     }
 

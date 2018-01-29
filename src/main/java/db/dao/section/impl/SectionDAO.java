@@ -7,13 +7,10 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
-public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectionDAO {
+public class SectionDAO extends AbstractDAO<Long, Section> implements ISectionDAO {
     private static final Logger LOGGER = LogManager.getLogger(SectionDAO.class);
 
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM section WHERE id_section=?";
@@ -45,22 +42,22 @@ public class SectionDAO extends AbstractDAO<Integer, Section> implements ISectio
     }
 
     @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, Integer key) throws SQLException {
+    public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_KEY);
-        statement.setInt(1, key);
+        statement.setLong(1, key);
         return statement;
     }
 
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, Section entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
+        PreparedStatement statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.setLong(1, entity.getIdConference());
         statement.setString(2, entity.getTitle());
         return statement;
     }
 
     @Override
-    public PreparedStatement receiveUpdateStatement(Connection connection, Section entity, Integer key) throws SQLException {
+    public PreparedStatement receiveUpdateStatement(Connection connection, Section entity, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
         statement.setLong(1, entity.getIdsection());
         statement.setLong(2, entity.getIdConference());

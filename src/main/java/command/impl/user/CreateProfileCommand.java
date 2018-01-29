@@ -37,7 +37,7 @@ public class CreateProfileCommand implements ActionCommand {
         IUserDAO iUserDAO = new UserDAO();
         if (iUserDAO.findByEmail(user.getEmail()) != null) {
             request.setAttribute(ERROR_EMAIL, "e-mail зарегистрирован в системе");
-        } else if (!userDAO.execute(DAOCommandEnum.CREATE, user) && !participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
+        } else if (userDAO.execute(DAOCommandEnum.CREATE, user) != 0 && participantDAO.execute(DAOCommandEnum.CREATE, participant) != 0) {
             request.setAttribute(ERROR_LOGIN, "Логин занят");
         } else {
             request.setAttribute(ATTRIBUTE_STATE, "success");

@@ -1,6 +1,7 @@
 package command.client;
 
 import command.ActionCommand;
+import command.impl.conference.RegisterConferenceCommand;
 import command.impl.entry.CancelEntryCommand;
 import command.impl.entry.SignUpCommand;
 import command.impl.page.*;
@@ -38,6 +39,11 @@ public enum CommandEnum {
     NEWCONFERENCE {
         {
             this.command = new NewConferenceCommand();
+        }
+    },
+    REGISTERCONFERENCE {
+        {
+            this.command = new RegisterConferenceCommand();
         }
     },
     LOGOUT {

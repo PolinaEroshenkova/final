@@ -3,17 +3,11 @@ package db.dao.entry.impl;
 import db.dao.AbstractDAO;
 import db.dao.entry.IEntryDAO;
 import db.dao.entry.entity.Entry;
-import db.dao.section.entity.Section;
-import db.dao.sectionentry.entity.SectionEntry;
-import db.dao.sectionentry.impl.SectionEntryDAO;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
@@ -24,29 +18,6 @@ public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
     private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
     private static final String SQL_DELETE = "DELETE FROM entry WHERE id_entry=?";
-
-    @Override
-    public boolean create(Entry entry, List<Section> sections) {
-        Connection connection = super.receiveConnection();
-        boolean flag = false;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_INSERT)) {
-            connection.setAutoCommit(true);
-            statement.setString(1, entry.getLogin());
-            statement.execute();
-            AbstractDAO<List<Long>, SectionEntry> dao = new SectionEntryDAO();
-            for (Section section : sections) {
-                SectionEntry sectionEntry = new SectionEntry(null, section.getIdsection());
-                PreparedStatement sectionStatement = dao.receiveCreateStatement(connection, sectionEntry);
-                sectionStatement.execute();
-            }
-            flag = true;
-        } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Transaction failed");
-        } finally {
-            super.returnConnection(connection);
-        }
-        return flag;
-    }
 
     @Override
     public List<Entry> findByLogin(String login) {
@@ -80,7 +51,7 @@ public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
 
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, Entry entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
+        PreparedStatement statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, entity.getLogin());
         return statement;
     }

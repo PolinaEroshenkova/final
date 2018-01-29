@@ -22,4 +22,8 @@ $(document).ready(function () {
         $("#sections").append('<option>' + section + '</option>');
         $('#section').val('');
     });
+
+    $('#submit').click(function () {
+        $('#sections').find('option').prop('selected', true);
+    });
 });

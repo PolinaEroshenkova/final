@@ -11,6 +11,11 @@ public class Section {
         this.title = title;
     }
 
+    public Section(long idconference, String title) {
+        this.idconference = idconference;
+        this.title = title;
+    }
+
     public Section(long idsection) {
         this.idsection = idsection;
     }

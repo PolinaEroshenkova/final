@@ -1,10 +1,12 @@
 package command.impl.entry;
 
 import command.ActionCommand;
-import db.dao.entry.IEntryDAO;
+import db.dao.AbstractDAO;
+import db.dao.DAOCommandEnum;
 import db.dao.entry.entity.Entry;
 import db.dao.entry.impl.EntryDAO;
-import db.dao.section.entity.Section;
+import db.dao.sectionentry.entity.SectionEntry;
+import db.dao.sectionentry.impl.SectionEntryDAO;
 import resource.JspRoutesManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,13 +36,20 @@ public class SignUpCommand implements ActionCommand {
             long longId = Long.parseLong(id);
             longSectionId.add(longId);
         }
-        List<Section> sections = new ArrayList<>();
-        for (Long id : longSectionId) {
-            Section section = new Section(id);
-            sections.add(section);
+        AbstractDAO<Long, Entry> entryDAO = new EntryDAO();
+        AbstractDAO<List<Long>, SectionEntry> sectionEntryDao = new SectionEntryDAO();
+        long insertedId = entryDAO.execute(DAOCommandEnum.CREATE, entry);
+        int result = -1;
+        if (insertedId > 0) {
+            result = 0;
+            for (Long id : longSectionId) {
+                SectionEntry sectionEntry = new SectionEntry(insertedId, id);
+                if (sectionEntryDao.execute(DAOCommandEnum.CREATE, sectionEntry) < 0) {
+                    result++;
+                }
+            }
         }
-        IEntryDAO entryDAO = new EntryDAO();
-        if (entryDAO.create(entry, sections)) {
+        if (result == 0) {
             request.setAttribute(REQUEST_STATE, REQUEST_STATE_SUCCESS);
             request.setAttribute(MESSAGE, MESSAGE_SUCCESS);
             request.setAttribute(HREF, "/conference");

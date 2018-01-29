@@ -3,10 +3,7 @@ package db.dao.participant.impl;
 import db.dao.AbstractDAO;
 import db.dao.participant.entity.Participant;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ParticipantDAO extends AbstractDAO<String, Participant> {
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM participant WHERE login=?";
@@ -35,7 +32,7 @@ public class ParticipantDAO extends AbstractDAO<String, Participant> {
 
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, Participant entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
+        PreparedStatement statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, entity.getLogin());
         statement.setString(2, entity.getSurname());
         statement.setString(3, entity.getName());

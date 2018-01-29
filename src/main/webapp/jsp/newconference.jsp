@@ -21,7 +21,7 @@
         <div class="col-12">
             <form role="form" method="post" action="Controller">
                 <h2>Регистрация конференции</h2>
-                <input type="hidden" name="command" value="AddConference"/>
+                <input type="hidden" name="command" value="RegisterConference"/>
 
                 <div class="form-group mx-auto">
                     <input id="topic" name="topic" type="text" placeholder="Тема*"
@@ -96,7 +96,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Добавить конференцию</button>
+                <button type="submit" class="btn btn-primary" id="submit">Добавить конференцию</button>
 
             </form>
         </div>

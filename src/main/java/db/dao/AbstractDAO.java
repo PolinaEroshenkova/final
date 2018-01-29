@@ -26,25 +26,34 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         pool.closeConnection(connection);
     }
 
-    public boolean execute(DAOCommandEnum command, T entity, K key) {
+    public int execute(DAOCommandEnum command, T entity, K key) {
         Connection connection = receiveConnection();
-        boolean flag = false;
+        int result = -1;
         PreparedStatement statement = null;
         try {
             switch (command) {
                 case CREATE:
                     statement = receiveCreateStatement(connection, entity);
+                    statement.execute();
+                    ResultSet resultSet = statement.getGeneratedKeys();
+                    if (resultSet != null && resultSet.next()) {
+                        result = resultSet.getInt(1);
+                    } else {
+                        result = 0;
+                    }
                     break;
                 case UPDATE:
                     statement = receiveUpdateStatement(connection, entity, key);
+                    statement.execute();
+                    result = 0;
                     break;
                 case DELETE:
                     statement = receiveDeleteStatement(connection, entity);
+                    statement.execute();
+                    result = 0;
                     break;
                 default: //EXCEPTION
             }
-            statement.execute();
-            flag = true;
         } catch (SQLException e) {
             LOGGER.log(Level.ERROR, "Statement preparation error");
         } finally {
@@ -57,10 +66,10 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
             }
             returnConnection(connection);
         }
-        return flag;
+        return result;
     }
 
-    public boolean execute(DAOCommandEnum command, T entity) {
+    public int execute(DAOCommandEnum command, T entity) {
         return execute(command, entity, null);
     }
 

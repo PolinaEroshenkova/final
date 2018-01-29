@@ -2,6 +2,7 @@ package db.dao.conference.entity;
 
 import db.dao.section.entity.Section;
 
+import java.util.Date;
 import java.util.List;
 
 public class Conference {
@@ -9,12 +10,23 @@ public class Conference {
     private String topic;
     private int participantsnumber;
     private String place;
-    private String begin;
-    private String end;
-    private String deadline;
+    private Date begin;
+    private Date end;
+    private Date deadline;
     private List<Section> sections;
 
-    public Conference(long idconference, String topic, int participantsnumber, String place, String begin, String end, String deadline) {
+    public Conference(long idconference, String topic, int participantsnumber, String place, Date begin, Date end, Date deadline, List<Section> sections) {
+        this.idconference = idconference;
+        this.topic = topic;
+        this.participantsnumber = participantsnumber;
+        this.place = place;
+        this.begin = begin;
+        this.end = end;
+        this.deadline = deadline;
+        this.sections = sections;
+    }
+
+    public Conference(long idconference, String topic, int participantsnumber, String place, Date begin, Date end, Date deadline) {
         this.idconference = idconference;
         this.topic = topic;
         this.participantsnumber = participantsnumber;
@@ -24,11 +36,13 @@ public class Conference {
         this.deadline = deadline;
     }
 
-    public Conference(long idconference, String topic, int participantsnumber, String place) {
-        this.idconference = idconference;
+    public Conference(String topic, int participantsnumber, String place, Date begin, Date end, Date deadline) {
         this.topic = topic;
         this.participantsnumber = participantsnumber;
         this.place = place;
+        this.begin = begin;
+        this.end = end;
+        this.deadline = deadline;
     }
 
     public long getIdconference() {
@@ -63,27 +77,27 @@ public class Conference {
         this.place = place;
     }
 
-    public String getBegin() {
+    public Date getBegin() {
         return begin;
     }
 
-    public void setBegin(String begin) {
+    public void setBegin(Date begin) {
         this.begin = begin;
     }
 
-    public String getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
@@ -108,7 +122,8 @@ public class Conference {
         if (place != null ? !place.equals(that.place) : that.place != null) return false;
         if (begin != null ? !begin.equals(that.begin) : that.begin != null) return false;
         if (end != null ? !end.equals(that.end) : that.end != null) return false;
-        return deadline != null ? deadline.equals(that.deadline) : that.deadline == null;
+        if (deadline != null ? !deadline.equals(that.deadline) : that.deadline != null) return false;
+        return sections != null ? sections.equals(that.sections) : that.sections == null;
     }
 
     @Override
@@ -120,6 +135,7 @@ public class Conference {
         result = 31 * result + (begin != null ? begin.hashCode() : 0);
         result = 31 * result + (end != null ? end.hashCode() : 0);
         result = 31 * result + (deadline != null ? deadline.hashCode() : 0);
+        result = 31 * result + (sections != null ? sections.hashCode() : 0);
         return result;
     }
 
@@ -130,9 +146,10 @@ public class Conference {
                 ", topic='" + topic + '\'' +
                 ", participantsnumber=" + participantsnumber +
                 ", place='" + place + '\'' +
-                ", begin='" + begin + '\'' +
-                ", end='" + end + '\'' +
-                ", deadline='" + deadline + '\'' +
+                ", begin=" + begin +
+                ", end=" + end +
+                ", deadline=" + deadline +
+                ", sections=" + sections +
                 '}';
     }
 }

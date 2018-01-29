@@ -7,10 +7,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class UserDAO extends AbstractDAO<String, User> implements IUserDAO {
@@ -56,7 +53,7 @@ public class UserDAO extends AbstractDAO<String, User> implements IUserDAO {
 
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, User entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_INSERT);
+        PreparedStatement statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, entity.getLogin());
         statement.setString(2, entity.getPassword());
         statement.setString(3, entity.getEmail());
