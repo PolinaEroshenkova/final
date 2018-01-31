@@ -1170,7 +1170,7 @@
                     return !document.getElementsByName || !document.getElementsByName(expando).length;
                 });
 
-                // ID filter and find
+                // ID com.eroshenkova.conference.filter and find
                 if (support.getById) {
                     Expr.filter["ID"] = function (id) {
                         var attrId = id.replace(runescape, funescape);
@@ -1372,7 +1372,7 @@
                         // on a disconnected node (IE 9)
                         support.disconnectedMatch = matches.call(el, "*");
 
-                        // This should fail with an exception
+                        // This should fail with an com.eroshenkova.conference.exception
                         // Gecko does not error, returns false instead
                         matches.call(el, "[s!='']:x");
                         rbuggyMatches.push("!=", pseudos);
@@ -1706,7 +1706,7 @@
                                 Sizzle.error(match[0]);
                             }
 
-                            // numeric x and y parameters for Expr.filter.CHILD
+                            // numeric x and y parameters for Expr.com.eroshenkova.conference.filter.CHILD
                             // remember that false/true cast respectively to 0/1
                             match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
                             match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
@@ -1743,7 +1743,7 @@
                             match[2] = unquoted.slice(0, excess);
                         }
 
-                        // Return only captures needed by the pseudo filter method (type and argument)
+                        // Return only captures needed by the pseudo com.eroshenkova.conference.filter method (type and argument)
                         return match.slice(0, 3);
                     }
                 },
@@ -1934,7 +1934,7 @@
                                 Sizzle.error("unsupported pseudo: " + pseudo);
 
                         // The user may use createPseudo to indicate that
-                        // arguments are needed to create the filter function
+                        // arguments are needed to create the com.eroshenkova.conference.filter function
                         // just as Sizzle does
                         if (fn[expando]) {
                             return fn(argument);
@@ -2854,7 +2854,7 @@
 
     var risSimple = /^.[^:#\[\.,]*$/;
 
-// Implement the identical functionality for filter and not
+// Implement the identical functionality for com.eroshenkova.conference.filter and not
     function winnow(elements, qualifier, not) {
         if (jQuery.isFunction(qualifier)) {
             return jQuery.grep(elements, function (elem, i) {
@@ -3687,7 +3687,7 @@
                                     process();
                                 } else {
 
-                                    // Call an optional hook to record the stack, in case of exception
+                                    // Call an optional hook to record the stack, in case of com.eroshenkova.conference.exception
                                     // since it's otherwise lost when execution goes async
                                     if (jQuery.Deferred.getStackHook) {
                                         process.stackTrace = jQuery.Deferred.getStackHook();
@@ -3863,7 +3863,7 @@
         // Support: IE 8 - 9 only
         // Console exists when dev tools are open, which can happen at any time
         if (window.console && window.console.warn && error && rerrorNames.test(error.name)) {
-            window.console.warn("jQuery.Deferred exception: " + error.message, error.stack, stack);
+            window.console.warn("jQuery.Deferred com.eroshenkova.conference.exception: " + error.message, error.stack, stack);
         }
     };
 
@@ -4311,7 +4311,7 @@
                 // (and therefore has an element appears at this[ 0 ]) and the
                 // `value` parameter was not undefined. An empty jQuery object
                 // will result in `undefined` for elem = this[ 0 ] which will
-                // throw an exception if an attempt to read a data cache is made.
+                // throw an com.eroshenkova.conference.exception if an attempt to read a data cache is made.
                 if (elem && value === undefined) {
 
                     // Attempt to get data from the cache
@@ -4491,7 +4491,7 @@
 
     var isHiddenWithinTree = function (elem, el) {
 
-        // isHiddenWithinTree might be called from jQuery#filter function;
+        // isHiddenWithinTree might be called from jQuery#com.eroshenkova.conference.filter function;
         // in that case, element will be second argument
         elem = el || elem;
 
@@ -6006,7 +6006,7 @@
 
                         elem = 0;
 
-                        // If using innerHTML throws an exception, use the fallback method
+                        // If using innerHTML throws an com.eroshenkova.conference.exception, use the fallback method
                     } catch (e) {
                     }
                 }
@@ -6171,7 +6171,7 @@
         computed = computed || getStyles(elem);
 
         // getPropertyValue is needed for:
-        //   .css('filter') (IE 9 only, #12537)
+        //   .css('com.eroshenkova.conference.filter') (IE 9 only, #12537)
         //   .css('--customProperty) (#3144)
         if (computed) {
             ret = computed.getPropertyValue(name) || computed[name];
@@ -8446,7 +8446,7 @@
         serializeArray: function () {
             return this.map(function () {
 
-                // Can add propHook for "elements" to filter or add form elements
+                // Can add propHook for "elements" to com.eroshenkova.conference.filter or add form elements
                 var elements = jQuery.prop(this, "elements");
                 return elements ? jQuery.makeArray(elements) : this;
             })
@@ -9001,7 +9001,7 @@
                 urlAnchor = document.createElement("a");
 
                 // Support: IE <=8 - 11, Edge 12 - 13
-                // IE throws exception on accessing the href property if url is malformed,
+                // IE throws com.eroshenkova.conference.exception on accessing the href property if url is malformed,
                 // e.g. http://example.com:80x/
                 try {
                     urlAnchor.href = s.url;
@@ -9544,7 +9544,7 @@
 
                     try {
 
-                        // Do send the request (this may raise an exception)
+                        // Do send the request (this may raise an com.eroshenkova.conference.exception)
                         xhr.send(options.hasContent && options.data || null);
                     } catch (e) {
 
@@ -10017,7 +10017,7 @@
         // but those exceptions were never presented as a real life use-cases
         // and might be considered as more preferable results.
         //
-        // This logic, however, is not guaranteed and can change at any point in the future
+        // This com.eroshenkova.conference.logic, however, is not guaranteed and can change at any point in the future
         offsetParent: function () {
             return this.map(function () {
                 var offsetParent = this.offsetParent;

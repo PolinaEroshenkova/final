@@ -17,7 +17,7 @@
 <section class="py-5">
     <div class="mt-4">
         <c:if test="${sessionScope.type eq 'admin'}">
-            <a class="btn btn-primary" href="/newConference">Добавить новую конференцию</a>
+            <a class="btn btn-primary" href="/newConference" class="ml-2">Добавить новую конференцию</a>
         </c:if>
         <h3 align="center">Ближайшие конференции</h3>
         <div class="table-responsive">
@@ -43,12 +43,20 @@
                         <td><c:out value="${current.begin}"/><br/>
                             <c:out value="${current.end}"/></td>
                         <td><c:out value="${current.place}"/></td>
-                        <c:if test="${not empty sessionScope.user}">
-                            <td>
-                                <a href="\signUp?id=${current.idconference}" class="btn btn-primary entry">Оставить
-                                    заявку</a>
-                            </td>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${sessionScope.type eq 'user'}">
+                                <td>
+                                    <a href="\signUp?id=${current.idconference}" class="btn btn-primary entry">Оставить
+                                        заявку</a>
+                                </td>
+                            </c:when>
+                            <c:when test="${sessionScope.type eq 'admin'}">
+                                <td>
+                                    <a href="\deleteConference?id=${current.idconference}"
+                                       class="btn btn-primary entry">Удалить конференцию</a>
+                                </td>
+                            </c:when>
+                        </c:choose>
                     </tr>
                 </c:forEach>
                 </tbody>

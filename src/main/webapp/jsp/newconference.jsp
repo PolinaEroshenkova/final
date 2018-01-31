@@ -52,19 +52,19 @@
                     <div class="form-group mx-auto col-2" id="time-picker-start">
                         <label class="col-md-12 control-label label" for="time-start">Время начала</label>
                         <div class="input-group date">
-                            <input id="time-start" name="date-start" type="text" class="form-control" required="">
+                            <input id="time-start" name="time-start" type="text" class="form-control" required="">
                         </div>
                     </div>
 
                     <div class="form-group mx-auto col-2" id="date-picker-end">
                         <label class="col-md-12 control-label label" for="date-end">Дата окончания</label>
-                        <input id="date-end" name="date end" type="text" class="form-control" required="">
+                        <input id="date-end" name="date-end" type="text" class="form-control" required="">
                     </div>
 
                     <div class="form-group mx-auto col-2" id="time-picker-end">
                         <label class="col-md-12 control-label label" for="time-end">Время окончания</label>
                         <div class="input-group date">
-                            <input id="time-end" name="date-start" type="text" class="form-control" required="">
+                            <input id="time-end" name="time-end" type="text" class="form-control" required="">
                         </div>
                     </div>
 
@@ -94,6 +94,7 @@
                     <select id="sections" name="sections" class="form-control" multiple="multiple" size="5"
                             required>
                     </select>
+                    <button type="button" class="btn btn-secondary" id="delete-section">Удалить секцию</button>
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="submit">Добавить конференцию</button>

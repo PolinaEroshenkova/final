@@ -8,7 +8,7 @@
 
     <filter>
         <filter-name>StaticFilter</filter-name>
-        <filter-class>filter.StaticFilter</filter-class>
+        <filter-class>com.eroshenkova.conference.filter.StaticFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -18,7 +18,7 @@
 
     <servlet>
         <servlet-name>Controller</servlet-name>
-        <servlet-class>servlet.Controller</servlet-class>
+        <servlet-class>com.eroshenkova.conference.servlet.Controller</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

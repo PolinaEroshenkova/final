@@ -2171,7 +2171,7 @@ var bootstrap = (function (exports, $) {
             return arr.find(check);
         }
 
-        // use `filter` to obtain the same behavior of `find`
+        // use `com.eroshenkova.conference.filter` to obtain the same behavior of `find`
         return arr.filter(check)[0];
     }
 

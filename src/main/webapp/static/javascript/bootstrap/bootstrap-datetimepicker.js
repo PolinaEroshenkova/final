@@ -141,7 +141,7 @@
                 var returnMoment;
 
                 if (d === undefined || d === null) {
-                    returnMoment = moment(); //TODO should this use format? and locale?
+                    returnMoment = moment(); //TODO should this use format? and com.eroshenkova.conference.locale?
                 } else if (moment.isDate(d) || moment.isMoment(d)) {
                     // If the date that is passed in is already a Date() or moment() object,
                     // pass it directly to moment.
@@ -470,7 +470,7 @@
                     element.children().first().after(widget);
                 }
 
-                // Top and bottom logic
+                // Top and bottom com.eroshenkova.conference.logic
                 if (vertical === 'auto') {
                     if (offset.top + widget.height() * 1.5 >= $(window).height() + $(window).scrollTop() &&
                         widget.height() + element.outerHeight() < offset.top) {
@@ -480,7 +480,7 @@
                     }
                 }
 
-                // Left and right logic
+                // Left and right com.eroshenkova.conference.logic
                 if (horizontal === 'auto') {
                     if (parent.width() < offset.left + widget.outerWidth() / 2 &&
                         offset.left + widget.outerWidth() > $(window).width()) {
@@ -1013,7 +1013,7 @@
                 } else {
                     inputDate = options.parseInputDate(inputDate);
                 }
-                //inputDate.locale(options.locale);
+                //inputDate.com.eroshenkova.conference.locale(options.com.eroshenkova.conference.locale);
                 return inputDate;
             },
 
@@ -1852,7 +1852,7 @@
             }
 
             if (!moment.localeData(locale)) {
-                throw new TypeError('locale() locale ' + locale + ' is not loaded from moment locales!');
+                throw new TypeError('com.eroshenkova.conference.locale() com.eroshenkova.conference.locale ' + locale + ' is not loaded from moment locales!');
             }
 
             options.locale = locale;

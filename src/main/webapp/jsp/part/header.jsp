@@ -27,7 +27,7 @@
                                data-target="#signModal">Войти</a>
                         </c:when>
                         <c:when test="${sessionScope.type eq 'admin'}">
-                            <a class="nav-link" href="/management" id="signbutton">Управление</a>
+                            <a class="nav-link" href="/management" id="signbutton">Заявки</a>
                         </c:when>
                         <c:otherwise>
                             <a class="btn btn-primary btn-info" href="/profile" id="signbutton">Личный

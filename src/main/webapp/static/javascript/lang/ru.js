@@ -1,5 +1,5 @@
-//! moment.js locale configuration
-//! locale : Russian [ru]
+//! moment.js com.eroshenkova.conference.locale configuration
+//! com.eroshenkova.conference.locale : Russian [ru]
 //! author : Viktorminator : https://github.com/Viktorminator
 //! Author : Menelion Elensúle : https://github.com/Oire
 //! author : Коренберг Марк : https://github.com/socketpair

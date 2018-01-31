@@ -23,6 +23,10 @@ $(document).ready(function () {
         $('#section').val('');
     });
 
+    $('#delete-section').click(function () {
+        $('#sections :selected').remove();
+    });
+
     $('#submit').click(function () {
         $('#sections').find('option').prop('selected', true);
     });
