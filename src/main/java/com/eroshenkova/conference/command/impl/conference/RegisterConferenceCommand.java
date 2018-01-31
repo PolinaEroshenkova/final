@@ -1,12 +1,15 @@
 package com.eroshenkova.conference.command.impl.conference;
 
 import com.eroshenkova.conference.command.ActionCommand;
+import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.db.dao.conference.entity.Conference;
 import com.eroshenkova.conference.db.dao.section.entity.Section;
 import com.eroshenkova.conference.locale.DateWorker;
 import com.eroshenkova.conference.logic.impl.ConferenceLogic;
+import com.eroshenkova.conference.resource.JspRoutesManager;
+import com.eroshenkova.conference.resource.MessageManager;
 import com.eroshenkova.conference.resource.UrlManager;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +25,6 @@ public class RegisterConferenceCommand implements ActionCommand {
     private static final Logger LOGGER = LogManager.getLogger(RegisterConferenceCommand.class);
     private static final String DELIMITER_SPACE = " ";
 
-
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
@@ -32,7 +34,8 @@ public class RegisterConferenceCommand implements ActionCommand {
             if (logic.register(conference)) {
                 page = UrlManager.getProperty(Page.CONFERENCE);
             } else {
-                page = UrlManager.getProperty(Page.ERROR);
+                request.setAttribute(Parameter.ERROR_MESSAGE, MessageManager.getProperty(Message.SERVER_ERROR));
+                page = JspRoutesManager.getProperty(Page.JSP_NEW_CONFERENCE);
             }
         } catch (ParseException e) {
             LOGGER.log(Level.ERROR, "Cannot parse date to format");

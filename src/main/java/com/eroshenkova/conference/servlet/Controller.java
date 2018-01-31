@@ -2,6 +2,7 @@ package com.eroshenkova.conference.servlet;
 
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.factory.ActionFactory;
+import com.eroshenkova.conference.constant.Page;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,11 +23,14 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String page = null;
+        String page;
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);
-        if (page.endsWith(".jsp")) {
+        if (page == null) {
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Page.JSP_ERROR);
+            dispatcher.forward(request, response);
+        } else if (page.endsWith(".jsp")) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request, response);
         } else {

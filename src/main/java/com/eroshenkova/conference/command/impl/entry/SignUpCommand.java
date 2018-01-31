@@ -1,9 +1,12 @@
 package com.eroshenkova.conference.command.impl.entry;
 
 import com.eroshenkova.conference.command.ActionCommand;
+import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.logic.impl.EntryLogic;
+import com.eroshenkova.conference.resource.JspRoutesManager;
+import com.eroshenkova.conference.resource.MessageManager;
 import com.eroshenkova.conference.resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +22,10 @@ public class SignUpCommand implements ActionCommand {
         String[] sectionIds = request.getParameterValues(Parameter.SECTIONS);
         EntryLogic logic = new EntryLogic();
         if (logic.register(login, sectionIds)) {
-            page = UrlManager.getProperty(Page.ENTRY);
+            page = UrlManager.getProperty(Page.CONFERENCE);
         } else {
-            page = UrlManager.getProperty(Page.ERROR);
+            page = JspRoutesManager.getProperty(Page.JSP_ENTRY);
+            request.setAttribute(Parameter.ERROR_MESSAGE, MessageManager.getProperty(Message.SERVER_ERROR));
         }
         return page;
     }

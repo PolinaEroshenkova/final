@@ -2,8 +2,14 @@ package com.eroshenkova.conference.logic.impl;
 
 import com.eroshenkova.conference.db.DAO;
 import com.eroshenkova.conference.db.dao.DAOCommandEnum;
+import com.eroshenkova.conference.db.dao.conference.entity.Conference;
+import com.eroshenkova.conference.db.dao.conference.impl.ConferenceDAO;
+import com.eroshenkova.conference.db.dao.entry.IEntryDAO;
 import com.eroshenkova.conference.db.dao.entry.entity.Entry;
 import com.eroshenkova.conference.db.dao.entry.impl.EntryDAO;
+import com.eroshenkova.conference.db.dao.section.ISectionDAO;
+import com.eroshenkova.conference.db.dao.section.entity.Section;
+import com.eroshenkova.conference.db.dao.section.impl.SectionDAO;
 import com.eroshenkova.conference.db.dao.sectionentry.entity.SectionEntry;
 import com.eroshenkova.conference.db.dao.sectionentry.impl.SectionEntryDAO;
 import com.eroshenkova.conference.logic.Logic;
@@ -48,5 +54,23 @@ public class EntryLogic implements Logic<Long, Entry> {
             flag = false;
         }
         return flag;
+    }
+
+    public List<Entry> findByLogin(String login) {
+        IEntryDAO entryDao = new EntryDAO();
+        List<Entry> entries = entryDao.findByLogin(login);
+        if (entries != null) {
+            ISectionDAO sectionDao = new SectionDAO();
+            DAO<Long, Conference> conferenceDao = new ConferenceDAO();
+            for (Entry entry : entries) {  //TODO cортировка по дате
+                long id = entry.getIdentry();
+                List<Section> sections = sectionDao.findByEntryId(id);
+                long idconference = sections.get(0).getIdConference();
+                Conference conference = conferenceDao.findByKey(idconference);
+                conference.setSections(sections);
+                entry.setConference(conference);
+            }
+        }
+        return entries;
     }
 }

@@ -29,6 +29,15 @@ public class UserLogic implements Logic<String, User> {
         return 0;
     }
 
+    public User formProfile(String login) {
+        DAO<String, User> userDAO = new UserDAO();
+        User user = userDAO.findByKey(login);
+        DAO<String, Participant> participantDAO = new ParticipantDAO();
+        Participant participant = participantDAO.findByKey(login);
+        user.setParticipant(participant);
+        return user;
+    }
+
     public boolean logIn(User user) {
         User dbUser = findByKey(user.getLogin());
         return dbUser != null && user.getPassword().equals(dbUser.getPassword());

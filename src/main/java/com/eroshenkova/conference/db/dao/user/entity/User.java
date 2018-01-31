@@ -1,10 +1,13 @@
 package com.eroshenkova.conference.db.dao.user.entity;
 
+import com.eroshenkova.conference.db.dao.participant.entity.Participant;
+
 public class User {
     private String login;
     private String password;
     private String email;
     private String type;
+    private Participant participant;
 
     public User(String login, String password, String email) {
         this.login = login;
@@ -56,6 +59,14 @@ public class User {
         this.type = type;
     }
 
+    public Participant getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(Participant participant) {
+        this.participant = participant;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,7 +77,8 @@ public class User {
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        return type != null ? type.equals(user.type) : user.type == null;
+        if (type != null ? !type.equals(user.type) : user.type != null) return false;
+        return participant != null ? participant.equals(user.participant) : user.participant == null;
     }
 
     @Override
@@ -75,6 +87,7 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (participant != null ? participant.hashCode() : 0);
         return result;
     }
 
@@ -85,8 +98,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", type='" + type + '\'' +
+                ", participant=" + participant +
                 '}';
     }
-
-
 }

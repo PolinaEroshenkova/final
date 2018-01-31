@@ -17,7 +17,7 @@
 <section class="py-5">
     <div class="mt-4">
         <c:if test="${sessionScope.type eq 'admin'}">
-            <a class="btn btn-primary" href="/newConference" class="ml-2">Добавить новую конференцию</a>
+            <a class="btn btn-primary ml-2" href="/newConference">Добавить новую конференцию</a>
         </c:if>
         <h3 align="center">Ближайшие конференции</h3>
         <div class="table-responsive">

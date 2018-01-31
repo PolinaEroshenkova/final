@@ -5,6 +5,7 @@ import com.eroshenkova.conference.db.dao.DAOCommandEnum;
 import com.eroshenkova.conference.db.dao.conference.IConferenceDAO;
 import com.eroshenkova.conference.db.dao.conference.entity.Conference;
 import com.eroshenkova.conference.db.dao.conference.impl.ConferenceDAO;
+import com.eroshenkova.conference.db.dao.section.ISectionDAO;
 import com.eroshenkova.conference.db.dao.section.entity.Section;
 import com.eroshenkova.conference.db.dao.section.impl.SectionDAO;
 import com.eroshenkova.conference.logic.Logic;
@@ -22,8 +23,15 @@ public class ConferenceLogic implements Logic<Long, Conference> {
     @Override
     public Conference findByKey(Long key) {
         DAO<Long, Conference> conferenceDao = new ConferenceDAO();
-        return conferenceDao.findByKey(key);
+        Conference conference = conferenceDao.findByKey(key);
+        if (conference != null) {
+            ISectionDAO sectionDao = new SectionDAO();
+            List<Section> sections = sectionDao.findByConferenceId(key);
+            conference.setSections(sections);
+        }
+        return conference;
     }
+
 
     public List<Conference> findByDate() {
         IConferenceDAO conferenceDao = new ConferenceDAO();

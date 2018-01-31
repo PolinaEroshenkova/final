@@ -20,6 +20,8 @@ public class Parameter {
 
     public static final String DEADLINE = "deadline";
 
+    public static final String CONFERENCE = "conference";
+
     public static final String SECTIONS = "sections";
 
     public static final String USER = "user";
@@ -43,4 +45,12 @@ public class Parameter {
     public static final String PASSWORD = "password";
 
     public static final String TYPE = "type";
+
+    public static final String ENTRIES = "entries";
+
+    public static final String ERROR_MESSAGE = "errorMessage";
+
+    public static final String ERROR_LOGIN = "loginError";
+
+    public static final String ERROR_EMAIL = "emailError";
 }
