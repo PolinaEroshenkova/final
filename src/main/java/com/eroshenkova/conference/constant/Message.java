@@ -7,4 +7,6 @@ public class Message {
     public static final String LOGIN_ERROR = "message.loginerror";
 
     public static final String EMAIL_ERROR = "message.emailerror";
+
+    public static final String WRONG_ACTION = "message.wrongaction";
 }

@@ -24,6 +24,12 @@
                 <legend>Регистрация на конференцию</legend>
                 <input type="hidden" name="command" value="entryProcessing">
 
+                <c:if test="${not empty errorMessage}">
+                    <div class="alert alert-danger" id="ErrorAlert">
+                        <strong>${errorMessage}</strong>
+                    </div>
+                </c:if>
+
                 <div class="form-group">
                     <label class="col-md-4 label control-label" for="conference">Конференция</label>
                     <div class="col-md-12">

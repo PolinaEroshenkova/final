@@ -38,9 +38,12 @@ public class UserLogic implements Logic<String, User> {
         return user;
     }
 
-    public boolean logIn(User user) {
+    public User logIn(User user) {
         User dbUser = findByKey(user.getLogin());
-        return dbUser != null && user.getPassword().equals(dbUser.getPassword());
+        if (dbUser != null && user.getPassword().equals(dbUser.getPassword())) {
+            return dbUser;
+        }
+        return null;
     }
 
     public User findByKey(String login) {

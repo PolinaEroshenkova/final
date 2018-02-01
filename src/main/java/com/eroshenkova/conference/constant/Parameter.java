@@ -53,4 +53,8 @@ public class Parameter {
     public static final String ERROR_LOGIN = "loginError";
 
     public static final String ERROR_EMAIL = "emailError";
+
+    public static final String COMMAND = "command";
+
+    public static final String WRONG_ACTION = "wrongAction";
 }

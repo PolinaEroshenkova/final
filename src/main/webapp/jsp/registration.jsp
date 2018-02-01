@@ -15,6 +15,11 @@
     <div class="row justify-content-center">
         <div class="col-6">
             <h2 class="text-center">Форма регистрации</h2>
+            <c:if test="${not empty errorMessage}">
+                <div class="alert alert-danger" id="ErrorAlert">
+                    <strong>${errorMessage}</strong>
+                </div>
+            </c:if>
             <form role="form" method="post" action="Controller">
                 <input type="hidden" name="command" value="CreateProfile"/>
 

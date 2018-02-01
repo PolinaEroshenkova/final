@@ -22,10 +22,11 @@ public class LoginCommand implements ActionCommand {
         String password = request.getParameter(Parameter.PASSWORD);
         User user = new User(login, password);
         UserLogic userLogic = new UserLogic();
-        if (userLogic.logIn(user)) {
+        User dbUser = userLogic.logIn(user);
+        if (dbUser != null) {
             HttpSession session = request.getSession(true);
-            session.setAttribute(Parameter.USER, user.getLogin());
-            session.setAttribute(Parameter.TYPE, user.getType());
+            session.setAttribute(Parameter.USER, dbUser.getLogin());
+            session.setAttribute(Parameter.TYPE, dbUser.getType());
             page = UrlManager.getProperty(Page.PROFILE);
         } else {
             page = JspRoutesManager.getProperty(Page.INDEX);

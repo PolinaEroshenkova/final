@@ -25,15 +25,20 @@
             <div class="col-md-5 toppad pull-right col-md-offset-3">
                 <a href="/updateUserInfo" class="btn btn-primary btn-profile">Редактировать</a>
                 <br/>
-                <a href="controller?com.eroshenkova.conference.command=Logout"
+                <a href="controller?command=Logout"
                    class="btn btn-primary btn-profile">Выйти</a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
+                <c:if test="${not empty errorMessage}">
+                    <div class="alert alert-danger" id="ErrorAlert">
+                        <strong>${errorMessage}</strong>
+                    </div>
+                </c:if>
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">${participant.surname} ${participant.name}</h3>
+                        <h3 class="panel-title">${user.participant.surname} ${user.participant.name}</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -55,27 +60,27 @@
 
                                     <tr>
                                         <td class="label">Сфера деятельности:</td>
-                                        <td>${participant.scope}</td>
+                                        <td>${user.participant.scope}</td>
                                     </tr>
                                     <tr>
                                         <td class="label">Должность:</td>
                                         <td>
-                                            <c:if test="${empty participant.position}">
+                                            <c:if test="${empty user.participant.position}">
                                                 <c:out value="Не указано"/>
                                             </c:if>
-                                            <c:if test="${not empty participant.position}">
-                                                <c:out value="${participant.position}"/>
+                                            <c:if test="${not empty user.participant.position}">
+                                                <c:out value="${user.participant.position}"/>
                                             </c:if>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label">Компания:</td>
                                         <td>
-                                            <c:if test="${empty participant.company}">
+                                            <c:if test="${empty user.participant.company}">
                                                 <c:out value="Не указано"/>
                                             </c:if>
-                                            <c:if test="${not empty participant.company}">
-                                                <c:out value="${participant.company}"/>
+                                            <c:if test="${not empty user.participant.company}">
+                                                <c:out value="${user.participant.company}"/>
                                             </c:if>
                                         </td>
                                     </tr>
@@ -117,7 +122,7 @@
                     </td>
                     <td>
                         <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
-                            <a href="/profile?com.eroshenkova.conference.command=cancelEntry&id=${current.identry}"
+                            <a href="/profile?command=cancelEntry&id=${current.identry}"
                                class="btn btn-primary"><c:out
                                     value="Отменить заявку"/></a>
                         </c:if>

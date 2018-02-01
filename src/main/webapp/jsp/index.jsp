@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -53,6 +53,11 @@
 
 <section class="py-5">
     <div class="container">
+        <c:if test="${not empty errorMessage}">
+            <div class="alert alert-danger" id="ErrorAlert">
+                <strong>${errorMessage}</strong>
+            </div>
+        </c:if>
         <h1>Информационная поддержка конференций</h1>
     </div>
 </section>

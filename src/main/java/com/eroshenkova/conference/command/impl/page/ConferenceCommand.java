@@ -20,7 +20,7 @@ public class ConferenceCommand implements ActionCommand {
         List<Conference> conferences = conferenceLogic.findByDate();
         if (conferences != null) {
             request.setAttribute(Parameter.CONFERENCES, conferences);
-            page = JspRoutesManager.getProperty(Page.CONFERENCE);
+            page = JspRoutesManager.getProperty(Page.JSP_CONFERENCE);
         } else {
             page = UrlManager.getProperty(Page.ERROR);
         }

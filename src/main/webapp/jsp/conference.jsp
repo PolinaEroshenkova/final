@@ -20,6 +20,11 @@
             <a class="btn btn-primary ml-2" href="/newConference">Добавить новую конференцию</a>
         </c:if>
         <h3 align="center">Ближайшие конференции</h3>
+        <c:if test="${not empty errorMessage}">
+            <div class="alert alert-danger" id="ErrorAlert">
+                <strong>${errorMessage}</strong>
+            </div>
+        </c:if>
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
