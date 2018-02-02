@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/conferences">Конференции</a>
+                    <a class="nav-link" href="/conferences/conferences">Конференции</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">FAQ</a>
@@ -27,13 +27,18 @@
                                data-target="#signModal">Войти</a>
                         </c:when>
                         <c:when test="${sessionScope.type eq 'admin'}">
-                            <a class="nav-link" href="/management" id="signbutton">Заявки</a>
+                            <a class="nav-link" href="/conferences/management" id="signbutton">Заявки</a>
                         </c:when>
                         <c:otherwise>
-                            <a class="btn btn-primary btn-info" href="/profile" id="signbutton">Личный
+                            <a class="btn btn-primary btn-info" href="/conferences/profile" id="signbutton">Личный
                                 кабинет</a>
                         </c:otherwise>
                     </c:choose>
+                </li>
+                <li class="nav-item">
+                    <c:if test="${not empty sessionScope.user}">
+                        <a class="nav-link" href="/conferences/Logout?command=Logout">Выйти</a>
+                    </c:if>
                 </li>
             </ul>
         </div>

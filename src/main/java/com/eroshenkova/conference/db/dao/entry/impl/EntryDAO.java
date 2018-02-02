@@ -16,7 +16,9 @@ public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM entry WHERE id_entry=?";
     private static final String SQL_INSERT = "INSERT INTO entry(login) VALUES(?)";
     private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
+    private static final String SQL_UPDATE_STATUS = "UPDATE entry SET status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
+    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status=\"Ожидает\"";
     private static final String SQL_DELETE = "DELETE FROM entry WHERE id_entry=?";
 
     @Override
@@ -32,6 +34,35 @@ public class EntryDAO extends AbstractDAO<Long, Entry> implements IEntryDAO {
             super.returnConnection(connection);
         }
         return entries;
+    }
+
+    @Override
+    public List<Entry> findByStatus() {
+        Connection connection = super.receiveConnection();
+        List<Entry> entries = null;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_STATUS)) {
+            entries = super.receiveChildSelect(statement);
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Creating statement from database failed");
+        } finally {
+            super.returnConnection(connection);
+        }
+        return entries;
+    }
+
+    @Override
+    public boolean changeStatus(long id, String status) {
+        boolean flag = false;
+        Connection connection = super.receiveConnection();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_STATUS)) {
+            statement.setString(1, status);
+            statement.setLong(2, id);
+            statement.execute();
+            flag = true;
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Creating statement from database failed");
+        }
+        return flag;
     }
 
     @Override

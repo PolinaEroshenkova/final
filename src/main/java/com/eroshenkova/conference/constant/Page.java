@@ -16,6 +16,8 @@ public class Page {
 
     public static final String NEW_CONFERENCE = "url.page.newconference";
 
+    public static final String MANAGEMENT = "url.page.management";
+
     public static final String JSP_INDEX = "path.page.index";
 
     public static final String JSP_CONFERENCE = "path.page.conference";
@@ -29,4 +31,6 @@ public class Page {
     public static final String JSP_REGISTRATION = "path.page.registration";
 
     public static final String JSP_NEW_CONFERENCE = "path.page.newconference";
+
+    public static final String JSP_MANAGEMENT = "path.page.management";
 }

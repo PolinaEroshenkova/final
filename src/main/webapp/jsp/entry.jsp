@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">Оставить заявку</button>
-                        <a href="/showConferences" class="btn btn-secondary">Назад</a>
+                        <a href="/conferences/showConferences" class="btn btn-secondary">Назад</a>
                     </div>
                 </div>
 

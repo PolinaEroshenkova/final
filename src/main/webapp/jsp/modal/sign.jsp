@@ -7,7 +7,7 @@
             <div class="modal-header mx-auto">
                 <h3>Войдите в аккаунт</h3>
             </div>
-            <form name="LoginForm" class="form-horizontal" action="Controller"
+            <form name="LoginForm" class="form-horizontal" action="/conferences/"
                   method="post" autocomplete="on">
                 <input type="hidden" name="command" value="Login"/>
 
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group ml-3 text-center">
-                    <a href="/registration" class="text-info small">Еще нет аккаунта? Зарегистрироваться</a>
+                    <a href="/conferences/registration" class="text-info small">Еще нет аккаунта? Зарегистрироваться</a>
                 </div>
             </form>
         </div>

@@ -29,7 +29,7 @@ public class LoginCommand implements ActionCommand {
             session.setAttribute(Parameter.TYPE, dbUser.getType());
             page = UrlManager.getProperty(Page.PROFILE);
         } else {
-            page = JspRoutesManager.getProperty(Page.INDEX);
+            page = JspRoutesManager.getProperty(Page.JSP_INDEX);
             request.setAttribute(Parameter.ERROR_MESSAGE, MessageManager.getProperty(Message.SERVER_ERROR));
         }
         return page;

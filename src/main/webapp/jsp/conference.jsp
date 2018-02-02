@@ -17,7 +17,7 @@
 <section class="py-5">
     <div class="mt-4">
         <c:if test="${sessionScope.type eq 'admin'}">
-            <a class="btn btn-primary ml-2" href="/newConference">Добавить новую конференцию</a>
+            <a class="btn btn-primary ml-2" href="/conferences/newConference">Добавить новую конференцию</a>
         </c:if>
         <h3 align="center">Ближайшие конференции</h3>
         <c:if test="${not empty errorMessage}">
@@ -51,13 +51,14 @@
                         <c:choose>
                             <c:when test="${sessionScope.type eq 'user'}">
                                 <td>
-                                    <a href="\signUp?id=${current.idconference}" class="btn btn-primary entry">Оставить
+                                    <a href="/conferences/signUp?id=${current.idconference}"
+                                       class="btn btn-primary entry">Оставить
                                         заявку</a>
                                 </td>
                             </c:when>
                             <c:when test="${sessionScope.type eq 'admin'}">
                                 <td>
-                                    <a href="\deleteConference?id=${current.idconference}"
+                                    <a href="/conferences/deleteConference?id=${current.idconference}"
                                        class="btn btn-primary entry">Удалить конференцию</a>
                                 </td>
                             </c:when>

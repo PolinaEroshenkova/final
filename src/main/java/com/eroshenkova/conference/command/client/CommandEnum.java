@@ -3,7 +3,8 @@ package com.eroshenkova.conference.command.client;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.impl.conference.DeleteConferenceCommand;
 import com.eroshenkova.conference.command.impl.conference.RegisterConferenceCommand;
-import com.eroshenkova.conference.command.impl.entry.CancelEntryCommand;
+import com.eroshenkova.conference.command.impl.entry.ChangeStatusCommand;
+import com.eroshenkova.conference.command.impl.entry.DeleteEntryCommand;
 import com.eroshenkova.conference.command.impl.entry.SignUpCommand;
 import com.eroshenkova.conference.command.impl.page.*;
 import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
@@ -82,9 +83,14 @@ public enum CommandEnum {
             this.command = new UpdateUserCommand();
         }
     },
-    CANCELENTRY {
+    CHANGESTATUS {
         {
-            this.command = new CancelEntryCommand();
+            this.command = new ChangeStatusCommand();
+        }
+    },
+    DELETEENTRY {
+        {
+            this.command = new DeleteEntryCommand();
         }
     };
 

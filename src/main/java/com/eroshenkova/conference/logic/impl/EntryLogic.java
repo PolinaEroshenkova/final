@@ -59,6 +59,21 @@ public class EntryLogic implements Logic<Long, Entry> {
     public List<Entry> findByLogin(String login) {
         IEntryDAO entryDao = new EntryDAO();
         List<Entry> entries = entryDao.findByLogin(login);
+        return fillEntriesWithConference(entries);
+    }
+
+    public List<Entry> findByStatus() {
+        IEntryDAO entryDao = new EntryDAO();
+        List<Entry> entries = entryDao.findByStatus();
+        return fillEntriesWithConference(entries);
+    }
+
+    public boolean changeStatus(long id, String status) {
+        IEntryDAO entryDAO = new EntryDAO();
+        return entryDAO.changeStatus(id, status);
+    }
+
+    private List<Entry> fillEntriesWithConference(List<Entry> entries) {
         if (entries != null) {
             ISectionDAO sectionDao = new SectionDAO();
             DAO<Long, Conference> conferenceDao = new ConferenceDAO();

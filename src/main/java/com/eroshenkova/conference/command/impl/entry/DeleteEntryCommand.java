@@ -10,7 +10,7 @@ import com.eroshenkova.conference.resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CancelEntryCommand implements ActionCommand {
+public class DeleteEntryCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
