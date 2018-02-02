@@ -48,6 +48,14 @@ public class Parameter {
 
     public static final String ENTRIES = "entries";
 
+    public static final String QUESTION_ADMIN = "question-admin";
+
+    public static final String QUESTION = "question";
+
+    public static final String QUESTIONS = "questions";
+
+    public static final String ANSWER_ADMIN = "answer-admin";
+
     public static final String ERROR_MESSAGE = "errorMessage";
 
     public static final String ERROR_LOGIN = "loginError";

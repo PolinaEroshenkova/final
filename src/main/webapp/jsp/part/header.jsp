@@ -18,7 +18,7 @@
                     <a class="nav-link" href="/conferences/conferences">Конференции</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">FAQ</a>
+                    <a class="nav-link" href="/conferences/faq">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <c:choose>

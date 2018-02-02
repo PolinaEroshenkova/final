@@ -7,6 +7,8 @@ import com.eroshenkova.conference.command.impl.entry.ChangeStatusCommand;
 import com.eroshenkova.conference.command.impl.entry.DeleteEntryCommand;
 import com.eroshenkova.conference.command.impl.entry.SignUpCommand;
 import com.eroshenkova.conference.command.impl.page.*;
+import com.eroshenkova.conference.command.impl.question.AskQuestionCommand;
+import com.eroshenkova.conference.command.impl.question.PublishQuestionCommand;
 import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
 import com.eroshenkova.conference.command.impl.user.LoginCommand;
 import com.eroshenkova.conference.command.impl.user.LogoutCommand;
@@ -26,6 +28,11 @@ public enum CommandEnum {
     CONFERENCES {
         {
             this.command = new ConferenceCommand();
+        }
+    },
+    FAQ {
+        {
+            this.command = new FaqCommand();
         }
     },
     REGISTRATION {
@@ -91,6 +98,16 @@ public enum CommandEnum {
     DELETEENTRY {
         {
             this.command = new DeleteEntryCommand();
+        }
+    },
+    ASKQUESTION {
+        {
+            this.command = new AskQuestionCommand();
+        }
+    },
+    PUBLISHQUESTION {
+        {
+            this.command = new PublishQuestionCommand();
         }
     };
 
