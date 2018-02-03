@@ -7,4 +7,8 @@ import java.util.List;
 public interface IQuestionDAO {
 
     List<Question> findAll();
+
+    List<Question> findWithoutAnswer();
+
+    List<Question> findWithAnswer();
 }

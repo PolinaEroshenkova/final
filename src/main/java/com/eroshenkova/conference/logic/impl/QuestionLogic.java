@@ -23,6 +23,22 @@ public class QuestionLogic implements Logic<Long, Question> {
         return dao.findByKey(key);
     }
 
+    public boolean deleteByKey(Long key) {
+        DAO<Long, Question> dao = new QuestionDAO();
+        Question question = new Question(key);
+        return dao.execute(DAOCommandEnum.DELETE, question);
+    }
+
+    public List<Question> findWithoutAnswer() {
+        IQuestionDAO dao = new QuestionDAO();
+        return dao.findWithoutAnswer();
+    }
+
+    public List<Question> findWithAnswer() {
+        IQuestionDAO dao = new QuestionDAO();
+        return dao.findWithAnswer();
+    }
+
     public List<Question> findAll() {
         IQuestionDAO dao = new QuestionDAO();
         return dao.findAll();

@@ -54,7 +54,11 @@ public class Parameter {
 
     public static final String QUESTIONS = "questions";
 
+    public static final String NO_ANSWER_QUESTIONS = "noAnswerQuestions";
+
     public static final String ANSWER_ADMIN = "answer-admin";
+
+    public static final String ANSWER = "answer";
 
     public static final String ERROR_MESSAGE = "errorMessage";
 

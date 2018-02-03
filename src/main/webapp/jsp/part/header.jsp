@@ -40,6 +40,15 @@
                         <a class="nav-link" href="/conferences/Logout?command=Logout">Выйти</a>
                     </c:if>
                 </li>
+                <li class="nav-item">
+                    <form method="post" class="ml-1">
+                        <input type="hidden" name="command" value="changeLanguage">
+                        <select id="language" class="form-control btn-primary" name="language" onchange="submit()">
+                            <option name="lang" value="en" ${language == 'en' ? 'selected' : ''}>EN</option>
+                            <option name="lang" value="ru" ${language == 'ru' ? 'selected' : ''}>RU</option>
+                        </select>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

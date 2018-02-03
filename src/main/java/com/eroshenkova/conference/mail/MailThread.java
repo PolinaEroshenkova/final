@@ -33,7 +33,7 @@ public class MailThread extends Thread {
         mailSession.setDebug(true);
         message = new MimeMessage(mailSession);
         try {
-            message.setFrom(new InternetAddress("popo@mail.com"));
+            message.setFrom(new InternetAddress(sender));
             message.setSubject(subject);
             message.setText(text);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));

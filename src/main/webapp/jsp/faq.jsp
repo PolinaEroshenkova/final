@@ -42,6 +42,28 @@
                                 <button type="submit" class="btn btn-primary">Опубликовать вопрос</button>
                             </div>
                         </form>
+                        <c:if test="${not empty noAnswerQuestions}">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr bgcolor="#87cefa" align="center">
+                                    <th>Логин</th>
+                                    <th>Вопрос</th>
+                                    <th>Статус</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${noAnswerQuestions}" var="question">
+                                    <tr>
+                                        <td>${question.login}</td>
+                                        <td>${question.question}</td>
+                                        <td><a href="" class="btn btn-primary" data-toggle="modal"
+                                               data-target="#answerModal" data-id="${question.idquestion}"
+                                               data-login="${question.login}">Ответить</a></td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </c:if>
                     </c:when>
                     <c:when test="${sessionScope.type eq 'user'}">
                         <form role="form" method="post" action="/conferences/">
@@ -84,8 +106,13 @@
     <jsp:include page="modal/sign.jsp"/>
 </div>
 
+<div id="modal">
+    <jsp:include page="modal/answer.jsp"/>
+</div>
+
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/login.js"></script>
+<script src="../static/javascript/custom/answerquestion.js"></script>
 </body>
 </html>

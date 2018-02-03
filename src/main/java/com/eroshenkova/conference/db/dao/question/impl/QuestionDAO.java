@@ -17,6 +17,8 @@ public class QuestionDAO extends AbstractDAO<Long, Question> implements IQuestio
     private static final String SQL_UPDATE = "UPDATE question SET login=?, question=?, answer=? WHERE id_question=?";
     private static final String SQl_DELETE = "DELETE FROM question WHERE id_question=?";
     private static final String SQL_FIND_ALL = "SELECT * FROM question";
+    private static final String SQL_FIND_WITH_ANSWER = "SELECT * FROM question WHERE answer IS NOT NULL";
+    private static final String SQL_FIND_WITHOUT_ANSWER = "SELECT * FROM question WHERE answer IS NULL";
 
 
     @Override
@@ -65,6 +67,28 @@ public class QuestionDAO extends AbstractDAO<Long, Question> implements IQuestio
     public List<Question> findAll() {
         List<Question> questions = null;
         try (PreparedStatement statement = receiveConnection().prepareStatement(SQL_FIND_ALL)) {
+            questions = receiveChildSelect(statement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
+    @Override
+    public List<Question> findWithoutAnswer() {
+        List<Question> questions = null;
+        try (PreparedStatement statement = receiveConnection().prepareStatement(SQL_FIND_WITHOUT_ANSWER)) {
+            questions = receiveChildSelect(statement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
+    @Override
+    public List<Question> findWithAnswer() {
+        List<Question> questions = null;
+        try (PreparedStatement statement = receiveConnection().prepareStatement(SQL_FIND_WITH_ANSWER)) {
             questions = receiveChildSelect(statement);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -6,6 +6,10 @@ public class Question {
     private String question;
     private String answer;
 
+    public Question(long idquestion) {
+        this.idquestion = idquestion;
+    }
+
     public Question(long idquestion, String login, String question, String answer) {
         this.idquestion = idquestion;
         this.login = login;
@@ -17,6 +21,11 @@ public class Question {
         this.login = login;
         this.question = question;
         this.answer = answer;
+    }
+
+    public Question(String login, String question) {
+        this.login = login;
+        this.question = question;
     }
 
     public long getIdquestion() {

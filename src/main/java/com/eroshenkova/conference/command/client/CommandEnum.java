@@ -1,12 +1,14 @@
 package com.eroshenkova.conference.command.client;
 
 import com.eroshenkova.conference.command.ActionCommand;
+import com.eroshenkova.conference.command.impl.ChangeLanguageCommand;
 import com.eroshenkova.conference.command.impl.conference.DeleteConferenceCommand;
 import com.eroshenkova.conference.command.impl.conference.RegisterConferenceCommand;
 import com.eroshenkova.conference.command.impl.entry.ChangeStatusCommand;
 import com.eroshenkova.conference.command.impl.entry.DeleteEntryCommand;
 import com.eroshenkova.conference.command.impl.entry.SignUpCommand;
 import com.eroshenkova.conference.command.impl.page.*;
+import com.eroshenkova.conference.command.impl.question.AnswerQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.AskQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.PublishQuestionCommand;
 import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
@@ -105,9 +107,19 @@ public enum CommandEnum {
             this.command = new AskQuestionCommand();
         }
     },
+    ANSWERQUESTION {
+        {
+            this.command = new AnswerQuestionCommand();
+        }
+    },
     PUBLISHQUESTION {
         {
             this.command = new PublishQuestionCommand();
+        }
+    },
+    CHANGELANGUAGE {
+        {
+            this.command = new ChangeLanguageCommand();
         }
     };
 
