@@ -64,6 +64,8 @@ public class Parameter {
 
     public static final String COMMAND = "command";
 
+    public static final String EMAIL_SUBJECT = "User question";
+
     public static final String STATUS = "status";
 
     public static final String WRONG_ACTION = "wrongAction";
