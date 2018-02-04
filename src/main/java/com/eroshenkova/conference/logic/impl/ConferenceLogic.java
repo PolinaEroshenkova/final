@@ -1,31 +1,27 @@
 package com.eroshenkova.conference.logic.impl;
 
-import com.eroshenkova.conference.db.DAO;
-import com.eroshenkova.conference.db.dao.DAOCommandEnum;
-import com.eroshenkova.conference.db.dao.conference.IConferenceDAO;
-import com.eroshenkova.conference.db.dao.conference.entity.Conference;
-import com.eroshenkova.conference.db.dao.conference.impl.ConferenceDAO;
-import com.eroshenkova.conference.db.dao.section.ISectionDAO;
-import com.eroshenkova.conference.db.dao.section.entity.Section;
-import com.eroshenkova.conference.db.dao.section.impl.SectionDAO;
-import com.eroshenkova.conference.logic.Logic;
+import com.eroshenkova.conference.database.DAO;
+import com.eroshenkova.conference.database.dao.conference.ConferenceDAO;
+import com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl;
+import com.eroshenkova.conference.database.dao.section.SectionDAO;
+import com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl;
+import com.eroshenkova.conference.entity.Conference;
+import com.eroshenkova.conference.entity.Section;
 
 import java.util.List;
 
-public class ConferenceLogic implements Logic<Long, Conference> {
+public class ConferenceLogic {
 
-    @Override
-    public boolean create(Conference conference) {
-        DAO<Long, Conference> conferenceDao = new ConferenceDAO();
-        return conferenceDao.execute(DAOCommandEnum.CREATE, conference);
+    public long create(Conference conference) {
+        DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
+        return conferenceDao.create(conference, false);
     }
 
-    @Override
     public Conference findByKey(Long key) {
-        DAO<Long, Conference> conferenceDao = new ConferenceDAO();
+        DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
         Conference conference = conferenceDao.findByKey(key);
         if (conference != null) {
-            ISectionDAO sectionDao = new SectionDAO();
+            SectionDAO sectionDao = new SectionDAOImpl();
             List<Section> sections = sectionDao.findByConferenceId(key);
             conference.setSections(sections);
         }
@@ -34,25 +30,24 @@ public class ConferenceLogic implements Logic<Long, Conference> {
 
 
     public List<Conference> findByDate() {
-        IConferenceDAO conferenceDao = new ConferenceDAO();
+        ConferenceDAO conferenceDao = new ConferenceDAOImpl();
         return conferenceDao.findByDate();
     }
 
     public boolean deleteConference(Long idConference) {
-        Conference conference = new Conference(idConference);
-        DAO<Long, Conference> dao = new ConferenceDAO();
-        return dao.execute(DAOCommandEnum.DELETE, conference);
+        DAO<Long, Conference> dao = new ConferenceDAOImpl();
+        return dao.delete(idConference);
     }
 
     public boolean register(Conference conference) {
-        DAO<Long, Conference> conferenceDAO = new ConferenceDAO();
-        long result = conferenceDAO.insertWithGeneratedKeys(conference);
+        DAO<Long, Conference> conferenceDAO = new ConferenceDAOImpl();
+        long result = conferenceDAO.create(conference, true);
         boolean flag = true;
         if (result > 0) {
-            DAO<Long, Section> sectionDao = new SectionDAO();
+            DAO<Long, Section> sectionDao = new SectionDAOImpl();
             for (Section section : conference.getSections()) {
                 section.setIdConference(result);
-                if (!sectionDao.execute(DAOCommandEnum.CREATE, section)) {
+                if (sectionDao.create(section, false) != 0) {
                     flag = false;
                     break;
                 }

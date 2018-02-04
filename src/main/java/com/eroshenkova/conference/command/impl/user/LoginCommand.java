@@ -4,7 +4,7 @@ import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.db.dao.user.entity.User;
+import com.eroshenkova.conference.entity.User;
 import com.eroshenkova.conference.logic.impl.UserLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.MessageManager;

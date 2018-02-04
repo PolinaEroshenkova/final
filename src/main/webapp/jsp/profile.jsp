@@ -1,13 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties.content"/>
+
+<html lang="${language}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Профиль</title>
+    <title><fmt:message key="profile.title"/></title>
 
     <link href="../static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/custom/profile.css" rel="stylesheet">
@@ -23,10 +28,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 toppad pull-right col-md-offset-3">
-                <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile">Редактировать</a>
+                <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile"><fmt:message
+                        key="profile.edit"/></a>
                 <br/>
                 <a href="/conferences/command=LogOut"
-                   class="btn btn-primary btn-profile">Выйти</a>
+                   class="btn btn-primary btn-profile"><fmt:message key="profile.signout"/></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -46,27 +52,27 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td class="label">Логин:</td>
+                                        <td class="label"><fmt:message key="profile.login"/>:</td>
                                         <td>${user.login}</td>
                                     </tr>
                                     <tr>
-                                        <td class="label">Пароль:</td>
+                                        <td class="label"><fmt:message key="profile.password"/>:</td>
                                         <td>${user.password}</td>
                                     </tr>
                                     <tr>
-                                        <td class="label">email:</td>
+                                        <td class="label"><fmt:message key="profile.email"/>:</td>
                                         <td>${user.email}</td>
                                     </tr>
 
                                     <tr>
-                                        <td class="label">Сфера деятельности:</td>
+                                        <td class="label"><fmt:message key="profile.scope"/>:</td>
                                         <td>${user.participant.scope}</td>
                                     </tr>
                                     <tr>
-                                        <td class="label">Должность:</td>
+                                        <td class="label"><fmt:message key="profile.position"/>:</td>
                                         <td>
                                             <c:if test="${empty user.participant.position}">
-                                                <c:out value="Не указано"/>
+                                                <fmt:message key="profile.notindicated"/>
                                             </c:if>
                                             <c:if test="${not empty user.participant.position}">
                                                 <c:out value="${user.participant.position}"/>
@@ -74,10 +80,10 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="label">Компания:</td>
+                                        <td class="label"><fmt:message key="profile.company"/>:</td>
                                         <td>
                                             <c:if test="${empty user.participant.company}">
-                                                <c:out value="Не указано"/>
+                                                <fmt:message key="profile.notindicated"/>
                                             </c:if>
                                             <c:if test="${not empty user.participant.company}">
                                                 <c:out value="${user.participant.company}"/>
@@ -95,15 +101,15 @@
         <br/>
     </div>
 
-    <h3 class="profile-h3">Ваши конференции: </h3>
+    <h3 class="profile-h3"><fmt:message key="profile.header.myentries"/>: </h3>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
             <tr bgcolor="#87cefa" align="center">
-                <td>Дата проведения</td>
-                <td>Название конференции</td>
-                <td>Секции</td>
-                <td>Статус</td>
+                <td><fmt:message key="profile.table.date"/></td>
+                <td><fmt:message key="profile.table.topic"/></td>
+                <td><fmt:message key="profile.table.sections"/></td>
+                <td><fmt:message key="profile.table.status"/></td>
             </tr>
             </thead>
             <tbody>
@@ -123,8 +129,7 @@
                     <td>
                         <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
                             <a href="/conferences/profile?command=deleteEntry&id=${current.identry}"
-                               class="btn btn-primary"><c:out
-                                    value="Отменить заявку"/></a>
+                               class="btn btn-primary"><fmt:message key="profile.table.declineentry"/></a>
                         </c:if>
                         <c:if test="${current.status eq 'Отклонено'}">
                             <c:out value="${current.status}"/>

@@ -1,8 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties.content"/>
+
+<html lang="${language}">
 <head>
-    <title>Вопросы</title>
+    <title><fmt:message key="faq.title"/></title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
 </head>
@@ -17,7 +23,7 @@
                 <c:choose>
                     <c:when test="${sessionScope.type eq 'admin'}">
                         <form role="form" method="post" action="/conferences/">
-                            <h2>Опубликовать вопрос</h2>
+                            <h2><fmt:message key="faq.header"/></h2>
                             <input type="hidden" name="command" value="publishQuestion"/>
 
                             <c:if test="${not empty errorMessage}">
@@ -27,28 +33,28 @@
                             </c:if>
 
                             <div class="form-group mx-auto">
-                                <label for="question-admin">Введите вопрос</label>
+                                <label for="question-admin"><fmt:message key="faq.form.enterquestion"/></label>
                                 <textarea class="form-control" name="question-admin" id="question-admin"
                                           rows="3"></textarea>
                             </div>
 
                             <div class="form-group mx-auto">
-                                <label for="answer-admin">Введите ответ</label>
+                                <label for="answer-admin"><fmt:message key="faq.form.enteranswer"/></label>
                                 <textarea class="form-control" name="answer-admin" id="answer-admin"
                                           rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Опубликовать вопрос</button>
+                                <button type="submit" class="btn btn-primary"><fmt:message key="faq.publish"/></button>
                             </div>
                         </form>
                         <c:if test="${not empty noAnswerQuestions}">
                             <table class="table table-hover">
                                 <thead>
                                 <tr bgcolor="#87cefa" align="center">
-                                    <th>Логин</th>
-                                    <th>Вопрос</th>
-                                    <th>Статус</th>
+                                    <th><fmt:message key="faq.table.login"/></th>
+                                    <th><fmt:message key="faq.table.question"/></th>
+                                    <th><fmt:message key="faq.table.status"/></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +64,8 @@
                                         <td>${question.question}</td>
                                         <td><a href="" class="btn btn-primary" data-toggle="modal"
                                                data-target="#answerModal" data-id="${question.idquestion}"
-                                               data-login="${question.login}">Ответить</a></td>
+                                               data-login="${question.login}"><fmt:message key="faq.table.answer"/></a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -67,7 +74,7 @@
                     </c:when>
                     <c:when test="${sessionScope.type eq 'user'}">
                         <form role="form" method="post" action="/conferences/">
-                            <h2>Есть вопрос?</h2>
+                            <h2><fmt:message key="faq.header.havequestion"/></h2>
                             <input type="hidden" name="command" value="askQuestion"/>
 
                             <c:if test="${not empty errorMessage}">
@@ -77,12 +84,12 @@
                             </c:if>
 
                             <div class="form-group mx-auto">
-                                <label for="question">Задайте вопрос администратору</label>
+                                <label for="question"><fmt:message key="faq.header.askadmin"/></label>
                                 <textarea class="form-control" name="question" id="question" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Задать вопрос</button>
+                                <button type="submit" class="btn btn-primary"><fmt:message key="faq.ask"/></button>
                             </div>
                         </form>
                     </c:when>

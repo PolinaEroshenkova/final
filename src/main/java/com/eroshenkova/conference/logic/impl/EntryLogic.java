@@ -1,51 +1,46 @@
 package com.eroshenkova.conference.logic.impl;
 
-import com.eroshenkova.conference.db.DAO;
-import com.eroshenkova.conference.db.dao.DAOCommandEnum;
-import com.eroshenkova.conference.db.dao.conference.entity.Conference;
-import com.eroshenkova.conference.db.dao.conference.impl.ConferenceDAO;
-import com.eroshenkova.conference.db.dao.entry.IEntryDAO;
-import com.eroshenkova.conference.db.dao.entry.entity.Entry;
-import com.eroshenkova.conference.db.dao.entry.impl.EntryDAO;
-import com.eroshenkova.conference.db.dao.section.ISectionDAO;
-import com.eroshenkova.conference.db.dao.section.entity.Section;
-import com.eroshenkova.conference.db.dao.section.impl.SectionDAO;
-import com.eroshenkova.conference.db.dao.sectionentry.entity.SectionEntry;
-import com.eroshenkova.conference.db.dao.sectionentry.impl.SectionEntryDAO;
-import com.eroshenkova.conference.logic.Logic;
+import com.eroshenkova.conference.database.DAO;
+import com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl;
+import com.eroshenkova.conference.database.dao.entry.EntryDAO;
+import com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl;
+import com.eroshenkova.conference.database.dao.section.SectionDAO;
+import com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl;
+import com.eroshenkova.conference.database.dao.sectionentry.SectionEntryDAO;
+import com.eroshenkova.conference.entity.Conference;
+import com.eroshenkova.conference.entity.Entry;
+import com.eroshenkova.conference.entity.Section;
+import com.eroshenkova.conference.entity.SectionEntry;
 
 import java.util.List;
 
-public class EntryLogic implements Logic<Long, Entry> {
+public class EntryLogic {
 
-    @Override
-    public boolean create(Entry entry) {
-        DAO<Long, Entry> dao = new EntryDAO();
-        return dao.execute(DAOCommandEnum.CREATE, entry);
+    public long create(Entry entry) {
+        DAO<Long, Entry> dao = new EntryDAOImpl();
+        return dao.create(entry, false);
     }
 
-    @Override
     public Entry findByKey(Long key) {
-        DAO<Long, Entry> dao = new EntryDAO();
+        DAO<Long, Entry> dao = new EntryDAOImpl();
         return dao.findByKey(key);
     }
 
     public boolean delete(long id) {
-        Entry entry = new Entry(id);
-        DAO<Long, Entry> entryDAO = new EntryDAO();
-        return entryDAO.execute(DAOCommandEnum.DELETE, entry);
+        DAO<Long, Entry> entryDAO = new EntryDAOImpl();
+        return entryDAO.delete(id);
     }
 
     public boolean register(String login, String[] sectionIds) {
         Entry entry = new Entry(login);
-        DAO<Long, Entry> entryDAO = new EntryDAO();
-        long insertedEntryId = entryDAO.insertWithGeneratedKeys(entry);
+        DAO<Long, Entry> entryDAO = new EntryDAOImpl();
+        long insertedEntryId = entryDAO.create(entry, true);
         boolean flag = true;
         if (insertedEntryId > 0) {
             DAO<List<Long>, SectionEntry> sectionEntryDao = new SectionEntryDAO();
             for (String id : sectionIds) {
                 SectionEntry sectionEntry = new SectionEntry(insertedEntryId, Long.parseLong(id));
-                if (!sectionEntryDao.execute(DAOCommandEnum.CREATE, sectionEntry)) {
+                if (sectionEntryDao.create(sectionEntry, false) != 0) {
                     flag = false;
                     break;
                 }
@@ -57,26 +52,26 @@ public class EntryLogic implements Logic<Long, Entry> {
     }
 
     public List<Entry> findByLogin(String login) {
-        IEntryDAO entryDao = new EntryDAO();
+        EntryDAO entryDao = new EntryDAOImpl();
         List<Entry> entries = entryDao.findByLogin(login);
         return fillEntriesWithConference(entries);
     }
 
     public List<Entry> findByStatus() {
-        IEntryDAO entryDao = new EntryDAO();
+        EntryDAO entryDao = new EntryDAOImpl();
         List<Entry> entries = entryDao.findByStatus();
         return fillEntriesWithConference(entries);
     }
 
-    public boolean changeStatus(long id, String status) {
-        IEntryDAO entryDAO = new EntryDAO();
-        return entryDAO.changeStatus(id, status);
-    }
+//    public boolean changeStatus(long id, String status) {
+//        EntryDAO entryDAO = new EntryDAOImpl();
+//        return entryDAO.changeStatus(id, status);
+//    }
 
     private List<Entry> fillEntriesWithConference(List<Entry> entries) {
         if (entries != null) {
-            ISectionDAO sectionDao = new SectionDAO();
-            DAO<Long, Conference> conferenceDao = new ConferenceDAO();
+            SectionDAO sectionDao = new SectionDAOImpl();
+            DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
             for (Entry entry : entries) {  //TODO cортировка по дате
                 long id = entry.getIdentry();
                 List<Section> sections = sectionDao.findByEntryId(id);

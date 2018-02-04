@@ -3,7 +3,7 @@ package com.eroshenkova.conference.command.impl.question;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.db.dao.question.entity.Question;
+import com.eroshenkova.conference.entity.Question;
 import com.eroshenkova.conference.logic.impl.QuestionLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;

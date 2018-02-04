@@ -4,7 +4,7 @@
 
 <c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
 <fmt:setLocale value="${language}"/>
-<fmt:setBundle basename="properties.locale"/>
+<fmt:setBundle basename="properties.content"/>
 
 <html lang="${language}">
 
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Главная</title>
+    <title><fmt:message key="main.title"/></title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
@@ -65,7 +65,7 @@
             </div>
         </c:if>
         <h1>
-            <fmt:message key="main.title"/>
+            <fmt:message key="main.header"/>
         </h1>
     </div>
 </section>

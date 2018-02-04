@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties.content"/>
+
+<html lang="${language}">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Конференции</title>
+    <title><fmt:message key="conference.title"/></title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
 
@@ -17,9 +23,10 @@
 <section class="py-5">
     <div class="mt-4">
         <c:if test="${sessionScope.type eq 'admin'}">
-            <a class="btn btn-primary ml-2" href="/conferences/newConference">Добавить новую конференцию</a>
+            <a class="btn btn-primary ml-2" href="/conferences/newConference"><fmt:message
+                    key="conference.addconference"/></a>
         </c:if>
-        <h3 align="center">Ближайшие конференции</h3>
+        <h3 align="center"><fmt:message key="conference.header"/></h3>
         <c:if test="${not empty errorMessage}">
             <div class="alert alert-danger" id="ErrorAlert">
                 <strong>${errorMessage}</strong>
@@ -29,20 +36,18 @@
             <table class="table table-hover">
                 <thead>
                 <tr bgcolor="#87cefa" align="center">
-                    <th hidden></th>
-                    <th>Дедлайн подачи заявок</th>
-                    <th>Название конференции</th>
-                    <th>Даты проведения</th>
-                    <th>Место проведения</th>
+                    <th><fmt:message key="conference.table.deadline"/></th>
+                    <th><fmt:message key="conference.table.topic"/></th>
+                    <th><fmt:message key="conference.table.date"/></th>
+                    <th><fmt:message key="conference.table.place"/></th>
                     <c:if test="${not empty sessionScope.user}">
-                        <th>Статус</th>
+                        <th><fmt:message key="conference.table.place"/></th>
                     </c:if>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${conferences}" var="current">
                     <tr>
-                        <td hidden><c:out value="${current.idconference}"/></td>
                         <td><c:out value="${current.deadline}"/></td>
                         <td><c:out value="${current.topic}"/></td>
                         <td><c:out value="${current.begin}"/><br/>
@@ -52,14 +57,13 @@
                             <c:when test="${sessionScope.type eq 'user'}">
                                 <td>
                                     <a href="/conferences/signUp?id=${current.idconference}"
-                                       class="btn btn-primary entry">Оставить
-                                        заявку</a>
+                                       class="btn btn-primary entry"><fmt:message key="conference.table.signup"/></a>
                                 </td>
                             </c:when>
                             <c:when test="${sessionScope.type eq 'admin'}">
                                 <td>
                                     <a href="/conferences/deleteConference?id=${current.idconference}"
-                                       class="btn btn-primary entry">Удалить конференцию</a>
+                                       class="btn btn-primary entry"><fmt:message key="conference.table.delete"/></a>
                                 </td>
                             </c:when>
                         </c:choose>

@@ -1,28 +1,26 @@
 package com.eroshenkova.conference.logic.impl;
 
-import com.eroshenkova.conference.db.DAO;
-import com.eroshenkova.conference.db.dao.DAOCommandEnum;
-import com.eroshenkova.conference.db.dao.participant.entity.Participant;
-import com.eroshenkova.conference.db.dao.participant.impl.ParticipantDAO;
-import com.eroshenkova.conference.db.dao.user.IUserDAO;
-import com.eroshenkova.conference.db.dao.user.entity.User;
-import com.eroshenkova.conference.db.dao.user.impl.UserDAO;
-import com.eroshenkova.conference.logic.Logic;
+import com.eroshenkova.conference.database.DAO;
+import com.eroshenkova.conference.database.dao.participant.ParticipantDAO;
+import com.eroshenkova.conference.database.dao.user.UserDAO;
+import com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl;
+import com.eroshenkova.conference.entity.Participant;
+import com.eroshenkova.conference.entity.User;
 
-public class UserLogic implements Logic<String, User> {
+public class UserLogic {
 
-    public boolean create(User user) {
-        DAO<String, User> userDAO = new UserDAO();
-        return userDAO.execute(DAOCommandEnum.CREATE, user);
+    public long create(User user) {
+        DAO<String, User> userDAO = new UserDAOImpl();
+        return userDAO.create(user, false);
     }
 
     public int register(User user, Participant participant) {
         if (isEmailExist(user.getEmail())) {
             return -1;
         }
-        if (create(user)) {
+        if (create(user) == 0) {
             DAO<String, Participant> participantDAO = new ParticipantDAO();
-            if (participantDAO.execute(DAOCommandEnum.CREATE, participant)) {
+            if (participantDAO.create(participant, false) == 0) {
                 return 1;
             }
         }
@@ -30,7 +28,7 @@ public class UserLogic implements Logic<String, User> {
     }
 
     public User formProfile(String login) {
-        DAO<String, User> userDAO = new UserDAO();
+        DAO<String, User> userDAO = new UserDAOImpl();
         User user = userDAO.findByKey(login);
         DAO<String, Participant> participantDAO = new ParticipantDAO();
         Participant participant = participantDAO.findByKey(login);
@@ -47,12 +45,12 @@ public class UserLogic implements Logic<String, User> {
     }
 
     public User findByKey(String login) {
-        DAO<String, User> dao = new UserDAO();
+        DAO<String, User> dao = new UserDAOImpl();
         return dao.findByKey(login);
     }
 
     private boolean isEmailExist(String email) {
-        IUserDAO iUserDAO = new UserDAO();
-        return iUserDAO.findByEmail(email) == null;
+        UserDAO userDAO = new UserDAOImpl();
+        return userDAO.findByEmail(email) == null;
     }
 }

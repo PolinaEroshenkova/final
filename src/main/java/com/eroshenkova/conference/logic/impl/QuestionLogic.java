@@ -1,46 +1,41 @@
 package com.eroshenkova.conference.logic.impl;
 
-import com.eroshenkova.conference.db.DAO;
-import com.eroshenkova.conference.db.dao.DAOCommandEnum;
-import com.eroshenkova.conference.db.dao.question.IQuestionDAO;
-import com.eroshenkova.conference.db.dao.question.entity.Question;
-import com.eroshenkova.conference.db.dao.question.impl.QuestionDAO;
-import com.eroshenkova.conference.logic.Logic;
+import com.eroshenkova.conference.database.DAO;
+import com.eroshenkova.conference.database.dao.question.QuestionDAO;
+import com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl;
+import com.eroshenkova.conference.entity.Question;
 
 import java.util.List;
 
-public class QuestionLogic implements Logic<Long, Question> {
+public class QuestionLogic {
 
-    @Override
-    public boolean create(Question entity) {
-        DAO<Long, Question> dao = new QuestionDAO();
-        return dao.execute(DAOCommandEnum.CREATE, entity);
+    public long create(Question entity) {
+        DAO<Long, Question> dao = new QuestionDAOImpl();
+        return dao.create(entity, false);
     }
 
-    @Override
     public Question findByKey(Long key) {
-        DAO<Long, Question> dao = new QuestionDAO();
+        DAO<Long, Question> dao = new QuestionDAOImpl();
         return dao.findByKey(key);
     }
 
     public boolean deleteByKey(Long key) {
-        DAO<Long, Question> dao = new QuestionDAO();
-        Question question = new Question(key);
-        return dao.execute(DAOCommandEnum.DELETE, question);
+        DAO<Long, Question> dao = new QuestionDAOImpl();
+        return dao.delete(key);
     }
 
     public List<Question> findWithoutAnswer() {
-        IQuestionDAO dao = new QuestionDAO();
+        QuestionDAO dao = new QuestionDAOImpl();
         return dao.findWithoutAnswer();
     }
 
     public List<Question> findWithAnswer() {
-        IQuestionDAO dao = new QuestionDAO();
+        QuestionDAO dao = new QuestionDAOImpl();
         return dao.findWithAnswer();
     }
 
     public List<Question> findAll() {
-        IQuestionDAO dao = new QuestionDAO();
+        QuestionDAO dao = new QuestionDAOImpl();
         return dao.findAll();
     }
 }

@@ -1,9 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
+<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="properties.content"/>
+
+<html lang="${language}">
 <head>
-    <title>Управление</title>
+    <title><fmt:message key="management.title"/></title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
@@ -19,16 +24,16 @@
                 <strong>${errorMessage}</strong>
             </div>
         </c:if>
+        <h2><fmt:message key="management.header.newentries"/></h2>
         <table class="table table-hover">
-            <h2>Новые заявки на конференции</h2>
             <thead>
             <tr bgcolor="#87cefa" align="center">
-                <th>Логин</th>
-                <th>Название конференции</th>
-                <th>Даты проведения</th>
-                <th>Место проведения</th>
+                <th><fmt:message key="management.table.login"/></th>
+                <th><fmt:message key="management.table.topic"/></th>
+                <th><fmt:message key="management.table.date"/></th>
+                <th><fmt:message key="management.table.place"/></th>
                 <c:if test="${not empty sessionScope.user}">
-                    <th>Статус</th>
+                    <th><fmt:message key="management.table.status"/></th>
                 </c:if>
             </tr>
             </thead>
@@ -41,20 +46,17 @@
                         <c:out value="${entry.conference.end}"/></td>
                     <td><c:out value="${entry.conference.place}"/></td>
                     <td>
-                        <a href="/conferences/management?command=changeStatus&status=Отменена&id=${entry.identry}">Отменить
-                            заявку</a>
-                        <br/>
-                        <a href="/conferences/management?command=changeStatus&status=Одобрено&id=${entry.identry}">Принять
-                            заявку</a>
+                        <form method="post" action="/conferences/">
+                            <input name="command" value="changeStatus">
+                            <input name="id" value="${entry.identry}">
+                            <input name="login" value="${entry.login}">
+                            <button type="submit" name="status" value="Отменена">
+                                <fmt:message key="management.declineentry"/>
+                            </button>
+                            <button type="submit" name="status" value="Одобрено">
+                                <fmt:message key="management.acceptentry"/></button>
+                        </form>
                     </td>
-                    <c:choose>
-                        <c:when test="${sessionScope.type eq 'user'}">
-                            <td>
-                                <a href="/conferences/signUp?id=${current.idconference}" class="btn btn-primary entry">Оставить
-                                    заявку</a>
-                            </td>
-                        </c:when>
-                    </c:choose>
                 </tr>
             </c:forEach>
             </tbody>
