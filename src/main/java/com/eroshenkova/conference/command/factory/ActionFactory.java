@@ -3,9 +3,7 @@ package com.eroshenkova.conference.command.factory;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.client.CommandEnum;
 import com.eroshenkova.conference.command.impl.EmptyCommand;
-import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.resource.MessageManager;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,7 +29,7 @@ public class ActionFactory {
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();
         } catch (IllegalArgumentException e) {
-            request.setAttribute(Parameter.WRONG_ACTION, action + MessageManager.getProperty(Message.WRONG_ACTION));
+            //request.setAttribute(Parameter.WRONG_ACTION, action + MessageManager.getProperty(Message.WRONG_ACTION));
             LOGGER.log(Level.ERROR, "Command is not detected");
         }
         return current;

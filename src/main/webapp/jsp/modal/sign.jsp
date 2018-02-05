@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
-<fmt:setLocale value="${language}"/>
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
+<fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
 <fmt:setBundle basename="properties.content"/>
 
 <div class="modal fade" id="signModal" tabindex="-1" role="dialog">

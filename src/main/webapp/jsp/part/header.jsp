@@ -2,8 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
-<fmt:setLocale value="${language}"/>
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
+<fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
 <fmt:setBundle basename="properties.content"/>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -48,15 +48,9 @@
                     </c:if>
                 </li>
                 <li class="nav-item">
-                    <a href="/conferences/?command=changeLanguage&language=en">EN</a>
-                    <a href="/conferences/?command=changeLanguage&language=ru">RU</a>
-                    <%--<form method="post" class="ml-1">--%>
-                    <%--<input type="hidden" name="command" value="changeLanguage">--%>
-                    <%--<select id="language" class="form-control btn-primary" name="language" onchange="submit()">--%>
-                    <%--<option name="lang" value="en" ${language == 'en' ? 'selected' : ''}>EN</option>--%>
-                    <%--<option name="lang" value="ru" ${language == 'ru' ? 'selected' : ''}>RU</option>--%>
-                    <%--</select>--%>
-                    <%--</form>--%>
+                    <a href="/conferences/?command=changeLanguage&language=en&locale=en_EN">EN</a>
+                    <a href="/conferences/?command=changeLanguage&language=ru&locale=ru_RU">RU</a>
+                    <a href="/conferences/?command=changeLanguage&language=be&locale=be_BE">BE</a>
                 </li>
             </ul>
         </div>

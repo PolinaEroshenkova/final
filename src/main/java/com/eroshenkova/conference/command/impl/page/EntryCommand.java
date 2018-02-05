@@ -13,15 +13,15 @@ public class EntryCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = null;
         String stringId = request.getParameter(Parameter.ID);
-        if (stringId != null) {
-            long id = Long.parseLong(stringId);
-            ConferenceLogic logic = new ConferenceLogic();
-            Conference conference = logic.findByKey(id);
-            page = JspRoutesManager.getProperty(Page.JSP_ENTRY);
+        long id = Long.parseLong(stringId);
+        ConferenceLogic logic = new ConferenceLogic();
+        Conference conference = logic.findByKey(id);
+        if (conference == null) {
+            request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
+        } else {
             request.setAttribute(Parameter.CONFERENCE, conference);
         }
-        return page;
+        return JspRoutesManager.getProperty(Page.JSP_ENTRY);
     }
 }

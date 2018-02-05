@@ -16,24 +16,23 @@ public class MailThread extends Thread {
     private static final Logger LOGGER = LogManager.getLogger(MailThread.class);
 
     private MimeMessage message;
-    private String sender;
     private String recipient;
     private String subject;
     private String text;
 
-    public MailThread(String sender, String recipient, String subject, String text) {
-        this.sender = sender;
+    public MailThread(String recipient, String subject, String text) {
         this.recipient = recipient;
         this.subject = subject;
         this.text = text;
     }
 
     private void init() {
-        Session mailSession = (new SessionCreator()).createSession();
+        SessionCreator sessionCreator = new SessionCreator();
+        Session mailSession = sessionCreator.createSession();
         mailSession.setDebug(true);
         message = new MimeMessage(mailSession);
         try {
-            message.setFrom(new InternetAddress(sender));
+            message.setFrom(new InternetAddress(sessionCreator.getUsername()));
             message.setSubject(subject);
             message.setText(text);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));

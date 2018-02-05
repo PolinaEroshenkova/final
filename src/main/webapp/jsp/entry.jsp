@@ -2,8 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
-<fmt:setLocale value="${language}"/>
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
+<fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
 <fmt:setBundle basename="properties.content"/>
 
 <html lang="${language}">
@@ -31,7 +31,7 @@
 
                 <c:if test="${not empty errorMessage}">
                     <div class="alert alert-danger" id="ErrorAlert">
-                        <strong>${errorMessage}</strong>
+                        <strong><fmt:message key="error.servererror"/></strong>
                     </div>
                 </c:if>
 

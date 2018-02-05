@@ -1,14 +1,12 @@
 package com.eroshenkova.conference.command.impl.user;
 
 import com.eroshenkova.conference.command.ActionCommand;
-import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.entity.Participant;
 import com.eroshenkova.conference.entity.User;
 import com.eroshenkova.conference.logic.impl.UserLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
-import com.eroshenkova.conference.resource.MessageManager;
 import com.eroshenkova.conference.resource.UrlManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +22,10 @@ public class CreateProfileCommand implements ActionCommand {
         int userLogicResult = userLogic.register(user, participant);
         if (userLogicResult < 0) {
             page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
-            request.setAttribute(Parameter.ERROR_EMAIL, MessageManager.getProperty(Message.EMAIL_ERROR));//email is exist
+            request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);//email is exist
         } else if (userLogicResult == 0) {
             page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION); //login is exist
-            request.setAttribute(Parameter.ERROR_LOGIN, MessageManager.getProperty(Message.LOGIN_ERROR));
+            request.setAttribute(Parameter.ERROR_LOGIN, Parameter.ERROR_LOGIN_MESSAGE);
         } else {
             page = UrlManager.getProperty(Page.INDEX); //OK
         }

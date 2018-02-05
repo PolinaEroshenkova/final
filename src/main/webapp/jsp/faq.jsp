@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
-<fmt:setLocale value="${language}"/>
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
+<fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
 <fmt:setBundle basename="properties.content"/>
 
 <html lang="${language}">
@@ -22,15 +22,14 @@
             <div class="col-8">
                 <c:choose>
                     <c:when test="${sessionScope.type eq 'admin'}">
+                        <c:if test="${not empty errorMessage}">
+                            <div class="alert alert-danger" id="ErrorAlert">
+                                <strong><fmt:message key="error.servererror"/> </strong>
+                            </div>
+                        </c:if>
                         <form role="form" method="post" action="/conferences/">
                             <h2><fmt:message key="faq.header"/></h2>
                             <input type="hidden" name="command" value="publishQuestion"/>
-
-                            <c:if test="${not empty errorMessage}">
-                                <div class="alert alert-danger" id="ErrorAlert">
-                                    <strong>${errorMessage}</strong>
-                                </div>
-                            </c:if>
 
                             <div class="form-group mx-auto">
                                 <label for="question-admin"><fmt:message key="faq.form.enterquestion"/></label>
@@ -48,40 +47,45 @@
                                 <button type="submit" class="btn btn-primary"><fmt:message key="faq.publish"/></button>
                             </div>
                         </form>
-                        <c:if test="${not empty noAnswerQuestions}">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr bgcolor="#87cefa" align="center">
-                                    <th><fmt:message key="faq.table.login"/></th>
-                                    <th><fmt:message key="faq.table.question"/></th>
-                                    <th><fmt:message key="faq.table.status"/></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${noAnswerQuestions}" var="question">
-                                    <tr>
-                                        <td>${question.login}</td>
-                                        <td>${question.question}</td>
-                                        <td><a href="" class="btn btn-primary" data-toggle="modal"
-                                               data-target="#answerModal" data-id="${question.idquestion}"
-                                               data-login="${question.login}"><fmt:message key="faq.table.answer"/></a>
-                                        </td>
+                        <c:choose>
+                            <c:when test="${empty noAnswerQuestions}">
+                                <h4><fmt:message key="faq.header.noquestions"/></h4>
+                            </c:when>
+                            <c:otherwise>
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr bgcolor="#87cefa" align="center">
+                                        <th><fmt:message key="faq.table.login"/></th>
+                                        <th><fmt:message key="faq.table.question"/></th>
+                                        <th><fmt:message key="faq.table.status"/></th>
                                     </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </c:if>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${noAnswerQuestions}" var="question">
+                                        <tr>
+                                            <td>${question.login}</td>
+                                            <td>${question.question}</td>
+                                            <td><a href="" class="btn btn-primary" data-toggle="modal"
+                                                   data-target="#answerModal" data-id="${question.idquestion}"
+                                                   data-login="${question.login}"><fmt:message
+                                                    key="faq.table.answer"/></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </c:otherwise>
+                        </c:choose>
                     </c:when>
                     <c:when test="${sessionScope.type eq 'user'}">
+                        <c:if test="${not empty errorMessage}">
+                            <div class="alert alert-danger" id="ErrorAlert">
+                                <strong><fmt:message key="error.servererror"/> </strong>
+                            </div>
+                        </c:if>
                         <form role="form" method="post" action="/conferences/">
                             <h2><fmt:message key="faq.header.havequestion"/></h2>
                             <input type="hidden" name="command" value="askQuestion"/>
-
-                            <c:if test="${not empty errorMessage}">
-                                <div class="alert alert-danger" id="ErrorAlert">
-                                    <strong>${errorMessage}</strong>
-                                </div>
-                            </c:if>
 
                             <div class="form-group mx-auto">
                                 <label for="question"><fmt:message key="faq.header.askadmin"/></label>
@@ -95,11 +99,18 @@
                     </c:when>
                 </c:choose>
                 <div>
-                    <c:forEach items="${questions}" var="question">
-                        <h5>${question.question}</h5>
-                        <p>${question.answer}</p>
-                        <hr/>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${empty questions}">
+                            <h4><fmt:message key="faq.header.nopublishedquestions"/></h4>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${questions}" var="question">
+                                <h5>${question.question}</h5>
+                                <p>${question.answer}</p>
+                                <hr/>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

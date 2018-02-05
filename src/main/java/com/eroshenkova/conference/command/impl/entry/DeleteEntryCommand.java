@@ -1,7 +1,6 @@
 package com.eroshenkova.conference.command.impl.entry;
 
 import com.eroshenkova.conference.command.ActionCommand;
-import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.logic.impl.EntryLogic;
@@ -22,7 +21,7 @@ public class DeleteEntryCommand implements ActionCommand {
             page = UrlManager.getProperty(Page.PROFILE);
         } else {
             page = JspRoutesManager.getProperty(Page.PROFILE);
-            request.setAttribute(Parameter.ERROR_MESSAGE, Message.SERVER_ERROR);
+            request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
         }
         return page;
     }

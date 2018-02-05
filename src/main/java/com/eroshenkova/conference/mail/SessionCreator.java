@@ -1,5 +1,6 @@
 package com.eroshenkova.conference.mail;
 
+import com.eroshenkova.conference.constant.Mail;
 import com.eroshenkova.conference.resource.MailManager;
 
 import javax.mail.Authenticator;
@@ -7,30 +8,34 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
 
-public class SessionCreator {
+class SessionCreator {
     private String username;
     private String password;
     private Properties sessionProperties;
 
-    public SessionCreator() {
-        String smtpHost = MailManager.getProperty("mail.smtp.host");
-        String smtpPort = MailManager.getProperty("mail.smtp.port");
-        username = MailManager.getProperty("mail.user.name");
-        password = MailManager.getProperty("mail.user.password");
+    SessionCreator() {
+        String smtpHost = MailManager.getProperty(Mail.SMTP_HOST);
+        String smtpPort = MailManager.getProperty(Mail.SMTP_PORT);
+        username = MailManager.getProperty(Mail.USERNAME);
+        password = MailManager.getProperty(Mail.PASSWORD);
         sessionProperties = new Properties();
-        sessionProperties.put("mail.smtp.host", smtpHost);
-        sessionProperties.put("mail.smtp.socketFactory.port", smtpPort);
-        sessionProperties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        sessionProperties.put("mail.smtp.auth", "true");
-        sessionProperties.put("mail.smtp.port", smtpPort);
+        sessionProperties.put(Mail.SMTP_HOST, smtpHost);
+        sessionProperties.put(Mail.SMTP_SOCKETFACTORY_PORT, smtpPort);
+        sessionProperties.put(Mail.SMTP_SOCKETFACTORY_CLASS, Mail.SSLSOCKETFACTORY);
+        sessionProperties.put(Mail.AUTENTIFICATION, "true");
+        sessionProperties.put(Mail.SMTP_PORT, smtpPort);
     }
 
-    public Session createSession() {
+    Session createSession() {
         return Session.getDefaultInstance(sessionProperties,
                 new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
                 });
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

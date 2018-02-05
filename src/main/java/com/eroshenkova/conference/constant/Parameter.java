@@ -60,11 +60,21 @@ public class Parameter {
 
     public static final String ANSWER = "answer";
 
+    public static final String LOCALE = "locale";
+
+    public static final String LANGUAGE = "language";
+
     public static final String ERROR_MESSAGE = "errorMessage";
+
+    public static final String SERVER_ERROR_MESSAGE = "serverError";
 
     public static final String ERROR_LOGIN = "loginError";
 
+    public static final String ERROR_LOGIN_MESSAGE = "Login is busy";
+
     public static final String ERROR_EMAIL = "emailError";
+
+    public static final String ERROR_EMAIL_MESSAGE = "email is busy";
 
     public static final String COMMAND = "command";
 

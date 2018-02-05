@@ -20,9 +20,10 @@ public class AskQuestionCommand implements ActionCommand {
         String text = request.getParameter(Parameter.QUESTION);
         Question question = new Question(login, text);
         QuestionLogic logic = new QuestionLogic();
-        if (logic.create(question)) {
+        if (logic.create(question) == 0) {
             page = UrlManager.getProperty(Page.FAQ);
         } else {
+            request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
             page = JspRoutesManager.getProperty(Page.JSP_FAQ);
         }
         return page;

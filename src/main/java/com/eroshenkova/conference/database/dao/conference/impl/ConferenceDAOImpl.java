@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.List;
 
 public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements ConferenceDAO {

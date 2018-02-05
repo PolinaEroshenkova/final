@@ -17,18 +17,14 @@ public class ProfileCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = null;
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute(Parameter.USER);
         UserLogic userLogic = new UserLogic();
         User user = userLogic.formProfile(login);
         EntryLogic entryLogic = new EntryLogic();
         List<Entry> entries = entryLogic.findByLogin(login);
-        if (user != null && entries != null) {
-            request.setAttribute(Parameter.USER, user);
-            request.setAttribute(Parameter.ENTRIES, entries);
-            page = JspRoutesManager.getProperty(Page.JSP_PROFILE);
-        }
-        return page;
+        request.setAttribute(Parameter.USER, user);
+        request.setAttribute(Parameter.ENTRIES, entries);
+        return JspRoutesManager.getProperty(Page.JSP_PROFILE);
     }
 }

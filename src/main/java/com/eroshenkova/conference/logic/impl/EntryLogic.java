@@ -63,10 +63,10 @@ public class EntryLogic {
         return fillEntriesWithConference(entries);
     }
 
-//    public boolean changeStatus(long id, String status) {
-//        EntryDAO entryDAO = new EntryDAOImpl();
-//        return entryDAO.changeStatus(id, status);
-//    }
+    public boolean changeStatus(Entry entity) {
+        DAO<Long, Entry> entryDAO = new EntryDAOImpl();
+        return entryDAO.update(entity, entity.getIdentry());
+    }
 
     private List<Entry> fillEntriesWithConference(List<Entry> entries) {
         if (entries != null) {

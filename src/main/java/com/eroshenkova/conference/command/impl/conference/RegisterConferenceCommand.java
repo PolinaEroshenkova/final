@@ -1,7 +1,6 @@
 package com.eroshenkova.conference.command.impl.conference;
 
 import com.eroshenkova.conference.command.ActionCommand;
-import com.eroshenkova.conference.constant.Message;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.entity.Conference;
@@ -9,7 +8,6 @@ import com.eroshenkova.conference.entity.Section;
 import com.eroshenkova.conference.locale.DateWorker;
 import com.eroshenkova.conference.logic.impl.ConferenceLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
-import com.eroshenkova.conference.resource.MessageManager;
 import com.eroshenkova.conference.resource.UrlManager;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +32,7 @@ public class RegisterConferenceCommand implements ActionCommand {
             if (logic.register(conference)) {
                 page = UrlManager.getProperty(Page.CONFERENCE);
             } else {
-                request.setAttribute(Parameter.ERROR_MESSAGE, MessageManager.getProperty(Message.SERVER_ERROR));
+                request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
                 page = JspRoutesManager.getProperty(Page.JSP_NEW_CONFERENCE);
             }
         } catch (ParseException e) {
@@ -53,9 +51,9 @@ public class RegisterConferenceCommand implements ActionCommand {
         String dateEnd = request.getParameter(Parameter.DATE_END);
         String timeEnd = request.getParameter(Parameter.TIME_END);
         String deadline = request.getParameter(Parameter.DEADLINE);
-        Date sqlStartDate = DateWorker.formatToSqlDate(String.join(DELIMITER_SPACE, dateStart, timeStart));
-        Date sqlEndDate = DateWorker.formatToSqlDate(String.join(DELIMITER_SPACE, dateEnd, timeEnd));
-        Date sqlDeadline = DateWorker.formatToSqlDate(deadline);
+        Date sqlStartDate = DateWorker.formatToDate(String.join(DELIMITER_SPACE, dateStart, timeStart));
+        Date sqlEndDate = DateWorker.formatToDate(String.join(DELIMITER_SPACE, dateEnd, timeEnd));
+        Date sqlDeadline = DateWorker.formatToDate(deadline);
         String[] sectionArray = request.getParameterValues(Parameter.SECTIONS);
         List<Section> sections = new ArrayList<>();
         for (String title : sectionArray) {

@@ -2,8 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty sessionScope.lang ? sessionScope.lang : 'en'}"/>
-<fmt:setLocale value="${language}"/>
+<c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
+<fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
 <fmt:setBundle basename="properties.content"/>
 
 <html lang="${language}">
@@ -102,44 +102,51 @@
     </div>
 
     <h3 class="profile-h3"><fmt:message key="profile.header.myentries"/>: </h3>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-            <tr bgcolor="#87cefa" align="center">
-                <td><fmt:message key="profile.table.date"/></td>
-                <td><fmt:message key="profile.table.topic"/></td>
-                <td><fmt:message key="profile.table.sections"/></td>
-                <td><fmt:message key="profile.table.status"/></td>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${entries}" var="current">
-                <tr>
-                    <td><c:out value="${current.conference.begin}"/><br/>
-                        <c:out value="${current.conference.end}"/>
-                    </td>
-                    <td><c:out value="${current.conference.topic}"/></td>
-                    <td>
-                        <ul type="circle">
-                            <c:forEach items="${current.conference.sections}" var="section">
-                                <li><c:out value="${section.title}"/></li>
-                            </c:forEach>
-                        </ul>
-                    </td>
-                    <td>
-                        <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
-                            <a href="/conferences/profile?command=deleteEntry&id=${current.identry}"
-                               class="btn btn-primary"><fmt:message key="profile.table.declineentry"/></a>
-                        </c:if>
-                        <c:if test="${current.status eq 'Отклонено'}">
-                            <c:out value="${current.status}"/>
-                        </c:if>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+    <c:choose>
+        <c:when test="${empty entries}">
+            <h4><fmt:message key="profile.header.noentries"/></h4>
+        </c:when>
+        <c:otherwise>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr bgcolor="#87cefa" align="center">
+                        <td><fmt:message key="profile.table.date"/></td>
+                        <td><fmt:message key="profile.table.topic"/></td>
+                        <td><fmt:message key="profile.table.sections"/></td>
+                        <td><fmt:message key="profile.table.status"/></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${entries}" var="current">
+                        <tr>
+                            <td><c:out value="${current.conference.begin}"/><br/>
+                                <c:out value="${current.conference.end}"/>
+                            </td>
+                            <td><c:out value="${current.conference.topic}"/></td>
+                            <td>
+                                <ul type="circle">
+                                    <c:forEach items="${current.conference.sections}" var="section">
+                                        <li><c:out value="${section.title}"/></li>
+                                    </c:forEach>
+                                </ul>
+                            </td>
+                            <td>
+                                <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
+                                    <a href="/conferences/profile?command=deleteEntry&id=${current.identry}"
+                                       class="btn btn-primary"><fmt:message key="profile.table.declineentry"/></a>
+                                </c:if>
+                                <c:if test="${current.status eq 'Отклонено'}">
+                                    <c:out value="${current.status}"/>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </c:otherwise>
+    </c:choose>
 </section>
 
 <jsp:include page="part/footer.jsp"/>
