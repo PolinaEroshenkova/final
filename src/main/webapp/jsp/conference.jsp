@@ -38,7 +38,7 @@
                         <tr bgcolor="#87cefa" align="center">
                             <th><fmt:message key="conference.table.deadline"/></th>
                             <th><fmt:message key="conference.table.topic"/></th>
-                            <th><fmt:message key="conference.table.date"/></th>
+                            <th class="fixed-column"><fmt:message key="conference.table.date"/></th>
                             <th><fmt:message key="conference.table.place"/></th>
                             <c:if test="${not empty sessionScope.user}">
                                 <th><fmt:message key="conference.table.place"/></th>
@@ -48,10 +48,12 @@
                         <tbody>
                         <c:forEach items="${conferences}" var="current">
                             <tr>
-                                <td><c:out value="${current.deadline}"/></td>
+                                <td><fmt:formatDate type="date" value="${current.deadline}" timeStyle="short"/></td>
                                 <td><c:out value="${current.topic}"/></td>
-                                <td><c:out value="${current.begin}"/><br/>
-                                    <c:out value="${current.end}"/></td>
+                                <td class="fixed-column"><fmt:formatDate type="both" value="${current.begin}"
+                                                                         timeStyle="short"/><br/>
+                                    <fmt:formatDate type="both" value="${current.end}" timeStyle="short"/>
+                                </td>
                                 <td><c:out value="${current.place}"/></td>
                                 <c:choose>
                                     <c:when test="${sessionScope.type eq 'user'}">

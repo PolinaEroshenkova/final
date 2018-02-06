@@ -3,7 +3,7 @@ package com.eroshenkova.conference.entity;
 import java.util.Date;
 import java.util.List;
 
-public class Conference {
+public class Conference implements Comparable<Conference> {
     private long idconference;
     private String topic;
     private int participantsnumber;
@@ -139,5 +139,10 @@ public class Conference {
                 ", deadline=" + deadline +
                 ", sections=" + sections +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Conference o) {
+        return deadline.compareTo(o.getDeadline());
     }
 }

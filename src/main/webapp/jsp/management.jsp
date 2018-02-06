@@ -55,10 +55,10 @@
                                     <input name="command" value="changeStatus">
                                     <input name="id" value="${entry.identry}">
                                     <input name="login" value="${entry.login}">
-                                    <button type="submit" name="status" value="Отменена">
+                                    <button type="submit" name="status" value="Disapproved">
                                         <fmt:message key="management.declineentry"/>
                                     </button>
-                                    <button type="submit" name="status" value="Одобрено">
+                                    <button type="submit" name="status" value="Approved">
                                         <fmt:message key="management.acceptentry"/></button>
                                 </form>
                             </td>

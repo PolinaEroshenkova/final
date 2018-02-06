@@ -8,14 +8,10 @@ import com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl;
 import com.eroshenkova.conference.entity.Conference;
 import com.eroshenkova.conference.entity.Section;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ConferenceLogic {
-
-    public long create(Conference conference) {
-        DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
-        return conferenceDao.create(conference, false);
-    }
 
     public Conference findByKey(Long key) {
         DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
@@ -31,7 +27,9 @@ public class ConferenceLogic {
 
     public List<Conference> findByDate() {
         ConferenceDAO conferenceDao = new ConferenceDAOImpl();
-        return conferenceDao.findByDate();
+        List<Conference> conferences = conferenceDao.findByDate();
+        Collections.sort(conferences);
+        return conferences;
     }
 
     public boolean deleteConference(Long idConference) {

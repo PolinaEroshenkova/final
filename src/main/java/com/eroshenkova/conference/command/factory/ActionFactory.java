@@ -29,7 +29,6 @@ public class ActionFactory {
             CommandEnum currentEnum = CommandEnum.valueOf(action.toUpperCase());
             current = currentEnum.getCurrentCommand();
         } catch (IllegalArgumentException e) {
-            //request.setAttribute(Parameter.WRONG_ACTION, action + MessageManager.getProperty(Message.WRONG_ACTION));
             LOGGER.log(Level.ERROR, "Command is not detected");
         }
         return current;

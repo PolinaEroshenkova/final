@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="error-template text-center">
+            <div class="error-template text-center align-middle">
                 <h1>Oops!</h1>
                 <h2>404 Not Found</h2>
                 <p>Sorry, an error has occured, Requested page not found!</p>

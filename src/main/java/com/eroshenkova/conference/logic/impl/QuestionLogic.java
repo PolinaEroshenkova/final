@@ -14,11 +14,6 @@ public class QuestionLogic {
         return dao.create(entity, false);
     }
 
-    public Question findByKey(Long key) {
-        DAO<Long, Question> dao = new QuestionDAOImpl();
-        return dao.findByKey(key);
-    }
-
     public boolean deleteByKey(Long key) {
         DAO<Long, Question> dao = new QuestionDAOImpl();
         return dao.delete(key);
@@ -32,10 +27,5 @@ public class QuestionLogic {
     public List<Question> findWithAnswer() {
         QuestionDAO dao = new QuestionDAOImpl();
         return dao.findWithAnswer();
-    }
-
-    public List<Question> findAll() {
-        QuestionDAO dao = new QuestionDAOImpl();
-        return dao.findAll();
     }
 }

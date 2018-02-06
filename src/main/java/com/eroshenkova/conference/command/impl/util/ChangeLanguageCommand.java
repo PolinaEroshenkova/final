@@ -1,4 +1,4 @@
-package com.eroshenkova.conference.command.impl;
+package com.eroshenkova.conference.command.impl.util;
 
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Page;

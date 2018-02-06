@@ -9,8 +9,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements ConferenceDAO {
     private static final Logger LOGGER = LogManager.getLogger(ConferenceDAOImpl.class);
@@ -46,8 +48,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         String topic = resultSet.getString("topic");
         int numberOfParticipants = resultSet.getInt("number_of_participants");
         String place = resultSet.getString("place");
-        Date start = resultSet.getDate("date_start");
-        Date end = resultSet.getDate("date_end");
+        Calendar nowGMT = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        Date start = resultSet.getTimestamp("date_start", nowGMT);
+        Date end = resultSet.getTimestamp("date_end", nowGMT);
         Date deadline = resultSet.getDate("deadline");
         return new Conference(idconf, topic, numberOfParticipants, place, start, end, deadline);
     }

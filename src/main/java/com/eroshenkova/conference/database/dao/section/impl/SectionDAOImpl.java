@@ -21,18 +21,9 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
 
     private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
 
-    private static final String SQL_FIND_BY_ENTRY_ID = "SELECT * FROM section " + //TODO CHECK
-            "JOIN sectionentry ON sectionentry.id_section=section.id_section " +
-            "WHERE sectionentry.id_entry=?";
-
     @Override
     public List<Section> findByConferenceId(long id) {
         return findById(id, SQL_FIND_BY_CONFERENCE_ID);
-    }
-
-    @Override
-    public List<Section> findByEntryId(long id) {
-        return findById(id, SQL_FIND_BY_ENTRY_ID);
     }
 
     @Override

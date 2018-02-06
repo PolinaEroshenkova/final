@@ -9,3 +9,8 @@ body {
 .registration-form {
     margin-top: 50px;
 }
+
+.fixed-column {
+    position: inherit;
+    width: 15%;
+}

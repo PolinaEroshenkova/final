@@ -7,5 +7,4 @@ import java.util.List;
 public interface SectionDAO {
     List<Section> findByConferenceId(long id);
 
-    List<Section> findByEntryId(long id);
 }

@@ -4,27 +4,18 @@ import com.eroshenkova.conference.database.DAO;
 import com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl;
 import com.eroshenkova.conference.database.dao.entry.EntryDAO;
 import com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl;
-import com.eroshenkova.conference.database.dao.section.SectionDAO;
 import com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl;
 import com.eroshenkova.conference.database.dao.sectionentry.SectionEntryDAO;
+import com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl;
 import com.eroshenkova.conference.entity.Conference;
 import com.eroshenkova.conference.entity.Entry;
 import com.eroshenkova.conference.entity.Section;
 import com.eroshenkova.conference.entity.SectionEntry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntryLogic {
-
-    public long create(Entry entry) {
-        DAO<Long, Entry> dao = new EntryDAOImpl();
-        return dao.create(entry, false);
-    }
-
-    public Entry findByKey(Long key) {
-        DAO<Long, Entry> dao = new EntryDAOImpl();
-        return dao.findByKey(key);
-    }
 
     public boolean delete(long id) {
         DAO<Long, Entry> entryDAO = new EntryDAOImpl();
@@ -37,7 +28,7 @@ public class EntryLogic {
         long insertedEntryId = entryDAO.create(entry, true);
         boolean flag = true;
         if (insertedEntryId > 0) {
-            DAO<List<Long>, SectionEntry> sectionEntryDao = new SectionEntryDAO();
+            DAO<Long, SectionEntry> sectionEntryDao = new SectionEntryDAOImpl();
             for (String id : sectionIds) {
                 SectionEntry sectionEntry = new SectionEntry(insertedEntryId, Long.parseLong(id));
                 if (sectionEntryDao.create(sectionEntry, false) != 0) {
@@ -70,11 +61,18 @@ public class EntryLogic {
 
     private List<Entry> fillEntriesWithConference(List<Entry> entries) {
         if (entries != null) {
-            SectionDAO sectionDao = new SectionDAOImpl();
+            DAO<Long, Section> sectionDAO = new SectionDAOImpl();
             DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
-            for (Entry entry : entries) {  //TODO cортировка по дате
-                long id = entry.getIdentry();
-                List<Section> sections = sectionDao.findByEntryId(id);
+            SectionEntryDAO sectionEntryDAO = new SectionEntryDAOImpl();
+            for (Entry entry : entries) {
+                long entryId = entry.getIdentry();
+                List<SectionEntry> sectionEntries = sectionEntryDAO.findByEntryId(entryId);
+                List<Section> sections = new ArrayList<>();
+                for (SectionEntry current : sectionEntries) {
+                    long sectionId = current.getIdsection();
+                    Section section = sectionDAO.findByKey(sectionId);
+                    sections.add(section);
+                }
                 long idconference = sections.get(0).getIdConference();
                 Conference conference = conferenceDao.findByKey(idconference);
                 conference.setSections(sections);

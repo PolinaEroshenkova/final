@@ -20,7 +20,7 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
 
     private static final String SQL_UPDATE_STATUS = "UPDATE entry SET status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
-    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status=\"Ожидает\"";
+    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status=\"Waiting\"";
 
     @Override
     public List<Entry> findByLogin(String login) {

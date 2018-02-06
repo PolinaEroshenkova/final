@@ -1,7 +1,6 @@
 package com.eroshenkova.conference.command.client;
 
 import com.eroshenkova.conference.command.ActionCommand;
-import com.eroshenkova.conference.command.impl.ChangeLanguageCommand;
 import com.eroshenkova.conference.command.impl.conference.DeleteConferenceCommand;
 import com.eroshenkova.conference.command.impl.conference.RegisterConferenceCommand;
 import com.eroshenkova.conference.command.impl.entry.ChangeStatusCommand;
@@ -15,6 +14,7 @@ import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
 import com.eroshenkova.conference.command.impl.user.LoginCommand;
 import com.eroshenkova.conference.command.impl.user.LogoutCommand;
 import com.eroshenkova.conference.command.impl.user.UpdateUserCommand;
+import com.eroshenkova.conference.command.impl.util.ChangeLanguageCommand;
 
 public enum CommandEnum {
     INDEX {
