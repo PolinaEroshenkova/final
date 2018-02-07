@@ -4,11 +4,11 @@ import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.entity.User;
-import com.eroshenkova.conference.logic.impl.MailLogic;
-import com.eroshenkova.conference.logic.impl.QuestionLogic;
-import com.eroshenkova.conference.logic.impl.UserLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;
+import com.eroshenkova.conference.service.impl.MailService;
+import com.eroshenkova.conference.service.impl.QuestionService;
+import com.eroshenkova.conference.service.impl.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,12 +20,12 @@ public class AnswerQuestionCommand implements ActionCommand {
         String id = request.getParameter(Parameter.ID);
         String answer = request.getParameter(Parameter.ANSWER);
         String userLogin = request.getParameter(Parameter.LOGIN);
-        UserLogic userLogic = new UserLogic();
-        User user = userLogic.findByKey(userLogin);
-        MailLogic logic = new MailLogic();
+        UserService userService = new UserService();
+        User user = userService.findByKey(userLogin);
+        MailService logic = new MailService();
         logic.sendEmail(answer, user.getEmail());
-        QuestionLogic questionLogic = new QuestionLogic();
-        if (questionLogic.deleteByKey(Long.parseLong(id))) {
+        QuestionService questionService = new QuestionService();
+        if (questionService.deleteByKey(Long.parseLong(id))) {
             page = UrlManager.getProperty(Page.FAQ);
         } else {
             page = JspRoutesManager.getProperty(Page.JSP_FAQ);

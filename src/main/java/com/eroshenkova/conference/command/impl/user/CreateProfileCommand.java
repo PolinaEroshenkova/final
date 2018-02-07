@@ -5,9 +5,9 @@ import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.entity.Participant;
 import com.eroshenkova.conference.entity.User;
-import com.eroshenkova.conference.logic.impl.UserLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;
+import com.eroshenkova.conference.service.impl.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,8 +18,8 @@ public class CreateProfileCommand implements ActionCommand {
         String page;
         User user = formUserObject(request);
         Participant participant = formParticipantObject(request);
-        UserLogic userLogic = new UserLogic();
-        int userLogicResult = userLogic.register(user, participant);
+        UserService userService = new UserService();
+        int userLogicResult = userService.register(user, participant);
         if (userLogicResult < 0) {
             page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
             request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);//email is exist
@@ -44,6 +44,8 @@ public class CreateProfileCommand implements ActionCommand {
         String surname = request.getParameter(Parameter.SURNAME);
         String name = request.getParameter(Parameter.NAME);
         String scope = request.getParameter(Parameter.SCOPE);
-        return new Participant(login, surname, name, scope);
+        String position = request.getParameter(Parameter.POSITION);
+        String company = request.getParameter(Parameter.COMPANY);
+        return new Participant(login, surname, name, scope, position, company);
     }
 }

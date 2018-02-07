@@ -1,47 +1,11 @@
 package com.eroshenkova.conference.database.dao.sectionentry;
 
-import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.entity.SectionEntry;
+import com.eroshenkova.conference.exception.DAOException;
 
-import java.sql.*;
 import java.util.List;
 
-public class SectionEntryDAO extends AbstractDAO<List<Long>, SectionEntry> {
-    private static final String SQL_CREATE = "INSERT INTO sectionentry VALUES(?,?)";
-    private static final String SQL_DELETE = "DELETE FROM sectionentry WHERE id_entry=?";
+public interface SectionEntryDAO {
 
-
-    @Override
-    public SectionEntry parseResultSet(ResultSet resultSet) throws SQLException {
-        long idsection = resultSet.getLong("id_section");
-        long identry = resultSet.getLong("id_entry");
-        return new SectionEntry(identry, idsection);
-    }
-
-    @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, List<Long> key) throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public PreparedStatement receiveCreateStatement(Connection connection, SectionEntry entity) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS);
-        statement.setLong(1, entity.getIdsection());
-        statement.setLong(2, entity.getIdentry());
-        return statement;
-    }
-
-    @Override
-    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, List<Long> key) throws SQLException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public PreparedStatement receiveDeleteStatement(Connection connection, List<Long> key) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
-        statement.setLong(1, key.get(0));
-        return statement;
-    }
-
-
+    List<SectionEntry> findByEntryId(long id) throws DAOException;
 }

@@ -35,7 +35,7 @@
                     <tr bgcolor="#87cefa" align="center">
                         <th><fmt:message key="management.table.login"/></th>
                         <th><fmt:message key="management.table.topic"/></th>
-                        <th><fmt:message key="management.table.date"/></th>
+                        <th class="fixed-column"><fmt:message key="management.table.date"/></th>
                         <th><fmt:message key="management.table.place"/></th>
                         <c:if test="${not empty sessionScope.user}">
                             <th><fmt:message key="management.table.status"/></th>
@@ -47,14 +47,15 @@
                         <tr>
                             <td><c:out value="${entry.login}"/></td>
                             <td><c:out value="${entry.conference.topic}"/></td>
-                            <td><c:out value="${entry.conference.begin}"/><br/>
-                                <c:out value="${entry.conference.end}"/></td>
+                            <td class="fixed-column"><fmt:formatDate type="both" value="${entry.conference.begin}"
+                                                                     timeStyle="short"/><br/>
+                                    <fmt:formatDate type="both" value="${entry.conference.end}" timeStyle="short"/>
                             <td><c:out value="${entry.conference.place}"/></td>
                             <td>
                                 <form method="post" action="/conferences/">
-                                    <input name="command" value="changeStatus">
-                                    <input name="id" value="${entry.identry}">
-                                    <input name="login" value="${entry.login}">
+                                    <input type="hidden" name="command" value="changeStatus">
+                                    <input type="hidden" name="id" value="${entry.identry}">
+                                    <input type="hidden" name="login" value="${entry.login}">
                                     <button type="submit" name="status" value="Disapproved">
                                         <fmt:message key="management.declineentry"/>
                                     </button>

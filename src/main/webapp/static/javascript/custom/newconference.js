@@ -1,20 +1,26 @@
 $(document).ready(function () {
+    var lang = $('html').attr('lang');
     $('#date-start').datetimepicker({
-        format: 'L'
+        format: 'L',
+        locale: lang
     });
     $('#date-end').datetimepicker({
-        format: 'L'
+        format: 'L',
+        locale: lang
     });
     $('#deadline').datetimepicker({
-        format: 'L'
+        format: 'L',
+        locale: lang
     });
 
     $('#time-start').datetimepicker({
-        format: 'LT'
+        format: 'LT',
+        locale: lang
     });
 
     $('#time-end').datetimepicker({
-        format: 'LT'
+        format: 'LT',
+        locale: lang
     });
 
     $('#add-section').click(function () {
@@ -24,7 +30,7 @@ $(document).ready(function () {
     });
 
     $('#delete-section').click(function () {
-        $('#sections :selected').remove();
+        $('#sections').find(':selected').remove();
     });
 
     $('#submit').click(function () {

@@ -47,11 +47,6 @@
                                 key="header.signout"/></a>
                     </c:if>
                 </li>
-                <li class="nav-item">
-                    <a href="/conferences/?command=changeLanguage&language=en&locale=en_EN">EN</a>
-                    <a href="/conferences/?command=changeLanguage&language=ru&locale=ru_RU">RU</a>
-                    <a href="/conferences/?command=changeLanguage&language=be&locale=be_BE">BE</a>
-                </li>
             </ul>
         </div>
     </div>

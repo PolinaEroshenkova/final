@@ -33,7 +33,7 @@
 
                 <c:if test="${not empty loginError}">
                     <div class="alert alert-danger" id="loginErrorAlert">
-                        <strong id="loginError">${loginError}</strong>
+                        <strong id="loginError"><fmt:message key="signin.error"/></strong>
                     </div>
                 </c:if>
 

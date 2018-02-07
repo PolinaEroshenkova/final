@@ -4,9 +4,9 @@ import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.entity.Entry;
-import com.eroshenkova.conference.logic.impl.EntryLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;
+import com.eroshenkova.conference.service.impl.EntryService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +20,7 @@ public class ChangeStatusCommand implements ActionCommand {
         String status = request.getParameter(Parameter.STATUS);
         String login = request.getParameter(Parameter.LOGIN);
         Entry entry = new Entry(idEntry, login, status);
-        EntryLogic logic = new EntryLogic();
+        EntryService logic = new EntryService();
         if (logic.changeStatus(entry)) {
             page = UrlManager.getProperty(Page.MANAGEMENT);
         } else {

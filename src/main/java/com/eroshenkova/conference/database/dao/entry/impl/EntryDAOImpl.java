@@ -3,7 +3,7 @@ package com.eroshenkova.conference.database.dao.entry.impl;
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.entry.EntryDAO;
 import com.eroshenkova.conference.entity.Entry;
-import org.apache.logging.log4j.Level;
+import com.eroshenkova.conference.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,19 +18,18 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
     private static final String SQL_DELETE = "DELETE FROM entry WHERE id_entry=?";
 
-    private static final String SQL_UPDATE_STATUS = "UPDATE entry SET status=? WHERE id_entry=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
-    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status=\"Waiting\"";
+    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status='Waiting'";
 
     @Override
-    public List<Entry> findByLogin(String login) {
+    public List<Entry> findByLogin(String login) throws DAOException {
         Connection connection = super.receiveConnection();
-        List<Entry> entries = null;
+        List<Entry> entries;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_LOGIN)) {
             statement.setString(1, login);
             entries = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find entry");
+            throw new DAOException("Database error. Can't find entry", e);
         } finally {
             super.returnConnection(connection);
         }
@@ -38,13 +37,13 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     }
 
     @Override
-    public List<Entry> findByStatus() {
+    public List<Entry> findByStatus() throws DAOException {
         Connection connection = super.receiveConnection();
-        List<Entry> entries = null;
+        List<Entry> entries;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_STATUS)) {
             entries = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find entry");
+            throw new DAOException("Database error. Can't find entry", e);
         } finally {
             super.returnConnection(connection);
         }

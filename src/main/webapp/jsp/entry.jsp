@@ -56,9 +56,9 @@
                     <tbody>
                     <tr>
                         <td>${conference.place}</td>
-                        <td>${conference.begin}</td>
-                        <td>${conference.end}</td>
-                        <td>${conference.deadline}</td>
+                        <td><fmt:formatDate type="both" value="${conference.begin}" timeStyle="short"/></td>
+                        <td><fmt:formatDate type="both" value="${conference.end}" timeStyle="short"/></td>
+                        <td><fmt:formatDate type="date" value="${conference.deadline}"/></td>
                     </tr>
                     </tbody>
                 </table>
@@ -69,7 +69,7 @@
                     <div class="col-md-12">
                         <select id="sections" name="sections" class="form-control" multiple="multiple" size="5"
                                 required>
-                            <c:forEach items="${sections}" var="section">
+                            <c:forEach items="${conference.sections}" var="section">
                                 <option name="idsection" value="${section.idsection}">${section.title}</option>
                             </c:forEach>
                         </select>
@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary"><fmt:message key="entry.form.signup"/></button>
-                        <a href="/conferences/showConferences" class="btn btn-secondary"><fmt:message
+                        <a href="/conferences/conferences" class="btn btn-secondary"><fmt:message
                                 key="entry.goback"/></a>
                     </div>
                 </div>

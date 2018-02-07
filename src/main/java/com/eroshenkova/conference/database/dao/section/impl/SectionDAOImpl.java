@@ -3,7 +3,7 @@ package com.eroshenkova.conference.database.dao.section.impl;
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.section.SectionDAO;
 import com.eroshenkova.conference.entity.Section;
-import org.apache.logging.log4j.Level;
+import com.eroshenkova.conference.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,8 +22,18 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
     private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
 
     @Override
-    public List<Section> findByConferenceId(long id) {
-        return findById(id, SQL_FIND_BY_CONFERENCE_ID);
+    public List<Section> findByConferenceId(long id) throws DAOException {
+        Connection connection = super.receiveConnection();
+        List<Section> sections;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_CONFERENCE_ID)) {
+            statement.setLong(1, id);
+            sections = super.processSelectStatement(statement);
+        } catch (SQLException e) {
+            throw new DAOException("Database error. Can't find sections", e);
+        } finally {
+            super.returnConnection(connection);
+        }
+        return sections;
     }
 
     @Override
@@ -68,19 +78,5 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
         PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
         statement.setLong(1, key);
         return statement;
-    }
-
-    private List<Section> findById(long id, String query) {
-        Connection connection = super.receiveConnection();
-        List<Section> sections = null;
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setLong(1, id);
-            sections = super.processSelectStatement(statement);
-        } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find sections");
-        } finally {
-            super.returnConnection(connection);
-        }
-        return sections;
     }
 }

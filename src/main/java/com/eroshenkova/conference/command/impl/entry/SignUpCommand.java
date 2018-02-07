@@ -3,9 +3,9 @@ package com.eroshenkova.conference.command.impl.entry;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.constant.Page;
 import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.logic.impl.EntryLogic;
 import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;
+import com.eroshenkova.conference.service.impl.EntryService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,7 +18,7 @@ public class SignUpCommand implements ActionCommand {
         HttpSession session = request.getSession(true);
         String login = (String) session.getAttribute(Parameter.USER);
         String[] sectionIds = request.getParameterValues(Parameter.SECTIONS);
-        EntryLogic logic = new EntryLogic();
+        EntryService logic = new EntryService();
         if (logic.register(login, sectionIds)) {
             page = UrlManager.getProperty(Page.CONFERENCE);
         } else {

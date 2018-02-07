@@ -34,6 +34,10 @@ public class Parameter {
 
     public static final String SCOPE = "scope";
 
+    public static final String POSITION = "position";
+
+    public static final String COMPANY = "company";
+
     public static final String EMAIL = "email";
 
     public static final String REGISTRATION_LOGIN = "reglogin";
@@ -72,6 +76,8 @@ public class Parameter {
 
     public static final String ERROR_LOGIN_MESSAGE = "Login is busy";
 
+    public static final String ERROR_SIGNIN_MESSAGE = "Invalid login or password";
+
     public static final String ERROR_EMAIL = "emailError";
 
     public static final String ERROR_EMAIL_MESSAGE = "email is busy";
@@ -83,4 +89,6 @@ public class Parameter {
     public static final String STATUS = "status";
 
     public static final String WRONG_ACTION = "wrongAction";
+
+    public static final String REQUEST_REFERER = "referer";
 }

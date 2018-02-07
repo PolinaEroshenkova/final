@@ -58,7 +58,7 @@
 </header>
 
 <section class="py-5">
-    <div class="container">
+    <div class="container mb-auto">
         <c:if test="${not empty errorMessage}">
             <div class="alert alert-danger" id="ErrorAlert">
                 <strong>${errorMessage}</strong>

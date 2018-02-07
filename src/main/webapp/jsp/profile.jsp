@@ -30,9 +30,6 @@
             <div class="col-md-5 toppad pull-right col-md-offset-3">
                 <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile"><fmt:message
                         key="profile.edit"/></a>
-                <br/>
-                <a href="/conferences/command=LogOut"
-                   class="btn btn-primary btn-profile"><fmt:message key="profile.signout"/></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -111,7 +108,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr bgcolor="#87cefa" align="center">
-                        <td><fmt:message key="profile.table.date"/></td>
+                        <td class="fixed-column"><fmt:message key="profile.table.date"/></td>
                         <td><fmt:message key="profile.table.topic"/></td>
                         <td><fmt:message key="profile.table.sections"/></td>
                         <td><fmt:message key="profile.table.status"/></td>
@@ -120,8 +117,9 @@
                     <tbody>
                     <c:forEach items="${entries}" var="current">
                         <tr>
-                            <td><c:out value="${current.conference.begin}"/><br/>
-                                <c:out value="${current.conference.end}"/>
+                            <td class="fixed-column"><fmt:formatDate type="both" value="${current.conference.begin}"
+                                                                     timeStyle="short"/><br/>
+                                <fmt:formatDate type="both" value="${current.conference.end}" timeStyle="short"/>
                             </td>
                             <td><c:out value="${current.conference.topic}"/></td>
                             <td>
@@ -132,12 +130,12 @@
                                 </ul>
                             </td>
                             <td>
-                                <c:if test="${current.status eq 'Ожидает' or current.status eq 'Одобрено'}">
+                                <c:if test="${current.status eq 'Waiting' or current.status eq 'Approved'}">
                                     <a href="/conferences/profile?command=deleteEntry&id=${current.identry}"
                                        class="btn btn-primary"><fmt:message key="profile.table.declineentry"/></a>
                                 </c:if>
-                                <c:if test="${current.status eq 'Отклонено'}">
-                                    <c:out value="${current.status}"/>
+                                <c:if test="${current.status eq 'Disapproved'}">
+                                    <fmt:message key="profile.table.disaproved"/>
                                 </c:if>
                             </td>
                         </tr>

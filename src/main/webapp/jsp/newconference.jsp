@@ -120,7 +120,6 @@
 
                 <button type="submit" class="btn btn-primary" id="submit"><fmt:message
                         key="newconference.form.addconference"/></button>
-
             </form>
         </div>
     </div>
@@ -132,7 +131,7 @@
     <jsp:include page="modal/sign.jsp"/>
 </div>
 
-<script src="../static/javascript/lib/moment.min.js"></script>
+<script src="../static/javascript/lib/moment-with-locales.min.js"></script>
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap-datetimepicker.js"></script>

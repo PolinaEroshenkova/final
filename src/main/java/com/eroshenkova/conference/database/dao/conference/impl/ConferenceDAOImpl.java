@@ -3,8 +3,8 @@ package com.eroshenkova.conference.database.dao.conference.impl;
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.conference.ConferenceDAO;
 import com.eroshenkova.conference.entity.Conference;
+import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.locale.DateWorker;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,14 +28,14 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
 
 
     @Override
-    public List<Conference> findByDate() {
+    public List<Conference> findByDate() throws DAOException {
         Connection connection = super.receiveConnection();
-        List<Conference> conferences = null;
+        List<Conference> conferences;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_DATE)) {
             statement.setString(1, DateWorker.receiveNow());
             conferences = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find conference");
+            throw new DAOException("Database error. Can't find conference", e);
         } finally {
             super.returnConnection(connection);
         }
@@ -68,9 +68,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         statement.setString(1, entity.getTopic());
         statement.setInt(2, entity.getParticipantsnumber());
         statement.setString(3, entity.getPlace());
-        statement.setString(4, DateWorker.formatToString(entity.getBegin()));
-        statement.setString(5, DateWorker.formatToString(entity.getEnd()));
-        statement.setString(6, DateWorker.formatToString(entity.getDeadline()));
+        statement.setString(4, DateWorker.formatToSQL(entity.getBegin()));
+        statement.setString(5, DateWorker.formatToSQL(entity.getEnd()));
+        statement.setString(6, DateWorker.formatToSQL(entity.getDeadline()));
         return statement;
     }
 
@@ -81,9 +81,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         statement.setString(2, entity.getTopic());
         statement.setInt(3, entity.getParticipantsnumber());
         statement.setString(4, entity.getPlace());
-        statement.setString(5, DateWorker.formatToString(entity.getBegin()));
-        statement.setString(6, DateWorker.formatToString(entity.getEnd()));
-        statement.setString(7, DateWorker.formatToString(entity.getDeadline()));
+        statement.setString(5, DateWorker.formatToSQL(entity.getBegin()));
+        statement.setString(6, DateWorker.formatToSQL(entity.getEnd()));
+        statement.setString(7, DateWorker.formatToSQL(entity.getDeadline()));
         if (key == null) {
             statement.setLong(8, entity.getIdconference());
         } else {

@@ -1,12 +1,14 @@
 package com.eroshenkova.conference.database;
 
+import com.eroshenkova.conference.exception.DAOException;
+
 public interface DAO<K, T> {
 
-    long create(T entity, boolean isKeyGenerated);
+    long create(T entity, boolean isKeyGenerated) throws DAOException;
 
-    boolean update(T entity, K key);
+    void update(T entity, K key) throws DAOException;
 
-    boolean delete(K key);
+    void delete(K key) throws DAOException;
 
-    T findByKey(K key);
+    T findByKey(K key) throws DAOException;
 }

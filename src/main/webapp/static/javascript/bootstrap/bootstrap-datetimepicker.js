@@ -470,7 +470,7 @@
                     element.children().first().after(widget);
                 }
 
-                // Top and bottom com.eroshenkova.conference.logic
+                // Top and bottom com.eroshenkova.conference.service
                 if (vertical === 'auto') {
                     if (offset.top + widget.height() * 1.5 >= $(window).height() + $(window).scrollTop() &&
                         widget.height() + element.outerHeight() < offset.top) {
@@ -480,7 +480,7 @@
                     }
                 }
 
-                // Left and right com.eroshenkova.conference.logic
+                // Left and right com.eroshenkova.conference.service
                 if (horizontal === 'auto') {
                     if (parent.width() < offset.left + widget.outerWidth() / 2 &&
                         offset.left + widget.outerWidth() > $(window).width()) {

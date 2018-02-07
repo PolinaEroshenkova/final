@@ -3,7 +3,7 @@ package com.eroshenkova.conference.database.dao.question.impl;
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.question.QuestionDAO;
 import com.eroshenkova.conference.entity.Question;
-import org.apache.logging.log4j.Level;
+import com.eroshenkova.conference.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,13 +69,13 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     }
 
     @Override
-    public List<Question> findAll() {
+    public List<Question> findAll() throws DAOException {
         Connection connection = super.receiveConnection();
-        List<Question> questions = null;
+        List<Question> questions;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL)) {
             questions = processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find questions");
+            throw new DAOException("Database error. Can't find questions", e);
         } finally {
             super.returnConnection(connection);
         }
@@ -83,13 +83,13 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     }
 
     @Override
-    public List<Question> findWithoutAnswer() {
+    public List<Question> findWithoutAnswer() throws DAOException {
         Connection connection = super.receiveConnection();
         List<Question> questions = null;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITHOUT_ANSWER)) {
             questions = processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find questions");
+            throw new DAOException("Database error. Can't find questions", e);
         } finally {
             super.returnConnection(connection);
         }
@@ -97,13 +97,13 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     }
 
     @Override
-    public List<Question> findWithAnswer() {
+    public List<Question> findWithAnswer() throws DAOException {
         Connection connection = super.receiveConnection();
         List<Question> questions = null;
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITH_ANSWER)) {
             questions = processSelectStatement(statement);
         } catch (SQLException e) {
-            LOGGER.log(Level.ERROR, "Database error. Can't find questions");
+            throw new DAOException("Database error. Can't find questions", e);
         } finally {
             super.returnConnection(connection);
         }
