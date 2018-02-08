@@ -19,7 +19,7 @@ public class CreateProfileCommand implements ActionCommand {
         User user = formUserObject(request);
         Participant participant = formParticipantObject(request);
         UserService userService = new UserService();
-        int userLogicResult = userService.register(user, participant);
+        long userLogicResult = userService.register(user, participant);
         if (userLogicResult < 0) {
             page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
             request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);//email is exist

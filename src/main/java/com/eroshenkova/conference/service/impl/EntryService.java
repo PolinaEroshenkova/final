@@ -4,13 +4,12 @@ import com.eroshenkova.conference.database.DAO;
 import com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl;
 import com.eroshenkova.conference.database.dao.entry.EntryDAO;
 import com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl;
+import com.eroshenkova.conference.database.dao.participant.ParticipantDAO;
 import com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl;
 import com.eroshenkova.conference.database.dao.sectionentry.SectionEntryDAO;
 import com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl;
-import com.eroshenkova.conference.entity.Conference;
-import com.eroshenkova.conference.entity.Entry;
-import com.eroshenkova.conference.entity.Section;
-import com.eroshenkova.conference.entity.SectionEntry;
+import com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl;
+import com.eroshenkova.conference.entity.*;
 import com.eroshenkova.conference.exception.DAOException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -59,7 +58,7 @@ public class EntryService {
         try {
             EntryDAO entryDao = new EntryDAOImpl();
             entries = entryDao.findByLogin(login);
-            entries = fillEntriesWithConference(entries);
+            entries = fillWithConference(entries);
         } catch (DAOException e) {
             LOGGER.log(Level.ERROR, "Database exception. Error executing query");
         }
@@ -71,7 +70,8 @@ public class EntryService {
         try {
             EntryDAO entryDao = new EntryDAOImpl();
             entries = entryDao.findByStatus();
-            entries = fillEntriesWithConference(entries);
+            entries = fillWithConference(entries);
+            entries = fillWithUser(entries);
         } catch (DAOException e) {
             LOGGER.log(Level.ERROR, "Database exception. Error executing query");
         }
@@ -90,7 +90,7 @@ public class EntryService {
         return flag;
     }
 
-    private List<Entry> fillEntriesWithConference(List<Entry> entries) throws DAOException {
+    private List<Entry> fillWithConference(List<Entry> entries) throws DAOException {
         if (entries != null) {
             DAO<Long, Section> sectionDAO = new SectionDAOImpl();
             DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
@@ -109,6 +109,19 @@ public class EntryService {
                 conference.setSections(sections);
                 entry.setConference(conference);
             }
+        }
+        return entries;
+    }
+
+    private List<Entry> fillWithUser(List<Entry> entries) throws DAOException {
+        DAO<String, User> userDAO = new UserDAOImpl();
+        ParticipantDAO participantDAO = new ParticipantDAO();
+        for (Entry entry : entries) {
+            String login = entry.getLogin();
+            User user = userDAO.findByKey(login);
+            Participant participant = participantDAO.findByKey(login);
+            user.setParticipant(participant);
+            entry.setUser(user);
         }
         return entries;
     }

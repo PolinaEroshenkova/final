@@ -25,13 +25,13 @@
                     <strong>${errorMessage}</strong>
                 </div>
             </c:if>
-            <form role="form" method="post" action="/conferences/">
+            <form role="form" method="post" action="/conferences/" name="registration" id="registration">
                 <input type="hidden" name="command" value="CreateProfile"/>
 
                 <div class="form-group mx-auto">
                     <input id="reglogin" name="reglogin" type="text"
                            placeholder="<fmt:message key="registration.form.login"/>*"
-                           class="form-control input-md" required="">
+                           class="form-control input-md">
                 </div>
 
                 <c:if test="${not empty loginError}">
@@ -44,20 +44,20 @@
                     <div class="form-group col-6">
                         <input id="regpassword" name="regpassword" type="password"
                                placeholder="<fmt:message key="registration.form.password"/>*"
-                               class="form-control input-md" required="">
+                               class="form-control input-md">
                     </div>
 
                     <div class="form-group col-6">
                         <input id="secpassword" name="secpassword" type="password"
                                placeholder="<fmt:message key="registration.form.confirmpassword"/>*"
-                               class="form-control input-md" required="">
+                               class="form-control input-md">
                     </div>
                 </div>
 
                 <div class="form-group mx-auto">
                     <input id="email" name="email" type="text"
                            placeholder="<fmt:message key="registration.form.email"/>*"
-                           class="form-control input-md" required="">
+                           class="form-control input-md">
 
                 </div>
 
@@ -71,20 +71,20 @@
                     <div class="form-group col-6">
                         <input id="surname" name="surname" type="text"
                                placeholder="<fmt:message key="registration.form.surnmae"/>*"
-                               class="form-control input-md" required="">
+                               class="form-control input-md">
                     </div>
 
                     <div class="form-group col-6">
                         <input id="name" name="name" type="text"
                                placeholder="<fmt:message key="registration.form.name"/>*"
-                               class="form-control input-md" required="">
+                               class="form-control input-md">
                     </div>
                 </div>
 
                 <div class="form-group mx-auto">
                     <input id="scope" name="scope" type="text"
                            placeholder="<fmt:message key="registration.form.scope"/>*"
-                           class="form-control input-md" required="">
+                           class="form-control input-md">
 
                 </div>
 
@@ -127,6 +127,9 @@
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/registration.js"></script>
 <script src="../static/javascript/custom/showdialog.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="../static/javascript/custom/validation.js"></script>
 
 </body>
 </html>

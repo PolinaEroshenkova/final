@@ -12,12 +12,13 @@
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/half-slider.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
+    <link href="../static/css/custom/popover.css" rel="stylesheet"/>
 </head>
 <body>
 
 <jsp:include page="part/header.jsp"/>
 
-<section class="py-5">
+<section class="py-5 mt-4">
     <div class="table-responsive">
         <c:if test="${not empty errorMessage}">
             <div class="alert alert-danger" id="ErrorAlert">
@@ -45,7 +46,8 @@
                     <tbody>
                     <c:forEach items="${entries}" var="entry">
                         <tr>
-                            <td><c:out value="${entry.login}"/></td>
+                            <td><span data-toggle="popover" data-id="${entry.identry}"><c:out
+                                    value="${entry.login}"/></span></td>
                             <td><c:out value="${entry.conference.topic}"/></td>
                             <td class="fixed-column"><fmt:formatDate type="both" value="${entry.conference.begin}"
                                                                      timeStyle="short"/><br/>
@@ -56,14 +58,46 @@
                                     <input type="hidden" name="command" value="changeStatus">
                                     <input type="hidden" name="id" value="${entry.identry}">
                                     <input type="hidden" name="login" value="${entry.login}">
-                                    <button type="submit" name="status" value="Disapproved">
+                                    <button type="submit" name="status" value="Disapproved" class="btn btn-primary">
                                         <fmt:message key="management.declineentry"/>
                                     </button>
-                                    <button type="submit" name="status" value="Approved">
+                                    <button type="submit" name="status" value="Approved" class="btn btn-primary">
                                         <fmt:message key="management.acceptentry"/></button>
                                 </form>
                             </td>
                         </tr>
+                        <div class="popover-content" id=${entry.identry} style="display:none">
+                            <ul class="list-group custom-popover">
+                                <li class="list-group-item"><fmt:message
+                                        key="management.popover.email"/>: ${entry.user.email}.
+                                </li>
+                                <li class="list-group-item"><fmt:message
+                                        key="management.popover.scope"/>: ${entry.user.participant.scope}.
+                                </li>
+                                <c:choose>
+                                    <c:when test="${not empty entry.user.participant.position}">
+                                        <li class="list-group-item"><fmt:message
+                                                key="management.popover.position"/>: ${entry.user.participant.position}.
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="list-group-item"><fmt:message key="management.popover.position"/>:
+                                            <fmt:message key="management.popover.notindicated"/></li>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${not empty entry.user.participant.company}">
+                                        <li class="list-group-item"><fmt:message
+                                                key="management.popover.company"/>: ${entry.user.participant.company}.
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="list-group-item"><fmt:message key="management.popover.company"/>:
+                                            <fmt:message key="management.popover.notindicated"/></li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </ul>
+                        </div>
                     </c:forEach>
                     </tbody>
                 </table>
@@ -77,6 +111,7 @@
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/login.js"></script>
+<script src="../static/javascript/custom/popover.js"></script>
 
 
 </body>

@@ -13,6 +13,7 @@
     <title><fmt:message key="conference.title"/></title>
     <link href="../static/css/bootstrap/bootstrap.css" rel="stylesheet"/>
     <link href="../static/css/custom/style.css" rel="stylesheet"/>
+    <link href="../static/css/custom/popover.css" rel="stylesheet"/>
 
 </head>
 
@@ -49,7 +50,10 @@
                         <c:forEach items="${conferences}" var="current">
                             <tr>
                                 <td><fmt:formatDate type="date" value="${current.deadline}" timeStyle="short"/></td>
-                                <td><c:out value="${current.topic}"/></td>
+                                <td>
+                                    <span data-toggle="popover" data-id="${current.idconference}"><c:out
+                                            value="${current.topic}"/></span>
+                                </td>
                                 <td class="fixed-column"><fmt:formatDate type="both" value="${current.begin}"
                                                                          timeStyle="short"/><br/>
                                     <fmt:formatDate type="both" value="${current.end}" timeStyle="short"/>
@@ -71,6 +75,13 @@
                                         </td>
                                     </c:when>
                                 </c:choose>
+                                <div class="popover-content" id=${current.idconference} style="display:none">
+                                    <ul class="list-group custom-popover">
+                                        <c:forEach items="${current.sections}" var="section">
+                                            <li class="list-group-item">${section.title}</li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -90,6 +101,7 @@
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/login.js"></script>
+<script src="../static/javascript/custom/popover.js"></script>
 
 </body>
 </html>

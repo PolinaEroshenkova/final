@@ -39,6 +39,12 @@ public class ConferenceService {
             ConferenceDAO conferenceDao = new ConferenceDAOImpl();
             conferences = conferenceDao.findByDate();
             Collections.sort(conferences);
+            for (Conference conference : conferences) {
+                long idConference = conference.getIdconference();
+                SectionDAO sectionDAO = new SectionDAOImpl();
+                List<Section> sections = sectionDAO.findByConferenceId(idConference);
+                conference.setSections(sections);
+            }
         } catch (DAOException e) {
             LOGGER.log(Level.ERROR, "Database exception. Error executing query");
         }

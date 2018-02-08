@@ -23,7 +23,7 @@
 <jsp:include page="part/header.jsp"/>
 <section class="py-5">
     <div class="container toppad">
-        <form class="form-horizontal" action="/conferences/" method="post">
+        <form class="form-horizontal need-validation" action="/conferences/" method="post" name="entry" id="entry">
             <fieldset>
 
                 <legend><fmt:message key="entry.header"/></legend>
@@ -66,9 +66,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label label" for="sections"><fmt:message
                             key="entry.form.choosesection"/></label>
-                    <div class="col-md-12">
-                        <select id="sections" name="sections" class="form-control" multiple="multiple" size="5"
-                                required>
+                    <div class="col-md-12 select-valid">
+                        <select id="sections" name="sections" class="form-control choose" multiple="multiple" size="5">
                             <c:forEach items="${conference.sections}" var="section">
                                 <option name="idsection" value="${section.idsection}">${section.title}</option>
                             </c:forEach>
@@ -78,7 +77,8 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary"><fmt:message key="entry.form.signup"/></button>
+                        <button type="submit" class="btn btn-primary" id="submit-form"><fmt:message
+                                key="entry.form.signup"/></button>
                         <a href="/conferences/conferences" class="btn btn-secondary"><fmt:message
                                 key="entry.goback"/></a>
                     </div>
@@ -103,6 +103,9 @@
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/showdialog.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="../static/javascript/custom/validation.js"></script>
 
 </body>
 </html>

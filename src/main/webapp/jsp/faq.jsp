@@ -27,19 +27,19 @@
                                 <strong><fmt:message key="error.servererror"/> </strong>
                             </div>
                         </c:if>
-                        <form role="form" method="post" action="/conferences/">
+                        <form role="form" method="post" action="/conferences/" name="faq-admin" id="faq-admin">
                             <h2><fmt:message key="faq.header"/></h2>
-                            <input type="hidden" name="command" value="publishQuestion"/>
+                            <input type="hidden" name="command" id=command" value="publishQuestion"/>
 
                             <div class="form-group mx-auto">
-                                <label for="question-admin"><fmt:message key="faq.form.enterquestion"/></label>
-                                <textarea class="form-control" name="question-admin" id="question-admin"
+                                <label for="questionadmin"><fmt:message key="faq.form.enterquestion"/></label>
+                                <textarea class="form-control valid" name="questionadmin" id="questionadmin"
                                           rows="3"></textarea>
                             </div>
 
                             <div class="form-group mx-auto">
-                                <label for="answer-admin"><fmt:message key="faq.form.enteranswer"/></label>
-                                <textarea class="form-control" name="answer-admin" id="answer-admin"
+                                <label for="answeradmin"><fmt:message key="faq.form.enteranswer"/></label>
+                                <textarea class="form-control valid" name="answeradmin" id="answeradmin"
                                           rows="3"></textarea>
                             </div>
 
@@ -83,13 +83,13 @@
                                 <strong><fmt:message key="error.servererror"/> </strong>
                             </div>
                         </c:if>
-                        <form role="form" method="post" action="/conferences/">
+                        <form role="form" method="post" action="/conferences/" id="faq-user" name="faq-user">
                             <h2><fmt:message key="faq.header.havequestion"/></h2>
                             <input type="hidden" name="command" value="askQuestion"/>
 
                             <div class="form-group mx-auto">
                                 <label for="question"><fmt:message key="faq.header.askadmin"/></label>
-                                <textarea class="form-control" name="question" id="question" rows="3"></textarea>
+                                <textarea class="form-control valid" name="question" id="question" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -132,5 +132,8 @@
 <script src="../static/javascript/bootstrap/bootstrap.bundle.js"></script>
 <script src="../static/javascript/custom/login.js"></script>
 <script src="../static/javascript/custom/answerquestion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="../static/javascript/custom/validation.js"></script>
 </body>
 </html>

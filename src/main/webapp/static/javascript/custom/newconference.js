@@ -1,10 +1,10 @@
 $(document).ready(function () {
     var lang = $('html').attr('lang');
-    $('#date-start').datetimepicker({
+    $('#datestart').datetimepicker({
         format: 'L',
         locale: lang
     });
-    $('#date-end').datetimepicker({
+    $('#dateend').datetimepicker({
         format: 'L',
         locale: lang
     });
@@ -13,12 +13,12 @@ $(document).ready(function () {
         locale: lang
     });
 
-    $('#time-start').datetimepicker({
+    $('#timestart').datetimepicker({
         format: 'LT',
         locale: lang
     });
 
-    $('#time-end').datetimepicker({
+    $('#timeend').datetimepicker({
         format: 'LT',
         locale: lang
     });
@@ -33,7 +33,7 @@ $(document).ready(function () {
         $('#sections').find(':selected').remove();
     });
 
-    $('#submit').click(function () {
-        $('#sections').find('option').prop('selected', true);
-    });
+    // $('#submit').click(function () {
+    //     $('#sections').find('option').prop('selected', true);
+    // });
 });

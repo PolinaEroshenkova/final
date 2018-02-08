@@ -5,6 +5,7 @@ public class Entry {
     private String login;
     private String status;
     private Conference conference;
+    private User user;
 
     public Entry(long identry, String login, String status) {
         this.identry = identry;
@@ -48,6 +49,14 @@ public class Entry {
         this.conference = conference;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,7 +66,9 @@ public class Entry {
 
         if (identry != entry.identry) return false;
         if (login != null ? !login.equals(entry.login) : entry.login != null) return false;
-        return status != null ? status.equals(entry.status) : entry.status == null;
+        if (status != null ? !status.equals(entry.status) : entry.status != null) return false;
+        if (conference != null ? !conference.equals(entry.conference) : entry.conference != null) return false;
+        return user != null ? user.equals(entry.user) : entry.user == null;
     }
 
     @Override
@@ -65,6 +76,8 @@ public class Entry {
         int result = (int) (identry ^ (identry >>> 32));
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (conference != null ? conference.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
     }
 
@@ -74,6 +87,8 @@ public class Entry {
                 "identry=" + identry +
                 ", login='" + login + '\'' +
                 ", status='" + status + '\'' +
+                ", conference=" + conference +
+                ", user=" + user +
                 '}';
     }
 }
