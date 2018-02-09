@@ -14,7 +14,7 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
 
     private static final String SQL_INSERT = "INSERT INTO user(login,password,email) VALUES(?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=?, type=? WHERE login=?";
+    private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=? WHERE login=?";
     private static final String SQL_DELETE = "DELETE FROM user WHERE login=?";
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
 
@@ -69,11 +69,10 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
         statement.setString(1, entity.getLogin());
         statement.setString(2, entity.getPassword());
         statement.setString(3, entity.getEmail());
-        statement.setString(4, entity.getType());
         if (key == null) {
-            statement.setString(5, entity.getLogin());
+            statement.setString(4, entity.getLogin());
         } else {
-            statement.setString(5, key);
+            statement.setString(4, key);
         }
         return statement;
     }

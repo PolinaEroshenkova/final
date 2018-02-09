@@ -12,7 +12,7 @@
             <div class="modal-header mx-auto">
                 <h3><fmt:message key="signin.header"/></h3>
             </div>
-            <form name="LoginForm" class="form-horizontal" action="/conferences/"
+            <form name="LoginForm" id="LoginForm" class="form-horizontal" action="/conferences/"
                   method="post" autocomplete="on">
                 <input type="hidden" name="command" value="Login"/>
 

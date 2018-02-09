@@ -21,7 +21,52 @@
 // }
 $(document).ready(function () {
 
+    $('#editprofile').validate({
+        excluded: 'disabled',
+        lang: $('html').attr('lang'),
+        rules: {
+            login: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true
+            },
+            password: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true
+            },
+            email: {
+                required: true,
+                email: true,
+                maxlength: 255
+            },
+            surname: {
+                required: true,
+                maxlength: 35,
+                nowhitespace: true,
+                lettersonly: true
+            },
+            name: {
+                required: true,
+                maxlength: 35,
+                nowhitespace: true,
+                lettersonly: true
+            },
+            scope: {
+                required: true,
+                maxlength: 100
+            },
+            position: {
+                maxlength: 50
+            },
+            company: {
+                maxlength: 50
+            }
+        }
+    });
+
     $('#entry').validate({
+        lang: $('html').attr('lang'),
         rules: {
             sections: {
                 required: true
@@ -30,13 +75,14 @@ $(document).ready(function () {
     });
 
     $('#registration').validate({
+        lang: $('html').attr('lang'),
         rules: {
-            reglogin: {
+            login: {
                 required: true,
                 maxlength: 30,
                 nowhitespace: true
             },
-            regpassword: {
+            password: {
                 required: true,
                 maxlength: 30,
                 nowhitespace: true
@@ -78,6 +124,7 @@ $(document).ready(function () {
     });
 
     $('#faq-user').validate({
+        lang: $('html').attr('lang'),
         rules: {
             question: {
                 required: true,
@@ -88,6 +135,7 @@ $(document).ready(function () {
     });
 
     $('#faq-admin').validate({
+        lang: $('html').attr('lang'),
         rules: {
             questionadmin: {
                 required: true,
@@ -103,6 +151,7 @@ $(document).ready(function () {
     });
 
     $('#newconference').validate({
+        lang: $('html').attr('lang'),
         rules: {
             topic: {
                 required: true,
@@ -131,6 +180,22 @@ $(document).ready(function () {
             },
             deadline: {
                 required: true
+            }
+        }
+    });
+
+    $('#LoginForm').validate({
+        lang: $('html').attr('lang'),
+        rules: {
+            login: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true
+            },
+            passsword: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true
             }
         }
     });

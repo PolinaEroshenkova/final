@@ -75,6 +75,25 @@ public class UserService {
         return user;
     }
 
+    public boolean updateProfile(User user, Participant participant, String login) {
+        DAO<String, User> userDAO = new UserDAOImpl();
+        DAO<String, Participant> participantDAO = new ParticipantDAO();
+        boolean result = false;
+        try {
+            if (user.getLogin().equals(login)) {
+                userDAO.update(user, null);
+                participantDAO.update(participant, null);
+            } else {
+                userDAO.update(user, login);
+                participantDAO.update(participant, login);
+            }
+            result = true;
+        } catch (DAOException e) {
+            LOGGER.log(Level.ERROR, "Database exception. Error executing query");
+        }
+        return result;
+    }
+
     private boolean isEmailExist(String email) throws DAOException {
         UserDAO userDAO = new UserDAOImpl();
         return userDAO.findByEmail(email) != null;

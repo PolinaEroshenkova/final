@@ -28,14 +28,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 toppad pull-right col-md-offset-3">
-                <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile"><fmt:message
-                        key="profile.edit"/></a>
+                <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile"
+                   data-toggle="modal" data-target="#updateProfileModal"
+                   data-login="${user.login}" data-surname="${user.participant.surname}"
+                   data-name="${user.participant.name}" data-password="${user.password}"
+                   data-email="${user.email}" data-scope="${user.participant.scope}"
+                   data-position="${user.participant.position}"
+                   data-company="${user.participant.company}"><fmt:message key="profile.edit"/></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
                 <c:if test="${not empty errorMessage}">
                     <div class="alert alert-danger" id="ErrorAlert">
-                        <strong>${errorMessage}</strong>
+                        <strong><fmt:message key="error.servererror"/> </strong>
                     </div>
                 </c:if>
 
@@ -149,8 +154,17 @@
 
 <jsp:include page="part/footer.jsp"/>
 
+<div id="modal">
+    <jsp:include page="modal/updateprofile.jsp"/>
+</div>
+
 <script src="../static/javascript/lib/jquery.js"></script>
 <script src="../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="../static/javascript/custom/reformatprofile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="../static/javascript/custom/validation.js"></script>
+<script src="../static/javascript/lib/messages.js"></script>
 
 </body>
 

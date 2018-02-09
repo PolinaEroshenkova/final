@@ -29,7 +29,7 @@
                 <input type="hidden" name="command" value="CreateProfile"/>
 
                 <div class="form-group mx-auto">
-                    <input id="reglogin" name="reglogin" type="text"
+                    <input id="login" name="login" type="text"
                            placeholder="<fmt:message key="registration.form.login"/>*"
                            class="form-control input-md">
                 </div>
@@ -42,7 +42,7 @@
 
                 <div class="form-row justify-content-center">
                     <div class="form-group col-6">
-                        <input id="regpassword" name="regpassword" type="password"
+                        <input id="password" name="password" type="password"
                                placeholder="<fmt:message key="registration.form.password"/>*"
                                class="form-control input-md">
                     </div>
@@ -130,6 +130,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="../static/javascript/custom/validation.js"></script>
+<script src="../static/javascript/lib/messages.js"></script>
 
 </body>
 </html>

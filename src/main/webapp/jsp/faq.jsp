@@ -69,6 +69,8 @@
                                                    data-target="#answerModal" data-id="${question.idquestion}"
                                                    data-login="${question.login}"><fmt:message
                                                     key="faq.table.answer"/></a>
+                                                <a href="/conferences/faq?command=deleteQuestion&id=${question.idquestion}"
+                                                   class="btn btn-primary"><fmt:message key="faq.deletequestion"/></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -107,6 +109,10 @@
                             <c:forEach items="${questions}" var="question">
                                 <h5>${question.question}</h5>
                                 <p>${question.answer}</p>
+                                <c:if test="${type eq 'admin'}">
+                                    <a href="/conferences/faq?command=deleteQuestion&id=${question.idquestion}"
+                                       class="btn btn-primary"><fmt:message key="faq.deletequestion"/></a>
+                                </c:if>
                                 <hr/>
                             </c:forEach>
                         </c:otherwise>
@@ -135,5 +141,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="../static/javascript/custom/validation.js"></script>
+<script src="../static/javascript/lib/messages.js"></script>
 </body>
 </html>

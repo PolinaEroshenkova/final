@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form action="/conferences/">
+                <form action="/conferences/" method="post">
                     <input type="hidden" name="command" value="answerQuestion">
                     <input type="hidden" name="id" value="">
                     <input type="hidden" name="login" value="">
@@ -24,3 +24,10 @@
         </div>
     </div>
 </div>
+
+<script src="../../static/javascript/lib/jquery.js"></script>
+<script src="../../static/javascript/bootstrap/bootstrap.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="../../static/javascript/custom/validation.js"></script>
+<script src="../../static/javascript/lib/messages.js"></script>

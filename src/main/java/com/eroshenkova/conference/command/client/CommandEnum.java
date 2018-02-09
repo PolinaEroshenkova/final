@@ -9,6 +9,7 @@ import com.eroshenkova.conference.command.impl.entry.SignUpCommand;
 import com.eroshenkova.conference.command.impl.page.*;
 import com.eroshenkova.conference.command.impl.question.AnswerQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.AskQuestionCommand;
+import com.eroshenkova.conference.command.impl.question.DeleteQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.PublishQuestionCommand;
 import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
 import com.eroshenkova.conference.command.impl.user.LoginCommand;
@@ -115,6 +116,11 @@ public enum CommandEnum {
     PUBLISHQUESTION {
         {
             this.command = new PublishQuestionCommand();
+        }
+    },
+    DELETEQUESTION {
+        {
+            this.command = new DeleteQuestionCommand();
         }
     },
     CHANGELANGUAGE {

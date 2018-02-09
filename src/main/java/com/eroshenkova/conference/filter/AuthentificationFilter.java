@@ -21,6 +21,8 @@ public class AuthentificationFilter implements Filter {
         HttpSession session = request.getSession(true);
         String accountType = (String) session.getAttribute(Parameter.TYPE);
         String nextPage = request.getRequestURI();
+
+
         if ((accountType == null && (UrlManager.getProperty(Page.CONFERENCE).equals(nextPage) || //TODO
                 UrlManager.getProperty(Page.INDEX).equals(nextPage) ||
                 UrlManager.getProperty(Page.FAQ).equals(nextPage) ||
