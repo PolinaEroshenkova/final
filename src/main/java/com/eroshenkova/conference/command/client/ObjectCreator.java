@@ -29,9 +29,9 @@ public class ObjectCreator {
         String deadline = request.getParameter(Parameter.DEADLINE);
         HttpSession session = request.getSession(false);
         String locale = (String) session.getAttribute(Parameter.LOCALE);
-        Date sqlStartDate = DateWorker.formatDateTimeByLocale(String.join(DELIMITER_SPACE, dateStart, timeStart), locale);
-        Date sqlEndDate = DateWorker.formatDateTimeByLocale(String.join(DELIMITER_SPACE, dateEnd, timeEnd), locale);
-        Date sqlDeadline = DateWorker.formatDateByLocale(deadline, locale);
+        Date sqlStartDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateStart, timeStart), locale);
+        Date sqlEndDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateEnd, timeEnd), locale);
+        Date sqlDeadline = DateWorker.parseDateByLocale(deadline, locale);
         String[] sectionArray = request.getParameterValues(Parameter.SECTIONS);
         List<Section> sections = new ArrayList<>();
         for (String title : sectionArray) {

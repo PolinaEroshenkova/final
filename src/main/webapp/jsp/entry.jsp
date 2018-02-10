@@ -1,6 +1,7 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 
 <c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
 <fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
@@ -56,9 +57,9 @@
                     <tbody>
                     <tr>
                         <td>${conference.place}</td>
-                        <td><fmt:formatDate type="both" value="${conference.begin}" timeStyle="short"/></td>
-                        <td><fmt:formatDate type="both" value="${conference.end}" timeStyle="short"/></td>
-                        <td><fmt:formatDate type="date" value="${conference.deadline}"/></td>
+                        <td><ctg:date-time type="datetime">${conference.begin}</ctg:date-time></td>
+                        <td><ctg:date-time type="datetime">${conference.end}</ctg:date-time></td>
+                        <td><ctg:date-time type="date">${conference.deadline}</ctg:date-time></td>
                     </tr>
                     </tbody>
                 </table>

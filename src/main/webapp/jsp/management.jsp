@@ -49,9 +49,9 @@
                             <td><span data-toggle="popover" data-id="${entry.identry}"><c:out
                                     value="${entry.login}"/></span></td>
                             <td><c:out value="${entry.conference.topic}"/></td>
-                            <td class="fixed-column"><fmt:formatDate type="both" value="${entry.conference.begin}"
-                                                                     timeStyle="short"/><br/>
-                                    <fmt:formatDate type="both" value="${entry.conference.end}" timeStyle="short"/>
+                            <td class="fixed-column"><ctg:date-time
+                                    type="datetime">${conference.begin}</ctg:date-time><br/>
+                                    <ctg:date-time type="datetime">${conference.end}</ctg:date-time>
                             <td><c:out value="${entry.conference.place}"/></td>
                             <td>
                                 <form method="post" action="/conferences/">

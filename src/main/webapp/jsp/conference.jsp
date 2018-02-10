@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 
 <c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
 <fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
@@ -49,14 +50,15 @@
                         <tbody>
                         <c:forEach items="${conferences}" var="current">
                             <tr>
-                                <td><fmt:formatDate type="date" value="${current.deadline}" timeStyle="short"/></td>
+                                    <%--<td><fmt:formatDate type="date" value="${current.deadline}" timeStyle="short"/></td>--%>
+                                <td><ctg:date-time type="date">${current.deadline}</ctg:date-time></td>
                                 <td>
                                     <span data-toggle="popover" data-id="${current.idconference}"><c:out
                                             value="${current.topic}"/></span>
                                 </td>
-                                <td class="fixed-column"><fmt:formatDate type="both" value="${current.begin}"
-                                                                         timeStyle="short"/><br/>
-                                    <fmt:formatDate type="both" value="${current.end}" timeStyle="short"/>
+                                <td class="fixed-column"><ctg:date-time
+                                        type="datetime">${current.begin}"</ctg:date-time><br/>
+                                    <ctg:date-time type="datetime">${current.end}</ctg:date-time>
                                 </td>
                                 <td><c:out value="${current.place}"/></td>
                                 <c:choose>

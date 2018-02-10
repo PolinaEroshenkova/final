@@ -13,8 +13,12 @@ $(document).ready(function () {
         var scope = $(e.relatedTarget).data('scope');
         $(e.currentTarget).find('input[name="scope"]').val(scope);
         var position = $(e.relatedTarget).data('position');
-        $(e.currentTarget).find('input[name="position"]').val(position);
+        if (position !== 'Не указано' || position !== 'Не паказана' || position !== 'Not indicated') {
+            $(e.currentTarget).find('input[name="position"]').val(position);
+        }
         var company = $(e.relatedTarget).data('company');
-        $(e.currentTarget).find('input[name="company"]').val(company);
+        if (company !== 'Не указано' || company !== 'Не паказана' || company !== 'Not indicated') {
+            $(e.currentTarget).find('input[name="company"]').val(company);
+        }
     });
 });

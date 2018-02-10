@@ -122,9 +122,9 @@
                     <tbody>
                     <c:forEach items="${entries}" var="current">
                         <tr>
-                            <td class="fixed-column"><fmt:formatDate type="both" value="${current.conference.begin}"
-                                                                     timeStyle="short"/><br/>
-                                <fmt:formatDate type="both" value="${current.conference.end}" timeStyle="short"/>
+                            <td class="fixed-column"><ctg:date-time
+                                    type="datetime">${current.conference.begin}</ctg:date-time><br/>
+                                <ctg:date-time type="datetime">${current.conference.end}</ctg:date-time>
                             </td>
                             <td><c:out value="${current.conference.topic}"/></td>
                             <td>
