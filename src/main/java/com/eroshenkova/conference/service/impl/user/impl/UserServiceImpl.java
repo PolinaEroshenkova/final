@@ -9,6 +9,7 @@ import com.eroshenkova.conference.entity.impl.User;
 import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.user.UserService;
+import com.eroshenkova.conference.validation.Validator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jasypt.util.password.BasicPasswordEncryptor;
@@ -19,7 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public long register(User user, Participant participant) throws ServiceException, DAOException {
-        if (user == null || participant == null) {
+        Validator validator = new Validator();
+        if (user == null || participant == null || validator.validate(user) ||
+                validator.validate(participant)) {
             throw new ServiceException();
         }
         long result = -1;
@@ -35,7 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) throws ServiceException, DAOException {
-        if (user == null) {
+        Validator validator = new Validator();
+        if (user == null || validator.validate(user)) {
             throw new ServiceException();
         }
         DAO<String, User> userDAO = new UserDAOImpl();
@@ -88,7 +92,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateProfile(User user, String login) throws ServiceException, DAOException {
-        if (user == null || login == null) {
+        Validator validator = new Validator();
+        if (user == null || login == null || validator.validate(user)) {
             throw new ServiceException();
         }
         DAO<String, User> userDAO = new UserDAOImpl();
@@ -96,9 +101,9 @@ public class UserServiceImpl implements UserService {
         UserDAO dao = new UserDAOImpl();
         User systemUser = userDAO.findByKey(login);
         User loginUser = userDAO.findByKey(user.getLogin());
-        if (loginUser == null || loginUser.getLogin().equals(login)) {
+        if (loginUser == null || !loginUser.getLogin().equals(login)) {
             User emailUser = dao.findByEmail(user.getEmail());
-            if (emailUser == null || emailUser.getEmail().equals(systemUser.getEmail())) {
+            if (emailUser == null || !emailUser.getEmail().equals(systemUser.getEmail())) {
                 userDAO.update(user, null);
                 participantDAO.update(user.getParticipant(), null);
                 return user;

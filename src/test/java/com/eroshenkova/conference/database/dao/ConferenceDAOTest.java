@@ -54,12 +54,12 @@ public class ConferenceDAOTest {
         Assert.assertEquals(result, expected);
     }
 
-    @Test(expectedExceptions = DAOException.class)
+    @Test
     public void delete() throws DAOException {
         DAO<Long, Conference> dao = new ConferenceDAOImpl();
         long key = 5;
         dao.delete(key);
-        dao.findByKey(key);
+        Assert.assertNull(dao.findByKey(key));
     }
 
     @Test

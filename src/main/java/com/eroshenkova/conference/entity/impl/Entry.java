@@ -16,6 +16,7 @@ public class Entry implements Entity {
     }
 
     public Entry(String login) {
+        status = "Waiting";
         this.login = login;
     }
 

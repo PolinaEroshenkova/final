@@ -1,8 +1,3 @@
-/*
- * Translated default messages for the jQuery validation plugin.
- * Locale: RU (Russian; русский язык)
- */
-
 var language = $('html').attr('lang');
 switch (language) {
     case 'en':

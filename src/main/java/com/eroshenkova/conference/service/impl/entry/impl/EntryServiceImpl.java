@@ -13,6 +13,7 @@ import com.eroshenkova.conference.entity.impl.*;
 import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.entry.EntryService;
+import com.eroshenkova.conference.validation.Validator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,15 +22,6 @@ import java.util.List;
 
 public class EntryServiceImpl implements EntryService {
     private static final Logger LOGGER = LogManager.getLogger(EntryServiceImpl.class);
-
-    @Override
-    public void register(Entry entity) throws ServiceException, DAOException {
-        if (entity == null) {
-            throw new ServiceException();
-        }
-        DAO<Long, Entry> dao = new EntryDAOImpl();
-        dao.create(entity, false);
-    }
 
     @Override
     public void delete(Long id) throws ServiceException, DAOException {
@@ -79,17 +71,22 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public void changeStatus(Entry entry) throws ServiceException, DAOException {
-        if (entry == null) {
+        Validator validator = new Validator();
+        if (entry == null || validator.validate(entry)) {
             throw new ServiceException();
         }
         DAO<Long, Entry> entryDAO = new EntryDAOImpl();
         entryDAO.update(entry, entry.getIdentry());
+    }
 
+    @Override
+    public void register(Entry entity) throws ServiceException, DAOException {
+        throw new UnsupportedOperationException();
     }
 
     private List<Entry> fillWithConference(List<Entry> entries) throws DAOException, ServiceException {
         if (entries == null) {
-            throw new ServiceException();
+            return null;
         }
         DAO<Long, Section> sectionDAO = new SectionDAOImpl();
         DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
@@ -113,7 +110,7 @@ public class EntryServiceImpl implements EntryService {
 
     private List<Entry> fillWithUser(List<Entry> entries) throws DAOException, ServiceException {
         if (entries == null) {
-            throw new ServiceException();
+            return null;
         }
         DAO<String, User> userDAO = new UserDAOImpl();
         ParticipantDAO participantDAO = new ParticipantDAO();

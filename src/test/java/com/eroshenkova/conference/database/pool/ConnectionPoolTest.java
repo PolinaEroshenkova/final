@@ -15,6 +15,7 @@ public class ConnectionPoolTest {
             tensPool = ConnectionPool.getInstance();
         }
         Assert.assertEquals(pool, tensPool);
+
     }
 
     @Test
@@ -25,6 +26,9 @@ public class ConnectionPoolTest {
             connection = pool.getConnection();
         }
         Assert.assertNotNull(connection);
+        for (int i = 0; i < 20; i++) {
+            pool.closeConnection(connection);
+        }
     }
 
     @Test

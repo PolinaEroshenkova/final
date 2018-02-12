@@ -13,6 +13,7 @@ public class User implements Entity {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.type = "user";
     }
 
     public User(String login, String password, String email, String type) {
@@ -25,6 +26,7 @@ public class User implements Entity {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+        this.type = "user";
     }
 
     public String getLogin() {

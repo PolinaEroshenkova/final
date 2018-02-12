@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 
 <c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : 'en'}"/>
 <fmt:setLocale value="${not empty sessionScope.locale ? sessionScope.locale : 'en_EN'}"/>
@@ -50,8 +51,8 @@
                                     value="${entry.login}"/></span></td>
                             <td><c:out value="${entry.conference.topic}"/></td>
                             <td class="fixed-column"><ctg:date-time
-                                    type="datetime">${conference.begin}</ctg:date-time><br/>
-                                    <ctg:date-time type="datetime">${conference.end}</ctg:date-time>
+                                    type="datetime">${entry.conference.begin}</ctg:date-time><br/>
+                                    <ctg:date-time type="datetime">${entry.conference.end}</ctg:date-time>
                             <td><c:out value="${entry.conference.place}"/></td>
                             <td>
                                 <form method="post" action="/conferences/">

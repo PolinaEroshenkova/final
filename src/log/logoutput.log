@@ -45,3 +45,909 @@
 11-02-2018 12:47:48.872 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
 12-02-2018 12:57:10.436 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
 12-02-2018 12:57:10.905 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:19.916 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 16:18:21.354 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:18:21.575 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 0 sections were found by conference id
+12-02-2018 16:18:23.744 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 5 conferences were found by date
+12-02-2018 16:18:23.791 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:23.869 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:25.100 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:25.929 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:26.319 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:26.569 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:18:26.852 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:26.868 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:18:26.884 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 0 sections were found by conference id
+12-02-2018 16:18:26.931 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:18:28.306 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 0 sections were found by conference id
+12-02-2018 16:18:28.541 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 5 conferences were found by date
+12-02-2018 16:18:28.572 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:28.588 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:28.588 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:28.650 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:28.650 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:29.239 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:18:29.332 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:18:29.395 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:18:29.426 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 16:18:29.426 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 16:18:29.426 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:29.426 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:29.442 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:29.457 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:18:29.457 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:20:51.057 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 16:20:51.089 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:21:03.523 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 16:21:03.538 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:21:03.554 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 16:21:03.570 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 16:21:03.585 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.601 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.601 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.601 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.601 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.616 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:21:03.616 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.616 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:21:03.616 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.648 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.663 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:03.757 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:21:04.101 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:21:04.157 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 7 conferences were found by date
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:04.235 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 16:21:04.251 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:56.727 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 18:26:57.157 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 18:26:57.294 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 7 conferences were found by date
+12-02-2018 18:26:57.435 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:57.511 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:57.528 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.588 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.606 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.618 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.644 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.653 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 18:26:57.670 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.672 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 18:26:57.738 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 18:26:57.765 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 7 conferences were found by date
+12-02-2018 18:26:57.825 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:57.847 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:57.862 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.879 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.880 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.881 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:57.885 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:58.389 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 18:26:58.462 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 18:26:58.560 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 18:26:58.647 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 8 conferences were found by date
+12-02-2018 18:26:58.649 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:58.650 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:58.652 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 18:26:58.653 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:58.657 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:58.658 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:58.668 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:26:58.684 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 18:31:12.217 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 18:31:29.544 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:33:31.142 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:33:31.223 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:33:31.283 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 19:33:31.332 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:33:31.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:33.968 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:34.016 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.062 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 19:36:34.075 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.134 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:34.351 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:34.370 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.394 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.400 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+12-02-2018 19:36:34.405 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 19:36:34.448 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:34.546 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:36:34.546 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.759 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:34.761 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.773 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:34.836 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:35.050 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:36:35.050 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:35.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.185 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 19:36:35.185 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 0 questions without answer were found
+12-02-2018 19:36:35.247 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:35.401 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:36:35.416 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.433 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:35.435 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.475 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 19:36:35.480 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.535 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:35.596 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:36:35.596 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:35.736 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:35.736 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 19:36:35.751 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 19:36:35.978 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:36.054 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:36:36.070 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:36.070 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: dianarock@yandex.ru
+12-02-2018 19:36:36.101 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:36:36.157 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:36:36.218 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:36:36.218 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:13.252 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:13.330 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:13.377 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 19:40:13.424 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:13.569 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:13.711 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:13.711 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:13.726 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:13.726 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+12-02-2018 19:40:13.726 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 19:40:13.805 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:13.936 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:40:13.952 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:14.192 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.199 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.286 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:14.380 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:40:14.380 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.472 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:14.472 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.472 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.488 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 19:40:14.488 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 0 questions without answer were found
+12-02-2018 19:40:14.533 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:14.578 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:40:14.580 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.594 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:14.597 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.603 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 19:40:14.606 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.636 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:14.729 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:40:14.745 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.776 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:14.776 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 19:40:14.807 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 19:40:14.877 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:14.913 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:40:14.915 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.920 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: dianarock@yandex.ru
+12-02-2018 19:40:14.924 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:40:14.986 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:40:15.157 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 19:40:15.157 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 19:49:35.999 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 4 questions with answer were found
+12-02-2018 19:49:36.239 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 19:49:36.244 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 19:49:36.260 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 19:49:36.277 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 1 questions without answer were found
+12-02-2018 19:49:36.307 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 19:49:36.450 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 19:49:36.520 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 4 questions with answer were found
+12-02-2018 20:12:35.950 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 20:12:35.964 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.038 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.043 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.057 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.107 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.107 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.294 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:12:36.489 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:12:36.505 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.671 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.685 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.734 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:12:36.737 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:16:54.571 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:16:54.588 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:17:38.310 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:17:46.503 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:17:54.533 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:18:02.603 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:18:10.644 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:18:49.592 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:18:57.787 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:19:05.907 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:22:06.467 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:22:14.676 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:23:47.424 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:23:55.632 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:24:03.766 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:24:11.856 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:24:19.958 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:24:28.096 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+12-02-2018 20:38:54.646 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 20:38:54.693 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.708 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.740 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.755 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.771 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.771 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:54.927 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:38:55.083 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:38:55.099 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:55.411 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:55.427 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:55.443 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:55.474 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:38:55.490 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:39:18.454 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:39:18.469 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:40:26.932 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:40:31.593 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:41:25.756 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:41:32.502 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:42:50.035 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:42:51.352 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:42:53.892 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: email@mail.ru
+12-02-2018 20:44:11.030 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:44:11.046 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:44:11.124 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:44:11.202 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:45:01.325 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 20:45:01.340 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:01.403 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 5 conferences were found by date
+12-02-2018 20:45:01.434 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.450 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.450 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.465 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.465 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.481 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:01.497 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.512 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:01.528 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:01.559 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 5 conferences were found by date
+12-02-2018 20:45:01.559 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.575 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.590 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.606 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.669 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.731 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:01.778 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:01.809 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:01.825 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+12-02-2018 20:45:01.825 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 2 sections were found by conference id
+12-02-2018 20:45:01.840 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.840 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.840 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.840 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.840 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
+12-02-2018 20:45:01.919 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:45:01.934 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:45:01.981 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:01.981 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.075 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.090 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.090 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.090 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.106 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.106 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.106 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.106 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.106 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.122 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.122 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:45:02.137 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 20:45:02.153 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:45:02.153 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.153 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.153 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.153 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.169 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.184 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:45:02.184 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.200 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.200 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.200 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.200 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.200 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.215 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.215 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.215 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.231 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.231 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.231 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.278 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:02.278 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:45:02.278 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.294 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.294 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.294 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.294 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.309 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.309 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.309 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.309 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.309 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.325 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.325 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.325 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:45:02.340 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.356 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.372 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.372 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:45:02.372 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.372 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.372 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.387 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:45:02.450 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 4 questions with answer were found
+12-02-2018 20:45:02.512 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 20:45:02.512 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 20:45:02.512 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 20:45:02.512 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 1 questions without answer were found
+12-02-2018 20:45:02.512 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 3 questions with answer were found
+12-02-2018 20:45:02.559 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:02.575 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 4 questions with answer were found
+12-02-2018 20:45:02.741 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+12-02-2018 20:45:02.757 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.757 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.757 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.772 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.788 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.788 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:02.850 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:03.022 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:45:03.038 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.116 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.116 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.116 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.116 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: email@mail.ru
+12-02-2018 20:45:03.257 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:45:03.335 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:45:03.335 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.335 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:45:03.335 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: email@mail.ru
+12-02-2018 20:47:28.387 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:47:28.418 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:47:28.418 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.434 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.434 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.434 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:47:28.449 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.449 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.449 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.465 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:47:28.465 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.465 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:47:28.481 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:03.571 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:49:06.869 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:49:06.869 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:06.885 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:20.700 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.869 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:49:43.869 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.885 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.885 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.900 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:49:43.900 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.916 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:49:43.947 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.782 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:50:31.814 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:50:31.829 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:31.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.845 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.845 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:31.845 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.861 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.861 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.861 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:31.861 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.861 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.876 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.907 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:50:31.923 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 20:50:31.954 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:50:31.954 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.954 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.954 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:31.970 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.970 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.970 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.970 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:31.986 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.986 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.986 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:31.986 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.001 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.001 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.001 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.001 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.017 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.017 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:50:32.048 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.048 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.048 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.064 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.079 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.173 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.189 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.204 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.204 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:50:32.220 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:50:32.220 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:50:32.220 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.220 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.236 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:50:32.267 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:52:10.825 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:53:09.493 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:53:09.509 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:53:09.524 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.524 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.540 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.556 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.556 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.556 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.556 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:53:09.587 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.603 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.618 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.618 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.618 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.634 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.634 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.634 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.634 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:53:09.649 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:53:09.649 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.649 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.649 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.649 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.665 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:53:09.696 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:53:09.696 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.712 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:09.728 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.728 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.728 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:09.728 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:53:50.991 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:53:51.007 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:53:51.053 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.053 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.069 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.069 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.069 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.085 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.085 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.085 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.100 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.100 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.100 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.116 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.132 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:53:51.132 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 20:53:51.147 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:53:51.147 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.163 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.163 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.163 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.163 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.178 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.178 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.178 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.178 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.194 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.194 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.210 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.210 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.210 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.225 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.225 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.272 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:53:51.272 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.272 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.272 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.272 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.303 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.366 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:53:51.366 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:53:51.366 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.366 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.366 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.381 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.381 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.381 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.381 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.381 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.397 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.397 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.397 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.397 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.397 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:53:51.412 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:53:51.412 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:53:51.412 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.428 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:53:51.444 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:55:16.381 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:55:16.490 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:55:16.506 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:23.522 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:23.522 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:23.538 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:23.538 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:24.788 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:24.804 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:24.804 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:24.819 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.272 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.288 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:25.288 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.304 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.667 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.698 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.714 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.714 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.730 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.730 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.761 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.761 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:25.777 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:26.198 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:55:26.245 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:55:26.308 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:55:26.308 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 5 entries were found by status
+12-02-2018 20:55:26.323 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:55:26.323 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:27.964 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:27.964 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:27.964 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:27.980 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.415 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.415 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:28.415 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.415 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.806 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.822 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:28.822 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:28.822 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:29.212 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:29.212 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:55:29.212 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:29.212 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.653 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.653 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.669 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.669 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.669 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.669 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.684 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.684 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.700 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.700 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:55:30.716 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.691 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 20:56:31.706 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:56:31.722 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.737 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.737 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.753 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.753 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.753 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.753 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.769 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.769 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.769 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.784 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.784 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.816 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 20:56:31.816 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 20:56:31.831 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:56:31.831 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.847 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.878 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.878 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.878 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.878 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.878 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.894 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.894 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.894 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.909 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.909 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.909 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.909 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.909 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.925 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.941 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:56:31.941 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:31.941 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:31.972 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.003 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.019 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.019 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.050 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:56:32.050 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by login
+12-02-2018 20:56:32.050 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.050 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.066 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.081 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.081 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.081 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.081 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.081 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:56:32.097 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 20:56:32.097 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 20:56:32.097 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.097 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:56:32.112 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.128 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.128 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:56:32.128 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:57:27.720 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+12-02-2018 20:57:27.751 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:57:27.751 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.751 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.767 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 20:57:27.829 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:57:27.829 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:57:27.845 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.907 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.923 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:57:27.923 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:57:57.340 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:58:01.430 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:58:01.446 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:01.446 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.253 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.269 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 20:58:04.269 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.269 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.285 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.910 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:04.910 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:58:25.592 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:58:28.573 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:58:28.589 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.589 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.620 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.635 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 20:58:28.635 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.651 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.651 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.667 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:58:28.667 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 20:59:26.867 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 20:59:34.843 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 20:59:40.044 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 20:59:51.193 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:00.962 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:06.290 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 21:00:10.098 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:16.151 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:18.552 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:24.552 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:00:29.937 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 21:03:12.158 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+12-02-2018 21:03:22.178 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 21:04:16.552 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+12-02-2018 21:04:27.325 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:04:34.437 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:04:38.641 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:04:41.329 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:04:46.183 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 21:04:53.912 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:04:56.529 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:04:58.807 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:01.185 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:08.604 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 21:05:10.495 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 21:05:11.091 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:05:11.091 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.107 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.107 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.107 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 3 sectionentries were found by entry id
+12-02-2018 21:05:11.122 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.122 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.122 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.122 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:05:11.138 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+12-02-2018 21:09:40.391 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+12-02-2018 21:09:40.407 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by login
+12-02-2018 21:09:40.438 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.438 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.438 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.454 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.454 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.454 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.469 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.469 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.469 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.469 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.485 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.485 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.501 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 0 entries were found by login
+12-02-2018 21:09:40.516 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 21:09:40.516 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 21:09:40.516 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.532 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.532 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.532 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.548 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.548 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.548 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.563 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.563 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.563 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.579 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.579 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.579 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.579 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.594 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.594 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.610 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+12-02-2018 21:09:40.610 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 21:09:40.610 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.610 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.610 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.626 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.641 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.641 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.688 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.688 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.688 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.688 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.735 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 21:09:40.766 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 21:09:40.798 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+12-02-2018 21:09:40.798 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 4 entries were found by status
+12-02-2018 21:09:40.798 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 1 sectionentries were found by entry id
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.813 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.829 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.829 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.829 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.844 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.860 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.860 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.860 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.860 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 21:09:40.860 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully

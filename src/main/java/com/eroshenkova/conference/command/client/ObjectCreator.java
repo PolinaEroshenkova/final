@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ObjectCreator {
     private static final String DELIMITER_SPACE = " ";
-    private static final String PASSWORD = "FGCVHBJnhgjhKHGVJfdgvfnklfJNKKHGB";
 
     public Conference formConferenceObject(HttpServletRequest request) throws ParseException {
         String topic = request.getParameter(Parameter.TOPIC);

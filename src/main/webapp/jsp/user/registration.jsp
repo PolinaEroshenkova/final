@@ -122,8 +122,9 @@
     <jsp:include page="../modal/sign.jsp"/>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../../static/javascript/bootstrap/bootstrap.bundle.js"></script>
+<script src="../../static/javascript/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../static/javascript/custom/registration.js"></script>
 <script src="../../static/javascript/custom/showdialog.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>

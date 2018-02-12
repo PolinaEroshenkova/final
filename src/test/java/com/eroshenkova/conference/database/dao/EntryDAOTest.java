@@ -51,12 +51,12 @@ public class EntryDAOTest {
         Assert.assertEquals(result, expected);
     }
 
-    @Test(expectedExceptions = DAOException.class)
+    @Test
     public void delete() throws DAOException {
         DAO<Long, Entry> dao = new EntryDAOImpl();
         long key = 3;
         dao.delete(key);
-        dao.findByKey(key);
+        Assert.assertNull(dao.findByKey(key));
     }
 
     @Test

@@ -55,6 +55,7 @@ $(document).ready(function () {
     });
 
     $('#registration').validate({
+        excluded: 'disabled',
         lang: $('html').attr('lang'),
         rules: {
             login: {

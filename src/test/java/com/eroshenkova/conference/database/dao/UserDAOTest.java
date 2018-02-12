@@ -44,12 +44,12 @@ public class UserDAOTest {
         Assert.assertEquals(result, expected);
     }
 
-    @Test(expectedExceptions = DAOException.class)
+    @Test
     public void delete() throws DAOException {
         DAO<String, User> dao = new UserDAOImpl();
         String login = "qwerty4";
         dao.delete(login);
-        dao.findByKey(login);
+        Assert.assertNull(dao.findByKey(login));
     }
 
     @Test

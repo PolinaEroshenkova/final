@@ -48,7 +48,9 @@ public class Parameter {
 
     public static final String ENTRIES = "entries";
 
-    public static final String QUESTION_ADMIN = "question-admin";
+    public static final String REGLOGIN = "reglogin";
+
+    public static final String QUESTION_ADMIN = "questionadmin";
 
     public static final String QUESTION = "question";
 
@@ -58,7 +60,7 @@ public class Parameter {
 
     public static final String NO_ANSWER_QUESTIONS = "noAnswerQuestions";
 
-    public static final String ANSWER_ADMIN = "answer-admin";
+    public static final String ANSWER_ADMIN = "answeradmin";
 
     public static final String ANSWER = "answer";
 
