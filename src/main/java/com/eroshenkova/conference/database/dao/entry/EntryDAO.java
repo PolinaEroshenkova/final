@@ -1,6 +1,6 @@
 package com.eroshenkova.conference.database.dao.entry;
 
-import com.eroshenkova.conference.entity.Entry;
+import com.eroshenkova.conference.entity.impl.Entry;
 import com.eroshenkova.conference.exception.DAOException;
 
 import java.util.List;

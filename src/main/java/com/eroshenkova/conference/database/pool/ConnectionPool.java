@@ -71,10 +71,12 @@ public class ConnectionPool {
     }
 
     public void closeConnection(Connection connection) {
-        try {
-            connections.put(connection);
-        } catch (InterruptedException e) {
-            LOGGER.log(Level.ERROR, "Returning connection to pool is failed");
+        if (connection != null) {
+            try {
+                connections.put(connection);
+            } catch (InterruptedException e) {
+                LOGGER.log(Level.ERROR, "Returning connection to pool is failed");
+            }
         }
     }
 

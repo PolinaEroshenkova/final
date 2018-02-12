@@ -82,7 +82,7 @@ $(document).ready(function () {
                 maxlength: 30,
                 nowhitespace: true
             },
-            password: {
+            regpassword: {
                 required: true,
                 maxlength: 30,
                 nowhitespace: true

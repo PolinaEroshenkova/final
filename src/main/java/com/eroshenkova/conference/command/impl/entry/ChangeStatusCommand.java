@@ -1,31 +1,37 @@
 package com.eroshenkova.conference.command.impl.entry;
 
 import com.eroshenkova.conference.command.ActionCommand;
+import com.eroshenkova.conference.command.client.ObjectCreator;
 import com.eroshenkova.conference.constant.Page;
-import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.entity.Entry;
-import com.eroshenkova.conference.resource.JspRoutesManager;
+import com.eroshenkova.conference.entity.impl.Entry;
+import com.eroshenkova.conference.exception.DAOException;
+import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.resource.UrlManager;
-import com.eroshenkova.conference.service.impl.EntryService;
+import com.eroshenkova.conference.service.impl.entry.EntryService;
+import com.eroshenkova.conference.service.impl.entry.impl.EntryServiceImpl;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class ChangeStatusCommand implements ActionCommand {
+    private static final Logger LOGGER = LogManager.getLogger(ChangeStatusCommand.class);
+
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
-        String stringIdEntry = request.getParameter(Parameter.ID);
-        long idEntry = Long.parseLong(stringIdEntry);
-        String status = request.getParameter(Parameter.STATUS);
-        String login = request.getParameter(Parameter.LOGIN);
-        Entry entry = new Entry(idEntry, login, status);
-        EntryService logic = new EntryService();
-        if (logic.changeStatus(entry)) {
+        String page = null;
+        ObjectCreator creator = new ObjectCreator();
+        Entry entry = creator.formEntryObject(request);
+        EntryService service = new EntryServiceImpl();
+        try {
+            service.changeStatus(entry);
             page = UrlManager.getProperty(Page.MANAGEMENT);
-        } else {
-            request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
-            page = JspRoutesManager.getProperty(Page.JSP_MANAGEMENT);
+        } catch (ServiceException e) {
+            LOGGER.log(Level.ERROR, "Entry is not defined");
+        } catch (DAOException e) {
+            LOGGER.log(Level.ERROR, "Database error. Can't change status of entry");
         }
         return page;
     }

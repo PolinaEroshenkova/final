@@ -1,32 +1,37 @@
 package com.eroshenkova.conference.command.impl.question;
 
 import com.eroshenkova.conference.command.ActionCommand;
+import com.eroshenkova.conference.command.client.ObjectCreator;
 import com.eroshenkova.conference.constant.Page;
-import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.entity.Question;
-import com.eroshenkova.conference.resource.JspRoutesManager;
+import com.eroshenkova.conference.entity.impl.Question;
+import com.eroshenkova.conference.exception.DAOException;
+import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.resource.UrlManager;
-import com.eroshenkova.conference.service.impl.QuestionService;
+import com.eroshenkova.conference.service.impl.question.QuestionService;
+import com.eroshenkova.conference.service.impl.question.impl.QuestionServiceImpl;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
+import static org.apache.logging.log4j.LogManager.getLogger;
 
 public class PublishQuestionCommand implements ActionCommand {
+    private static final Logger LOGGER = getLogger(DeleteQuestionCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
-        String questionText = request.getParameter(Parameter.QUESTION_ADMIN);
-        String answer = request.getParameter(Parameter.ANSWER_ADMIN);
-        HttpSession session = request.getSession(true);
-        String login = (String) session.getAttribute(Parameter.USER);
-        Question question = new Question(login, questionText, answer);
-        QuestionService logic = new QuestionService();
-        if (logic.create(question) == 0) {
+        String page = null;
+        ObjectCreator creator = new ObjectCreator();
+        Question question = creator.formQuestionObject(request);
+        try {
+            QuestionService service = new QuestionServiceImpl();
+            service.register(question);
             page = UrlManager.getProperty(Page.FAQ);
-        } else {
-            request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
-            page = JspRoutesManager.getProperty(Page.JSP_FAQ);
+        } catch (ServiceException e) {
+            LOGGER.log(Level.ERROR, "Question is not defined");
+        } catch (DAOException e) {
+            LOGGER.log(Level.ERROR, "Database exception. Cannot add new question");
         }
         return page;
     }

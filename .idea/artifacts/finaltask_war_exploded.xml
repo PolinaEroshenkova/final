@@ -13,6 +13,10 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.9.1" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.testng:testng:6.8.8" />
+          <element id="library" level="project" name="Maven: org.beanshell:bsh:2.0b4" />
+          <element id="library" level="project" name="Maven: com.beust:jcommander:1.27" />
+          <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.9.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

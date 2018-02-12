@@ -2,8 +2,9 @@ package com.eroshenkova.conference.database.dao.user.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.user.UserDAO;
-import com.eroshenkova.conference.entity.User;
+import com.eroshenkova.conference.entity.impl.User;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,9 +30,11 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
             List<User> users = processSelectStatement(statement);
             if (users != null && !users.isEmpty()) {
                 user = users.get(0);
+                LOGGER.log(Level.INFO, "User was found by email: " + email);
             }
         } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find user", e);
+            LOGGER.log(Level.ERROR, "Database error. Can't find user by email");
+            throw new DAOException(e);
         } finally {
             super.returnConnection(connection);
         }

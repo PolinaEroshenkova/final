@@ -2,8 +2,9 @@ package com.eroshenkova.conference.database.dao.question.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.question.QuestionDAO;
-import com.eroshenkova.conference.entity.Question;
+import com.eroshenkova.conference.entity.impl.Question;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,10 +22,41 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     private static final String SQL_UPDATE = "UPDATE question SET login=?, question=?, answer=? WHERE id_question=?";
     private static final String SQl_DELETE = "DELETE FROM question WHERE id_question=?";
 
-    private static final String SQL_FIND_ALL = "SELECT * FROM question";
     private static final String SQL_FIND_WITH_ANSWER = "SELECT * FROM question WHERE answer IS NOT NULL";
     private static final String SQL_FIND_WITHOUT_ANSWER = "SELECT * FROM question WHERE answer IS NULL";
 
+
+    @Override
+    public List<Question> findWithoutAnswer() throws DAOException {
+        Connection connection = super.receiveConnection();
+        List<Question> questions;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITHOUT_ANSWER)) {
+            questions = processSelectStatement(statement);
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Database error. Can't find questions without answer");
+            throw new DAOException(e);
+        } finally {
+            super.returnConnection(connection);
+        }
+        LOGGER.log(Level.INFO, questions.size() + " questions without answer were found");
+        return questions;
+    }
+
+    @Override
+    public List<Question> findWithAnswer() throws DAOException {
+        Connection connection = super.receiveConnection();
+        List<Question> questions;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITH_ANSWER)) {
+            questions = processSelectStatement(statement);
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Database error. Can't find questions with answer");
+            throw new DAOException(e);
+        } finally {
+            super.returnConnection(connection);
+        }
+        LOGGER.log(Level.INFO, questions.size() + " questions with answer were found");
+        return questions;
+    }
 
     @Override
     public Question parseResultSet(ResultSet resultSet) throws SQLException {
@@ -57,7 +89,11 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
         statement.setString(1, entity.getLogin());
         statement.setString(2, entity.getQuestion());
         statement.setString(3, entity.getAnswer());
-        statement.setLong(4, key);
+        if (key == null) {
+            statement.setLong(4, entity.getIdquestion());
+        } else {
+            statement.setLong(4, key);
+        }
         return statement;
     }
 
@@ -66,47 +102,5 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
         PreparedStatement statement = connection.prepareStatement(SQl_DELETE);
         statement.setLong(1, key);
         return statement;
-    }
-
-    @Override
-    public List<Question> findAll() throws DAOException {
-        Connection connection = super.receiveConnection();
-        List<Question> questions;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL)) {
-            questions = processSelectStatement(statement);
-        } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find questions", e);
-        } finally {
-            super.returnConnection(connection);
-        }
-        return questions;
-    }
-
-    @Override
-    public List<Question> findWithoutAnswer() throws DAOException {
-        Connection connection = super.receiveConnection();
-        List<Question> questions = null;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITHOUT_ANSWER)) {
-            questions = processSelectStatement(statement);
-        } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find questions", e);
-        } finally {
-            super.returnConnection(connection);
-        }
-        return questions;
-    }
-
-    @Override
-    public List<Question> findWithAnswer() throws DAOException {
-        Connection connection = super.receiveConnection();
-        List<Question> questions = null;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WITH_ANSWER)) {
-            questions = processSelectStatement(statement);
-        } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find questions", e);
-        } finally {
-            super.returnConnection(connection);
-        }
-        return questions;
     }
 }

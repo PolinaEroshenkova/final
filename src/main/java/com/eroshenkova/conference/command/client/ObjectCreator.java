@@ -1,10 +1,7 @@
 package com.eroshenkova.conference.command.client;
 
 import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.entity.Conference;
-import com.eroshenkova.conference.entity.Participant;
-import com.eroshenkova.conference.entity.Section;
-import com.eroshenkova.conference.entity.User;
+import com.eroshenkova.conference.entity.impl.*;
 import com.eroshenkova.conference.locale.DateWorker;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +13,7 @@ import java.util.List;
 
 public class ObjectCreator {
     private static final String DELIMITER_SPACE = " ";
+    private static final String PASSWORD = "FGCVHBJnhgjhKHGVJfdgvfnklfJNKKHGB";
 
     public Conference formConferenceObject(HttpServletRequest request) throws ParseException {
         String topic = request.getParameter(Parameter.TOPIC);
@@ -29,9 +27,9 @@ public class ObjectCreator {
         String deadline = request.getParameter(Parameter.DEADLINE);
         HttpSession session = request.getSession(false);
         String locale = (String) session.getAttribute(Parameter.LOCALE);
-        Date sqlStartDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateStart, timeStart), locale);
-        Date sqlEndDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateEnd, timeEnd), locale);
-        Date sqlDeadline = DateWorker.parseDateByLocale(deadline, locale);
+        Date sqlStartDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateStart, timeStart), locale, true);
+        Date sqlEndDate = DateWorker.parseDateTimeByLocale(String.join(DELIMITER_SPACE, dateEnd, timeEnd), locale, true);
+        Date sqlDeadline = DateWorker.parseDateTimeByLocale(deadline, locale, false);
         String[] sectionArray = request.getParameterValues(Parameter.SECTIONS);
         List<Section> sections = new ArrayList<>();
         for (String title : sectionArray) {
@@ -56,5 +54,21 @@ public class ObjectCreator {
         String position = request.getParameter(Parameter.POSITION);
         String company = request.getParameter(Parameter.COMPANY);
         return new Participant(login, surname, name, scope, position, company);
+    }
+
+    public Entry formEntryObject(HttpServletRequest request) {
+        String stringIdEntry = request.getParameter(Parameter.ID);
+        long idEntry = Long.parseLong(stringIdEntry);
+        String status = request.getParameter(Parameter.STATUS);
+        String login = request.getParameter(Parameter.LOGIN);
+        return new Entry(idEntry, login, status);
+    }
+
+    public Question formQuestionObject(HttpServletRequest request) {
+        String questionText = request.getParameter(Parameter.QUESTION_ADMIN);
+        String answer = request.getParameter(Parameter.ANSWER_ADMIN);
+        HttpSession session = request.getSession(false);
+        String login = (String) session.getAttribute(Parameter.USER);
+        return new Question(login, questionText, answer);
     }
 }

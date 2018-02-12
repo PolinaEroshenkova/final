@@ -3,11 +3,12 @@ package com.eroshenkova.conference.command.impl.conference;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.client.ObjectCreator;
 import com.eroshenkova.conference.constant.Page;
-import com.eroshenkova.conference.constant.Parameter;
-import com.eroshenkova.conference.entity.Conference;
-import com.eroshenkova.conference.resource.JspRoutesManager;
+import com.eroshenkova.conference.entity.impl.Conference;
+import com.eroshenkova.conference.exception.DAOException;
+import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.resource.UrlManager;
-import com.eroshenkova.conference.service.impl.ConferenceService;
+import com.eroshenkova.conference.service.impl.conference.ConferenceService;
+import com.eroshenkova.conference.service.impl.conference.impl.ConferenceServiceImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,15 +25,15 @@ public class RegisterConferenceCommand implements ActionCommand {
         try {
             ObjectCreator creator = new ObjectCreator();
             Conference conference = creator.formConferenceObject(request);
-            ConferenceService logic = new ConferenceService();
-            if (logic.register(conference)) {
-                page = UrlManager.getProperty(Page.CONFERENCE);
-            } else {
-                request.setAttribute(Parameter.ERROR_MESSAGE, Parameter.SERVER_ERROR_MESSAGE);
-                page = JspRoutesManager.getProperty(Page.JSP_NEW_CONFERENCE);
-            }
+            ConferenceService service = new ConferenceServiceImpl();
+            service.register(conference);
+            page = UrlManager.getProperty(Page.CONFERENCE);
         } catch (ParseException e) {
             LOGGER.log(Level.ERROR, "Cannot parse date to format");
+        } catch (DAOException e) {
+            LOGGER.log(Level.ERROR, "Database exception. Cannot register new conference");
+        } catch (ServiceException e) {
+            LOGGER.log(Level.ERROR, "Conference is not defined");
         }
         return page;
     }

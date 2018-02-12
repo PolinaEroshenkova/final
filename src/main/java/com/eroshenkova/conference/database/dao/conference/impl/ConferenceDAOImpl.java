@@ -2,9 +2,10 @@ package com.eroshenkova.conference.database.dao.conference.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.conference.ConferenceDAO;
-import com.eroshenkova.conference.entity.Conference;
+import com.eroshenkova.conference.entity.impl.Conference;
 import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.locale.DateWorker;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +13,6 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements ConferenceDAO {
     private static final Logger LOGGER = LogManager.getLogger(ConferenceDAOImpl.class);
@@ -35,10 +35,12 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
             statement.setString(1, DateWorker.receiveNow());
             conferences = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find conference", e);
+            LOGGER.log(Level.ERROR, "Database error. Can't find conferences by date");
+            throw new DAOException(e);
         } finally {
             super.returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, conferences.size() + " conferences were found by date");
         return conferences;
     }
 
@@ -48,10 +50,10 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         String topic = resultSet.getString("topic");
         int numberOfParticipants = resultSet.getInt("number_of_participants");
         String place = resultSet.getString("place");
-        Calendar nowGMT = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        Calendar nowGMT = Calendar.getInstance();
         Date start = resultSet.getTimestamp("date_start", nowGMT);
         Date end = resultSet.getTimestamp("date_end", nowGMT);
-        Date deadline = resultSet.getDate("deadline");
+        Date deadline = resultSet.getTimestamp("deadline", nowGMT);
         return new Conference(idconf, topic, numberOfParticipants, place, start, end, deadline);
     }
 
@@ -68,9 +70,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         statement.setString(1, entity.getTopic());
         statement.setInt(2, entity.getParticipantsnumber());
         statement.setString(3, entity.getPlace());
-        statement.setString(4, DateWorker.formatToSQL(entity.getBegin()));
-        statement.setString(5, DateWorker.formatToSQL(entity.getEnd()));
-        statement.setString(6, DateWorker.formatToSQL(entity.getDeadline()));
+        statement.setString(4, DateWorker.formatDateTimeToSQL(entity.getBegin()));
+        statement.setString(5, DateWorker.formatDateTimeToSQL(entity.getEnd()));
+        statement.setString(6, DateWorker.formatDateTimeToSQL(entity.getDeadline()));
         return statement;
     }
 
@@ -81,9 +83,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
         statement.setString(2, entity.getTopic());
         statement.setInt(3, entity.getParticipantsnumber());
         statement.setString(4, entity.getPlace());
-        statement.setString(5, DateWorker.formatToSQL(entity.getBegin()));
-        statement.setString(6, DateWorker.formatToSQL(entity.getEnd()));
-        statement.setString(7, DateWorker.formatToSQL(entity.getDeadline()));
+        statement.setString(5, DateWorker.formatDateTimeToSQL(entity.getBegin()));
+        statement.setString(6, DateWorker.formatDateTimeToSQL(entity.getEnd()));
+        statement.setString(7, DateWorker.formatDateTimeToSQL(entity.getDeadline()));
         if (key == null) {
             statement.setLong(8, entity.getIdconference());
         } else {

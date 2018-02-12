@@ -2,8 +2,9 @@ package com.eroshenkova.conference.database.dao.sectionentry.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.sectionentry.SectionEntryDAO;
-import com.eroshenkova.conference.entity.SectionEntry;
+import com.eroshenkova.conference.entity.impl.SectionEntry;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,6 +21,21 @@ public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> impleme
 
 
     @Override
+    public List<SectionEntry> findByEntryId(long id) throws DAOException {
+        Connection connection = super.receiveConnection();
+        List<SectionEntry> sectionEntries;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_ENTRY_ID)) {
+            statement.setLong(1, id);
+            sectionEntries = processSelectStatement(statement);
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Database error. Can't find sectionentry by entry id");
+            throw new DAOException(e);
+        }
+        LOGGER.log(Level.INFO, sectionEntries.size() + " sectionentries were found by entry id");
+        return sectionEntries;
+    }
+
+    @Override
     public SectionEntry parseResultSet(ResultSet resultSet) throws SQLException {
         long idsection = resultSet.getLong("id_section");
         long identry = resultSet.getLong("id_entry");
@@ -27,10 +43,8 @@ public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> impleme
     }
 
     @Override
-    public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_ENTRY_ID);
-        statement.setLong(1, key);
-        return statement;
+    public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -42,16 +56,8 @@ public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> impleme
     }
 
     @Override
-    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, Long key) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
-        statement.setLong(1, entity.getIdsection());
-        statement.setLong(2, entity.getIdentry());
-        if (key == null) {
-            statement.setLong(3, entity.getIdentry());
-        } else {
-            statement.setLong(3, key);
-        }
-        return statement;
+    public PreparedStatement receiveUpdateStatement(Connection connection, SectionEntry entity, Long key) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -61,17 +67,4 @@ public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> impleme
         return statement;
     }
 
-
-    @Override
-    public List<SectionEntry> findByEntryId(long id) throws DAOException {
-        Connection connection = super.receiveConnection();
-        List<SectionEntry> sectionEntries;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_ENTRY_ID)) {
-            statement.setLong(1, id);
-            sectionEntries = processSelectStatement(statement);
-        } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find sectionentry", e);
-        }
-        return sectionEntries;
-    }
 }

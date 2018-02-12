@@ -26,7 +26,7 @@ public class AuthentificationFilter implements Filter {
                 UrlManager.getProperty(Page.FAQ).equals(nextPage) ||
                 UrlManager.getProperty(Page.REGISTRATION).equals(nextPage))) ||
                 (accountType != null && accountType.equals("user") &&
-                        UrlManager.getProperty(Page.MANAGEMENT).equals(nextPage)) ||
+                        !UrlManager.getProperty(Page.MANAGEMENT).equals(nextPage)) ||
                 (accountType != null && accountType.equals("admin"))) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {

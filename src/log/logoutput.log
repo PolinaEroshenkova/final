@@ -1,0 +1,45 @@
+10-02-2018 18:54:48.572 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:54:56.766 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:55:04.858 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:56:06.797 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:56:14.942 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:56:23.049 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 18:56:31.156 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 19:58:05.901 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 19:58:13.962 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 19:58:21.973 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+10-02-2018 19:58:30.008 ERROR com.eroshenkova.conference.database.pool.ConnectionPool [main] Can't get connection from database
+11-02-2018 12:47:38.159 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:38.456 INFO com.eroshenkova.conference.database.dao.conference.impl.ConferenceDAOImpl [main] 6 conferences were found by date
+11-02-2018 12:47:38.513 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:38.638 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+11-02-2018 12:47:38.763 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:38.850 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 2 entries were found by login
+11-02-2018 12:47:38.861 INFO com.eroshenkova.conference.database.dao.entry.impl.EntryDAOImpl [main] 3 entries were found by status
+11-02-2018 12:47:39.039 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+11-02-2018 12:47:39.523 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+11-02-2018 12:47:40.161 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:40.208 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:46.278 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+11-02-2018 12:47:46.278 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:46.294 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:46.309 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:46.403 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 4 questions with answer were found
+11-02-2018 12:47:46.419 INFO com.eroshenkova.conference.database.dao.question.impl.QuestionDAOImpl [main] 0 questions without answer were found
+11-02-2018 12:47:46.528 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+11-02-2018 12:47:46.716 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+11-02-2018 12:47:46.716 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:46.763 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:46.778 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 4 sections were found by conference id
+11-02-2018 12:47:46.794 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:46.856 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was created successfully
+11-02-2018 12:47:46.966 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+11-02-2018 12:47:46.981 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:47.013 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:47.013 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 0 sectionentries were found by entry id
+11-02-2018 12:47:47.044 INFO com.eroshenkova.conference.database.dao.sectionentry.impl.SectionEntryDAOImpl [main] 2 sectionentries were found by entry id
+11-02-2018 12:47:47.325 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was deleted successfully
+11-02-2018 12:47:47.341 INFO com.eroshenkova.conference.database.dao.user.impl.UserDAOImpl [main] User was found by email: dianarock@yandex.ru
+11-02-2018 12:47:47.341 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+11-02-2018 12:47:48.841 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
+11-02-2018 12:47:48.872 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully

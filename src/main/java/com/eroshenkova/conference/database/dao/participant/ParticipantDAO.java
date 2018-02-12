@@ -1,7 +1,7 @@
 package com.eroshenkova.conference.database.dao.participant;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
-import com.eroshenkova.conference.entity.Participant;
+import com.eroshenkova.conference.entity.impl.Participant;
 
 import java.sql.*;
 

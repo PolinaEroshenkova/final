@@ -2,7 +2,7 @@ package com.eroshenkova.conference.command.factory;
 
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.client.CommandEnum;
-import com.eroshenkova.conference.command.impl.EmptyCommand;
+import com.eroshenkova.conference.command.impl.util.EmptyCommand;
 import com.eroshenkova.conference.constant.Parameter;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

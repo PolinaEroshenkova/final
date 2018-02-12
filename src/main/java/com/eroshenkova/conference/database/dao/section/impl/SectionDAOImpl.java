@@ -2,8 +2,9 @@ package com.eroshenkova.conference.database.dao.section.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.section.SectionDAO;
-import com.eroshenkova.conference.entity.Section;
+import com.eroshenkova.conference.entity.impl.Section;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,10 +30,12 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
             statement.setLong(1, id);
             sections = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find sections", e);
+            LOGGER.log(Level.ERROR, "Database error. Can't find sections by conference id");
+            throw new DAOException(e);
         } finally {
             super.returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, sections.size() + " sections were found by conference id");
         return sections;
     }
 

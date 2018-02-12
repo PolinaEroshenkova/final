@@ -40,10 +40,6 @@ public class Parameter {
 
     public static final String EMAIL = "email";
 
-    public static final String REGISTRATION_LOGIN = "reglogin";
-
-    public static final String REGISTRATION_PASSWORD = "regpassword";
-
     public static final String LOGIN = "login";
 
     public static final String PASSWORD = "password";
@@ -87,8 +83,6 @@ public class Parameter {
     public static final String EMAIL_SUBJECT = "User question";
 
     public static final String STATUS = "status";
-
-    public static final String WRONG_ACTION = "wrongAction";
 
     public static final String REQUEST_REFERER = "referer";
 }

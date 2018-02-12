@@ -7,6 +7,16 @@
     <display-name>FirstJspServletJsp</display-name>
 
     <filter>
+        <filter-name>StaticFilter</filter-name>
+        <filter-class>com.eroshenkova.conference.filter.StaticFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>StaticFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>com.eroshenkova.conference.filter.EncodingFilter</filter-class>
     </filter>
@@ -36,7 +46,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/jsp/index.jsp</welcome-file>
+        <welcome-file>/jsp/common/index.jsp</welcome-file>
     </welcome-file-list>
 
     <jsp-config>

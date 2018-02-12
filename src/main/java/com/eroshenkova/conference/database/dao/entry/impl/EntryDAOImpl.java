@@ -2,8 +2,9 @@ package com.eroshenkova.conference.database.dao.entry.impl;
 
 import com.eroshenkova.conference.database.dao.AbstractDAO;
 import com.eroshenkova.conference.database.dao.entry.EntryDAO;
-import com.eroshenkova.conference.entity.Entry;
+import com.eroshenkova.conference.entity.impl.Entry;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,10 +30,12 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
             statement.setString(1, login);
             entries = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find entry", e);
+            LOGGER.log(Level.ERROR, "Database error. Can't find entries by login");
+            throw new DAOException(e);
         } finally {
             super.returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, entries.size() + " entries were found by login");
         return entries;
     }
 
@@ -43,10 +46,12 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_STATUS)) {
             entries = super.processSelectStatement(statement);
         } catch (SQLException e) {
-            throw new DAOException("Database error. Can't find entry", e);
+            LOGGER.log(Level.ERROR, "Database error. Can't find entries by status");
+            throw new DAOException(e);
         } finally {
             super.returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, entries.size() + " entries were found by status");
         return entries;
     }
 

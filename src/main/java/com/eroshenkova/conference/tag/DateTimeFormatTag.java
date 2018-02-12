@@ -2,6 +2,9 @@ package com.eroshenkova.conference.tag;
 
 import com.eroshenkova.conference.constant.Parameter;
 import com.eroshenkova.conference.locale.DateWorker;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
@@ -13,6 +16,9 @@ import java.text.ParseException;
 import java.util.Date;
 
 public class DateTimeFormatTag extends BodyTagSupport {
+    private static final Logger LOGGER = LogManager.getLogger(DateTimeFormatTag.class);
+
+
     private AttributeType type;
 
     public void setType(String type) {
@@ -25,44 +31,27 @@ public class DateTimeFormatTag extends BodyTagSupport {
         BodyContent bodyContent = super.getBodyContent();
         String bodyDate = bodyContent.getString();
         try {
-            Date date = DateWorker.formatFromSQL(bodyDate);
+            Date date = DateWorker.parseDateFromSQL(bodyDate);
             HttpSession session = pageContext.getSession();
             String locale = (String) session.getAttribute(Parameter.LOCALE);
-            String result = "";
+            String result;
             switch (type) {
                 case DATE:
-                    result = DateWorker.formatDateByLocale(date, locale);
+                    result = DateWorker.formatDateTimeByLocale(date, locale, false);
                     break;
                 case DATETIME:
-                    result = DateWorker.formatDateTimeByLocale(date, locale);
+                    result = DateWorker.formatDateTimeByLocale(date, locale, true);
                     break;
-                default: //BLA
+                default:
+                    LOGGER.log(Level.ERROR, "Date parsing error");
+                    result = "error";
             }
             out.write(result);
         } catch (ParseException e) {
-            //BLA_BLA
+            LOGGER.log(Level.ERROR, "Cannot format date");
         } catch (IOException e) {
-            //BLA-BLA
+            LOGGER.log(Level.ERROR, "Exception writing date on jsp ");
         }
         return SKIP_BODY;
     }
-
-//    @Override
-//    public int doStartTag() throws JspException {
-//        GregorianCalendar gc = new GregorianCalendar();
-//        String time = "<hr/>Time : <b> " + gc.getTime() + " </b><hr/>";
-//        String locale = "Locale : <b> " + Locale.getDefault() + " </b><hr/> ";
-//        try {
-//            JspWriter out = pageContext.getOut();
-//            out.write(time + locale);
-//        } catch (IOException e) {
-//            throw new JspException(e.getMessage());
-//        }
-//        return SKIP_BODY;
-//    }
-//
-//    @Override
-//    public int doEndTag() throws JspException {
-//        return EVAL_PAGE;
-//    }
 }

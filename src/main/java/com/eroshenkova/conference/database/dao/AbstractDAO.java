@@ -3,6 +3,7 @@ package com.eroshenkova.conference.database.dao;
 import com.eroshenkova.conference.database.DAO;
 import com.eroshenkova.conference.database.pool.ConnectionPool;
 import com.eroshenkova.conference.exception.DAOException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,6 +43,7 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         } finally {
             returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, "Entity was created successfully");
         return result;
     }
 
@@ -54,6 +56,7 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         } finally {
             returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, "Entity was updated successfully");
     }
 
     public void delete(K key) throws DAOException {
@@ -65,6 +68,7 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         } finally {
             returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, "Entity was deleted successfully");
     }
 
     public T findByKey(K key) throws DAOException {
@@ -79,6 +83,7 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
         } finally {
             returnConnection(connection);
         }
+        LOGGER.log(Level.INFO, "Entity was found successfully");
         return entity;
     }
 
