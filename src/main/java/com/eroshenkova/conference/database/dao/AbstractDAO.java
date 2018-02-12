@@ -73,11 +73,12 @@ public abstract class AbstractDAO<K, T> implements DAO<K, T> {
 
     public T findByKey(K key) throws DAOException {
         Connection connection = receiveConnection();
-        T entity;
+        T entity = null;
         try (PreparedStatement statement = receiveFindByKeyStatement(connection, key)) {
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
-            entity = parseResultSet(resultSet);
+            if (resultSet.next()) {
+                entity = parseResultSet(resultSet);
+            }
         } catch (SQLException e) {
             throw new DAOException("Database error. Can't find entity", e);
         } finally {

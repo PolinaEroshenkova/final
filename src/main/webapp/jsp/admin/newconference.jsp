@@ -12,10 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title><fmt:message key="newconference.title"/></title>
     <link href="../../static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css"
-          rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
-          rel="stylesheet"/>
+    <link href="../../static/css/bootstrap/bootstrap-datetimepicker-standalone.css" rel="stylesheet"/>
+    <link href="../../static/css/bootstrap/bootstrap-datetimepicker.css" rel="stylesheet"/>
     <link href="../../static/css/custom/style.css" rel="stylesheet"/>
 
 </head>

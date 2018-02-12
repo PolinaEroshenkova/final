@@ -31,7 +31,7 @@ public class DateTimeFormatTag extends BodyTagSupport {
         BodyContent bodyContent = super.getBodyContent();
         String bodyDate = bodyContent.getString();
         try {
-            Date date = DateWorker.parseDateFromSQL(bodyDate);
+            Date date = DateWorker.parseDateTimeToSQL(bodyDate);
             HttpSession session = pageContext.getSession();
             String locale = (String) session.getAttribute(Parameter.LOCALE);
             String result;

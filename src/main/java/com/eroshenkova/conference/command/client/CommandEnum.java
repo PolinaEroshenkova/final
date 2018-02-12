@@ -11,10 +11,7 @@ import com.eroshenkova.conference.command.impl.question.AnswerQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.AskQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.DeleteQuestionCommand;
 import com.eroshenkova.conference.command.impl.question.PublishQuestionCommand;
-import com.eroshenkova.conference.command.impl.user.CreateProfileCommand;
-import com.eroshenkova.conference.command.impl.user.LoginCommand;
-import com.eroshenkova.conference.command.impl.user.LogoutCommand;
-import com.eroshenkova.conference.command.impl.user.UpdateUserCommand;
+import com.eroshenkova.conference.command.impl.user.*;
 import com.eroshenkova.conference.command.impl.util.ChangeLanguageCommand;
 
 public enum CommandEnum {
@@ -91,6 +88,11 @@ public enum CommandEnum {
     UPDATEUSERINFO {
         {
             this.command = new UpdateUserCommand();
+        }
+    },
+    UPDATEPASSWORD {
+        {
+            this.command = new UpdatePasswordCommand();
         }
     },
     CHANGESTATUS {

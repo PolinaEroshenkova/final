@@ -12,8 +12,9 @@ public class LogoutCommand implements ActionCommand {
     public String execute(HttpServletRequest request) {
         request.getSession().invalidate();
         String referer = request.getHeader(Parameter.REQUEST_REFERER);
-        if (referer.equals(Page.MANAGEMENT) || referer.equals(Page.REGISTRATION) ||
-                referer.equals(Page.PROFILE) || referer.equals(Page.ENTRY)) {
+        String address = request.getRemoteAddr();
+        if (address.equals(Page.MANAGEMENT) || address.equals(Page.REGISTRATION) ||
+                address.equals(Page.PROFILE) || address.equals(Page.ENTRY)) {
             return Page.INDEX;
         } else {
             return referer;

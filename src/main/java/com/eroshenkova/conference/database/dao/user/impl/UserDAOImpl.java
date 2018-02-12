@@ -20,6 +20,7 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
 
     private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM user WHERE email=?";
+    private static final String SQL_UPDATE_PASSWORD = "UPDATE user SET password=? WHERE login=?";
 
     @Override
     public User findByEmail(String email) throws DAOException {
@@ -39,6 +40,21 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
             super.returnConnection(connection);
         }
         return user;
+    }
+
+    @Override
+    public void updatePassword(String password, String login) throws DAOException {
+        Connection connection = super.receiveConnection();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_PASSWORD)) {
+            statement.setString(1, password);
+            statement.setString(2, login);
+            statement.execute();
+        } catch (SQLException e) {
+            LOGGER.log(Level.ERROR, "Database error. Can't update user's password ");
+            throw new DAOException(e);
+        } finally {
+            super.returnConnection(connection);
+        }
     }
 
     @Override

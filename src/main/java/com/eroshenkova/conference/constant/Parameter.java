@@ -10,13 +10,13 @@ public class Parameter {
 
     public static final String NUMBER = "number";
 
-    public static final String DATE_START = "date-start";
+    public static final String DATE_START = "datestart";
 
-    public static final String TIME_START = "time-start";
+    public static final String TIME_START = "timestart";
 
-    public static final String DATE_END = "date-end";
+    public static final String DATE_END = "dateend";
 
-    public static final String TIME_END = "time-end";
+    public static final String TIME_END = "timeend";
 
     public static final String DEADLINE = "deadline";
 
@@ -53,6 +53,8 @@ public class Parameter {
     public static final String QUESTION = "question";
 
     public static final String QUESTIONS = "questions";
+
+    public static final String UPDATE_PASSWORD = "updatepassword";
 
     public static final String NO_ANSWER_QUESTIONS = "noAnswerQuestions";
 

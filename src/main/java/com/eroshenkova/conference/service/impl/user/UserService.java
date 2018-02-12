@@ -16,5 +16,7 @@ public interface UserService extends Service<String, User> {
 
     User findByKey(String login) throws ServiceException, DAOException;
 
-    void updateProfile(User user, String login) throws ServiceException, DAOException;
+    User updateProfile(User user, String login) throws ServiceException, DAOException;
+
+    void updatePassword(String password, String login) throws DAOException, ServiceException;
 }

@@ -29,13 +29,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 toppad pull-right col-md-offset-3">
+                <c:if test="${not empty emailError}">
+                    <div class="alert alert-danger" id="emailErrorAlert">
+                        <strong id="emailError"><fmt:message key="profile.error.email"/></strong>
+                    </div>
+                </c:if>
                 <a href="/conferences/updateUserInfo" class="btn btn-primary btn-profile"
                    data-toggle="modal" data-target="#updateProfileModal"
                    data-login="${user.login}" data-surname="${user.participant.surname}"
-                   data-name="${user.participant.name}" data-password="${user.password}"
-                   data-email="${user.email}" data-scope="${user.participant.scope}"
-                   data-position="${user.participant.position}"
+                   data-name="${user.participant.name}" data-email="${user.email}"
+                   data-scope="${user.participant.scope}" data-position="${user.participant.position}"
                    data-company="${user.participant.company}"><fmt:message key="profile.edit"/></a>
+                <a href="" class="btn btn-primary btn-profile" data-toggle="modal"
+                   data-target="#updatePasswordModal">
+                    <fmt:message key="profile.editpassword"/></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -153,6 +160,7 @@
 
 <div id="modal">
     <jsp:include page="../modal/updateprofile.jsp"/>
+    <jsp:include page="../modal/updatepassword.jsp"/>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

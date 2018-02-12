@@ -38,9 +38,6 @@ public class CreateProfileCommand implements ActionCommand {
             if (userLogicResult < 0) {
                 page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
                 request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);
-            } else if (userLogicResult == 0) {
-                page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
-                request.setAttribute(Parameter.ERROR_LOGIN, Parameter.ERROR_LOGIN_MESSAGE);
             } else {
                 page = UrlManager.getProperty(Page.INDEX);
             }
@@ -48,6 +45,8 @@ public class CreateProfileCommand implements ActionCommand {
             LOGGER.log(Level.ERROR, "User or participant is not defined");
         } catch (DAOException e) {
             LOGGER.log(Level.ERROR, "Database exception. Cannot add profile");
+            page = JspRoutesManager.getProperty(Page.JSP_REGISTRATION);
+            request.setAttribute(Parameter.ERROR_LOGIN, Parameter.ERROR_LOGIN_MESSAGE);
         }
         return page;
     }

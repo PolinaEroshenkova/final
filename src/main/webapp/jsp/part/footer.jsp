@@ -4,8 +4,8 @@
 <footer class="footer bg-dark">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 text-center text-white">Copyright Your Website 2017</div>
-            <div class="col-md-6 text-right">
+            <div class="col-md-10 text-center text-white">Copyright Your Website 2017</div>
+            <div class="col-md-2 text-right">
                 <a href="/conferences/?command=changeLanguage&language=en&locale=en_EN">EN</a>
                 <a href="/conferences/?command=changeLanguage&language=ru&locale=ru_RU">RU</a>
                 <a href="/conferences/?command=changeLanguage&language=be&locale=be_BE">BE</a>

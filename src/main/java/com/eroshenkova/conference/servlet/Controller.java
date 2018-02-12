@@ -28,7 +28,7 @@ public class Controller extends HttpServlet {
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);
         if (page == null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Page.JSP_ERROR);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + Page.JSP_ERROR);
             dispatcher.forward(request, response);
         } else if (page.endsWith(".jsp")) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

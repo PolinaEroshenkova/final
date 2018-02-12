@@ -43,7 +43,7 @@
                 </li>
                 <li class="nav-item">
                     <c:if test="${not empty sessionScope.user}">
-                        <a class="nav-link" href="/conferences/Logout?command=Logout"><fmt:message
+                        <a class="nav-link" href="/conferences/Logout"><fmt:message
                                 key="header.signout"/></a>
                     </c:if>
                 </li>

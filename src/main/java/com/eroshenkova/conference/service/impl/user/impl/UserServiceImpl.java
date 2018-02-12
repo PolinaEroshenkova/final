@@ -87,19 +87,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateProfile(User user, String login) throws ServiceException, DAOException {
+    public User updateProfile(User user, String login) throws ServiceException, DAOException {
         if (user == null || login == null) {
             throw new ServiceException();
         }
         DAO<String, User> userDAO = new UserDAOImpl();
         DAO<String, Participant> participantDAO = new ParticipantDAO();
-        if (user.getLogin().equals(login)) {
-            userDAO.update(user, null);
-            participantDAO.update(user.getParticipant(), null);
-        } else {
-            userDAO.update(user, login);
-            participantDAO.update(user.getParticipant(), login);
+        UserDAO dao = new UserDAOImpl();
+        User systemUser = userDAO.findByKey(login);
+        User loginUser = userDAO.findByKey(user.getLogin());
+        if (loginUser == null || loginUser.getLogin().equals(login)) {
+            User emailUser = dao.findByEmail(user.getEmail());
+            if (emailUser == null || emailUser.getEmail().equals(systemUser.getEmail())) {
+                userDAO.update(user, null);
+                participantDAO.update(user.getParticipant(), null);
+                return user;
+            }
         }
+        return systemUser;
+    }
+
+    @Override
+    public void updatePassword(String password, String login) throws DAOException, ServiceException {
+        if (password == null || login == null) {
+            throw new ServiceException();
+        }
+        UserDAO dao = new UserDAOImpl();
+        dao.updatePassword(password, login);
     }
 
     private boolean isEmailExist(String email) throws DAOException {

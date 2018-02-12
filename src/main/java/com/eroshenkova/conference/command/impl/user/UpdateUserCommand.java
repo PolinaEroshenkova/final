@@ -8,6 +8,7 @@ import com.eroshenkova.conference.entity.impl.Participant;
 import com.eroshenkova.conference.entity.impl.User;
 import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
+import com.eroshenkova.conference.resource.JspRoutesManager;
 import com.eroshenkova.conference.resource.UrlManager;
 import com.eroshenkova.conference.service.impl.user.impl.UserServiceImpl;
 import org.apache.logging.log4j.Level;
@@ -33,10 +34,16 @@ public class UpdateUserCommand implements ActionCommand {
         user.setParticipant(participant);
         try {
             UserServiceImpl service = new UserServiceImpl();
-            service.updateProfile(user, login);
-            session.setAttribute(Parameter.USER, user.getLogin());
-            page = UrlManager.getProperty(Page.PROFILE);
-            request.setAttribute(Parameter.USER, user);
+            User returnUser = service.updateProfile(user, login);
+            if (returnUser.equals(user)) {
+                session.setAttribute(Parameter.USER, user.getLogin());
+                page = UrlManager.getProperty(Page.PROFILE);
+            }
+            {
+                request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);
+                request.setAttribute(Parameter.USER, returnUser);
+                page = JspRoutesManager.getProperty(Page.JSP_PROFILE);
+            }
         } catch (ServiceException e) {
             LOGGER.log(Level.ERROR, "Login is not defined");
         } catch (DAOException e) {

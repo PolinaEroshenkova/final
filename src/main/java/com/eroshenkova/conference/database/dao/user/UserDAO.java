@@ -5,4 +5,6 @@ import com.eroshenkova.conference.exception.DAOException;
 
 public interface UserDAO {
     User findByEmail(String email) throws DAOException;
+
+    void updatePassword(String password, String login) throws DAOException;
 }

@@ -21,4 +21,8 @@ $(document).ready(function () {
             $(e.currentTarget).find('input[name="company"]').val(company);
         }
     });
+
+    $('#updatePasswordModal').on('show.bs.modal', function (e) {
+        alert('HELLO');
+    });
 });

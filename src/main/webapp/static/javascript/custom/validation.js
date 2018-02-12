@@ -1,24 +1,4 @@
-// function validateForm() {
-//
-//     $('#sections').find('option').prop('selected', true);
-//
-//
-//     if($("#sections").find("option").length===0 || !$('#sections').val()){
-//         $('#sections').addClass("validation");
-//         return false;
-//     } else{
-//         $('#sections').removeClass("validation");
-//     }
-//
-//     if($('.valid').val()===""){
-//         $('.valid').addClass("validation");
-//         return false;
-//     } else{
-//         $('select').removeClass("validation");
-//     }
-//
-//     return true;
-// }
+
 $(document).ready(function () {
 
     $('#editprofile').validate({
@@ -200,10 +180,22 @@ $(document).ready(function () {
         }
     });
 
-
-    // $('#question').restrictLength($('#question').attr('maxlength'));
-    // $('#question-admin').restrictLength($('#question-admin').attr('maxlength'));
-    // $('#answer-admin').restrictLength($('#answer-admin').attr('maxlength'));
+    $('#editpassword').validate({
+        lang: $('html').attr('lang'),
+        rules: {
+            updatepassword: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true
+            },
+            secpassword: {
+                required: true,
+                maxlength: 30,
+                nowhitespace: true,
+                equalTo: '#updatepassword'
+            }
+        }
+    });
 
     $('#submit').click(function () {
         $('#sections').find('option').prop('selected', true);
