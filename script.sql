@@ -38,10 +38,11 @@ COMMENT = 'Содержит список конференций, которые 
 -- Table `conference`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `conference`.`user` (
-  `login` VARCHAR(30) NOT NULL COMMENT 'Логин-первичный ключ-уникальный идентификатор пользователя.',
-  `password` VARCHAR(30) NOT NULL COMMENT 'Пароль пользователя для входа в систему. Обязательное для заполнения поле.',
-  `email` VARCHAR(255) NOT NULL COMMENT 'Email- еще один уникальный идентификатор пользователя. Обязательное поле, т.к. по нему система сможет проводить операции по восстановлению пароля, отсылке рекламы и проч.',
-  `type` CHAR(5) NOT NULL DEFAULT 'user' COMMENT 'Тип аккаунта-может быть \'user\' или \'admin\'. Необходимо для разграничения прав пользования системой.',
+  `login`    VARCHAR(30)  NOT NULL COMMENT 'Логин-первичный ключ-уникальный идентификатор пользователя.',
+  `password` VARCHAR(255) NOT NULL
+  COMMENT 'Пароль пользователя для входа в систему. Обязательное для заполнения поле.',
+  `email`    VARCHAR(255) NOT NULL COMMENT 'Email- еще один уникальный идентификатор пользователя. Обязательное поле, т.к. по нему система сможет проводить операции по восстановлению пароля, отсылке рекламы и проч.',
+  `type`     CHAR(5)      NOT NULL DEFAULT 'user' COMMENT 'Тип аккаунта-может быть \'user\' или \'admin\'. Необходимо для разграничения прав пользования системой.',
   PRIMARY KEY (`login`)  COMMENT 'Первичный ключ',
   UNIQUE INDEX `email_UNIQUE` (`email` ASC)  COMMENT 'email-Уникальный идентификатор пользователя помимо первичного ключа.')
 ENGINE = InnoDB
@@ -75,15 +76,16 @@ COMMENT = 'Содержит список участников конференц
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `conference`.`entry` (
   `id_entry` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор заявки на участие в конференции. Классически первичный ключ с типом данных INT.',
-  `login` VARCHAR(30) NOT NULL COMMENT 'Внешний ключ',
-  `status` CHAR(10) NOT NULL DEFAULT 'Ожидает' COMMENT 'Текущий статус заявки. Если заявка подана, но не проверена администратором, то \"Ожидает\". Так же может быть \"Отклонена\" в случае отказа от участия или несоответствия тематике конференции сферы деятельности участника.  \"Одобрена\", если заявка прошла проверку администратором успешно.',
+  `login`    VARCHAR(30)  NOT NULL COMMENT 'Внешний ключ',
+  `status`   CHAR(11)     NOT NULL DEFAULT 'Waiting'
+  COMMENT 'Текущий статус заявки. Если заявка подана, но не проверена администратором, то \"Ожидает\". Так же может быть \"Отклонена\" в случае отказа от участия или несоответствия тематике конференции сферы деятельности участника.  \"Одобрена\", если заявка прошла проверку администратором успешно.',
   PRIMARY KEY (`id_entry`)  COMMENT 'Первичный ключ',
   INDEX `status` (`status` ASC)  COMMENT 'Удобен для отбора заявок, которые ожидают проверки.',
   INDEX `fk_entry_participant` (`login` ASC)  COMMENT 'Внешний ключ.',
   CONSTRAINT `fk_entry_participant1`
     FOREIGN KEY (`login`)
     REFERENCES `conference`.`participant` (`login`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 COMMENT = 'Содержит список заявок в какие-либо секции. ';
@@ -94,14 +96,15 @@ COMMENT = 'Содержит список заявок в какие-либо с�
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `conference`.`question` (
   `id_question` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Каждый вопрос обладает уникальным идентификатором, который является первичным ключом. Классически тип INT.',
-  `login` VARCHAR(30) NOT NULL COMMENT 'Внешний ключ из таблицы user. ',
-  `question` VARCHAR(255) NOT NULL COMMENT 'Поле \"вопрос\". Здесь хранится вопрос, который пользователь может задать администратору. Максимальное количество символов-255.',
+  `login`       VARCHAR(30) NOT NULL COMMENT 'Внешний ключ из таблицы user. ',
+  `question`    VARCHAR(255) NOT NULL COMMENT 'Поле \"вопрос\". Здесь хранится вопрос, который пользователь может задать администратору. Максимальное количество символов-255.',
+  `answer`      VARCHAR(255) COMMENT 'Поле хранит ответ администратора на наиболее часто задаваемые вопросы',
   PRIMARY KEY (`id_question`)  COMMENT 'Первичный ключ',
   INDEX `fk_question_user` (`login` ASC)  COMMENT 'Внешний ключ',
   CONSTRAINT `fk_question_user`
     FOREIGN KEY (`login`)
     REFERENCES `conference`.`user` (`login`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 COMMENT = 'Содержит список вопросов от пользователей и гостей системы.';
@@ -157,16 +160,39 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (1, 'Деловой интернет', 200, 'Бизнес-центр \"Цельсий\"', '2017.11.11', '2017.11.13', '2017.11.05');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (2, 'Ежегодная осенняя конференция отоларингологов РБ', 50, 'БГМУ', '2017.10.10', '2017.10.11', '2017.10.08');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (3, 'Инновационные технологии, автоматизация и мехатроника в машино- и приборостроении', 110, 'Концертный зал \"Трактор\"', '2017.12.15', '2017.12.16', '2017.12.10');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (4, 'Международная журналистика-2018: глобальные вызовы, региональное партнерство и медиа', 70, 'Open Space \"Space\"', '2017.12.18', '2017.12.19', '2017.12.15');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (5, 'Корпоративные стратегические коммуникации: новые тренды в профессиональной деятельности', 300, 'Отель \"Москва\"', '2018.01.15', '2018.01.25', '2018.01.10');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (6, 'Христианские ценности в культуре современной молодёжи', 30, 'Гостиница \"Виктория\"', '2017.12.25', '2017.12.25', '2017.12.23');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (7, 'Современное образование: мировые тенденции и региональные аспекты', 100, 'Главный корпус БГУ', '2018.01.27', '2018.01.28', '2018.01.25');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (8, 'Современный менеджмент: проблемы, исследования, перспективы', 250, 'Бизнес-центр \"Титан\"', '2018.02.02', '2018.02.05', '2018.01.29');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (9, 'Медиапространство Беларуси: история и современность', 500, 'Бизнес-центр \"Парус\"', '2018.02.10', '2018.02.12', '2018.02.05');
-INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`) VALUES (10, 'Проблемы и перспективы электронного бизнеса', 150, 'Бизнес-центр \"Ренессанс\"', '2017.11.12', '2017.11.15', '2017.11.07');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (1, 'Business Internet', 200, 'Business-center \"Celsius\"', '2018.11.11', '2018.11.13', '2018.11.05');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (2, 'Annual Autumn Conference of Otorhinolaryngologists of the Republic of Belarus', 50, 'BSMU', '2018.10.10',
+        '2018.10.11', '2018.10.08');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (3, 'Innovative technologies, automation and mechatronics in machine and instrument engineering', 110,
+        'Concert Hall \"Tractor\"', '2018.12.15', '2018.12.16', '2018.12.10');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES
+  (4, 'International journalism-2018: global challenges, regional partnership and media', 70, 'Open Space \"Space\"',
+   '2018.12.18', '2018.12.19', '2018.12.15');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES
+  (5, 'Corporate strategic communications: new trends in professional activity', 300, 'Hotel \"Moscow\"', '2018.01.15',
+   '2018.01.25', '2018.01.10');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (6, 'Christian values ​​in the culture of modern youth', 30, 'Hotel \"Victoria\"', '2018.12.25', '2018.12.25',
+        '2018.12.23');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES
+  (7, 'Modern Education: World Trends and Regional Aspects', 100, 'Main building of BSU', '2018.01.27', '2018.01.28',
+   '2018.01.25');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES
+  (8, 'Modern management: problems, studies, prospects', 250, 'Business-center \"Titan\"', '2018.02.02', '2018.02.05',
+   '2018.01.29');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (9, 'Media space of Belarus: history and modernity', 500, 'Business-center \"Sail\"', '2018.02.10', '2018.02.12',
+        '2018.02.05');
+INSERT INTO `conference`.`conference` (`id_conference`, `topic`, `number_of_participants`, `place`, `date_start`, `date_end`, `deadline`)
+VALUES (10, 'Problems and prospects of e-business', 150, 'Business-center \"Renaissance\"', '2018.11.12', '2018.11.15',
+        '2018.11.07');
 
 COMMIT;
 
@@ -176,13 +202,20 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('admin', 'admin', 'kvachov@gmail.com', 'admin');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('popo83', 'pol123', 'polinanikitina@mail.ru', 'user');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('qwerty4', '1Alla!', 'allagrish55@yandex.ru', 'user');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('zver\'', 'ranetki13', 'va3zver@tut.by', 'user');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('science_man', 'ZhEnIa1', 'evgenbatikov@gmail.com', 'user');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('meneger3', '72558305', 'illyavishia@mail.ru', 'user');
-INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`) VALUES ('rock4', 'ZxcasdqwE', 'dianarock@yandex.ru', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('admin', 'PgeP3eYWeQyllnrC3tfh+rK37Jf8wWgM', 'kvachov@gmail.com', 'admin');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('popo83', 'PnTszvu7UuA6TGbmmAsx53F2MAIY2Cyo', 'polinanikitina@mail.ru', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('qwerty4', 'DAlMe8eVzQ/33lkZu2Q88ZJSbwGUbo+V', 'allagrish55@yandex.ru', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('zver\'', 'owXgcXervYGzMLirof4yUNtnQsKB+xL7', 'va3zver@tut.by', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('science_man', 'vI+DEKeO4PIUu7zj0ct6KLb6IAN0ioEu', 'evgenbatikov@gmail.com', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('meneger3', '5RkVyZ6c3NIQkg/rZnIFJ7qEl6kJFe/2', 'illyavishia@mail.ru', 'user');
+INSERT INTO `conference`.`user` (`login`, `password`, `email`, `type`)
+VALUES ('rock4', '5Ke0t4oxpj2YYq3YSgMg9FPyED+Q2sKo', 'dianarock@yandex.ru', 'user');
 
 COMMIT;
 
@@ -192,12 +225,18 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('zver\'', 'Зверков', 'Игорь', 'менеджмент', 'Менеджер по продажам', 'SoftScience');
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('popo83', 'Никитина', 'Полина', 'медицина', 'Глав. врач', 'Центральная городская больница №2');
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('science_man', 'Батиков', 'Евгений', 'философия', 'Старший преподаватель', 'БГУ');
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('meneger3', 'Илья', 'Вишневский', 'экономика', 'Экономист', NULL);
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('rock4', 'Диана', 'Рокова', 'бизнес', 'ИП', NULL);
-INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`) VALUES ('qwerty4', 'Алла', 'Гришковец', 'журналистика', 'Журналист', 'Газета \"Правда\"');
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('zver\'', 'Zverkiv', 'Ihor', 'Management', 'Sales Manager', 'SoftScience');
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('popo83', 'Nikitina', 'Polina', 'Medicine', 'Chief Physician', 'Central City Hospital No.2');
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('science_man', 'Batikov', 'Eugen', 'Phylosophy', 'Senior Lecturer', 'BSU');
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('meneger3', 'Ilya', 'Vyshevsky', 'Economics', 'Economist', NULL);
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('rock4', 'Diana', 'Rockova', 'Bussines', 'Individual entrepreneur', NULL);
+INSERT INTO `conference`.`participant` (`login`, `surname`, `name`, `scope`, `position`, `company`)
+VALUES ('qwerty4', 'Alla', 'Grushkovets', 'Journalism', 'Journalist', 'Newspaper \"Pravda\"');
 
 COMMIT;
 
@@ -207,16 +246,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (1, 'popo83', 'Одобрено');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (2, 'rock4', 'Ожидает');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (3, 'rock4', 'Отклонено');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (4, 'meneger3', 'Ожидает');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (5, 'qwerty4', 'Одобрено');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (6, 'science_man', 'Отклонено');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (7, 'science_man', 'Одобрено');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (8, 'popo83', 'Ожидает');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (9, 'qwerty4', 'Ожидает');
-INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (10, 'meneger3', 'Одобрено');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (1, 'popo83', 'Approved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (2, 'rock4', 'Waiting');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (3, 'rock4', 'Disapproved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (4, 'meneger3', 'Waiting');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (5, 'qwerty4', 'Approved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (6, 'science_man', 'Disapproved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (7, 'science_man', 'Approved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (8, 'popo83', 'Waiting');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (9, 'qwerty4', 'Waiting');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (10, 'meneger3', 'Approved');
+INSERT INTO `conference`.`entry` (`id_entry`, `login`, `status`) VALUES (11, 'popo83', 'Disapproved');
 
 COMMIT;
 
@@ -226,13 +266,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (1, 'zver\'', 'Когда будет конференция по маркетингу?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (2, 'science_man', 'Как восстановить пароль?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (3, 'meneger3', 'Можно ли удалить заявку на конференцию?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (4, 'popo83', 'Участие в конференциях бесплатное?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (5, 'qwerty4', 'Не могу изменить пароль. Что делать?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (6, 'zver\'', 'Можно ли по одной заявке придти нескольким людям?');
-INSERT INTO `conference`.`question` (`id_question`, `login`, `question`) VALUES (7, 'rock4', 'Во сколько закончится конференция по маркетингу?');
+INSERT INTO `conference`.`question` (`id_question`, `login`, `question`, `answer`)
+VALUES (1, 'zver\'', 'When is the marketing conference expected?', 'In the near future it is not planned');
+INSERT INTO `conference`.`question` (`id_question`, `login`, `question`, `answer`) VALUES
+  (2, 'meneger3', 'Can I delete a conference application?',
+   'You can do this in your account. Opposite to each application there is a button \"Cancel application\" ');
+INSERT INTO `conference`.`question` (`id_question`, `login`, `question`, `answer`)
+VALUES (3, 'popo83', 'Is participation in conferences free?', 'Yes');
+INSERT INTO `conference`.`question` (`id_question`, `login`, `question`, `answer`) VALUES
+  (4, 'zver\'', 'Is it possible to come to several people on one application?',
+   'No, each participant must be registered');
 
 COMMIT;
 
@@ -242,36 +285,60 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `conference`;
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (1, 1, 'Медиа');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (2, 3, 'Промышленная робототехника и мехатроника');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (3, 1, 'Маркетинг');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (4, 1, 'Бизнес');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (5, 10, 'Технические и программные средства системы электронного бизнеса');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (6, 2, 'сомнология');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (7, 6, ' Христианские ценности в современном искусств');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (8, 4, 'Экономический пояс Шелкового пути в отражении медиа');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (9, 7, ' Научно-методическая поддержка инновационного образования');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (10, 9, 'приоритетная проблематика печатных СМИ');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (11, 5, 'Связи с общественностью, реклама и журналистика как виды массовой информационно-коммуникационной деятельности');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (12, 8, 'Национальная экономика и государственное управление');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (13, 2, 'ларингология');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (14, 7, 'Дополнительное образование детей и молодежи как ресурс развития личности');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (15, 5, 'Методические особенности преподавания рекламной и PR-коммуникации в рамках высшего и последипломного образования: проблемы и перспективы');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (16, 3, 'САПР в технологиях машино- и приборостроения');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (17, 9, 'проблемы национальной государственности в СМИ');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (18, 10, 'Экономика электронного бизнеса: состояние и перспективы развития');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (19, 4, 'международная журналистика и интернет');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (20, 6, 'Христианские ценности и актуальные проблемы экологии');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (21, 8, 'Проблемы и перспективы повышения экономической эффективности функционирования предприятия');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (22, 2, 'Ринология');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (23, 5, 'Практикоориентированность подготовки специалистов в сфере связей с общественностью и рекламы: потребности рынка, взгляд  работодателей');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (24, 9, 'тенденции развития современных СМИ');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (25, 3, 'Высокоэнергетические технологии получения и обработки материалов. Инженерия поверхности');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (26, 8, 'Математические методы и информационные технологии в управлении');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (27, 4, 'международная журналистика и зарубежная реклама: потенциал взаимодействия');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (28, 6, 'Актуальные проблемы современной теологии');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (29, 7, 'Проблемы разработки и использования электронных образовательных ресурсов');
-INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (30, 10, 'Актуальные вопросы подготовки специалистов в области электронного бизнеса');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (1, 1, 'Media');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (2, 3, 'Industrial robotics and mechatronics');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (3, 1, 'Marketing');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (4, 1, 'Business');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (5, 10, 'E-business hardware and software');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (6, 2, 'Somnology');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (7, 6, ' Christian values ​​in contemporary art');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (8, 4, 'The economic belt of the Silk Road in media reflection');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (9, 7, ' Scientific and methodological support of innovative education');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (10, 9, 'Priority issues of print media');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES
+  (11, 5, 'Public relations, advertising and journalism as types of mass information and communication activities');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (12, 8, 'National Economy and Public Administration');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (13, 2, 'Laryngology');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (14, 7, 'Additional education for children and youth as a resource for personal development');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (15, 5,
+                                                                                    'Methodical features of teaching advertising and PR-communication in the framework of higher and postgraduate education: problems and prospects');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (16, 3, 'CAD in machine and instrument engineering');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (17, 9, 'Problems of national statehood in the media');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (18, 10, 'Economics of e-business: state and development prospects');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (19, 4, 'International journalism and the Internet');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (20, 6, 'Christian Values ​​and Actual Problems of Ecology');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (21, 8, 'Problems and prospects of increasing the economic efficiency of the enterprise');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (22, 2, 'Rhinology');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`) VALUES (23, 5,
+                                                                                    'Practical orientation of training specialists in the field of public relations and advertising: market needs, the view of employers');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (24, 9, 'Trends in the development of modern media');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (25, 3, 'High-energy technologies for obtaining and processing materials. Surface Engineering');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (26, 8, 'Mathematical methods and information technologies in management');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (27, 4, 'International journalism and foreign advertising: the potential for interaction');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (28, 6, 'Actual problems of modern theology');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (29, 7, 'Problems of development and use of electronic educational resources');
+INSERT INTO `conference`.`section` (`id_section`, `id_conference`, `title`)
+VALUES (30, 10, 'Topical issues of training specialists in the field of electronic business');
 
 COMMIT;
 
@@ -300,6 +367,8 @@ INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (28, 7
 INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (20, 7);
 INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (21, 9);
 INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (12, 9);
+INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (10, 11);
+INSERT INTO `conference`.`sectionentry` (`id_section`, `id_entry`) VALUES (17, 11);
 
 COMMIT;
 

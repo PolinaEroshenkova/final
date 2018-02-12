@@ -43,3 +43,5 @@
 11-02-2018 12:47:47.341 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
 11-02-2018 12:47:48.841 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was updated successfully
 11-02-2018 12:47:48.872 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 12:57:10.436 INFO com.eroshenkova.conference.database.dao.AbstractDAO [main] Entity was found successfully
+12-02-2018 12:57:10.905 INFO com.eroshenkova.conference.database.dao.section.impl.SectionDAOImpl [main] 3 sections were found by conference id
