@@ -6,7 +6,18 @@ import com.eroshenkova.conference.constant.Parameter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Changes language of pages
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class ChangeLanguageCommand implements ActionCommand {
+
+    /**
+     * @param request is request from page
+     * @return next same page
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String language = request.getParameter(Parameter.LANGUAGE);

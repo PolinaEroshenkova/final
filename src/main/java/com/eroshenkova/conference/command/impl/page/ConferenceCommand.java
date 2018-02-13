@@ -16,9 +16,19 @@ import java.util.List;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Receives data to conference page
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class ConferenceCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(ConferenceCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return conference page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

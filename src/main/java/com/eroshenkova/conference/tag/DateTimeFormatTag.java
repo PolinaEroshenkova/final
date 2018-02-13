@@ -15,16 +15,31 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
+/**
+ * Custom tag used to reformat date by locale
+ *
+ * @author Palina Yerashenkava
+ * @see BodyTagSupport
+ */
 public class DateTimeFormatTag extends BodyTagSupport {
     private static final Logger LOGGER = LogManager.getLogger(DateTimeFormatTag.class);
 
-
+    /**
+     * Defines attribute identifier
+     */
     private AttributeType type;
 
+    /**
+     * @param type is used to define attribute tag value
+     */
     public void setType(String type) {
         this.type = AttributeType.valueOf(type.toUpperCase());
     }
 
+    /**
+     * @return int value that identifies next attribute work
+     * @throws JspException if data is not match the jsp
+     */
     @Override
     public int doAfterBody() throws JspException {
         JspWriter out = bodyContent.getEnclosingWriter();

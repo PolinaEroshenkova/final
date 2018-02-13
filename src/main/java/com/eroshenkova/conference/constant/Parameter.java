@@ -3,6 +3,7 @@ package com.eroshenkova.conference.constant;
 
 /**
  * Constant class contains request parameters
+ * @author Palina Yerashenkava
  */
 final public class Parameter {
 

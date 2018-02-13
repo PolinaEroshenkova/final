@@ -19,6 +19,9 @@ import java.util.List;
  * Defines the individual methods for Conference table in database.
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements ConferenceDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see ConferenceDAO
+ * @author Palina Yerashenkava
  */
 public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements ConferenceDAO {
     private static final Logger LOGGER = LogManager.getLogger(ConferenceDAOImpl.class);
@@ -34,13 +37,15 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
      * Query to database for inserting to conference table
      */
     private final static String SQL_INSERT = "INSERT INTO conference" +
-            "(topic,number_of_participants,place,date_start,date_end,deadline) VALUES(?,?,?,?,?,?)";
+            "(topic,number_of_participants,place,date_start,date_end,deadline) " +
+            "VALUES(?,?,?,?,?,?)";
 
     /**
      * Query to database for updating row by key
      */
     private final static String SQL_UPDATE = "UPDATE conference SET id_conference=?, topic=?, " +
-            "number_of_participants=?, place=?, date_start=?, date_end=?, deadline=? WHERE id_conference=?";
+            "number_of_participants=?, place=?, date_start=?, date_end=?, deadline=? " +
+            "WHERE id_conference=?";
     /**
      * Query to database for deleting row by key
      */
@@ -49,7 +54,9 @@ public class ConferenceDAOImpl extends AbstractDAO<Long, Conference> implements 
     /**
      * Query to database for selecting conferences by today's date
      */
-    private final static String SQL_FIND_BY_DATE = "SELECT * FROM conference WHERE deadline>=?";
+    private final static String SQL_FIND_BY_DATE = "SELECT id_conference, topic," +
+            " number_of_participants, place, date_start, date_end, deadline FROM " +
+            "conference WHERE deadline>=?";
 
 
     /**

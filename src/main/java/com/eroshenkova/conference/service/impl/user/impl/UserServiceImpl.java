@@ -14,10 +14,25 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 
+/**
+ * Defines methods individual for user
+ *
+ * @author Palina Yerashenkava
+ * @see UserService
+ */
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
 
+    /**
+     * Register new user in database
+     * @param user is system user
+     * @param participant is user
+     * @return -1 if email address of user is already exists
+     *          >1 if registration completed successfully
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public long register(User user, Participant participant) throws ServiceException, DAOException {
         Validator validator = new Validator();
@@ -36,6 +51,12 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    /**
+     * Used to register new user entity
+     * @param user is user entity
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void register(User user) throws ServiceException, DAOException {
         Validator validator = new Validator();
@@ -46,6 +67,11 @@ public class UserServiceImpl implements UserService {
         userDAO.create(user, false);
     }
 
+    /**
+     * Used to delete T entity by K key
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void delete(String key) throws ServiceException, DAOException {
         if (key == null) {
@@ -55,6 +81,13 @@ public class UserServiceImpl implements UserService {
         dao.delete(key);
     }
 
+    /**
+     * Get data from database needed to form profile page
+     * @param login is user's login
+     * @return User object with profile data
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public User formProfile(String login) throws ServiceException, DAOException {
         if (login == null) {
@@ -68,6 +101,13 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Log in user in system
+     * @param user is user object
+     * @return logged in user
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public User logIn(User user) throws ServiceException, DAOException {
         if (user == null) {
@@ -81,6 +121,13 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    /**
+     * Finds user by login
+     * @param login is user's login
+     * @return founded user
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public User findByKey(String login) throws ServiceException, DAOException {
         if (login == null) {
@@ -90,6 +137,14 @@ public class UserServiceImpl implements UserService {
         return dao.findByKey(login);
     }
 
+    /**
+     * Update user data in database
+     * @param user is user data needed to be updated
+     * @param login is user's login
+     * @return updated user
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public User updateProfile(User user, String login) throws ServiceException, DAOException {
         Validator validator = new Validator();
@@ -103,6 +158,13 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Updates user's password
+     * @param password is user's new password
+     * @param login is user's login
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void updatePassword(String password, String login) throws DAOException, ServiceException {
         if (password == null || login == null) {

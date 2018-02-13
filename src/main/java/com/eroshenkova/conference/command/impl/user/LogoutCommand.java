@@ -6,8 +6,19 @@ import com.eroshenkova.conference.constant.Parameter;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Logs user out
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class LogoutCommand implements ActionCommand {
 
+    /**
+     * @param request is request from page
+     * @return same page if user is on approved page
+     *          index page if user on disapproved page
+     */
     @Override
     public String execute(HttpServletRequest request) {
         request.getSession().invalidate();

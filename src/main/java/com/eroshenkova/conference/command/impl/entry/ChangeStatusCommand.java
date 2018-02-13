@@ -15,10 +15,19 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Changes status of user's entry
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class ChangeStatusCommand implements ActionCommand {
     private static final Logger LOGGER = LogManager.getLogger(ChangeStatusCommand.class);
 
-
+    /**
+     * @param request is request from page
+     * @return management page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

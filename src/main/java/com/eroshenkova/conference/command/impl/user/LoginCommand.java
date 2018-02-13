@@ -18,9 +18,20 @@ import javax.servlet.http.HttpSession;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Logs in user
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class LoginCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(LoginCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return same page if user is logged in successfully or not
+     *         null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

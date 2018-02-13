@@ -17,10 +17,20 @@ import javax.servlet.http.HttpSession;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Updates user's password
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class UpdatePasswordCommand implements ActionCommand {
 
     private static final Logger LOGGER = getLogger(UpdatePasswordCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return profile page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

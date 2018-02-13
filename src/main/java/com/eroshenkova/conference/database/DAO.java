@@ -4,9 +4,9 @@ import com.eroshenkova.conference.exception.DAOException;
 
 /**
  * Defines simple CRUD operations for DAO pattern
- *
  * @param <K> is used as key
  * @param <T> is used as database entity
+ * @author Palina Yerashenkava
  */
 public interface DAO<K, T> {
 

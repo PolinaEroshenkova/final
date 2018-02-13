@@ -2,6 +2,7 @@ package com.eroshenkova.conference.constant;
 
 /**
  * Constant class contains keys for jsproutes.properties and url.properties files
+ * @author Palina Yerashenkava
  */
 final public class Page {
 

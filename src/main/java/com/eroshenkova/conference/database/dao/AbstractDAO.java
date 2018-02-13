@@ -19,6 +19,8 @@ import java.util.List;
  *
  * @param <K> is used as key
  * @param <T> is used as entity
+ * @see DAO
+ * @author Palina Yerashenkava
  */
 public abstract class AbstractDAO<K, T> implements DAO<K, T> {
     private static final Logger LOGGER = LogManager.getLogger(AbstractDAO.class);

@@ -8,13 +8,16 @@ import java.sql.*;
 /**
  * Defines individual methods for Participant table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations
+ * @see AbstractDAO
+ * @author Palina Yerashenkava
  */
 public class ParticipantDAO extends AbstractDAO<String, Participant> {
 
     /**
      * Query to database for selecting by key
      */
-    private static final String SQL_FIND_BY_KEY = "SELECT * FROM participant WHERE login=?";
+    private static final String SQL_FIND_BY_KEY = "SELECT login,surname,name,scope,position,company " +
+            "FROM participant WHERE login=?";
 
     /**
      * Query to database for inserting new participant

@@ -19,10 +19,20 @@ import javax.servlet.http.HttpSession;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Update user's information
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class UpdateUserCommand implements ActionCommand {
 
     private static final Logger LOGGER = getLogger(UpdateUserCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return profile page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

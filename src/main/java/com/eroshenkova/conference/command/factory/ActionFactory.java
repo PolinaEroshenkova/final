@@ -10,11 +10,20 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Factory for processing commands
+ *
+ * @author Palina Yerashenkava
+ */
 public class ActionFactory {
     private static final Logger LOGGER = LogManager.getLogger(ActionFactory.class);
 
     private static final String ACTION_INDEX = "INDEX";
 
+    /**
+     * @param request is request from page
+     * @return command from request
+     */
     public ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new EmptyCommand();
         String action = request.getParameter(Parameter.COMMAND);

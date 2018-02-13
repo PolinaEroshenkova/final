@@ -16,9 +16,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Receives data for entry page
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class EntryCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(EntryCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return entry page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

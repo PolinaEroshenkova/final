@@ -17,9 +17,19 @@ import java.util.List;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Receives data for management page
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class ManagementCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(ManagementCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return management page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

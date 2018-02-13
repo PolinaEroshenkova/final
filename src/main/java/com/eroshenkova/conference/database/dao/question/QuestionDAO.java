@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Defines specific options for question table
+ * @author Palina Yerashenkava
  */
 public interface QuestionDAO {
 

@@ -17,9 +17,19 @@ import javax.servlet.http.HttpSession;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Creates user's question
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class AskQuestionCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(AskQuestionCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return faq page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

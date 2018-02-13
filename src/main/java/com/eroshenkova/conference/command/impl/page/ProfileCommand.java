@@ -21,11 +21,20 @@ import java.util.List;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Receive data for profile
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class ProfileCommand implements ActionCommand {
 
     private static final Logger LOGGER = getLogger(ProfileCommand.class);
 
-
+    /**
+     * @param request is request from page
+     * @return profile page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

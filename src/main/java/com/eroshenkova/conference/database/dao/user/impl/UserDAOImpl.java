@@ -15,6 +15,9 @@ import java.util.List;
  * Defines individual methods for User table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements UserDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see UserDAO
+ * @author Palina Yerashenkava
  */
 public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
@@ -22,12 +25,14 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
     /**
      * Query to database for inserting new user
      */
-    private static final String SQL_INSERT = "INSERT INTO user(login,password,email) VALUES(?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO user(login,password,email) " +
+            "VALUES(?,?,?)";
 
     /**
      * Query to database for updating user by key
      */
-    private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=? WHERE login=?";
+    private static final String SQL_UPDATE = "UPDATE user SET login=?, password=?, email=? " +
+            "WHERE login=?";
 
     /**
      * Query to database for deleting row by key
@@ -37,17 +42,20 @@ public class UserDAOImpl extends AbstractDAO<String, User> implements UserDAO {
     /**
      * Query to database for selecting by key
      */
-    private static final String SQL_FIND_BY_KEY = "SELECT * FROM user WHERE login=?";
+    private static final String SQL_FIND_BY_KEY = "SELECT login,password,email,type " +
+            "FROM user WHERE login=?";
 
     /**
      * Query to database for selecting by email address
      */
-    private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM user WHERE email=?";
+    private static final String SQL_FIND_BY_EMAIL = "SELECT login,password,email,type " +
+            "FROM user WHERE email=?";
 
     /**
      * Query to database for updating user's password
      */
-    private static final String SQL_UPDATE_PASSWORD = "UPDATE user SET password=? WHERE login=?";
+    private static final String SQL_UPDATE_PASSWORD = "UPDATE user SET password=? " +
+            "WHERE login=?";
 
     /**
      * Selects user by email address

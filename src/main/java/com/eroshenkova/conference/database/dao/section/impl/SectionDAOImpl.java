@@ -15,6 +15,9 @@ import java.util.List;
  * Defines individual methods for Section table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements SectionDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see SectionDAO
+ * @author Palina Yerashenkava
  */
 public class SectionDAOImpl extends AbstractDAO<Long, Section> implements SectionDAO {
     private static final Logger LOGGER = LogManager.getLogger(SectionDAOImpl.class);
@@ -22,7 +25,8 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
     /**
      * Query to database for selecting by key
      */
-    private static final String SQL_FIND_BY_KEY = "SELECT * FROM section WHERE id_section=?";
+    private static final String SQL_FIND_BY_KEY = "SELECT id_section,id_conference,title " +
+            "FROM section WHERE id_section=?";
 
     /**
      * Query to database for inserting new section
@@ -43,7 +47,8 @@ public class SectionDAOImpl extends AbstractDAO<Long, Section> implements Sectio
     /**
      * Query to database for selecting by conference id
      */
-    private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT * FROM section WHERE id_conference=?";
+    private static final String SQL_FIND_BY_CONFERENCE_ID = "SELECT id_section,id_conference,title " +
+            "FROM section WHERE id_conference=?";
 
 
     /**

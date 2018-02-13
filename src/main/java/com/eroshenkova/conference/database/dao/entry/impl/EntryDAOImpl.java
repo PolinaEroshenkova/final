@@ -15,6 +15,9 @@ import java.util.List;
  * Defines individual methods for Entry table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements EntryDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see EntryDAO
+ * @author Palina Yerashenkava
  */
 public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     private static final Logger LOGGER = LogManager.getLogger(EntryDAOImpl.class);
@@ -22,7 +25,8 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     /**
      * Query to database for selecting by key
      */
-    private static final String SQL_FIND_BY_KEY = "SELECT * FROM entry WHERE id_entry=?";
+    private static final String SQL_FIND_BY_KEY = "SELECT id_entry,login,status " +
+            "FROM entry WHERE id_entry=?";
 
     /**
      * Query to database for inserting new entry
@@ -32,7 +36,8 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     /**
      * Query to database for updating existing entry
      */
-    private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
+    private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? " +
+            "WHERE id_entry=?";
 
     /**
      * Query to database for deleting existing entry
@@ -42,12 +47,14 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     /**
      * Query to database for selecting by user's login
      */
-    private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
+    private static final String SQL_FIND_BY_LOGIN = "SELECT id_entry,login,status " +
+            "FROM entry WHERE login=?";
 
     /**
      * Query to database for selecting by waiting status
      */
-    private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status='Waiting'";
+    private static final String SQL_FIND_BY_STATUS = "SELECT id_entry,login,status " +
+            "FROM entry WHERE status='Waiting'";
 
     /**
      * Selects from entry database entries by user's login

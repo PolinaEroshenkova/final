@@ -14,9 +14,21 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Defines methods individual for question
+ *
+ * @author Palina Yerashenkava
+ * @see QuestionService
+ */
 public class QuestionServiceImpl implements QuestionService {
     private static final Logger LOGGER = LogManager.getLogger(EntryServiceImpl.class);
 
+    /**
+     * Used to register new T entity
+     * @param entity is T entity
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void register(Question entity) throws ServiceException, DAOException {
         Validator validator = new Validator();
@@ -27,6 +39,11 @@ public class QuestionServiceImpl implements QuestionService {
         dao.create(entity, false);
     }
 
+    /**
+     * Used to delete Question entity by long key
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void delete(Long key) throws ServiceException, DAOException {
         if (key == null) {
@@ -36,12 +53,22 @@ public class QuestionServiceImpl implements QuestionService {
         dao.delete(key);
     }
 
+    /**
+     * Used to find non-answered questions
+     * @return list of questions with answer
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public List<Question> findWithoutAnswer() throws DAOException {
         QuestionDAO dao = new QuestionDAOImpl();
         return dao.findWithoutAnswer();
     }
 
+    /**
+     * Used to find answered questions
+     * @return list of questions with answer
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public List<Question> findWithAnswer() throws DAOException {
         QuestionDAO dao = new QuestionDAOImpl();

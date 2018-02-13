@@ -4,6 +4,7 @@ package com.eroshenkova.conference.constant;
 /**
  * Constant class contains constant parameters for mail server configuration.
  * Final parameters is used as key for {@see mail.property} file.
+ * @author Palina Yerashenkava
  */
 final public class Mail {
 

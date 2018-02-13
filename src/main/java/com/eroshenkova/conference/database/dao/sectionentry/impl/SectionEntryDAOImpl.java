@@ -15,6 +15,9 @@ import java.util.List;
  * Defines individual methods for intermediate table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements SectionEntryDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see SectionEntryDAO
+ * @author Palina Yerashenkava
  */
 public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> implements SectionEntryDAO {
     private static final Logger LOGGER = LogManager.getLogger(SectionEntryDAOImpl.class);
@@ -32,7 +35,8 @@ public class SectionEntryDAOImpl extends AbstractDAO<Long, SectionEntry> impleme
     /**
      * Query to database for selecting by entry id
      */
-    private static final String SQL_FIND_BY_ENTRY_ID = "SELECT * FROM sectionentry WHERE id_entry=?";
+    private static final String SQL_FIND_BY_ENTRY_ID = "SELECT id_section,id_entry " +
+            "FROM sectionentry WHERE id_entry=?";
 
     /**
      * Selects from intermediate table entities by entry id

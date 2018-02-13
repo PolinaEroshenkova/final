@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Defines specific options for intermediate table
+ * @author Palina Yerashenkava
  */
 public interface SectionEntryDAO {
 

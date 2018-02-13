@@ -15,9 +15,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+
+/**
+ * Deletes question from user
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class DeleteQuestionCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(DeleteQuestionCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return faq page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

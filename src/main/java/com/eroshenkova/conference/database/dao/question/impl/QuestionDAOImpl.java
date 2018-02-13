@@ -19,6 +19,9 @@ import java.util.List;
  * Defines individual methods for Question table in database
  * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
  * implements QuestionDAO interface what makes possible extend class by individual methods
+ * @see AbstractDAO
+ * @see QuestionDAO
+ * @author Palina Yerashenkava
  */
 public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements QuestionDAO {
     private static final Logger LOGGER = LogManager.getLogger(QuestionDAOImpl.class);
@@ -26,17 +29,20 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     /**
      * Query to database for selecting by key
      */
-    private static final String SQL_FIND_BY_KEY = "SELECT * FROM question WHERE id_question=?";
+    private static final String SQL_FIND_BY_KEY = "SELECT id_question,login,question,answer " +
+            "FROM question WHERE id_question=?";
 
     /**
      * Query to database for inserting new question
      */
-    private static final String SQL_INSERT = "INSERT INTO question(login,question,answer) VALUES(?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO question(login,question,answer) " +
+            "VALUES(?,?,?)";
 
     /**
      * Query to database for updating existing entity
      */
-    private static final String SQL_UPDATE = "UPDATE question SET login=?, question=?, answer=? WHERE id_question=?";
+    private static final String SQL_UPDATE = "UPDATE question SET login=?, question=?, " +
+            "answer=? WHERE id_question=?";
 
     /**
      * Query to database for deleting entry by key
@@ -46,12 +52,14 @@ public class QuestionDAOImpl extends AbstractDAO<Long, Question> implements Ques
     /**
      * Query to database for selecting questions with answer
      */
-    private static final String SQL_FIND_WITH_ANSWER = "SELECT * FROM question WHERE answer IS NOT NULL";
+    private static final String SQL_FIND_WITH_ANSWER = "SELECT id_question,login,question,answer " +
+            "FROM question WHERE answer IS NOT NULL";
 
     /**
      * Query to database for selecting questions without answer
      */
-    private static final String SQL_FIND_WITHOUT_ANSWER = "SELECT * FROM question WHERE answer IS NULL";
+    private static final String SQL_FIND_WITHOUT_ANSWER = "SELECT id_question,login,question,answer " +
+            "FROM question WHERE answer IS NULL";
 
 
     /**

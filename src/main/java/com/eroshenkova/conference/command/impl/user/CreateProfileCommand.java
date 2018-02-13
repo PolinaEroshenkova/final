@@ -20,9 +20,21 @@ import javax.servlet.http.HttpServletRequest;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Creates new user in database
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class CreateProfileCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(CreateProfileCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return index page if registration completed successfully
+     *         registration page if registration is not completed
+     *         null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

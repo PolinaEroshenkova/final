@@ -16,9 +16,19 @@ import javax.servlet.http.HttpSession;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
+/**
+ * Creates new entry
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class SignUpCommand implements ActionCommand {
     private static final Logger LOGGER = getLogger(SignUpCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return conference page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

@@ -11,9 +11,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Used to create entity objects
+ *
+ * @author Palina Yerashenkava
+ */
 public class ObjectCreator {
+    /**
+     * Space delimiter
+     */
     private static final String DELIMITER_SPACE = " ";
 
+    /**
+     * Creates conference object
+     * @param request is page request
+     * @return conference object from parsed request
+     * @throws ParseException if date cannot be parsed
+     */
     public Conference formConferenceObject(HttpServletRequest request) throws ParseException {
         String topic = request.getParameter(Parameter.TOPIC);
         String number = request.getParameter(Parameter.NUMBER);
@@ -38,6 +52,11 @@ public class ObjectCreator {
         return new Conference(topic, intnumber, place, sqlStartDate, sqlEndDate, sqlDeadline, sections);
     }
 
+    /**
+     * Creates user object
+     * @param request is page request
+     * @return user object from parsed request
+     */
     public User formUserObject(HttpServletRequest request) {
         String login = request.getParameter(Parameter.LOGIN);
         String password = request.getParameter(Parameter.PASSWORD);
@@ -45,6 +64,11 @@ public class ObjectCreator {
         return new User(login, password, email);
     }
 
+    /**
+     * Creates participant object
+     * @param request is page request
+     * @return participant object from parsed request
+     */
     public Participant formParticipantObject(HttpServletRequest request) {
         String login = request.getParameter(Parameter.LOGIN);
         String surname = request.getParameter(Parameter.SURNAME);
@@ -55,6 +79,11 @@ public class ObjectCreator {
         return new Participant(login, surname, name, scope, position, company);
     }
 
+    /**
+     * Creates entry object
+     * @param request is page request
+     * @return entry object from parsed request
+     */
     public Entry formEntryObject(HttpServletRequest request) {
         String stringIdEntry = request.getParameter(Parameter.ID);
         long idEntry = Long.parseLong(stringIdEntry);
@@ -63,6 +92,11 @@ public class ObjectCreator {
         return new Entry(idEntry, login, status);
     }
 
+    /**
+     * Creates question object
+     * @param request is page request
+     * @return question object from parsed request
+     */
     public Question formQuestionObject(HttpServletRequest request) {
         String questionText = request.getParameter(Parameter.QUESTION_ADMIN);
         String answer = request.getParameter(Parameter.ANSWER_ADMIN);

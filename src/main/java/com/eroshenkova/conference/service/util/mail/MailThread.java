@@ -12,20 +12,51 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Thread of mail to not to delay program performance
+ *
+ * @author Palina Yerashenkava
+ * @see Thread
+ */
 public class MailThread extends Thread {
     private static final Logger LOGGER = LogManager.getLogger(MailThread.class);
 
+    /**
+     * Defines mail object
+     */
     private MimeMessage message;
+
+    /**
+     * Defines recipient of email
+     */
     private String recipient;
+
+    /**
+     * Defines subject of email
+     */
     private String subject;
+
+    /**
+     * Defines email text
+     */
     private String text;
 
-    public MailThread(String recipient, String subject, String text) {
+    /**
+     * Basic constructor
+     *
+     * @param recipient is recipient email address
+     * @param subject   is mail subject
+     * @param text      is mail text
+     */
+    MailThread(String recipient, String subject, String text) {
         this.recipient = recipient;
         this.subject = subject;
         this.text = text;
     }
 
+    /**
+     * Defines original mail initialization
+     */
     private void init() {
         SessionCreator sessionCreator = new SessionCreator();
         Session mailSession = sessionCreator.createSession();
@@ -43,6 +74,9 @@ public class MailThread extends Thread {
         }
     }
 
+    /**
+     * Overrides thread run method to define thread behavior
+     */
     public void run() {
         init();
         try {

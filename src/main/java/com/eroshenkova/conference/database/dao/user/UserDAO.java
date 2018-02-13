@@ -5,6 +5,7 @@ import com.eroshenkova.conference.exception.DAOException;
 
 /**
  * Defines specific options for user table
+ * @author Palina Yerashenkava
  */
 public interface UserDAO {
     /**

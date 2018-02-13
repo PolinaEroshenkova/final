@@ -20,9 +20,20 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines methods individual for entry
+ *
+ * @author Palina Yerashenkava
+ * @see EntryService
+ */
 public class EntryServiceImpl implements EntryService {
     private static final Logger LOGGER = LogManager.getLogger(EntryServiceImpl.class);
 
+    /**
+     * Used to delete entry entity by long key
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void delete(Long id) throws ServiceException, DAOException {
         if (id == null) {
@@ -32,6 +43,13 @@ public class EntryServiceImpl implements EntryService {
         entryDAO.delete(id);
     }
 
+    /**
+     * Used to register new entry
+     * @param login is user's login
+     * @param sectionIds is section ids than defines in entry
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void register(String login, String[] sectionIds) throws ServiceException, DAOException {
         if (login == null || sectionIds == null || sectionIds.length == 0) {
@@ -49,6 +67,13 @@ public class EntryServiceImpl implements EntryService {
         }
     }
 
+    /**
+     * Used to find entries for defines user
+     * @param login is user's login
+     * @return list of entries for particular user
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public List<Entry> findByLogin(String login) throws ServiceException, DAOException {
         if (login == null) {
@@ -60,6 +85,12 @@ public class EntryServiceImpl implements EntryService {
         return entries;
     }
 
+    /**
+     * Used to find entries by waiting status
+     * @return list of entries with waiting status
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public List<Entry> findByStatus() throws ServiceException, DAOException {
         EntryDAO entryDao = new EntryDAOImpl();
@@ -69,6 +100,12 @@ public class EntryServiceImpl implements EntryService {
         return entries;
     }
 
+    /**
+     * Used to change status of entry
+     * @param entry is entry entity where status should be changed
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void changeStatus(Entry entry) throws ServiceException, DAOException {
         Validator validator = new Validator();
@@ -79,11 +116,25 @@ public class EntryServiceImpl implements EntryService {
         entryDAO.update(entry, entry.getIdentry());
     }
 
+    /**
+     * Used to register new T entity.
+     * @param entity is T entity
+     * @throws UnsupportedOperationException because entry cannot be applied
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     @Override
     public void register(Entry entity) throws ServiceException, DAOException {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Used to fill list of entries with defined conference
+     * @param entries is list of entries which has empty field conference
+     * @return list of entries with filled conferences
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     private List<Entry> fillWithConference(List<Entry> entries) throws DAOException, ServiceException {
         if (entries == null) {
             return null;
@@ -108,6 +159,13 @@ public class EntryServiceImpl implements EntryService {
         return entries;
     }
 
+    /**
+     * Used to fill list of entries with defined user
+     * @param entries is list of entries which has empty field user
+     * @return list of entries with filled user field
+     * @throws ServiceException thrown when general service layer exception occurred
+     * @throws DAOException thrown when database throw exception
+     */
     private List<Entry> fillWithUser(List<Entry> entries) throws DAOException, ServiceException {
         if (entries == null) {
             return null;

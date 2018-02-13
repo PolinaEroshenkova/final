@@ -14,9 +14,20 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+/**
+ * Delete conference
+ *
+ * @author Palina Yerashenkava
+ * @see ActionCommand
+ */
 public class DeleteConferenceCommand implements ActionCommand {
     private static final Logger LOGGER = LogManager.getLogger(DeleteConferenceCommand.class);
 
+    /**
+     * @param request is request from page
+     * @return conference page or null if exception occurred
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

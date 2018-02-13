@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Defines conference entity oriented operations
+ * @author Palina Yerashenkava
  */
 public interface ConferenceDAO {
 
