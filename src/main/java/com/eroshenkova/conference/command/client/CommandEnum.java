@@ -14,6 +14,9 @@ import com.eroshenkova.conference.command.impl.question.PublishQuestionCommand;
 import com.eroshenkova.conference.command.impl.user.*;
 import com.eroshenkova.conference.command.impl.util.ChangeLanguageCommand;
 
+/**
+ * Defines command for Command pattern
+ */
 public enum CommandEnum {
     INDEX {
         {

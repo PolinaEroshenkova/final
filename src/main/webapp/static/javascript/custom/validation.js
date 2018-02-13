@@ -1,6 +1,10 @@
 
 $(document).ready(function () {
 
+    $.validator.addMethod("onlyletters", function (value, element) {
+        return this.optional(element) || /^[A-Za-zА-Яа-яёЁІіЎў']+$/i.test(value);
+    });
+
     $('#editprofile').validate({
         excluded: 'disabled',
         lang: $('html').attr('lang'),
@@ -24,13 +28,13 @@ $(document).ready(function () {
                 required: true,
                 maxlength: 35,
                 nowhitespace: true,
-                lettersonly: true
+                onlyletters: true
             },
             name: {
                 required: true,
                 maxlength: 35,
                 nowhitespace: true,
-                lettersonly: true
+                onlyletters: true
             },
             scope: {
                 required: true,
@@ -83,13 +87,13 @@ $(document).ready(function () {
                 required: true,
                 maxlength: 35,
                 nowhitespace: true,
-                lettersonly: true
+                onlyletters: true
             },
             name: {
                 required: true,
                 maxlength: 35,
                 nowhitespace: true,
-                lettersonly: true
+                onlyletters: true
             },
             scope: {
                 required: true,

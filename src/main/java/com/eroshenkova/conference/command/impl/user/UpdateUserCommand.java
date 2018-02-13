@@ -38,8 +38,7 @@ public class UpdateUserCommand implements ActionCommand {
             if (returnUser.equals(user)) {
                 session.setAttribute(Parameter.USER, user.getLogin());
                 page = UrlManager.getProperty(Page.PROFILE);
-            }
-            {
+            } else {
                 request.setAttribute(Parameter.ERROR_EMAIL, Parameter.ERROR_EMAIL_MESSAGE);
                 request.setAttribute(Parameter.USER, returnUser);
                 page = JspRoutesManager.getProperty(Page.JSP_PROFILE);

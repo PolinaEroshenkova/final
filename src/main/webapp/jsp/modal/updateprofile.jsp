@@ -33,7 +33,7 @@
                             <input id="login" name="login" type="text" class="form-control valid">
                         </div>
                     </div>
-                    <input id="password" name="password" type="hidden" class="form-control valid">
+                    <input id="password" name="password" type="hidden" class="form-control valid" value="">
                     <div class="form-group mx-auto">
                         <label class="col-md-12 control-label label" for="email"><fmt:message
                                 key="profile.email"/></label>

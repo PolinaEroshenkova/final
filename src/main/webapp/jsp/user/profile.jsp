@@ -38,8 +38,9 @@
                    data-toggle="modal" data-target="#updateProfileModal"
                    data-login="${user.login}" data-surname="${user.participant.surname}"
                    data-name="${user.participant.name}" data-email="${user.email}"
-                   data-scope="${user.participant.scope}" data-position="${user.participant.position}"
-                   data-company="${user.participant.company}"><fmt:message key="profile.edit"/></a>
+                   data-password="${user.password}" data-scope="${user.participant.scope}"
+                   data-position="${user.participant.position}" data-company="${user.participant.company}">
+                    <fmt:message key="profile.edit"/></a>
                 <a href="" class="btn btn-primary btn-profile" data-toggle="modal"
                    data-target="#updatePasswordModal">
                     <fmt:message key="profile.editpassword"/></a>

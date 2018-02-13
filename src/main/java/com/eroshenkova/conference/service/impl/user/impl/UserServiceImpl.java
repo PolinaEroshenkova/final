@@ -98,18 +98,9 @@ public class UserServiceImpl implements UserService {
         }
         DAO<String, User> userDAO = new UserDAOImpl();
         DAO<String, Participant> participantDAO = new ParticipantDAO();
-        UserDAO dao = new UserDAOImpl();
-        User systemUser = userDAO.findByKey(login);
-        User loginUser = userDAO.findByKey(user.getLogin());
-        if (loginUser == null || !loginUser.getLogin().equals(login)) {
-            User emailUser = dao.findByEmail(user.getEmail());
-            if (emailUser == null || !emailUser.getEmail().equals(systemUser.getEmail())) {
-                userDAO.update(user, null);
-                participantDAO.update(user.getParticipant(), null);
-                return user;
-            }
-        }
-        return systemUser;
+        userDAO.update(user, null);
+        participantDAO.update(user.getParticipant(), null);
+        return user;
     }
 
     @Override

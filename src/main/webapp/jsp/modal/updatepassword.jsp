@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group mx-auto">
                         <label class="col-md-12 control-label label" for="secpassword"><fmt:message
-                                key="profile.password"/></label>
+                                key="profile.confirmpassword"/></label>
                         <div class="input-group">
                             <input id="secpassword" name="secpassword" type="password" class="form-control">
                         </div>

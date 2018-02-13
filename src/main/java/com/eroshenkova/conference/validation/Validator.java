@@ -42,7 +42,7 @@ public class Validator {
     public boolean validate(User user) {
         return user.getLogin() == null || user.getLogin().isEmpty() ||
                 user.getLogin().length() > MAX_LENGTH_30 || user.getPassword() == null ||
-                user.getPassword().isEmpty() || user.getPassword().length() > MAX_LENGTH_30 ||
+                user.getPassword().isEmpty() || user.getPassword().length() > MAX_LENGTH_255 ||
                 user.getEmail() == null || user.getEmail().isEmpty() ||
                 user.getEmail().length() > MAX_LENGTH_255 || user.getType() == null ||
                 user.getType().isEmpty() || user.getType().length() > MAX_LENGTH_5;

@@ -11,17 +11,51 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * Defines individual methods for Entry table in database
+ * Extends AbstractDAO what stipulates maintenance of basic CRUD operations and
+ * implements EntryDAO interface what makes possible extend class by individual methods
+ */
 public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
     private static final Logger LOGGER = LogManager.getLogger(EntryDAOImpl.class);
 
+    /**
+     * Query to database for selecting by key
+     */
     private static final String SQL_FIND_BY_KEY = "SELECT * FROM entry WHERE id_entry=?";
+
+    /**
+     * Query to database for inserting new entry
+     */
     private static final String SQL_INSERT = "INSERT INTO entry(login) VALUES(?)";
+
+    /**
+     * Query to database for updating existing entry
+     */
     private static final String SQL_UPDATE = "UPDATE entry SET id_entry=?, login=?, status=? WHERE id_entry=?";
+
+    /**
+     * Query to database for deleting existing entry
+     */
     private static final String SQL_DELETE = "DELETE FROM entry WHERE id_entry=?";
 
+    /**
+     * Query to database for selecting by user's login
+     */
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM entry WHERE login=?";
+
+    /**
+     * Query to database for selecting by waiting status
+     */
     private static final String SQL_FIND_BY_STATUS = "SELECT * FROM entry WHERE status='Waiting'";
 
+    /**
+     * Selects from entry database entries by user's login
+     *
+     * @param login user's login
+     * @return List of entries for certain user
+     * @throws DAOException if database exception occurred
+     */
     @Override
     public List<Entry> findByLogin(String login) throws DAOException {
         Connection connection = super.receiveConnection();
@@ -39,6 +73,12 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return entries;
     }
 
+
+    /**
+     * Selects from entry database entries by waiting status
+     * @return List of entries with waiting status
+     * @throws DAOException if database exception occurred
+     */
     @Override
     public List<Entry> findByStatus() throws DAOException {
         Connection connection = super.receiveConnection();
@@ -55,6 +95,13 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return entries;
     }
 
+
+    /**
+     * Parses result set to retrieve entity object
+     * @param resultSet is used for further transformation in entity
+     * @return parsed entity
+     * @throws SQLException if database exception occurred
+     */
     @Override
     public Entry parseResultSet(ResultSet resultSet) throws SQLException {
         long identry = resultSet.getLong("id_entry");
@@ -63,6 +110,13 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return new Entry(identry, login, status);
     }
 
+    /**
+     * Creates statement for further select by key
+     * @param connection is used for creating prepared statement
+     * @param key is used as primary key in table
+     * @return Prepared statement for further parsing
+     * @throws SQLException if database exception occurred
+     */
     @Override
     public PreparedStatement receiveFindByKeyStatement(Connection connection, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_KEY);
@@ -70,6 +124,13 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return statement;
     }
 
+    /**
+     * Creates statement for further inserting to table
+     * @param connection is used for creating prepared statement
+     * @param entity is database entity for retrieving data for create statement
+     * @return Prepared statement for further parsing
+     * @throws SQLException if database exception occurred
+     */
     @Override
     public PreparedStatement receiveCreateStatement(Connection connection, Entry entity) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
@@ -77,6 +138,14 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return statement;
     }
 
+    /**
+     * Creates statement for further updating
+     * @param connection is used for creating prepared statement
+     * @param entity is database entity for retrieving data for update statement
+     * @param key is used as primary key in table
+     * @return Prepared statement for further parsing
+     * @throws SQLException if database exception occurred
+     */
     @Override
     public PreparedStatement receiveUpdateStatement(Connection connection, Entry entity, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_UPDATE);
@@ -91,6 +160,13 @@ public class EntryDAOImpl extends AbstractDAO<Long, Entry> implements EntryDAO {
         return statement;
     }
 
+    /**
+     * Creates statement for further deleting from table
+     * @param connection is used for creating prepared statement
+     * @param key is used as primary key in table
+     * @return Prepared statement for further parsing
+     * @throws SQLException if database exception occurred
+     */
     @Override
     public PreparedStatement receiveDeleteStatement(Connection connection, Long key) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_DELETE);

@@ -3,6 +3,7 @@ package com.eroshenkova.conference.servlet;
 import com.eroshenkova.conference.command.ActionCommand;
 import com.eroshenkova.conference.command.factory.ActionFactory;
 import com.eroshenkova.conference.constant.Page;
+import com.eroshenkova.conference.resource.JspRoutesManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class Controller extends HttpServlet {
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);
         if (page == null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + Page.JSP_ERROR);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(JspRoutesManager.getProperty(Page.JSP_ERROR));
             dispatcher.forward(request, response);
         } else if (page.endsWith(".jsp")) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
