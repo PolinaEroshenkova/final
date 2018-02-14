@@ -15,8 +15,8 @@
         <div class="col-md-12">
             <div class="error-template text-center align-middle">
                 <h1>Oops!</h1>
-                <h2>404 Not Found</h2>
-                <p>Sorry, an error has occured, Requested page not found!</p>
+                <h2>${pageContext.errorData.statusCode}</h2>
+                <p>Sorry, an error has occured! Try again later</p>
                 <a href="/" class="btn btn-primary btn-lg">Take Me Home </a>
             </div>
         </div>

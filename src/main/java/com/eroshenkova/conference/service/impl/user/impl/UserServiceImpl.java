@@ -10,6 +10,7 @@ import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.user.UserService;
 import com.eroshenkova.conference.validation.Validator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jasypt.util.password.BasicPasswordEncryptor;
@@ -36,8 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public long register(User user, Participant participant) throws ServiceException, DAOException {
         Validator validator = new Validator();
-        if (user == null || participant == null || validator.validate(user) ||
-                validator.validate(participant)) {
+        if (user == null || participant == null || !validator.validate(user) ||
+                !validator.validate(participant)) {
             throw new ServiceException();
         }
         long result = -1;
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService {
         userDAO.create(user, false);
         DAO<String, Participant> participantDAO = new ParticipantDAO();
         result = participantDAO.create(participant, false);
+        LOGGER.log(Level.INFO, "User " + user.getLogin() + " was registered successfully");
         return result;
     }
 
@@ -60,11 +62,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(User user) throws ServiceException, DAOException {
         Validator validator = new Validator();
-        if (user == null || validator.validate(user)) {
+        if (user == null || !validator.validate(user)) {
             throw new ServiceException();
         }
         DAO<String, User> userDAO = new UserDAOImpl();
         userDAO.create(user, false);
+        LOGGER.log(Level.INFO, "User " + user.getLogin() + " was registered successfully");
     }
 
     /**
@@ -79,6 +82,7 @@ public class UserServiceImpl implements UserService {
         }
         DAO<String, User> dao = new UserDAOImpl();
         dao.delete(key);
+        LOGGER.log(Level.INFO, "User " + key + " was deleted successfully");
     }
 
     /**
@@ -98,6 +102,7 @@ public class UserServiceImpl implements UserService {
         DAO<String, Participant> participantDAO = new ParticipantDAO();
         Participant participant = participantDAO.findByKey(login);
         user.setParticipant(participant);
+        LOGGER.log(Level.INFO, "Data for user " + login + " was received");
         return user;
     }
 
@@ -148,14 +153,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateProfile(User user, String login) throws ServiceException, DAOException {
         Validator validator = new Validator();
-        if (user == null || login == null || validator.validate(user)) {
+        if (user == null || login == null || !validator.validate(user)) {
             throw new ServiceException();
         }
         DAO<String, User> userDAO = new UserDAOImpl();
         DAO<String, Participant> participantDAO = new ParticipantDAO();
-        userDAO.update(user, null);
-        participantDAO.update(user.getParticipant(), null);
-        return user;
+        UserDAO dao = new UserDAOImpl();
+        User systemUser = userDAO.findByKey(login);
+        Participant systemParticipant = participantDAO.findByKey(login);
+        systemUser.setParticipant(systemParticipant);
+        User loginUser = userDAO.findByKey(user.getLogin());
+        if (loginUser == null || loginUser.getLogin().equals(login)) {
+            User emailUser = dao.findByEmail(user.getEmail());
+            if (emailUser == null || emailUser.getEmail().equals(systemUser.getEmail())) {
+                userDAO.update(user, null);
+                participantDAO.update(user.getParticipant(), null);
+                return user;
+            }
+        }
+        LOGGER.log(Level.INFO, "Profile was updated successfully");
+        return systemUser;
     }
 
     /**
@@ -172,6 +189,7 @@ public class UserServiceImpl implements UserService {
         }
         UserDAO dao = new UserDAOImpl();
         dao.updatePassword(password, login);
+        LOGGER.log(Level.INFO, "User's password was updated successfully");
     }
 
     private boolean isEmailExist(String email) throws DAOException {

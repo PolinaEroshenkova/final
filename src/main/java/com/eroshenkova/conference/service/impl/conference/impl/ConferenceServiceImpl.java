@@ -11,6 +11,7 @@ import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.conference.ConferenceService;
 import com.eroshenkova.conference.validation.Validator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,6 +46,7 @@ public class ConferenceServiceImpl implements ConferenceService {
         SectionDAO sectionDao = new SectionDAOImpl();
         List<Section> sections = sectionDao.findByConferenceId(key);
         conference.setSections(sections);
+        LOGGER.log(Level.INFO, "Conference was found by id=" + conference.getIdconference());
         return conference;
     }
 
@@ -57,12 +59,15 @@ public class ConferenceServiceImpl implements ConferenceService {
     public List<Conference> findByDate() throws DAOException {
         ConferenceDAO conferenceDao = new ConferenceDAOImpl();
         List<Conference> conferences = conferenceDao.findByDate();
-        Collections.sort(conferences);
-        for (Conference conference : conferences) {
-            long idConference = conference.getIdconference();
-            SectionDAO sectionDAO = new SectionDAOImpl();
-            List<Section> sections = sectionDAO.findByConferenceId(idConference);
-            conference.setSections(sections);
+        if (conferences != null && !conferences.isEmpty()) {
+            Collections.sort(conferences);
+            for (Conference conference : conferences) {
+                long idConference = conference.getIdconference();
+                SectionDAO sectionDAO = new SectionDAOImpl();
+                List<Section> sections = sectionDAO.findByConferenceId(idConference);
+                conference.setSections(sections);
+            }
+            LOGGER.log(Level.INFO, conferences.size() + " conferences were found by today's date");
         }
         return conferences;
     }
@@ -80,6 +85,7 @@ public class ConferenceServiceImpl implements ConferenceService {
         }
         DAO<Long, Conference> dao = new ConferenceDAOImpl();
         dao.delete(idConference);
+        LOGGER.log(Level.INFO, "Conference was deleted successfully");
     }
 
     /**
@@ -92,7 +98,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     public void register(Conference conference) throws ServiceException, DAOException {
         Validator validator = new Validator();
         if (conference == null || conference.getSections() == null ||
-                validator.validate(conference)) {
+                !validator.validate(conference)) {
             throw new ServiceException();
         }
         DAO<Long, Conference> conferenceDAO = new ConferenceDAOImpl();
@@ -104,5 +110,6 @@ public class ConferenceServiceImpl implements ConferenceService {
                 sectionDao.create(section, false);
             }
         }
+        LOGGER.log(Level.INFO, "Conference was registered successfully");
     }
 }

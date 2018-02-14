@@ -14,6 +14,7 @@ import com.eroshenkova.conference.exception.DAOException;
 import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.entry.EntryService;
 import com.eroshenkova.conference.validation.Validator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,6 +42,7 @@ public class EntryServiceImpl implements EntryService {
         }
         DAO<Long, Entry> entryDAO = new EntryDAOImpl();
         entryDAO.delete(id);
+        LOGGER.log(Level.INFO, "Entry was deleted successfully");
     }
 
     /**
@@ -65,6 +67,7 @@ public class EntryServiceImpl implements EntryService {
                 sectionEntryDao.create(sectionEntry, false);
             }
         }
+        LOGGER.log(Level.INFO, "Entry was registered successfully");
     }
 
     /**
@@ -81,7 +84,8 @@ public class EntryServiceImpl implements EntryService {
         }
         EntryDAO entryDao = new EntryDAOImpl();
         List<Entry> entries = entryDao.findByLogin(login);
-        entries = fillWithConference(entries);
+        fillWithConference(entries);
+        LOGGER.log(Level.INFO, entries.size() + " Entries was found by user's login " + login);
         return entries;
     }
 
@@ -95,8 +99,9 @@ public class EntryServiceImpl implements EntryService {
     public List<Entry> findByStatus() throws ServiceException, DAOException {
         EntryDAO entryDao = new EntryDAOImpl();
         List<Entry> entries = entryDao.findByStatus();
-        entries = fillWithConference(entries);
-        entries = fillWithUser(entries);
+        fillWithConference(entries);
+        fillWithUser(entries);
+        LOGGER.log(Level.INFO, entries.size() + " Entries was found by waiting status");
         return entries;
     }
 
@@ -109,11 +114,12 @@ public class EntryServiceImpl implements EntryService {
     @Override
     public void changeStatus(Entry entry) throws ServiceException, DAOException {
         Validator validator = new Validator();
-        if (entry == null || validator.validate(entry)) {
+        if (entry == null || !validator.validate(entry)) {
             throw new ServiceException();
         }
         DAO<Long, Entry> entryDAO = new EntryDAOImpl();
         entryDAO.update(entry, entry.getIdentry());
+        LOGGER.log(Level.INFO, "Status of entry was changed successfully");
     }
 
     /**
@@ -131,54 +137,48 @@ public class EntryServiceImpl implements EntryService {
     /**
      * Used to fill list of entries with defined conference
      * @param entries is list of entries which has empty field conference
-     * @return list of entries with filled conferences
      * @throws ServiceException thrown when general service layer exception occurred
      * @throws DAOException thrown when database throw exception
      */
-    private List<Entry> fillWithConference(List<Entry> entries) throws DAOException, ServiceException {
-        if (entries == null) {
-            return null;
-        }
-        DAO<Long, Section> sectionDAO = new SectionDAOImpl();
-        DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
-        SectionEntryDAO sectionEntryDAO = new SectionEntryDAOImpl();
-        for (Entry entry : entries) {
-            long entryId = entry.getIdentry();
-            List<SectionEntry> sectionEntries = sectionEntryDAO.findByEntryId(entryId);
-            List<Section> sections = new ArrayList<>();
-            for (SectionEntry current : sectionEntries) {
-                long sectionId = current.getIdsection();
-                Section section = sectionDAO.findByKey(sectionId);
-                sections.add(section);
+    private void fillWithConference(List<Entry> entries) throws DAOException, ServiceException {
+        if (entries != null) {
+            DAO<Long, Section> sectionDAO = new SectionDAOImpl();
+            DAO<Long, Conference> conferenceDao = new ConferenceDAOImpl();
+            SectionEntryDAO sectionEntryDAO = new SectionEntryDAOImpl();
+            for (Entry entry : entries) {
+                long entryId = entry.getIdentry();
+                List<SectionEntry> sectionEntries = sectionEntryDAO.findByEntryId(entryId);
+                List<Section> sections = new ArrayList<>();
+                for (SectionEntry current : sectionEntries) {
+                    long sectionId = current.getIdsection();
+                    Section section = sectionDAO.findByKey(sectionId);
+                    sections.add(section);
+                }
+                long idconference = sections.get(0).getIdConference();
+                Conference conference = conferenceDao.findByKey(idconference);
+                conference.setSections(sections);
+                entry.setConference(conference);
             }
-            long idconference = sections.get(0).getIdConference();
-            Conference conference = conferenceDao.findByKey(idconference);
-            conference.setSections(sections);
-            entry.setConference(conference);
         }
-        return entries;
     }
 
     /**
      * Used to fill list of entries with defined user
      * @param entries is list of entries which has empty field user
-     * @return list of entries with filled user field
      * @throws ServiceException thrown when general service layer exception occurred
      * @throws DAOException thrown when database throw exception
      */
-    private List<Entry> fillWithUser(List<Entry> entries) throws DAOException, ServiceException {
-        if (entries == null) {
-            return null;
+    private void fillWithUser(List<Entry> entries) throws DAOException, ServiceException {
+        if (entries != null) {
+            DAO<String, User> userDAO = new UserDAOImpl();
+            ParticipantDAO participantDAO = new ParticipantDAO();
+            for (Entry entry : entries) {
+                String login = entry.getLogin();
+                User user = userDAO.findByKey(login);
+                Participant participant = participantDAO.findByKey(login);
+                user.setParticipant(participant);
+                entry.setUser(user);
+            }
         }
-        DAO<String, User> userDAO = new UserDAOImpl();
-        ParticipantDAO participantDAO = new ParticipantDAO();
-        for (Entry entry : entries) {
-            String login = entry.getLogin();
-            User user = userDAO.findByKey(login);
-            Participant participant = participantDAO.findByKey(login);
-            user.setParticipant(participant);
-            entry.setUser(user);
-        }
-        return entries;
     }
 }

@@ -76,9 +76,9 @@ public class Validator {
      *         false if object does not satisfy the conditions
      */
     public boolean validate(Entry entry) {
-        return entry.getLogin() == null || entry.getLogin().isEmpty() ||
+        return !(entry.getLogin() == null || entry.getLogin().isEmpty() ||
                 entry.getLogin().length() > MAX_LENGTH_30 || entry.getStatus() == null ||
-                entry.getStatus().isEmpty() || entry.getStatus().length() > MAX_LENGTH_11;
+                entry.getStatus().isEmpty() || entry.getStatus().length() > MAX_LENGTH_11);
     }
 
     /**
@@ -87,11 +87,9 @@ public class Validator {
      *         false if object does not satisfy the conditions
      */
     public boolean validate(Question question) {
-        return question.getLogin() == null || question.getLogin().isEmpty() ||
+        return !(question.getLogin() == null || question.getLogin().isEmpty() ||
                 question.getLogin().length() > MAX_LENGTH_30 || question.getQuestion() == null ||
-                question.getQuestion().isEmpty() || question.getQuestion().length() > MAX_LENGTH_255 ||
-                question.getAnswer() == null || question.getAnswer().isEmpty() ||
-                question.getAnswer().length() > MAX_LENGTH_255;
+                question.getQuestion().isEmpty() || question.getQuestion().length() > MAX_LENGTH_255);
     }
 
     /**
@@ -100,12 +98,12 @@ public class Validator {
      *         false if object does not satisfy the conditions
      */
     public boolean validate(User user) {
-        return user.getLogin() == null || user.getLogin().isEmpty() ||
+        return !(user.getLogin() == null || user.getLogin().isEmpty() ||
                 user.getLogin().length() > MAX_LENGTH_30 || user.getPassword() == null ||
                 user.getPassword().isEmpty() || user.getPassword().length() > MAX_LENGTH_255 ||
                 user.getEmail() == null || user.getEmail().isEmpty() ||
                 user.getEmail().length() > MAX_LENGTH_255 || user.getType() == null ||
-                user.getType().isEmpty() || user.getType().length() > MAX_LENGTH_5;
+                user.getType().isEmpty() || user.getType().length() > MAX_LENGTH_5);
     }
 
     /**
@@ -114,11 +112,11 @@ public class Validator {
      *         false if object does not satisfy the conditions
      */
     public boolean validate(Participant participant) {
-        return participant.getLogin() == null || participant.getLogin().isEmpty() ||
+        return !(participant.getLogin() == null || participant.getLogin().isEmpty() ||
                 participant.getLogin().length() > MAX_LENGTH_30 || participant.getSurname() == null ||
                 participant.getSurname().isEmpty() || participant.getSurname().length() > MAX_LENGTH_35 ||
                 participant.getName() == null || participant.getName().isEmpty() ||
                 participant.getName().length() > MAX_LENGTH_35 || participant.getScope() == null ||
-                participant.getScope().isEmpty() || participant.getScope().length() > MAX_LENGTH_100;
+                participant.getScope().isEmpty() || participant.getScope().length() > MAX_LENGTH_100);
     }
 }

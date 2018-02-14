@@ -9,6 +9,7 @@ import com.eroshenkova.conference.exception.ServiceException;
 import com.eroshenkova.conference.service.impl.entry.impl.EntryServiceImpl;
 import com.eroshenkova.conference.service.impl.question.QuestionService;
 import com.eroshenkova.conference.validation.Validator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,11 +33,12 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public void register(Question entity) throws ServiceException, DAOException {
         Validator validator = new Validator();
-        if (entity == null || validator.validate(entity)) {
+        if (entity == null || !validator.validate(entity)) {
             throw new ServiceException();
         }
         DAO<Long, Question> dao = new QuestionDAOImpl();
         dao.create(entity, false);
+        LOGGER.log(Level.INFO, "Created new question");
     }
 
     /**
@@ -51,6 +53,7 @@ public class QuestionServiceImpl implements QuestionService {
         }
         DAO<Long, Question> dao = new QuestionDAOImpl();
         dao.delete(key);
+        LOGGER.log(Level.INFO, "Question with id=" + key + " was deleted successfully");
     }
 
     /**

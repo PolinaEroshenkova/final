@@ -40,7 +40,7 @@ public class ConferenceServiceTest {
     @Test
     public void findByDate() throws ServiceException, DAOException {
         List<Conference> conferences = service.findByDate();
-        int expected = 7;
+        int expected = 6;
         Assert.assertEquals(conferences.size(), expected);
     }
 
@@ -51,7 +51,7 @@ public class ConferenceServiceTest {
 
     @Test
     public void delete() throws ServiceException, DAOException {
-        long id = 3;
+        long id = 5;
         service.delete(id);
         Assert.assertNull(service.findByKey(id));
     }
